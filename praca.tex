@@ -315,7 +315,7 @@ Gliwice, dnia \today
 %\item zwięzła charakterystyka rozdziałów 
 %\item jednoznaczne określenie wkładu autora
 %\end{itemize}
-Wiek jest cechą, którą niałatwo odczytać człowiekowi z czyjejś twarzy. Twarz może wyglądać inaczej u osoby, która dba o siebie, a inaczej u osoby, która nie dba. Dla komputera rozpoznawanie wieku jest trudniejsze niż dla człowieka. Dlatego do wyznaczania wieku z pomocą programu komputerowego należy podchodzić z dystansem. Mimo trudności programiści i naukowcy udoskonalają algorytmy, tak aby ocena wieku danej osoby była coraz lepsza.
+Wiek jest cechą, którą niełatwo człowiekowi odczytać z czyjejś twarzy. Dla komputera rozpoznawanie wieku jest trudniejsze niż dla człowieka. Dlatego do wyznaczania wieku z pomocą programu komputerowego należy podchodzić z dystansem. Mimo trudności programiści i naukowcy udoskonalają algorytmy, tak aby ocena wieku danej osoby była coraz lepsza.
 
 Istnieje wiele sposobów wyznaczania wieku. Większość metod skupia się na analizie tekstury twarzy. Idąc dalej - z obrazu danej osoby lub jego części np tułowia musi zostać wyodrebniona twarz. Wyodrębnianie twarzy z danej tekstury można uzyskać dzięki specjalnej technice komputerowej zwanej rozpoznawaniem obrazu. Rozpoznawanie obrazu zwane również wizją komputerową to przetwarzanie grafiki, polegające na wyodrębnianiu z niej jakichś szczegółów. Mogą to być osoby, pojazdy, przedmioty itp. (Rys. \ref{fig.rozpoznawanieObiektow})
 
@@ -340,130 +340,50 @@ Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wie
 
 Zakres pracy obejmuje:
 \begin{itemize}
-\item Wybór biblioteki do wykrywania twarzy
-\item 
-\item Stworzenie algorytmu przetwarzającego obrazy ze zbioru treningowego,
-\item Utworzenie algorytmu służącego do wykrywania wieku,
-\item Opracowanie prostej aplikacji, która implementuje powyższe algorytmy,
-\item Przeprowadzenie eksperymentów, które sprawdzają błąd w wykrywaniu wieku.
+\item Wybór bazowej metody wyznaczania wieku
+\item Stworzenie kilku modyfikacji bazowej metody
+\item Opis algorytmów każdej z metod wyznaczania wieku
+\item Porównanie wszystkich metod i wybór najlepszej
 \end{itemize}
 
+\chapter{Przegląd metod wyznaczania wieku}
+\section{Metoda a}
+\section{Metoda b}
+\section{Metoda wrinkle feature}
+
+\chapter{Metoda bazowa - wrinkle feature}
+
+\section{Metoda wykrywania twarzy}
+\section{Wyznaczanie stref}
+\section{Wykrywanie zmarszczek - detektor Canny}
+\section{Wyliczanie wrinkle feature}
+\section{Algorytm trenowania}
+\section{Grupowanie danych - FCM}
+
+\subsection{Wstęp do grupowania danych}
+\subsection{Metoda FCM}
+
+\section{Wyznaczanie wieku}
 
 
+\chapter{Modyfikacje metody bazowej}
 
-\chapter{Analiza tematu}
+\section{Odjęcie wybranej strefy}
 
-%\begin{itemize}
-%\item analiza tematu
-%\item wprowadzenie do dziedziny (\ang{state of the art}) – sformułowanie problemu, 
-%\item poszerzone studia literaturowe, przegląd literatury tematu (należy wskazać źródła wszystkich informacji zawartych w pracy)
-%\item opis znanych rozwiązań, algorytmów, osadzenie pracy w kontekście
-%\item Tytuł rozdziału jest często zbliżony do tematu pracy. 
-%\item Rozdział jest wysycony cytowaniami do literatury \cite{bib:artykul,bib:ksiazka,bib:konferencja}.
-%\end{itemize}
+\subsection{Zmiana algorytmu względem metody bazowej}
 
+\section{Zastosowanie metody HOG}
+\subsection{Opis algorytmu HOG}
+\subsection{Zastosowanie w projekcie}
 
-
-
-\chapter{[Przedmiot pracy]}
-
-\begin{itemize}
-\item rozwiązanie zaproponowane przez dyplomanta
-\item analiza teoretyczna rozwiązania
-\item uzasadnienie wyboru zastosowanych metod, algorytmów, narzędzi
-\end{itemize}
+\section{Metoda HOG oraz grupowanie KNN}
+\subsection{Grupowanie KNN}
+\subsection{Zastosowanie w projekcie}
 
 \chapter{Badania}
 
- 
-
-Rozdział przedstawia przeprowadzone badania. Jest to zasadnicza część i~musi wyraźnie dominować w~pracy.
-Badania i analizę wyników należy przeprowadzić, tak jak jest przyjęte w środowisku naukowym (na przykład korzystanie z danych benchmarkowych, walidacja krzyżowa, zapewnienie powtarzalności testów itd). 
-
-\section{Metodyka badań}
-
-\begin{itemize}
-\item opis metodyki badań
-\item opis stanowiska badawczego (opis interfejsu aplikacji badawczych -- w~załączniku)
-\end{itemize}
-
-
-\section{Zbiory danych}
-
-\begin{itemize}
-\item opis danych
-\end{itemize}
-
-
-\section{Wyniki}
-
-\begin{itemize}
-\item prezentacja wyników, opracowanie i poszerzona dyskusja  wyników, wnioski
-\end{itemize}
-
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    y tick label style={
-        /pgf/number format/.cd,
-            fixed,   % po zakomentowaniu os rzednych jest indeksowana wykladniczo
-            fixed zerofill, % 1.0 zamiast 1
-            precision=1,
-        /tikz/.cd
-    },
-    x tick label style={
-        /pgf/number format/.cd,
-            fixed,
-            fixed zerofill,
-            precision=2,
-        /tikz/.cd
-    }
-]
-\addplot [domain=0.0:0.1] {rnd};
-\end{axis} 
-\end{tikzpicture}
-\caption{Podpis rysunku po rysunkiem.}
-\label{fig:2}
-\end{figure}
-
-\begin{table}
-\centering
-\caption{Opis tabeli nad nią.}
-\label{id:tab:wyniki}
-\begin{tabular}{rrrrrrrr}
-\toprule
-	         &                                     \multicolumn{7}{c}{metoda}                                      \\
-	         \cmidrule{2-8}
-	         &         &         &        \multicolumn{3}{c}{alg. 3}        & \multicolumn{2}{c}{alg. 4, $\gamma = 2$} \\
-	         \cmidrule(r){4-6}\cmidrule(r){7-8}
-	$\zeta$ &     alg. 1 &   alg. 2 & $\alpha= 1.5$ & $\alpha= 2$ & $\alpha= 3$ &   $\beta = 0.1$  &   $\beta = -0.1$ \\
-\midrule
-	       0 &  8.3250 & 1.45305 &       7.5791 &    14.8517 &    20.0028 & 1.16396 &                       1.1365 \\
-	       5 &  0.6111 & 2.27126 &       6.9952 &    13.8560 &    18.6064 & 1.18659 &                       1.1630 \\
-	      10 & 11.6126 & 2.69218 &       6.2520 &    12.5202 &    16.8278 & 1.23180 &                       1.2045 \\
-	      15 &  0.5665 & 2.95046 &       5.7753 &    11.4588 &    15.4837 & 1.25131 &                       1.2614 \\
-	      20 & 15.8728 & 3.07225 &       5.3071 &    10.3935 &    13.8738 & 1.25307 &                       1.2217 \\
-	      25 &  0.9791 & 3.19034 &       5.4575 &     9.9533 &    13.0721 & 1.27104 &                       1.2640 \\
-	      30 &  2.0228 & 3.27474 &       5.7461 &     9.7164 &    12.2637 & 1.33404 &                       1.3209 \\
-	      35 & 13.4210 & 3.36086 &       6.6735 &    10.0442 &    12.0270 & 1.35385 &                       1.3059 \\
-	      40 & 13.2226 & 3.36420 &       7.7248 &    10.4495 &    12.0379 & 1.34919 &                       1.2768 \\
-	      45 & 12.8445 & 3.47436 &       8.5539 &    10.8552 &    12.2773 & 1.42303 &                       1.4362 \\
-	      50 & 12.9245 & 3.58228 &       9.2702 &    11.2183 &    12.3990 & 1.40922 &                       1.3724 \\
-\bottomrule
-\end{tabular}
-\end{table}  
-
-
-
 \chapter{Podsumowanie}
-\begin{itemize}
-\item syntetyczny opis wykonanych prac
-\item wnioski
-\item możliwość rozwoju, kontynuacji prac, potencjalne nowe kierunki
-\item Czy cel pracy zrealizowany? 
-\end{itemize}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
