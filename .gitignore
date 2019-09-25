@@ -1,5 +1,4 @@
 praca.synctex.gz
-praca.pdf
 praca.out
 praca.lot
 praca.log
@@ -9,3 +8,4 @@ praca.bbl
 praca.aux
 praca.toc
 /.idea/*
+/praca.pdf
