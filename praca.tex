@@ -7,13 +7,13 @@
 
 
 \documentclass[a4paper,twoside,12pt]{book}
-\usepackage[utf8]{inputenc}                                      
-\usepackage[T1]{fontenc}  
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
-\usepackage[british,polish]{babel} 
+\usepackage[british,polish]{babel}
 \usepackage{indentfirst}
 \usepackage{lmodern}
-\usepackage{graphicx} 
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{tikz}
@@ -32,10 +32,10 @@
 
 \usepackage{listings}
 \lstset{
-	language={},
-	basicstyle=\ttfamily,
-	keywordstyle=\lst@ifdisplaystyle\color{blue}\fi,
-	commentstyle=\color{gray}
+language={},
+basicstyle=\ttfamily,
+keywordstyle=\lst@ifdisplaystyle\color{blue}\fi,
+commentstyle=\color{gray}
 }
 
 %%%%%%%%%
@@ -45,11 +45,11 @@
 %\usepackage{tikz}
 %\usepackage{manfnt}   % dangerous sign 
 \usepackage{color}
-\definecolor{brickred}      {cmyk}{0   , 0.89, 0.94, 0.28}
+\definecolor{brickred}      {cmyk}{0 , 0.89, 0.94, 0.28}
 
 \makeatletter \newcommand \kslistofremarks{\section*{Uwagi} \@starttoc{rks}}
-  \newcommand\l@uwagas[2]
-    {\par\noindent \textbf{#2:} %\parbox{10cm}
+\newcommand\l@uwagas[2]
+{\par\noindent \textbf{#2:} %\parbox{10cm}
 {#1}\par} \makeatother
 
 
@@ -80,15 +80,15 @@
 
 
 \fancypagestyle{tylkoNumeryStron}{%
-   \fancyhf{} 
-   \fancyhead[LE,RO]{\it\thepage}
+\fancyhf{}
+\fancyhead[LE,RO]{\it\thepage}
 }
 
 \fancypagestyle{NumeryStronNazwyRozdzialow}{%
-   \fancyhf{} 
-   \fancyhead[LO]{\nouppercase{\it\rightmark}}
-   \fancyhead[RE]{\nouppercase{\it\leftmark}}
-   \fancyhead[LE,RO]{\it\thepage}
+\fancyhf{}
+\fancyhead[LO]{\nouppercase{\it\rightmark}}
+\fancyhead[RE]{\nouppercase{\it\leftmark}}
+\fancyhead[LE,RO]{\it\thepage}
 }
 
 
@@ -106,27 +106,27 @@
 \newcounter{stronyPozaNumeracja}
 
 \newcommand{\hcancel}[1]{%
-    \tikz[baseline=(tocancel.base)]{
-        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
-        \draw[red] (tocancel.south west) -- (tocancel.north east);
-    }%
+\tikz[baseline=(tocancel.base)]{
+\node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+\draw[red] (tocancel.south west) -- (tocancel.north east);
+}%
 }%
 
 \newcommand{\miesiac}{%
-  \ifcase\the\month
-  \or styczeń% 1
-  \or luty% 2
-  \or marzec% 3
-  \or kwiecień% 4
-  \or maj% 5
-  \or czerwiec% 6
-  \or lipiec% 7
-  \or sierpień% 8
-  \or wrzesień% 9
-  \or październik% 10
-  \or listopad% 11
-  \or grudzień% 12
-  \fi}
+\ifcase\the\month
+\or styczeń% 1
+\or luty% 2
+\or marzec% 3
+\or kwiecień% 4
+\or maj% 5
+\or czerwiec% 6
+\or lipiec% 7
+\or sierpień% 8
+\or wrzesień% 9
+\or październik% 10
+\or listopad% 11
+\or grudzień% 12
+\fi}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -140,298 +140,323 @@
 
 
 \newcommand{\autor}{Mateusz Trzeciak}
-\newcommand{\promotor}{dr inż. Karolina Nurzyńska}
+\newcommand{\promotor}{dr hab. inż. Karolina Nurzyńska}
 \newcommand{\tytul}{Określenie wieku twarzy na podstawie tekstury}
 
 
 \begin{document}
-%\kslistofremarks 
-	
-%%%%%%%%%%%%%%%%%%  STRONA TYTULOWA %%%%%%%%%%%%%%%%%%%
-\pagestyle{empty}
-\sffamily
+    %\kslistofremarks
 
-\noindent
+    %%%%%%%%%%%%%%%%%%  STRONA TYTULOWA %%%%%%%%%%%%%%%%%%%
+    \pagestyle{empty}
+    \sffamily
 
-\begin{center}
-    \large
-    Politechnika Śląska\\
-    Wydział Automatyki, Elektroniki i~Informatyki \\ 
-    kierunek: informatyka
-\end{center}
+    \noindent
 
-\vfill\vfill
-\begin{center}
-    \large
-    \autor
-\end{center}
+    \begin{center}
+        \large
+        Politechnika Śląska\\
+        Wydział Automatyki, Elektroniki i~Informatyki \\
+        kierunek: informatyka
+    \end{center}
 
-\vfill
-\begin{center}
-   \LARGE\bfseries \tytul
-\end{center}
+    \vfill\vfill
+    \begin{center}
+        \large
+        \autor
+    \end{center}
 
-\vfill
-\begin{center}
-    \large
-    praca dyplomowa magisterska
-\end{center}
+    \vfill
+    \begin{center}
+        \LARGE\bfseries \tytul
+    \end{center}
 
-\vfill\vfill\vfill
-\begin{center}
-    \large
-    \begin{tabular}{ll}
-    promotor: & \promotor \\
-   % konsultant: & \konsultant \\ % jezeli nie ma, zakomentowac
-    \end{tabular}
+    \vfill
+    \begin{center}
+        \large
+        praca dyplomowa magisterska
+    \end{center}
 
-\end{center}
+    \vfill\vfill\vfill
+    \begin{center}
+        \large
+        \begin{tabular}{ll}
+            promotor: & \promotor \\
+            % konsultant: & \konsultant \\ % jezeli nie ma, zakomentowac
+        \end{tabular}
 
-\vfill
-\begin{center}
-\large
-   Gliwice,  \miesiac\ \the\year
-\end{center}
+    \end{center}
 
-\cleardoublepage
- 
+    \vfill
+    \begin{center}
+        \large
+        Gliwice,  \miesiac\ \the\year
+    \end{center}
 
-\rmfamily
-\normalfont
+    \cleardoublepage
 
-%%%%%%%%%%%%%%%%%%%%% oswiadczenie o udostępnianiu pracy dyplomowej %%%%%%%%%%%%%%%%%%%
-\cleardoublepage
 
-\begin{flushright}
-załącznik nr 2 do zarz. nr 97/08/09 
-\end{flushright}
+    \rmfamily
+    \normalfont
 
-\vfill  
+    %%%%%%%%%%%%%%%%%%%%% oswiadczenie o udostępnianiu pracy dyplomowej %%%%%%%%%%%%%%%%%%%
+    \cleardoublepage
 
-\begin{center}
-\Large\bfseries Oświadczenie
-\end{center}
+    \begin{flushright}
+        załącznik nr 2 do zarz. nr 97/08/09
+    \end{flushright}
 
-\vfill
+    \vfill
 
-Wyrażam  zgodę / Nie wyrażam zgody*  na  udostępnienie  mojej  pracy  dyplomowej / rozprawy doktorskiej*.
+    \begin{center}
+        \Large\bfseries Oświadczenie
+    \end{center}
 
-\vfill
+    \vfill
 
-Gliwice, dnia \today
+    Wyrażam zgodę / Nie wyrażam zgody* na udostępnienie mojej pracy dyplomowej / rozprawy doktorskiej*.
 
-\vfill
+    \vfill
 
-\rule{0.5\textwidth}{0cm}\dotfill 
+    Gliwice, dnia \today
 
-\rule{0.5\textwidth}{0cm}
-\begin{minipage}{0.45\textwidth}
-{\begin{center}(podpis)\end{center}}
-\end{minipage} 
+    \vfill
 
-\vfill
+    \rule{0.5\textwidth}{0cm}\dotfill
 
-\rule{0.5\textwidth}{0cm}\dotfill 
+    \rule{0.5\textwidth}{0cm}
+    \begin{minipage}{0.45\textwidth}
+    {\begin{center}
+         (podpis)
+    \end{center}}
+    \end{minipage}
 
-\rule{0.5\textwidth}{0cm}
-\begin{minipage}{0.45\textwidth}
-{\begin{center}\rule{0mm}{5mm}(poświadczenie wiarygodności podpisu przez Dziekanat)\end{center}}
-\end{minipage}
+    \vfill
 
+    \rule{0.5\textwidth}{0cm}\dotfill
 
-\vfill
+    \rule{0.5\textwidth}{0cm}
+    \begin{minipage}{0.45\textwidth}
+    {\begin{center}
+         \rule{0mm}{5mm}(poświadczenie wiarygodności podpisu przez Dziekanat)
+    \end{center}}
+    \end{minipage}
 
-* podkreślić właściwe
 
- 
+    \vfill
 
+    * podkreślić właściwe
 
-%%%%%%%%%%%%%%%%%%%%% oswiadczenie promotora o spełnieniu wymagań formalnych %%%%%%%%%%%%%%%%%%%
-\cleardoublepage
 
-\rule{1cm}{0cm}
 
-\vfill  
 
-\begin{center}
-\Large\bfseries Oświadczenie promotora
-\end{center}
+    %%%%%%%%%%%%%%%%%%%%% oswiadczenie promotora o spełnieniu wymagań formalnych %%%%%%%%%%%%%%%%%%%
+    \cleardoublepage
 
-\vfill
+    \rule{1cm}{0cm}
 
-Oświadczam, że praca „\tytul” spełnia wymagania formalne pracy dyplomowej magisterskiej.
+    \vfill
 
-\vfill
+    \begin{center}
+        \Large\bfseries Oświadczenie promotora
+    \end{center}
 
+    \vfill
 
+    Oświadczam, że praca „\tytul” spełnia wymagania formalne pracy dyplomowej magisterskiej.
 
-\vfill
+    \vfill
 
-Gliwice, dnia \today
 
-\rule{0.5\textwidth}{0cm}\dotfill 
 
-\rule{0.5\textwidth}{0cm}
-\begin{minipage}{0.45\textwidth}
-{\begin{center}(podpis promotora)\end{center}}
-\end{minipage} 
+    \vfill
 
-\vfill
+    Gliwice, dnia \today
 
-%\rule{0.5\textwidth}{0cm}\dotfill 
-%
-%\rule{0.5\textwidth}{0cm}
-%\begin{minipage}{0.45\textwidth}
-%{\begin{center}\rule{0mm}{5mm}(poświadczenie wiarygodności podpisu przez Dziekanat)\end{center}}
-%\end{minipage}
-%
-%
-%\vfill
+    \rule{0.5\textwidth}{0cm}\dotfill
 
- 
+    \rule{0.5\textwidth}{0cm}
+    \begin{minipage}{0.45\textwidth}
+    {\begin{center}
+         (podpis promotora)
+    \end{center}}
+    \end{minipage}
 
-\cleardoublepage
+    \vfill
 
+    %\rule{0.5\textwidth}{0cm}\dotfill
+    %
+    %\rule{0.5\textwidth}{0cm}
+    %\begin{minipage}{0.45\textwidth}
+    %{\begin{center}\rule{0mm}{5mm}(poświadczenie wiarygodności podpisu przez Dziekanat)\end{center}}
+    %\end{minipage}
+    %
+    %
+    %\vfill
 
-%%%%%%%%%%%%%%%%%% SPIS TRESCI %%%%%%%%%%%%%%%%%%%%%%
-\pagenumbering{Roman}
-\pagestyle{tylkoNumeryStron}
-\tableofcontents
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{stronyPozaNumeracja}{\value{page}}
-\mainmatter
-\pagestyle{NumeryStronNazwyRozdzialow}
 
-%%%%%%%%%%%%%% wlasciwa tresc pracy %%%%%%%%%%%%%%%%%
+    \cleardoublepage
 
-\chapter{Wstęp}
 
-%\begin{itemize}
-%\item wprowadzenie w problem/zagadnienie 
-%\item osadzenie problemu w dziedzinie 
-%\item cel pracy 
-%\item zakres pracy 
-%\item zwięzła charakterystyka rozdziałów 
-%\item jednoznaczne określenie wkładu autora
-%\end{itemize}
-Wiek jest cechą, którą niełatwo człowiekowi odczytać z czyjejś twarzy. Dla komputera rozpoznawanie wieku jest trudniejsze niż dla człowieka. Dlatego do wyznaczania wieku z pomocą programu komputerowego należy podchodzić z dystansem. Mimo trudności programiści i naukowcy udoskonalają algorytmy, tak aby ocena wieku danej osoby była coraz lepsza.
+    %%%%%%%%%%%%%%%%%% SPIS TRESCI %%%%%%%%%%%%%%%%%%%%%%
+    \pagenumbering{Roman}
+    \pagestyle{tylkoNumeryStron}
+    \tableofcontents
 
-Istnieje wiele sposobów wyznaczania wieku. Większość metod skupia się na analizie tekstury twarzy. Idąc dalej - z obrazu danej osoby lub jego części np tułowia musi zostać wyodrebniona twarz. Wyodrębnianie twarzy z danej tekstury można uzyskać dzięki specjalnej technice komputerowej zwanej rozpoznawaniem obrazu. Rozpoznawanie obrazu zwane również wizją komputerową to przetwarzanie grafiki, polegające na wyodrębnianiu z niej jakichś szczegółów. Mogą to być osoby, pojazdy, przedmioty itp. (Rys. \ref{fig.rozpoznawanieObiektow})
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \setcounter{stronyPozaNumeracja}{\value{page}}
+    \mainmatter
+    \pagestyle{NumeryStronNazwyRozdzialow}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=11cm]{Obrazy/rozpoznawanieObiektow} 
-	\caption{Przykład rozpoznawania obiektów na zdjęciu ulicy. \cite{rozpoznawanieObiektow}}.
-	\label{fig.rozpoznawanieObiektow}
-\end{figure}
+    %%%%%%%%%%%%%% wlasciwa tresc pracy %%%%%%%%%%%%%%%%%
 
-Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie rozpoznawania wieku z obrazu. Istnieją algorytmy przetwarzania obrazu, które oprócz wieku wyznaczają z pewnym prawdopodobieństwem płeć danej osoby. Oprócz płci mogą one także wyznaczać wyraz twarzy oraz czy dana osoba posiada okulary.
+    \chapter{Wstęp}
 
-Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc np. klub nocny. Większość osób musi okazać ważny dowód osobisty. Co generuje duże kolejki do wejścia. Aplikację analizujące wiek na podstawie obrazu twarzy z kamery, przed wejściem do takich miejsc znacząco usprawniłyby weryfikację wieku.
-Rozpoznawanie wieku może być wykorzystywane przy analizie średniego wieku ludzi w jakimś miejscu np. podczas demonstracji.
+    %\begin{itemize}
+    %\item wprowadzenie w problem/zagadnienie
+    %\item osadzenie problemu w dziedzinie
+    %\item cel pracy
+    %\item zakres pracy
+    %\item zwięzła charakterystyka rozdziałów
+    %\item jednoznaczne określenie wkładu autora
+    %\end{itemize}
+    Wiek jest cechą, którą niełatwo człowiekowi odczytać z czyjejś twarzy. Dla komputera rozpoznawanie wieku jest
+    trudniejsze niż dla człowieka.
+    Dlatego do wyznaczania wieku z pomocą programu komputerowego należy podchodzić z dystansem. Mimo trudności programiści
+    i naukowcy udoskonalają algorytmy,
+    tak aby ocena wieku danej osoby była coraz lepsza.
 
-Wiele gier posiada treści nieodpowiednie dla młodszych użytkowników. Możliwe jest stosowanie technologii wykrywania wieku użytkownika przed udostępnieniem mu treści, która wymaga odpowiedniego wieku.
- 
-Można znaleźć o wiele więcęj potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie tekstury (obrazu) twarzy. Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny.
+    Istnieje wiele sposobów wyznaczania wieku.
+    Większość metod skupia się na analizie tekstury twarzy. Idąc dalej - z obrazu danej osoby lub jego części np tułowia
+    musi zostać wykryta twarz. Wykrycie twarzy na teksturze jest możliwe dzięki metodom rozpoznawaniu obrazu.
+    Najpierw na obrazie jest szukana twarz, a następnie .
+    Rozpoznawanie obrazu zwane również wizją komputerową to przetwarzanie grafiki, polegające na wyodrębnianiu z niej
+    jakichś szczegółów. Mogą to być osoby, pojazdy,
+    przedmioty itp. (Rys. \ref{fig.rozpoznawanieObiektow})
 
-\section{Cel i zakres pracy}
-Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/rozpoznawanieObiektow}
+        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy. \cite{rozpoznawanieObiektow}}.
+        \label{fig.rozpoznawanieObiektow}
+    \end{figure}
 
-Zakres pracy obejmuje:
-\begin{itemize}
-\item Wybór bazowej metody wyznaczania wieku
-\item Stworzenie kilku modyfikacji bazowej metody
-\item Opis algorytmów każdej z metod wyznaczania wieku
-\item Porównanie wszystkich metod i wybór najlepszej
-\end{itemize}
+    Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie
+    rozpoznawania wieku z obrazu.
+    Istnieją algorytmy przetwarzania obrazu, które oprócz wieku wyznaczają z pewnym prawdopodobieństwem płeć danej osoby.
+    Oprócz płci mogą one także wyznaczać
+    wyraz twarzy oraz czy dana osoba posiada okulary.
 
-\chapter{Przegląd metod wyznaczania wieku}
-\section{Metoda a}
-\section{Metoda b}
-\section{Metoda wrinkle feature}
+    Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc np. klub nocny. Większość osób
+    musi okazać ważny dowód osobisty.
+    Co generuje duże kolejki do wejścia. Aplikację analizujące wiek na podstawie obrazu twarzy z kamery, przed wejściem
+    do takich miejsc znacząco usprawniłyby weryfikację wieku.
+    Rozpoznawanie wieku może być wykorzystywane przy analizie średniego wieku ludzi w jakimś miejscu np. podczas demonstracji.
 
-\chapter{Metoda bazowa - wrinkle feature}
+    Wiele gier posiada treści nieodpowiednie dla młodszych użytkowników. Możliwe jest stosowanie technologii wykrywania
+    wieku użytkownika przed udostępnieniem mu treści, która wymaga odpowiedniego wieku.
 
-\section{Metoda wykrywania twarzy}
-\section{Wyznaczanie stref}
-\section{Wykrywanie zmarszczek - detektor Canny}
-\section{Wyliczanie wrinkle feature}
-\section{Algorytm trenowania}
-\section{Grupowanie danych - FCM}
+    Można znaleźć o wiele więcęj potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie
+    tekstury (obrazu) twarzy. Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny.
 
-\subsection{Wstęp do grupowania danych}
-\subsection{Metoda FCM}
+    \section{Cel i zakres pracy}
+    Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
 
-\section{Wyznaczanie wieku}
+    Zakres pracy obejmuje:
+    \begin{itemize}
+        \item Wybór bazowej metody wyznaczania wieku
+        \item Stworzenie kilku modyfikacji bazowej metody
+        \item Opis algorytmów każdej z metod wyznaczania wieku
+        \item Porównanie wszystkich metod i wybór najlepszej
+    \end{itemize}
 
+    \chapter{Przegląd metod wyznaczania wieku}
+    \section{Metoda a}
+    \section{Metoda b}
+    \section{Metoda wrinkle feature}
 
-\chapter{Modyfikacje metody bazowej}
+    \chapter{Metoda bazowa - wrinkle feature}
 
-\section{Odjęcie wybranej strefy}
+    \section{Metoda wykrywania twarzy}
+    \section{Wyznaczanie stref}
+    \section{Wykrywanie zmarszczek - detektor Canny}
+    \section{Wyliczanie wrinkle feature}
+    \section{Algorytm trenowania}
+    \section{Grupowanie danych - FCM}
 
-\subsection{Zmiana algorytmu względem metody bazowej}
+    \subsection{Wstęp do grupowania danych}
+    \subsection{Metoda FCM}
 
-\section{Zastosowanie metody HOG}
-\subsection{Opis algorytmu HOG}
-\subsection{Zastosowanie w projekcie}
+    \section{Wyznaczanie wieku}
 
-\section{Metoda HOG oraz grupowanie KNN}
-\subsection{Grupowanie KNN}
-\subsection{Zastosowanie w projekcie}
 
-\chapter{Badania}
+    \chapter{Modyfikacje metody bazowej}
 
-\chapter{Podsumowanie}
+    \section{Odjęcie wybranej strefy}
 
+    \subsection{Zmiana algorytmu względem metody bazowej}
 
+    \section{Zastosowanie metody HOG}
+    \subsection{Opis algorytmu HOG}
+    \subsection{Zastosowanie w projekcie}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\backmatter
-\pagenumbering{Roman}
-\stepcounter{stronyPozaNumeracja}
-\setcounter{page}{\value{stronyPozaNumeracja}}
+    \section{Metoda HOG oraz grupowanie KNN}
+    \subsection{Grupowanie KNN}
+    \subsection{Zastosowanie w projekcie}
 
-\pagestyle{tylkoNumeryStron}
+    \chapter{Badania}
 
-%%%%%%%%%%% bibliografia %%%%%%%%%%%%
-\bibliographystyle{plplain}
-\bibliography{bibliografia}
+    \chapter{Podsumowanie}
 
-%%%%%%%%%  DODATKI %%%%%%%%%%%%%%%%%%% 
 
-\begin{appendices} 
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \backmatter
+    \pagenumbering{Roman}
+    \stepcounter{stronyPozaNumeracja}
+    \setcounter{page}{\value{stronyPozaNumeracja}}
 
-\chapter*{Dokumentacja techniczna}
+    \pagestyle{tylkoNumeryStron}
 
-\chapter*{Spis skrótów i symboli}
+    %%%%%%%%%%% bibliografia %%%%%%%%%%%%
+    \bibliographystyle{plplain}
+    \bibliography{bibliografia}
 
-\begin{itemize}
-\item[DNA] kwas deoksyrybonukleinowy (ang. \ang{deoxyribonucleic acid})
-\item[MVC] model -- widok -- kontroler (ang. \ang{model--view--controller}) 
-\item[$N$] liczebność zbioru danych
-\item[$\mu$] stopnień przyleżności do zbioru
-\item[$\mathbb{E}$] zbiór krawędzi grafu
-\item[$\mathcal{L}$] transformata Laplace'a 
-\end{itemize}
+    %%%%%%%%%  DODATKI %%%%%%%%%%%%%%%%%%%
 
+    \begin{appendices}
 
- 
 
-\chapter*{Zawartość dołączonej płyty}
+        \chapter*{Dokumentacja techniczna}
 
-Do pracy dołączona jest płyta CD z~następującą zawartością:
-\begin{itemize}
-\item praca w~formacie \texttt{pdf},
-\item źródła programu,
-\item zbiory danych użyte w~eksperymentach.
-\end{itemize}
+        \chapter*{Spis skrótów i symboli}
 
-\listoffigures
-\listoftables
-	
-\end{appendices}
+        \begin{itemize}
+            \item[DNA] kwas deoksyrybonukleinowy (ang. \ang{deoxyribonucleic acid})
+            \item[MVC] model -- widok -- kontroler (ang. \ang{model--view--controller})
+            \item[$N$] liczebność zbioru danych
+            \item[$\mu$] stopnień przyleżności do zbioru
+            \item[$\mathbb{E}$] zbiór krawędzi grafu
+            \item[$\mathcal{L}$] transformata Laplace'a
+        \end{itemize}
+
+
+
+
+        \chapter*{Zawartość dołączonej płyty}
+
+        Do pracy dołączona jest płyta CD z~następującą zawartością:
+        \begin{itemize}
+            \item praca w~formacie \texttt{pdf},
+            \item źródła programu,
+            \item zbiory danych użyte w~eksperymentach.
+        \end{itemize}
+
+        \listoffigures
+        \listoftables
+
+    \end{appendices}
 
 
 \end{document}
