@@ -325,10 +325,10 @@ commentstyle=\color{gray}
     trudniejsze niż dla człowieka.
     Dlatego do wyznaczania wieku z pomocą programu komputerowego należy podchodzić z dystansem. Mimo trudności programiści
     i naukowcy udoskonalają algorytmy,
-    tak aby ocena wieku danej osoby była coraz lepsza.
+    tak aby ocena wieku danej osoby była coraz dokładniejsza.
 
     Istnieje wiele sposobów wyznaczania wieku.
-    Większość metod skupia się na analizie tekstury twarzy. Idąc dalej - z obrazu danej osoby lub jego części np tułowia
+    Większość metod skupia się na analizie tekstury twarzy. Idąc dalej - z obrazu danej osoby lub jego części, np tułowia,
     musi zostać wykryta twarz. Wykrycie twarzy na teksturze jest możliwe dzięki algorytmom rozpoznawaniu obrazu.
     Rozpoznawanie obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów. Mogą
     to być osoby, pojazdy, przedmioty itp. (Rys. \ref{fig.rozpoznawanieObiektow})
@@ -343,19 +343,20 @@ commentstyle=\color{gray}
     Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie
     rozpoznawania wieku z obrazu.
     Istnieją algorytmy przetwarzania obrazu, które oprócz wieku wyznaczają z pewnym prawdopodobieństwem płeć danej osoby.
-    Oprócz płci mogą one także wyznaczyć minę oraz czy dana osoba posiada okulary.
+    Oprócz płci mogą one także wyznaczyć minę oraz czy dana osoba nosi okulary.
 
-    Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc np. klub nocny. Większość osób
-    musi okazać ważny dowód osobisty.
-    Co generuje duże kolejki do wejścia. Aplikację analizujące wiek na podstawie obrazu twarzy z kamery, przed wejściem
+    Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc, tj. klub nocny. Większość osób
+    musi okazać ważny dowód osobisty,
+    co generuje duże kolejki do wejścia. Aplikacje analizujące wiek na podstawie obrazu twarzy z kamery przed wejściem
     do takich miejsc znacząco usprawniłyby weryfikację wieku.
     Rozpoznawanie wieku może być wykorzystywane przy analizie średniego wieku ludzi w jakimś miejscu np. podczas demonstracji.
 
     Wiele gier posiada treści nieodpowiednie dla młodszych użytkowników. Możliwe jest stosowanie technologii wykrywania
     wieku użytkownika przed udostępnieniem mu treści, która wymaga odpowiedniego wieku.
 
-    Można znaleźć o wiele więcęj potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie
+    Można znaleźć o wiele więcej potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie
     tekstury (obrazu) twarzy. Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny.
+
 
     %    \section{Cel i zakres pracy}
     %    Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
@@ -374,22 +375,43 @@ commentstyle=\color{gray}
     %    \section{Metoda wrinkle feature}
 
     \chapter{Metoda bazowa - wrinkle feature}
-    Istnieje szerego metod wyznaczania wieku....
-    Pierwsza druga trzecia itp Istnieje szerego metod wyznaczania wieku....
-    Pierwsza druga trzecia itp Istnieje szerego metod wyznaczania wieku....
-    test
-    \section{Metoda wykrywania twarzy}
-    \section{Wyznaczanie stref}
-    \section{Wykrywanie zmarszczek - detektor Canny}
-    \section{Wyliczanie wrinkle feature}
-    \section{Algorytm trenowania}
-    \section{Grupowanie danych - FCM}
+    Istnieje wiele metod wyznaczania wieku z obrazu twarzy. Każda z nich opiera się na wykrywaniu zmarszczek,
+    zmian koloru skóry lub proporcji twarzy. W omawianej pracy zastosowano metodę korzystającą z wykrywania zmarszczek.
+    ~\cite{Kriegman}
 
+    Metoda bazowa została opisana w artykule \"Age Estimation from Face Image using Wrinkle Features\"
+    ~\cite{wrinkleFeatures}.
+    Wykrywanie wieku dzieli się na kilka faz. Na początku należy wykryć twarz. Zastosowany algorytm wykrywania został
+    opisany w sekcji \ref{sec:metodaWykrywaniaTwarzy}
+    Następnie należy wyznaczyć strefy zmarszczkowe na twarzy. W artykule \cite{wrinkleFeatures} udowodniono,
+    że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
+    Powyższe strefy zostały wymienione w sekcji \ref{sec:wyznaczanieStref}. Technika wykrywania zmarszczek
+    znajdujących się w strefach jest opisana w sekcji \ref{sec:wykrywanieZmarszczek}. Wykryte zmarszczki
+    pozwalają na obliczenie wrinkle feature dla danej twarzy - opis w sekcji \ref{sec:wyliczanieWrinkleFeature}.
+    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby. Kolejna faza jest potrzebna do
+    znalezienia relacji pomiędzy wrinkle feature a wiekiem. Do tego celu należy zastosować algorytm trenujący, który
+    został opisany w sekcji \ref{sec:algorytmTrenowania}. Wynikiem algorytmu trenującego jest zbiór danych, który
+    należy pogrupować - opis w sekcji \ref{sec:grupowanieDanych}. Ostatnią fazą algorytmu jest wykrywanie wieku
+    na podstawie wyniki działania FCM - sekcja \ref{sec:wyznaczanieWieku}.
+
+    \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
+    sdsfd
+    \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
+    sdfsd
+    \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
+    sdfsd
+    \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
+    sdfsd
+    \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
+    sfsd
+    \section{Grupowanie danych - FCM}\label{sec:grupowanieDanych}
+    sfsd
     \subsection{Wstęp do grupowania danych}
     \subsection{Metoda FCM}
+    sdfsd
+    \section{Wyznaczanie wieku}\label{sec:wyznaczanieWieku}
 
-    \section{Wyznaczanie wieku}
-
+    dsfsd
 
     \chapter{Modyfikacje metody bazowej}
 
