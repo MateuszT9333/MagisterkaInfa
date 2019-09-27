@@ -355,7 +355,9 @@ commentstyle=\color{gray}
     wieku użytkownika przed udostępnieniem mu treści, która wymaga odpowiedniego wieku.
 
     Można znaleźć o wiele więcej potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie
-    tekstury (obrazu) twarzy. Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny.
+    tekstury (obrazu) twarzy. Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
+    opiera się w głównej mierze na sztucznej inteligencji \cite{computerVision}.
+
 
 
     %    \section{Cel i zakres pracy}
@@ -394,8 +396,34 @@ commentstyle=\color{gray}
     należy pogrupować, tak jak to opisano w sekcji \ref{sec:grupowanieDanych}. Ostatnią fazą algorytmu jest wykrywanie wieku
     na podstawie wyników działania FCM - sekcja \ref{sec:wyznaczanieWieku}.
 
+    %    tutaj trzeba dodac obrazek przedstawiajacy algorytm - najlepiej wraz z miniaturkami jak wyglada obrazek w kazdej
+    %    fazie...
+
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
-    sdsfd
+    W literaturze można odnaleźć wiele metod wykrywania twarzy. Niektóre z nich do skutecznej kwalifikacji
+    stosują ekstrację cech z obrazu. Ekstrakcja polega na przekształceniu obrazu do zbioru zmiennych, które
+    zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie. Warto wymienić
+    najczęściej stosowane metody służące do ekstrakcji cech \cite{computerVision}:
+    \begin{itemize}
+        \item Filtry Gabora
+        \item Filtry Haara
+        \item Funkcje jądra
+        \item Analiza składowych górnych
+    \end{itemize}
+    Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Biblioteka OpenCV
+    została tutaj wymieniona, ponieważ wykorzystano ją przy wykrywaniu wieku z tekstury twarzy. W związku z powyższym
+    do wykrywania twarzy zastosowano algorytm Haar Cascade.
+
+    %    https://towardsdatascience.com/face-recognition-with-opencv-haar-cascade-a289b6ff042a
+    %    przez kogo został zaproponowany...
+    %    byc moze cos o funkcji kaskadowej
+    %    o tym ze OpenCv zawiera wytrenowane algorytmy Haar Cascade ktore wykrywaja ryj, oczy, usta itp
+    %    wkleic obrazek z rodzajami filtrow
+    %    jak dziala ten filtr
+    %    przyklad na gebie emmy watson moze...
+    %cosik tam jeszcze
+
+    %    opisac jak dokladnie zaimplementowano to u nas
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
     sdfsd
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
