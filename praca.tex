@@ -343,7 +343,7 @@ commentstyle=\color{gray}
     Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie
     rozpoznawania wieku z obrazu.
     Istnieją algorytmy przetwarzania obrazu, które oprócz wieku wyznaczają z pewnym prawdopodobieństwem płeć danej osoby.
-    Oprócz płci mogą one także wyznaczyć minę oraz czy dana osoba nosi okulary.
+    Oprócz płci mogą one także wyznaczyć mine oraz czy dana osoba nosi okulary.
 
     Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc, tj. klub nocny. Większość osób
     musi okazać ważny dowód osobisty,
@@ -386,10 +386,12 @@ commentstyle=\color{gray}
     opisany w sekcji \ref{sec:metodaWykrywaniaTwarzy}
     Następnie należy wyznaczyć strefy zmarszczkowe na twarzy. W artykule \cite{wrinkleFeatures} udowodniono,
     że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
-    Powyższe strefy zostały wymienione w sekcji \ref{sec:wyznaczanieStref}. Sekcja
-    \ref{sec:wykrywanieZmarszczek}przedstawia technikę wykrywania zmarszczek znajdujących się w strefach. Wykryte zmarszczki
+    Powyższe strefy zostały wymienione w sekcji \ref{sec:wyznaczanieStref}.
+    Sekcja \ref{sec:wykrywanieZmarszczek}przedstawia technikę wykrywania zmarszczek znajdujących się w strefach.
+    Wykryte zmarszczki
     pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji \ref{sec:wyliczanieWrinkleFeature}.
-    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby \ref{fig.faza1Algorytmu}. Kolejna faza jest potrzebna do
+    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby \ref{fig.faza1Algorytmu}. Kolejna faza
+    jest potrzebna do
     znalezienia relacji pomiędzy wrinkle feature a wiekiem. Do tego celu należy zastosować algorytm trenujący, który
     został opisany w sekcji \ref{sec:algorytmTrenowania}. Wynikiem algorytmu trenującego jest zbiór danych, który
     należy pogrupować, tak jak to opisano w sekcji \ref{sec:grupowanieDanych}. Ostatnią fazą algorytmu jest wykrywanie wieku
@@ -411,7 +413,7 @@ commentstyle=\color{gray}
 
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy. Niektóre z nich do skutecznej kwalifikacji
-    stosują ekstrację cech z obrazu. Ekstrakcja polega na przekształceniu obrazu do zbioru zmiennych, które
+    stosują ekstrakcję cech z obrazu. Ekstrakcja polega na przekształceniu obrazu do zbioru zmiennych, które
     zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie. Warto wymienić
     najczęściej stosowane metody służące do ekstrakcji cech \cite{computerVision}:
     \begin{itemize}
@@ -436,7 +438,7 @@ commentstyle=\color{gray}
     %    opisac jak dokladnie zaimplementowano to u nas
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
     \subsection{Wstęp do algorytmu Haar Cascade}
-    Haar Cascade jest algorytem z dziedziny uczenia maszynowego służacy do wykrywania obiektów w wizji komputerowej.
+    Haar Cascade jest algorytmem z dziedziny uczenia maszynowego służącym do wykrywania obiektów w wizji komputerowej.
     Został stworzony przez Paula Viola oraz Michaea Jonsa \cite{violaJones}.
     Algorytm opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć. Zdjęcie są dzielone na
     dwie kategorie - pozytywne oraz negatywne. Na pozytywnych zdjęciach istnieje obiekt, który ma zostać wykryty.
@@ -456,7 +458,7 @@ commentstyle=\color{gray}
     \begin{itemize}
         \item kolorowy
         \item monochromatyczny (skala szarości)
-        \item czarnobiały
+        \item czarno-biały
     \end{itemize}
     W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny.
 
@@ -494,7 +496,7 @@ commentstyle=\color{gray}
     \end{figure}
 
     Kolor \ref{fig.mieszanieKolorowBlekitny} może być też reprezentowany w kodzie szesnastkowym \#99D9EA. Każda
-    wartość heksydecymalna odpowiada kolejno kanałowi R, G, B.
+    wartość heksadecymalna odpowiada kolejno kanałowi R, G, B.
 
     Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny \cite{colorMixing}.
     \begin{itemize}
@@ -529,7 +531,7 @@ commentstyle=\color{gray}
 
     W pracy zastosowano konwersję za pomocą metody średniej.
 
-    \subsection{Kontynuuacja opisu algorytmu Haar Cascade}
+    \subsection{Kontynuacja opisu algorytmu Haar Cascade}
     Każde okienko posiada białe oraz czarne prostokąty. Wyznaczana jest suma jasności pikseli w białych prostokątach
     oraz czarnych. Następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi kwadratami.
     Opisywany algorytm ma zastosowaniu w wykrywaniu krawędzi. Na granicy krawędzi istnieje różnica w jasności pikseli
@@ -542,7 +544,7 @@ commentstyle=\color{gray}
         \label{fig.haarEmmaWatson}
     \end{figure}
     %pierdolenie na koniec rozdzialu
-    Biblioteka OpenCV posiada wytrenowane klasyfikatory, które zostały użyte w pracy magisterkiej. Użyto
+    Biblioteka OpenCV posiada wytrenowane klasyfikatory, które zostały użyte w pracy magisterskiej. Użyto
     klasyfikatorów do wykrycia twarzy, ust oraz oczu.
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
     sdfsd
@@ -608,7 +610,7 @@ commentstyle=\color{gray}
             \item[DNA] kwas deoksyrybonukleinowy (ang. \ang{deoxyribonucleic acid})
             \item[MVC] model -- widok -- kontroler (ang. \ang{model--view--controller})
             \item[$N$] liczebność zbioru danych
-            \item[$\mu$] stopnień przyleżności do zbioru
+            \item[$\mu$] stopnień przynależności do zbioru
             \item[$\mathbb{E}$] zbiór krawędzi grafu
             \item[$\mathcal{L}$] transformata Laplace'a
         \end{itemize}
