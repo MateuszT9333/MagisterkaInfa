@@ -358,19 +358,6 @@ commentstyle=\color{gray}
     tekstury (obrazu) twarzy. Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
     opiera się w głównej mierze na sztucznej inteligencji \cite{computerVision}.
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=11cm]{Obrazy/Faza1.jpg}
-        \caption{Faza 1 algorytmu}
-        \label{fig.faza1Algorytmu}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=11cm]{Obrazy/Faza2.jpg}
-        \caption{Faza 2 algorytmu}
-        \label{fig.faza2Algorytmu}
-    \end{figure}
 
     %    \section{Cel i zakres pracy}
     %    Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
@@ -402,14 +389,25 @@ commentstyle=\color{gray}
     Powyższe strefy zostały wymienione w sekcji \ref{sec:wyznaczanieStref}. Sekcja
     \ref{sec:wykrywanieZmarszczek}przedstawia technikę wykrywania zmarszczek znajdujących się w strefach. Wykryte zmarszczki
     pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji \ref{sec:wyliczanieWrinkleFeature}.
-    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby. Kolejna faza jest potrzebna do
+    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby \ref{fig.faza1Algorytmu}. Kolejna faza jest potrzebna do
     znalezienia relacji pomiędzy wrinkle feature a wiekiem. Do tego celu należy zastosować algorytm trenujący, który
     został opisany w sekcji \ref{sec:algorytmTrenowania}. Wynikiem algorytmu trenującego jest zbiór danych, który
     należy pogrupować, tak jak to opisano w sekcji \ref{sec:grupowanieDanych}. Ostatnią fazą algorytmu jest wykrywanie wieku
-    na podstawie wyników działania FCM - sekcja \ref{sec:wyznaczanieWieku}.
+    na podstawie wyników działania FCM - sekcja \ref{sec:wyznaczanieWieku} (Rysunek \ref{fig.faza2Algorytmu}).
 
-    %    tutaj trzeba dodac obrazek przedstawiajacy algorytm - najlepiej wraz z miniaturkami jak wyglada obrazek w kazdej
-    %    fazie...
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/Faza1.jpg}
+        \caption{Faza 1 algorytmu}
+        \label{fig.faza1Algorytmu}
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/Faza2.jpg}
+        \caption{Faza 2 algorytmu}
+        \label{fig.faza2Algorytmu}
+    \end{figure}
 
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy. Niektóre z nich do skutecznej kwalifikacji
@@ -465,16 +463,71 @@ commentstyle=\color{gray}
     \subsection{Konwersja do skali szarości}
 
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu. Najczęściej spotykana
-    reprezentacja to RGB. Przestrzeń kolorów RGB to złożenie 3 kanałów:
+    reprezentacja to RGB. Przestrzeń kolorów RGB to złożenie 3 kanałów \cite{kolory}:
 
     \begin{itemize}
-        \item R - czerwonego z angielskiego Red
-        \item G - zielonego z angielskiego Green
-        \item B - niebieskiego z angielskiego Blue
+        \item R - czerwonego (z angielskiego Red)
+        \item G - zielonego (z angielskiego Green)
+        \item B - niebieskiego (z angielskiego Blue)
     \end{itemize}
 
-    Każdy piksel opisany za pomocą przestrzenie barw RGB ma 3 wartości reprezentujący każdy kanał. Wartość 0 danego
-    kanału oznacza brak jasności, natomiast 255 maksymalną jasność.
+    Każdy piksel opisany za pomocą przestrzenie barw RGB ma 3 8-bitowe wartości reprezentujący każdy kanał. Spotykane
+    są reprezentacje 12 lub 16 bitowe kanałów, jednak 8 bitowa jest najpopularniejsza. Dla 8-bitowych kanałów
+    wartość "0"
+    danego kanału oznacza brak jasności, natomiast "255" maksymalną jasność. Poprzez mieszanie jasności 3 kanałów
+    można uzyskać szerokie spektrum barw \ref{fig.mieszanieKolorow}.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{Obrazy/mieszanieKolorow.jpg}
+        \caption{Mieszanie kanałów RGB. \cite{colorMixing}}
+        \label{fig.mieszanieKolorow}
+    \end{figure}
+
+    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na \ref{fig.mieszanieKolorowBlekitny}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=2cm]{Obrazy/blekitny.jpg}
+        \caption{Kolor R=153 G=217 B=234.}
+        \label{fig.mieszanieKolorowBlekitny}
+    \end{figure}
+
+    Kolor \ref{fig.mieszanieKolorowBlekitny} może być też reprezentowany w kodzie szesnastkowym \#99D9EA. Każda
+    wartość heksydecymalna odpowiada kolejno kanałowi R, G, B.
+
+    Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny \cite{colorMixing}.
+    \begin{itemize}
+        \item największej jasności
+        \item średnia
+        \item luminancji
+    \end{itemize}
+    Metoda największej jasności konwertuje na skalę szarości wg wzoru \ref{wzor.najwiekszaJasnosc}.
+
+    \large
+    \begin{equation}
+        \frac{(max(R, G, B) + min(R, G, B))}{2}
+        \label{wzor.najwiekszaJasnosc}
+    \end{equation}
+    \normalsize
+    Metoda średnia bazuje na wzorze \ref{wzor.metodaSrednia}. Natomiast luminancji na wzorze
+    \ref{wzor.metodaLuminancji}.
+
+    \large
+    \begin{equation}
+        \frac{(R + G + B)}{3}
+        \label{wzor.metodaSrednia}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        0.21 R + 0.72 G + 0.07 B
+        \label{wzor.metodaLuminancji}
+    \end{equation}
+    \normalsize
+
+    W pracy zastosowano konwersję za pomocą metody średniej.
 
     \subsection{Kontynuuacja opisu algorytmu Haar Cascade}
     Każde okienko posiada białe oraz czarne prostokąty. Wyznaczana jest suma jasności pikseli w białych prostokątach
