@@ -393,7 +393,7 @@ commentstyle=\color{gray}
     zmian koloru skóry lub proporcji twarzy. W omawianej pracy zastosowano metodę korzystającą z wykrywania zmarszczek.
     ~\cite{Kriegman}
 
-    Metoda bazowa została opisana w artykule \"Age Estimation from Face Image using Wrinkle Features\"
+    Metoda bazowa została opisana w artykule ,,Age Estimation from Face Image using Wrinkle Features''
     ~\cite{wrinkleFeatures}.
     Wykrywanie wieku dzieli się na kilka faz. Na początku należy wykryć twarz. Zastosowany algorytm wykrywania został
     opisany w sekcji \ref{sec:metodaWykrywaniaTwarzy}
@@ -437,6 +437,60 @@ commentstyle=\color{gray}
 
     %    opisac jak dokladnie zaimplementowano to u nas
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
+    \subsection{Wstęp do algorytmu Haar Cascade}
+    Haar Cascade jest algorytem z dziedziny uczenia maszynowego służacy do wykrywania obiektów w wizji komputerowej.
+    Został stworzony przez Paula Viola oraz Michaea Jonsa \cite{violaJones}.
+    Algorytm opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć. Zdjęcie są dzielone na
+    dwie kategorie - pozytywne oraz negatywne. Na pozytywnych zdjęciach istnieje obiekt, który ma zostać wykryty.
+    Analogicznie na negatywnych zdjęciach nie ma tego obiektu.
+
+    Ekstrakcja cech w algorytmie Violi i Jonsa jest realizowana przez filtry Haara. Filtry Haara to prostokątne okienka
+    nakładane na obraz, które analizują jasność pikseli \ref{fig.haarRectangles}.
+    \begin{figure}
+        \centering
+        \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
+        \caption{Filtr Haara a) krawędziowy b) liniowy c) szachownica \cite{haar}}
+        \label{fig.haarRectangles}
+    \end{figure}
+
+    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości. Skala szarości jest rodzajem
+    odwzorowania koloru. Wyróżnia się 3 podstawowe tryby koloru:
+    \begin{itemize}
+        \item kolorowy
+        \item monochromatyczny (skala szarości)
+        \item czarnobiały
+    \end{itemize}
+    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny.
+
+    \subsection{Konwersja do skali szarości}
+
+    Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu. Najczęściej spotykana
+    reprezentacja to RGB. Przestrzeń kolorów RGB to złożenie 3 kanałów:
+
+    \begin{itemize}
+        \item R - czerwonego z angielskiego Red
+        \item G - zielonego z angielskiego Green
+        \item B - niebieskiego z angielskiego Blue
+    \end{itemize}
+
+    Każdy piksel opisany za pomocą przestrzenie barw RGB ma 3 wartości reprezentujący każdy kanał. Wartość 0 danego
+    kanału oznacza brak jasności, natomiast 255 maksymalną jasność.
+
+    \subsection{Kontynuuacja opisu algorytmu Haar Cascade}
+    Każde okienko posiada białe oraz czarne prostokąty. Wyznaczana jest suma jasności pikseli w białych prostokątach
+    oraz czarnych. Następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi kwadratami.
+    Opisywany algorytm ma zastosowaniu w wykrywaniu krawędzi. Na granicy krawędzi istnieje różnica w jasności pikseli
+    \ref{fig.haarEmmaWatson}.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{Obrazy/haarEmmaWatson.jpg}
+        \caption{Filtr Haara nałożony na krawędź twarzy \cite{haar}}
+        \label{fig.haarEmmaWatson}
+    \end{figure}
+    %pierdolenie na koniec rozdzialu
+    Biblioteka OpenCV posiada wytrenowane klasyfikatory, które zostały użyte w pracy magisterkiej. Użyto
+    klasyfikatorów do wykrycia twarzy, ust oraz oczu.
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
     sdfsd
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
