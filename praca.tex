@@ -534,16 +534,85 @@ commentstyle=\color{gray}
     \subsection{Kontynuacja opisu algorytmu Haar Cascade}
     Każde okienko posiada białe oraz czarne prostokąty. Wyznaczana jest suma jasności pikseli w białych prostokątach
     oraz czarnych. Następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi kwadratami.
-    Opisywany algorytm ma zastosowaniu w wykrywaniu krawędzi. Na granicy krawędzi istnieje różnica w jasności pikseli
-    \ref{fig.haarEmmaWatson}.
+
+    Opisywany filtr ma zastosowanie w wykrywaniu krawędzi. Na granicy krawędzi istnieje różnica w jasności pikseli
+    \ref{fig.haarEmmaWatson}.Im większa wartość dla danego okna tym większe prawdopodobieństwo, że została wykryta krawędź.
+
 
     \begin{figure}
         \centering
-        \includegraphics[width=10cm]{Obrazy/haarEmmaWatson.jpg}
+        \includegraphics[width=6cm]{Obrazy/haarEmmaWatson.jpg}
         \caption{Filtr Haara nałożony na krawędź twarzy \cite{haar}}
         \label{fig.haarEmmaWatson}
     \end{figure}
-    %pierdolenie na koniec rozdzialu
+
+    Z każdego obrazu
+    podczas treningu klasyfikatora otrzymujemy dużą ilość danych.
+    W celu poprawy efektywności sumowania pikseli w filtrze Haara stosowane są
+    rozwiązanie zwane po angielsku Summed-area table \cite{violaJonesRealTimeOb}.Summed-area table jest również
+    nazywana w literaturze Integral Image, czyli obrazem scałkowanym. Ideą obrazu scałkowanego jest,
+    aby każdy obraz
+    został
+    przekształcony w
+    tabelę w której każdy element x,y tej tabeli odpowiada sumie jasności wszystkich pikseli według wzoru \ref{wzor.summedAreaTable}.
+
+    \large
+    \begin{equation}
+        I(x,y) = \sum_{{x}'\leq x \cap {y}'\leq y}^{} i({x}',{y}')
+        \label{wzor.summedAreaTable}
+    \end{equation}
+    \normalsize
+    gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), i(x,y) - jasność piksela o
+    współrzędnych x,y na obrazie.
+
+    Na Rysunku \ref{fig.przedCalkowaniem} przedstawiona jest tabela przedstawiająca jasność pikseli przed
+    zastosowaniem całkowanie obrazu.
+    \begin{figure}
+        \centering
+        \includegraphics[width=6cm]{Obrazy/przedCalkowaniem.jpg}
+        \caption{Tabela jasności poszczególnych pikseli przed zastosowaniem całkowania \cite{integralImages}}
+        \label{fig.przedCalkowaniem}
+    \end{figure}
+
+    Po całkowaniu otrzymujemy tabele tj. na Rysunku \ref{fig.poCalkowaniu}.
+    \begin{figure}
+        \centering
+        \includegraphics[width=6cm]{Obrazy/poCalkowaniu.jpg}
+        \caption{Filtr Haara nałożony na krawędź twarzy \cite{integralImages}}
+        \label{fig.poCalkowaniu}
+    \end{figure}
+
+    Sumowanie przykładowego okna (Rysunek \ref{fig.sumowanieOkna}) wymaga 4 operacji (Wzór \ref{wzor.windowsSum}).
+    \begin{figure}
+        \centering
+        \includegraphics[width=6cm]{Obrazy/sumowanieOkna.jpg}
+        \caption{Sumowanie okna \cite{integralImages}}
+        \label{fig.sumowanieOkna}
+    \end{figure}
+
+
+    \large
+    \begin{equation}
+        \sum_{x_0\leq x \leq x_1\cap {y}\leq y \leq y_1}^{} i(x,y) = I(D) + I(A) - I(B) - I(C)
+        \label{wzor.windowsSum}
+    \end{equation}
+    \normalsize
+    gdzie lewa część równania oznacza sumę jasności pikseli
+    zaznaczonego okna tj. na Rysunku \ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
+    (analogicznie I(B), I(C), I(D)) - Rysunek (\ref{fig.sumowanieOkna}).
+
+    Zakładając większy rozmiar okna np. 9x9 \begin{math}
+                                                9x9
+    \end{math} sumowanie okna zwykłym sposobem
+    wymagałoby \begin{math}
+                   9x9=81
+    \end{math} operacji. Natomiast używając obrazu scałkowanego liczba operacji jest
+    stała i wynosi dokładnie 4.
+
+
+    -------------------------------------//pierdolenie na koniec rozdzialu
+
+
     Biblioteka OpenCV posiada wytrenowane klasyfikatory, które zostały użyte w pracy magisterskiej. Użyto
     klasyfikatorów do wykrycia twarzy, ust oraz oczu.
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
