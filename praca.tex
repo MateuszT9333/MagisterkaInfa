@@ -387,10 +387,11 @@ commentstyle=\color{gray}
     Następnie należy wyznaczyć strefy zmarszczkowe na twarzy. W artykule \cite{wrinkleFeatures} udowodniono,
     że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
     Powyższe strefy zostały wymienione w sekcji \ref{sec:wyznaczanieStref}.
-    Sekcja \ref{sec:wykrywanieZmarszczek}przedstawia technikę wykrywania zmarszczek znajdujących się w strefach.
+    Sekcja \ref{sec:wykrywanieZmarszczek} przedstawia technikę wykrywania zmarszczek znajdujących się w strefach.
     Wykryte zmarszczki
     pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji \ref{sec:wyliczanieWrinkleFeature}.
-    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby \ref{fig.faza1Algorytmu}. Kolejna faza
+    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby (Rysunek \ref{fig.faza1Algorytmu}).
+    Kolejna faza
     jest potrzebna do
     znalezienia relacji pomiędzy wrinkle feature a wiekiem. Do tego celu należy zastosować algorytm trenujący, który
     został opisany w sekcji \ref{sec:algorytmTrenowania}. Wynikiem algorytmu trenującego jest zbiór danych, który
@@ -422,9 +423,9 @@ commentstyle=\color{gray}
         \item Funkcje jądra
         \item Analiza składowych górnych
     \end{itemize}
-    Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Biblioteka OpenCV
-    została tutaj wymieniona, ponieważ wykorzystano ją przy wykrywaniu wieku z tekstury twarzy. W związku z powyższym
-    do wykrywania twarzy zastosowano algorytm Haar Cascade.
+    Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Właśnie ta
+    biblioteka była jednym z niezbędnym elementów programu przy wykrywaniu wieku z tekstury twarzy.
+    W związku z powyższym w wykrywaniu twarzy zastosowano algorytm Haar Cascade.
 
     %    https://towardsdatascience.com/face-recognition-with-opencv-haar-cascade-a289b6ff042a
     %    przez kogo został zaproponowany...
@@ -439,12 +440,12 @@ commentstyle=\color{gray}
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
     \subsection{Wstęp do algorytmu Haar Cascade}
     Haar Cascade jest algorytmem z dziedziny uczenia maszynowego służącym do wykrywania obiektów w wizji komputerowej.
-    Został stworzony przez Paula Viola oraz Michaea Jonsa \cite{violaJones}.
-    Algorytm opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć. Zdjęcie są dzielone na
-    dwie kategorie - pozytywne oraz negatywne. Na pozytywnych zdjęciach istnieje obiekt, który ma zostać wykryty.
-    Analogicznie na negatywnych zdjęciach nie ma tego obiektu.s
+    Został stworzony przez Paula Viola oraz Michaea Jonesa \cite{violaJones}.
+    Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć. Zdjęcia są dzielone na
+    dwie kategorie - pozytywne oraz negatywne. Na zdjęciach klasyfikowanych jako pozytywne istnieje obiekt, który ma zostać wykryty, natomiast
+    na zdjęciach negatywnych nie ma tego obiektu.
 
-    Ekstrakcja cech w algorytmie Violi i Jonsa jest realizowana przez filtry Haara. Filtry Haara to prostokątne okienka
+    Ekstrakcja cech w algorytmie Violi i Jonesa jest realizowana przez filtry Haara. Są to prostokątne okienka
     nakładane na obraz, które analizują jasność pikseli \ref{fig.haarRectangles}.
     \begin{figure}
         \centering
@@ -453,7 +454,7 @@ commentstyle=\color{gray}
         \label{fig.haarRectangles}
     \end{figure}
 
-    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości. Skala szarości jest rodzajem
+    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości, która jest rodzajem
     odwzorowania koloru. Wyróżnia się 3 podstawowe tryby koloru:
     \begin{itemize}
         \item kolorowy
@@ -465,7 +466,7 @@ commentstyle=\color{gray}
     \subsection{Konwersja do skali szarości}
 
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu. Najczęściej spotykana
-    reprezentacja to RGB. Przestrzeń kolorów RGB to złożenie 3 kanałów \cite{kolory}:
+    reprezentacja to RGB. Przestrzeń kolorów RGB składa się z trzech kanałów \cite{kolory}:
 
     \begin{itemize}
         \item R - czerwonego (z angielskiego Red)
@@ -473,10 +474,10 @@ commentstyle=\color{gray}
         \item B - niebieskiego (z angielskiego Blue)
     \end{itemize}
 
-    Każdy piksel opisany za pomocą przestrzenie barw RGB ma 3 8-bitowe wartości reprezentujący każdy kanał. Spotykane
-    są reprezentacje 12 lub 16 bitowe kanałów, jednak 8 bitowa jest najpopularniejsza. Dla 8-bitowych kanałów
+    Każdy piksel opisany za pomocą przestrzenie barw RGB ma trzy 8-bitowe wartości reprezentujący każdy kanał. Spotykane
+    są 12- lub 16-bitowe reprezentacje kanałów, jednak 8-bitowa jest najpopularniejsza. Dla 8-bitowych kanałów
     wartość "0"
-    danego kanału oznacza brak jasności, natomiast "255" maksymalną jasność. Poprzez mieszanie jasności 3 kanałów
+    danego kanału oznacza brak jasności, natomiast "255" maksymalną jasność. Poprzez mieszanie jasności tych trzech kanałów
     można uzyskać szerokie spektrum barw \ref{fig.mieszanieKolorow}.
 
     \begin{figure}
@@ -512,7 +513,7 @@ commentstyle=\color{gray}
         \label{wzor.najwiekszaJasnosc}
     \end{equation}
     \normalsize
-    Metoda średnia bazuje na wzorze \ref{wzor.metodaSrednia}. Natomiast luminancji na wzorze
+    Metoda średnia bazuje na wzorze \ref{wzor.metodaSrednia}, natomiast metodę luminancji ilustruje wzór
     \ref{wzor.metodaLuminancji}.
 
     \large
@@ -529,15 +530,13 @@ commentstyle=\color{gray}
     \end{equation}
     \normalsize
 
-    W pracy zastosowano konwersję za pomocą metody średniej.
+    W niniejszej pracy zastosowano konwersję za pomocą metody średniej.
 
     \subsection{Kontynuacja opisu algorytmu Haar Cascade}
-    Każde okienko posiada białe oraz czarne prostokąty. Wyznaczana jest suma jasności pikseli w białych prostokątach
-    oraz czarnych. Następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi kwadratami.
-
-    Opisywany filtr ma zastosowanie w wykrywaniu krawędzi. Na granicy krawędzi istnieje różnica w jasności pikseli
-    \ref{fig.haarEmmaWatson}.Im większa wartość dla danego okna tym większe prawdopodobieństwo, że została wykryta krawędź.
-
+    Każde okienko zawiera białe oraz czarne prostokąty. Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
+    następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
+    Opisywany algorytm ma zastosowanie w wykrywaniu krawędzi. Na granicy krawędzi istnieje różnica w jasności pikseli
+    \ref{fig.haarEmmaWatson}.
 
     \begin{figure}
         \centering
@@ -613,8 +612,8 @@ commentstyle=\color{gray}
     -------------------------------------//pierdolenie na koniec rozdzialu
 
 
-    Biblioteka OpenCV posiada wytrenowane klasyfikatory, które zostały użyte w pracy magisterskiej. Użyto
-    klasyfikatorów do wykrycia twarzy, ust oraz oczu.
+    Biblioteka OpenCV zawiera wytrenowane klasyfikatory, które zostały użyte w pracy magisterskiej. Wykorzystano
+    je do wykrycia twarzy, ust oraz oczu.
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
     sdfsd
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
