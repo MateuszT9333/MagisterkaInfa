@@ -446,7 +446,7 @@ commentstyle=\color{gray}
     na zdjęciach negatywnych nie ma tego obiektu.
 
     Ekstrakcja cech w algorytmie Violi i Jonesa jest realizowana przez filtry Haara. Są to prostokątne okienka
-    nakładane na obraz, które analizują jasność pikseli \ref{fig.haarRectangles}.
+    nakładane na obraz, które analizują jasność pikseli (Rysunek \ref{fig.haarRectangles}).
     \begin{figure}
         \centering
         \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
@@ -461,10 +461,11 @@ commentstyle=\color{gray}
         \item monochromatyczny (skala szarości)
         \item czarno-biały
     \end{itemize}
-    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny.
+    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny co opisano w sekcji
+    \ref{sec:konwersjaDoSzarosci}.
 
     \subsection{Konwersja do skali szarości}
-
+    \label{sec:konwersjaDoSzarosci}
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu. Najczęściej spotykana
     reprezentacja to RGB. Przestrzeń kolorów RGB składa się z trzech kanałów \cite{kolory}:
 
@@ -478,7 +479,7 @@ commentstyle=\color{gray}
     są 12- lub 16-bitowe reprezentacje kanałów, jednak 8-bitowa jest najpopularniejsza. Dla 8-bitowych kanałów
     wartość "0"
     danego kanału oznacza brak jasności, natomiast "255" maksymalną jasność. Poprzez mieszanie jasności tych trzech kanałów
-    można uzyskać szerokie spektrum barw \ref{fig.mieszanieKolorow}.
+    można uzyskać szerokie spektrum barw (Rysunek \ref{fig.mieszanieKolorow}).
 
     \begin{figure}
         \centering
@@ -487,7 +488,7 @@ commentstyle=\color{gray}
         \label{fig.mieszanieKolorow}
     \end{figure}
 
-    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na \ref{fig.mieszanieKolorowBlekitny}
+    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na Rysunku \ref{fig.mieszanieKolorowBlekitny}
 
     \begin{figure}
         \centering
@@ -496,7 +497,8 @@ commentstyle=\color{gray}
         \label{fig.mieszanieKolorowBlekitny}
     \end{figure}
 
-    Kolor \ref{fig.mieszanieKolorowBlekitny} może być też reprezentowany w kodzie szesnastkowym \#99D9EA. Każda
+    Kolor (Rysunek \ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym \#99D9EA.
+    Każda
     wartość heksadecymalna odpowiada kolejno kanałowi R, G, B.
 
     Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny \cite{colorMixing}.
@@ -536,7 +538,7 @@ commentstyle=\color{gray}
     Każde okienko zawiera białe oraz czarne prostokąty. Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
     następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
     Opisywany algorytm ma zastosowanie w wykrywaniu krawędzi. Na granicy krawędzi istnieje różnica w jasności pikseli
-    \ref{fig.haarEmmaWatson}.
+    (Rysunek \ref{fig.haarEmmaWatson}).
 
     \begin{figure}
         \centering
@@ -598,7 +600,7 @@ commentstyle=\color{gray}
     \normalsize
     gdzie lewa część równania oznacza sumę jasności pikseli
     zaznaczonego okna tj. na Rysunku \ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
-    (analogicznie I(B), I(C), I(D)) - Rysunek (\ref{fig.sumowanieOkna}).
+    (analogicznie I(B), I(C), I(D)) - (Rysunek \ref{fig.sumowanieOkna}).
 
     Zakładając większy rozmiar okna np. 9x9 \begin{math}
                                                 9x9
@@ -608,14 +610,27 @@ commentstyle=\color{gray}
     \end{math} operacji. Natomiast używając obrazu scałkowanego liczba operacji jest
     stała i wynosi dokładnie 4.
 
+    Wiele z wyliczonych cech z obrazu nie mają znaczenia w detekcji twarzy. Liczba cech wykrywanych w zdjęciu za
+    pomocą filtru Haara wynosi zwykle powyżej 100000 tysięcy \cite{violaJones}. Wiele z nich nie ma
+    większego znaczenia w procesie wykrywania twarzy. Przy tak dużej ilości cech na obrazie potrzebna jest dodatkowa
+    technika, która przyspieszy detekcje twarzy. Wyżej wymienioną techniką jest AdaBoost. Została ona opracowana
+    przez Yoava Freund oraz Roberta Schapire. \cite{dataMiningInferencePrediction}.
 
-    -------------------------------------//pierdolenie na koniec rozdzialu
+    Główną koncepcją tego algorytmu jest wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
+    wytworzenia silnych klasyfikatorów. Silny klasyfikator jest reprezentowany jako liniowa kombinacja słabych
+    klasyfikatorów.
+    Słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
+    obiektu \cite{dataMiningInferencePrediction}.
 
+    W ostatniej fazie stosowany jest algorytm kaskady klasyfikatorów. Klasyfikatory są podzielone na grupy i
+    połączone ze sobą kaskadowo. W algorytmie każda grupa może podjąć dwie decyzje - przekazanie danych z klasyfikatorów
+    do kolejnej grupy lub ich odrzucenie. Ma to na celu odrzucenie wielu negatywnych danych z klasyfikatorów \cite{cascade}.
 
     Biblioteka OpenCV zawiera wytrenowane klasyfikatory, które zostały użyte w pracy magisterskiej. Wykorzystano
-    je do wykrycia twarzy, ust oraz oczu.
+    je do wykrycia twarzy, ust oraz oczu. Klasyfikatory są w postaci plików xml, które można znaleźć na oryginalnym
+    repozytorium projektu OpenCv.
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
-    sdfsd
+
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
     sdfsd
     \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
