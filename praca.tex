@@ -440,7 +440,7 @@ commentstyle=\color{gray}
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
     \subsection{Wstęp do algorytmu Haar Cascade}
     Haar Cascade jest algorytmem z dziedziny uczenia maszynowego służącym do wykrywania obiektów w wizji komputerowej.
-    Został stworzony przez Paula Viola oraz Michaea Jonesa \cite{violaJones}.
+    Został stworzony przez Paula Viola oraz Michaela Jonesa \cite{violaJones}.
     Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć. Zdjęcia są dzielone na
     dwie kategorie - pozytywne oraz negatywne. Na zdjęciach klasyfikowanych jako pozytywne istnieje obiekt, który ma zostać wykryty, natomiast
     na zdjęciach negatywnych nie ma tego obiektu.
@@ -547,15 +547,16 @@ commentstyle=\color{gray}
         \label{fig.haarEmmaWatson}
     \end{figure}
 
-    Z każdego obrazu
-    podczas treningu klasyfikatora otrzymujemy dużą ilość danych.
+    Podczas treningu klasyfikatora
+    a każdego obrazu otrzymujemy dużą ilość danych.
     W celu poprawy efektywności sumowania pikseli w filtrze Haara stosowane są
-    rozwiązanie zwane po angielsku Summed-area table \cite{violaJonesRealTimeOb}.Summed-area table jest również
+    rozwiązanie zwane w języku angielskim Summed-area table \cite{violaJonesRealTimeOb}.Summed-area table jest również
     nazywana w literaturze Integral Image, czyli obrazem scałkowanym. Ideą obrazu scałkowanego jest,
     aby każdy obraz
     został
     przekształcony w
-    tabelę w której każdy element x,y tej tabeli odpowiada sumie jasności wszystkich pikseli według wzoru \ref{wzor.summedAreaTable}.
+    tabelę, w której każdy element x,y tej tabeli odpowiada sumie jasności wszystkich pikseli według wzoru \ref{wzor
+    .summedAreaTable}.
 
     \large
     \begin{equation}
@@ -566,8 +567,8 @@ commentstyle=\color{gray}
     gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), i(x,y) - jasność piksela o
     współrzędnych x,y na obrazie.
 
-    Na Rysunku \ref{fig.przedCalkowaniem} przedstawiona jest tabela przedstawiająca jasność pikseli przed
-    zastosowaniem całkowanie obrazu.
+    Na Rysunku \ref{fig.przedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed
+    zastosowaniem całkowania obrazu.
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/przedCalkowaniem.jpg}
@@ -575,7 +576,7 @@ commentstyle=\color{gray}
         \label{fig.przedCalkowaniem}
     \end{figure}
 
-    Po całkowaniu otrzymujemy tabele tj. na Rysunku \ref{fig.poCalkowaniu}.
+    Po całkowaniu otrzymujemy tabelę podobną do przedstawionej na Rysunku \ref{fig.poCalkowaniu}.
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/poCalkowaniu.jpg}
@@ -602,32 +603,32 @@ commentstyle=\color{gray}
     zaznaczonego okna tj. na Rysunku \ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
     (analogicznie I(B), I(C), I(D)) - (Rysunek \ref{fig.sumowanieOkna}).
 
-    Zakładając większy rozmiar okna np. 9x9 \begin{math}
-                                                9x9
+    Zakładając większy rozmiar okna np. \begin{math}
+                                            9x9
     \end{math} sumowanie okna zwykłym sposobem
     wymagałoby \begin{math}
                    9x9=81
-    \end{math} operacji. Natomiast używając obrazu scałkowanego liczba operacji jest
-    stała i wynosi dokładnie 4.
+    \end{math} operacji. Natomiast przy użyciu obrazu scałkowanego liczba operacji jest
+    stała i wynosi dokładnie 4 \cite{violaJones}.
 
-    Wiele z wyliczonych cech z obrazu nie mają znaczenia w detekcji twarzy. Liczba cech wykrywanych w zdjęciu za
-    pomocą filtru Haara wynosi zwykle powyżej 100000 tysięcy \cite{violaJones}. Wiele z nich nie ma
-    większego znaczenia w procesie wykrywania twarzy. Przy tak dużej ilości cech na obrazie potrzebna jest dodatkowa
-    technika, która przyspieszy detekcje twarzy. Wyżej wymienioną techniką jest AdaBoost. Została ona opracowana
-    przez Yoava Freund oraz Roberta Schapire. \cite{dataMiningInferencePrediction}.
+    Liczba cech wykrywanych w zdjęciu za
+    pomocą filtru Haara wynosi zwykle powyżej stu tysięcy \cite{violaJones}. Wiele z nich nie ma
+    większego znaczenia w procesie wykrywania twarzy. Natomiast przy tak dużej ilości cech na obrazie potrzebna jest dodatkowa
+    technika, która przyspieszy detekcję twarzy. Taką właśnie techniką jest AdaBoost. Została ona opracowana
+    przez Yoava Freunda oraz Roberta Schapire'a. \cite{dataMiningInferencePrediction}.
 
     Główną koncepcją tego algorytmu jest wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
-    wytworzenia silnych klasyfikatorów. Silny klasyfikator jest reprezentowany jako liniowa kombinacja słabych
-    klasyfikatorów.
-    Słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
+    wytworzenia silnych klasyfikatorów. Silny klasyfikator powstaje jako liniowa kombinacja słabych
+    klasyfikatorów ważonych.
+    Z kolei słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
     obiektu \cite{dataMiningInferencePrediction}.
 
     W ostatniej fazie stosowany jest algorytm kaskady klasyfikatorów. Klasyfikatory są podzielone na grupy i
     połączone ze sobą kaskadowo. W algorytmie każda grupa może podjąć dwie decyzje - przekazanie danych z klasyfikatorów
     do kolejnej grupy lub ich odrzucenie. Ma to na celu odrzucenie wielu negatywnych danych z klasyfikatorów \cite{cascade}.
 
-    Biblioteka OpenCV zawiera wytrenowane klasyfikatory, które zostały użyte w pracy magisterskiej. Wykorzystano
-    je do wykrycia twarzy, ust oraz oczu. Klasyfikatory są w postaci plików xml, które można znaleźć na oryginalnym
+    Biblioteka OpenCV zawiera wytrenowane klasyfikatory, które zostały użyte w tej pracy magisterskiej. Wykorzystano
+    je do wykrycia twarzy, ust oraz oczu. Klasyfikatory mają postać plików xml, które można znaleźć na oryginalnym
     repozytorium projektu OpenCv.
 
     %1100 wyrazow
