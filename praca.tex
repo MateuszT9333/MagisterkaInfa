@@ -479,28 +479,76 @@ Karolina Nurzyńska}
 
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy.
-    Każda z nich wyodrębnia z obrazu pewne cechy, które
-    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
+    Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie:
+    %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
+    %     Knowledge-based methods: These rule-based methods encode human knowledge
+    %    of what constitutes a typical face. Usually, the rules capture the relationships
+    %    between facial features. These methods are designed mainly for face localization.
+    %     Feature invariant approaches: These algorithms aim to find structural features that
+    %    exist even when the pose, viewpoint, or lighting conditions vary, and then use these
+    %    to locate faces. These methods are designed mainly for face localization.
+    %     Template matching methods: Several standard patterns of a face are stored to
+    %    describe the face as a whole or the facial features separately. The correlations
+    %    between an input image and the stored patterns are computed for detection. These
+    %    methods have been used for both face localization and detection.
+    %     Appearance-based methods: In contrast to template matching, the models (or
+    %    templates) are learned from a set of training images which should capture the
+    %    representative variability of facial appearance. These learned models are then used
+    %    for detection. These methods are designed mainly for face detection.
+
+    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów tj:
+    %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
+    %    Pose: The images of a face vary due to the relative camera-face pose (frontal, 45
+    %    degree, profile, upside down), and some facial features such as an eye or the nose
+    %    may become partially or wholly occluded.
+    %     Presence or absence of structural components: Facial features such as beards,
+    %    mustaches, and glasses may or may not be present and there is a great deal of
+    %    variability among these components including shape, color, and size.
+    %     Facial expression: The appearance of faces is directly affected by a person’s facial
+    %    expression.
+    %     Occlusion: Faces may be partially occluded by other objects. In an image with a
+    %    group of people, some faces may partially occlude other faces.
+    %     Image orientation: Face images directly vary for different rotations about the
+    %    camera’s optical axis.
+    %     Imaging conditions: When the image is formed, factors such as lighting (spectra,
+    %    source distribution and intensity) and camera characteristics (sensor response,
+    %    lenses) affect the appearance of a face.
+    %    Każda z nich wyodrębnia z obrazu pewne cechy, które
+    %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
     Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
     zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
+
+
     Poniżej jest przedstawione kilka przykładów procesów
     i technik wykrywania twarzy, opisanych w literaturze.
     %https://sci-hub.tw/10.1016/S0031-3203(00)00134-5
-    W pracy "An efficient algorithm for human face detection and facial
-    feature extraction under different conditions" (\cite{wongLamSiu})
+    W pracy ,,An efficient algorithm for human face detection and facial
+    feature extraction under different conditions'' (\cite{wongLamSiu})
     przedstawiono opisaną w skrócie poniżej technikę wykrywania twarzy.
-    Na obrazie wykrywane są domniemane obszaru oczu.
-    Oczy na zdjęciach zawsze są wyraźnie ciemniejsze od ich okolic.
-    Algorytm skanuje każdy obszar zdjęcia poszukując
+    W pierwszym etapie procesu obszary, gdzie może znajdować się ludzkie oko,
+    są wykrywane przez przeprowadzenie testów na zacienionych rejonach obrazu.
+    Pary takich obszarów wyodrębnia się na podstawie algorytmu genetycznego,
+    aby następnie wyznaczyć możliwy obszar twarzy.
+    Dla każdego obszaru mierzy się wartość dopasowania na podstawie jego projekcji na wektory własne,
+    tzw. eigenfaces.
+    Aby wiarygodność wykrywania była wyższa,
+    każdy możliwy obszar twarzy normalizuje się pod kątem oświetlenia.
+    Proces ten powtarza się pewną ilość razy,
+    a następnie do dalszej weryfikacji są wybierane możliwe obszary twarzy o wysokiej wartości dopasowania.
+    Na tym etapie mierzy się symetrię twarzy oraz sprawdza się,
+    czy na każdym wybranym obszarze istnieją rysy twarzy.
+    Rysy określa się przez ewaluację rzeźby topograficznej - wystających i wklęsłych elementów
+    różnych regionów obszaru twarzy, poddanego uprzednio normalizacji.
+    Algorytm jest w stanie wykryć także obszar twarzy, gdy głowa jest przechylona
 
-    Warto wymienić
-    najczęściej stosowane metody służące do ekstrakcji cech \cite{computerVision}:
-    \begin{itemize}
-        \item Filtry Gabora
-        \item Filtry Haara
-        \item Funkcje jądra
-        \item Analiza składowych górnych
-    \end{itemize}
+    %    Warto wymienić
+    %    najczęściej stosowane metody służące do ekstrakcji cech \cite{computerVision}:
+    %    \begin{itemize}
+    %        \item Filtry Gabora
+    %        \item Filtry Haara
+    %        \item Funkcje jądra
+    %        \item Analiza składowych górnych
+    %    \end{itemize}
     Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Właśnie ta
     biblioteka była jednym z niezbędnym elementów programu przy wykrywaniu wieku z tekstury twarzy.
     W związku z powyższym w wykrywaniu twarzy zastosowano algorytm Haar Cascade.
