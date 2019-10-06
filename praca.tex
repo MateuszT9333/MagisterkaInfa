@@ -479,10 +479,20 @@ Karolina Nurzyńska}
 
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy.
-    Niektóre z nich do skutecznej kwalifikacji
-    stosują ekstrakcję cech z obrazu.
-    Ekstrakcja polega na przekształceniu obrazu do zbioru zmiennych, które
+    Każda z nich wyodrębnia z obrazu pewne cechy, które
+    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
+    Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
     zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
+    Poniżej jest przedstawione kilka przykładów procesów
+    i technik wykrywania twarzy, opisanych w literaturze.
+    %https://sci-hub.tw/10.1016/S0031-3203(00)00134-5
+    W pracy "An efficient algorithm for human face detection and facial
+    feature extraction under different conditions" (\cite{wongLamSiu})
+    przedstawiono opisaną w skrócie poniżej technikę wykrywania twarzy.
+    Na obrazie wykrywane są domniemane obszaru oczu.
+    Oczy na zdjęciach zawsze są wyraźnie ciemniejsze od ich okolic.
+    Algorytm skanuje każdy obszar zdjęcia poszukując
+
     Warto wymienić
     najczęściej stosowane metody służące do ekstrakcji cech \cite{computerVision}:
     \begin{itemize}
@@ -722,7 +732,7 @@ Karolina Nurzyńska}
     Klasyfikatory mają postać plików xml, które można znaleźć na oryginalnym
     repozytorium projektu OpenCv.
 
-    %1100 wyrazow
+    %1600 wyrazow
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
 
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
