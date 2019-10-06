@@ -11,9 +11,9 @@ Gdzie spotykamy sie z weryfikacja? bary nie bary, weryfikacja osoby, ktora chce 
 
 Jest wiecej zastosowan…
 
-todo dopisz o rozpoznawaniu w medycynie z anielskiej
+%todo dopisz o rozpoznawaniu w medycynie z anielskiej
 
-Rozdzial 2 Metoda bazowa - wrinkle feature
+\chapter Rozdzial 2 Metoda bazowa - wrinkle feature
 Rozne metody rozpoznawania wyznaczania wieku …
 
 przeglad literatury
@@ -21,15 +21,43 @@ przeglad literatury
 
 Istnieje wiele metod, ale my korzystamy z wyznaczania za pomoca zmarszczek
 Anielska:
-Pierwsza metoda szacująca wiek człowieka na podstawie obrazu jego twarzy została opisana w 1999 roku przez Kwon i Lobo [14] i klasyfikuje osoby tylko do jednej z trzech grup wiekowych: dzieci, dorośli, starsi. Metoda ta w pierwszej kolejności wykorzystuje informacje o proporcjach twarzy, co pozwala odróżnić grupę dzieci od dwóch pozostałych grup. Drugim krokiem jest analiza zmarszczek, która pozwala na odróżnienie osób dorosłych młodszych od osób starszych. Wyniki testowania powyższej metody, które opisano w pracy, były w 100% poprawne. Wadą proponowanego algorytmu jest kosz towność obliczeniowa, co powoduje, że zastosowanie go może być nieodpowiednie do działania w czasie rzeczywistym. Pierwszy prawdziwy algorytm automatycznego szacowania wieku został opisany w 2002 roku przez Lanitis i in [16]. Ich praca opisuje metodę bazującą na modelu statystycznym wyglądu twarzy. Wykorzystano wiele obrazów treningowych w celu poznania relacji między zakodowaną reprezentacją obrazów twarzy i faktycznym wiekiem osób. Poznanie tej relacji pozwoliło na oszacowanie wieku osoby z obrazu testowego. W pracy zbadano cztery warianty opisanego podejścia, tak aby dopasować odpowiedni model starzenia do zdjęcia testowego, w celu rozwiązania problemu różnorodności starzenia się ludzi. Jednym z wariantów była metoda ważonego wyglądu, WAS (ang. Weighted Appearance Specific), która osiągnęła najlepsze rezultaty. Metoda ta, oprócz wizualnej reprezentacji twarzy, bierze także pod uwagę tzw. profil stylu życia przedstawiony jako wektor cech takich jak płeć, stan zdrowia, standard życia, sytuacja ekonomiczna, poziom stresu, warunki pracy, miejsce zamieszkania, ekspozycja na ekstremalne warunki pogodowe. Dwa lata później, czyli w roku 2004, Lanitis i in. porównali swój algorytm oparty na funkcji starzenia w postaci funkcji kwadratowej z kilkoma typowymi metodami klasyfikacji tj. z klasyfikatorem minimalno-odległościowym oraz klasyfikatorami opartymi na sieciach neuronowych [15]. Klasyfikatory zostały przetestowane w trybie pojedynczej warstwy, a także w trzech trybach hierarchicznych. Zgodnie z oczekiwaniami wszystkie klasyfikatory działały lepiej w trybach hierarchicznych. Spośród wszystkich metod najlepsze rezultaty odniosła metoda AAS (ang. Appearance and Age Specific). Ostatecznie, zgodnie z wynikami eksperymentów, algorytm starzenia oparty na funkcji kwadratowej nie wykazał znacznej przewagi nad konwencjonalnymi klasyfikatorami pod względem ogólnej wydajności. W kolejnym artykule pochodzącym z 2006 roku [26] Ramanathan i Chellappa opisują podejście, które zamiast szacować wiek, szacuje różnicę wieku między parą twarzy tej samej osoby. Wektory różnic między parami twarzy są używane do ustalania rozkładów statystycznych dla różnych przedziałów wiekowych. Różnica między obrazami uzyskanymi z pary obrazów twarzy stanowi podstawę klasyfikacji, do której użyto klasyfikatora Bayesa. Auto- 2.2. Przegląd literatury 7 rzy publikacji zwracają uwagę na fakt, że zrozumienie procesu starzenia się ludzkich twarzy ma kluczowe znaczenie dla rozwoju systemów odpornych na efekty starzenia. Modelowanie procesu starzenia może być zrealizowane nie tylko na podstawie osobnych obrazów twarzy różnych osób czy par obrazów twarzy tej samej osoby, ale również całej sekwencji obrazów starzejących się twarzy należących do jednej osoby. Podejście to zostało zbadane w 2007 roku przez Geng i in. [9] i przedstawione pod nazwą AGES (ang. AGing pattErn Subspace). Podstawą tej metody jest modelowanie wzorca starzenia poprzez skonstruowanie reprezentatywnej podprzestrzeni. Wzorzec starzenia definiowany jest jako ciąg obrazów twarzy jednej osoby posortowanych w kolejności czasowej. Każdy punkt w podprzestrzeni odpowiada jednemu wzorcowi starzenia. Metoda AGES działa na etapie uczenia się jak i na etapie oceny wieku. Jeśli dla danej osoby ze zbioru treningowego dostępna jest cała sekwencja obrazów w każdym wieku, to wzorzec starzenia nazywany jest pełnym wzorcem starzenia. W przeciwnym przypadku, czyli jeśli w ciągu istnieją jakieś braki, jest to niekompletny wzorzec starzenia. Metoda AGES uzupełnia brakujące elementy za pomocą iteracyjnego algorytmu uczenia się typu EM (ang. Expectation–Maximization). Podczas szacowania wieku algorytm musi znaleźć dla obrazu testowego odpowiedni wzorzec starzenia i jego pozycję w tym wzorcu. Położenie twarzy we wzorcu będzie wskazywać na jej wiek. W tym celu twarz testowa jest weryfikowana na każdej możliwej pozycji we wzorcu starzenia i wybierana jest pozycja z minimalnym błędem rekonstrukcji. We wnioskach końcowych autorzy piszą, że przynajmniej w konfiguracji eksperymentalnej wydajność metody AGES jest nie tylko znacznie lepsza niż w przypadku najnowocześniejszych algorytmów, ale także porównywalna z postrzeganiem człowieka. W 2008 roku Suo i in. [33] opisali rozwiązanie oparte na hierarchicznym, graficznym modelu twarzy dla twarzy pojawiających się odpowiednio w niskiej, średniej i wysokiej rozdzielczości. Pierwszy z trzech poziomów to ogólny wygląd twarzy. W drugim poziomie brane są pod uwagę lokalne obszary twarzy, a ostatni, trzeci poziom wykorzystuje drobne szczegóły np. zmarszczki. Wyniki eksperymentalne wskazują, że wykorzystanie cech lokal- 8 Rozdział 2. Problem szacowania wieku w wizji komputerowej nych jest ważne dla uzyskania lepszej wydajności. Praca opublikowana przez Wang i in. w 2009 roku [36], podobnie jak [14] przedstawia kategoryzację wiekową, czyli klasyfikację danej osoby do jednej z czterech grup wiekowych (dzieci, nastolatkowie, dorośli, starsi). Autorzy wyjaśniają swoją motywację do takiego podejścia trudnością rozwiązania problemu dokładnego szacowania wieku, przy jednoczesnym stwierdzeniu, że tak naprawdę dla wielu systemów czy aplikacji sama kategoryzacja wiekowa jest wystarczająca. Metoda kategoryzacji wiekowej opisana w publikacji stosuje kody korygujące błędy, ECOC (ang. Error-Correcting Output Codes) do cech wyodrębnionych metodą lokalnych wzorców binarnych (LBP, ang. Local Binary Patterns) połączonej z filtrem Gabora. Jest to pierwsze takie wykorzystanie połączenia tych dwóch metod, a wyniki opisane w pracy pokazują, że wykorzystanie tego połączenia jest lepsze niż użycie samego filtru Gabora lub samego LBP. Kolejną pracą jest praca autorstwa M. Dehshibi oraz A. Bastanfard opublikowana w 2010 roku [7]. Przedstawia ona nowy algorytm rozpoznawania grupy wiekowej na podstawie twarzy. Twarze klasyfikowane są do czterech różnych kategorii wiekowych: dzieci (1 - 10 lat), nastolatki (11 - 20 lat), młodsi dorośli (21 - 40 lat), osoby w średnim wieku (41 - 60 lat) oraz starsi (60 - 85 lat). Algorytm składa się z czterech etapów: wstępnego przetwarzania, ekstrakcji cech twarzy według nowatorskiej metody opartej na proporcjach twarzy, analizy cech twarzy oraz klasyfikacji wieku. Informacje o zmarszczkach pobierane są z pięciu obszarów twarzy: czoła, kącików oczu oraz policzków. Określenie tych obszarów jest możliwe dzięki proporcjom twarzy oraz wcześniejszemu wykryciu oczu, nosa, ust, brody, boków twarzy i najwyższego punktu czoła. Po przeprowadzeniu na obrazach twarzy wykrywania krawędzi metodą Canny’ego, dla danych pięciu obszarów twarzy obliczone jest ich zagęszczenie. Ostatecznie do klasyfikacji grupy wiekowej stosowana jest sieć neuronowa wykorzystująca informacje o zmarszczkach oraz proporcjach twarzy. Wyniki eksperymentalne wykazały identyfikację grupy wiekowej z dokładnością 86,64%. Artykuł Han i in. z 2013 roku opisuje hierarchiczne podejście do automatycznej oceny wieku. Zawiera także analizę tego, w jaki sposób starzenie 2.2. Przegląd literatury 9 wpływa na poszczególne składniki twarzy. W publikacji podkreślane jest, w jak dużym stopniu starzenie się twarzy determinowane jest przez czynniki wewnętrzne (geny) i zewnętrzne (środowisko, styl życia, zdrowie). Interesujący jest fakt, że autorzy zbadali również zdolność człowieka do szacowania wieku na podstawie danych zebranych za pośrednictwem tzw. crowdsourcingu2 i pokazali, że skuteczność proponowanej metody szacowania wieku okazała się lepsza lub porównywalna z ocenami wieku dostarczonymi przez ludzi. Tharwat i in. w publikacji również z 2013 roku formułują problem szacowania wieku jako problem regresyjny. Zaprojektowali i opracowali trzy różne klasyfikatory oparte na koncepcji klasyfikatora K najbliższych sąsiadów, KNN (ang. K Nearest Neighbours). Pierwszy klasyfikator to standardowe podejście KNN-distance polegające na obliczeniu minimalnej odległości między różnymi obrazami twarzy testowej. Drugi klasyfikator jest zmodyfikowaną wersją KNN, a wyniki punktacji klasyfikatora interpolowano w celu dokładnego oszacowania wieku. W trzecim klasyfikatorze wykorzystano podejście klasyfikacji i regresji, aby poprawić dokładność systemu szacowania wieku. Rozwiązanie przetestowano na znanym benchmarkowym zbiorze danych FG-NET, a wyniki eksperymentów pokazały skuteczność proponowanego podejścia. Większość dotychczasowych prac badających problem szacowania wieku wykorzystuje obrazy twarzy w skali szarości. Zighem i in. w 2017 roku zaproponowali nowatorskie podejście do szacowania wieku oparte na kolorowych obrazach twarzy w przestrzeni barw RGB [38]. Metoda polega na ekstrakcji rysów twarzy za pomocą metody lokalnego wzorca binarnego, LBP. Następnie w fazie regresji pomocniczej wykorzystywana jest metoda wektorów wspierających, SVM (ang. Super Vector Machine). Wyniki eksperymentalne pokazują, że opisany algorytm przewyższa inne metody. Średni błąd absolutny szacowania wieku wyniósł 6,7 lat. Kolejną z nowszych publikacji jest praca również z 2017 roku [10] au2 crowdsourcing - strategia polegająca na angażowaniu tłumu (klientów, fanów marki i ekspertów) do wspólnych zadań organizacji. Termin ten pochodzi od słów crowd – tłum i sourcing - pozyskiwanie [4]. 10 Rozdział 2. Problem szacowania wieku w wizji komputerowej torstwa Hu i in. W artykule badany jest problem oszacowania wieku bez etykiety wieku i proponowane jest podejście oceny wieku przy pomocy informacji o różnicy wieku między parą obrazów. Autorzy przedstawiają nowatorski schemat uczenia się wykorzystujący słabo etykietowane dane i stosujący głębokie konwolucyjne (splotowe) sieci neuronowe. Wyniki badań pokazują dużą przewagę proponowanej metody nad innymi metodami i określane są jako najnowocześniejsze
+Pierwsza metoda szacująca wiek człowieka na podstawie obrazu jego twarzy została opisana w 1999 roku przez
+Kwon i Lobo [14] i klasyfikuje osoby tylko do jednej z trzech grup wiekowych:
+dzieci, dorośli, starsi. Metoda ta w pierwszej kolejności wykorzystuje informacje o
+proporcjach twarzy, co pozwala odróżnić grupę dzieci od dwóch pozostałych grup.
+Drugim krokiem jest analiza zmarszczek, która pozwala na odróżnienie osób dorosłych
+młodszych od osób starszych. Wyniki testowania powyższej metody, które opisano w pracy
+, były w 100% poprawne. Wadą proponowanego algorytmu jest kosz towność obliczeniowa,
+co powoduje, że zastosowanie go może być nieodpowiednie do działania w czasie rzeczywistym.
+Pierwszy prawdziwy algorytm automatycznego szacowania wieku został opisany w 2002 roku
+przez Lanitis i in [16]. Ich praca opisuje metodę bazującą na modelu statystycznym wyglądu twarzy.
+Wykorzystano wiele obrazów treningowych w celu poznania relacji między zakodowaną reprezentacją obrazów
+twarzy i faktycznym wiekiem osób. Poznanie tej relacji pozwoliło na oszacowanie wieku osoby z obrazu
+testowego. W pracy zbadano cztery warianty opisanego podejścia, tak aby dopasować odpowiedni model
+starzenia do zdjęcia testowego, w celu rozwiązania problemu różnorodności starzenia się ludzi. Jednym
+z wariantów była metoda ważonego wyglądu, WAS (ang. Weighted Appearance Specific), która osiągnęła
+najlepsze rezultaty. Metoda ta, oprócz wizualnej reprezentacji twarzy, bierze także pod uwagę tzw.
+profil stylu życia przedstawiony jako wektor cech takich jak płeć, stan zdrowia, standard życia,
+sytuacja ekonomiczna, poziom stresu, warunki pracy, miejsce zamieszkania, ekspozycja na ekstremalne
+warunki pogodowe. Dwa lata później, czyli w roku 2004, Lanitis i in. porównali swój algorytm oparty
+na funkcji starzenia w postaci funkcji kwadratowej z kilkoma typowymi metodami klasyfikacji tj. z
+klasyfikatorem minimalno-odległościowym oraz klasyfikatorami opartymi na sieciach neuronowych [15].
+Klasyfikatory zostały przetestowane w trybie pojedynczej warstwy, a także w trzech trybach hierarchicznych.
+Zgodnie z oczekiwaniami wszystkie klasyfikatory działały lepiej w trybach hierarchicznych.
+Spośród wszystkich metod najlepsze rezultaty odniosła metoda AAS (ang. Appearance and Age Specific).
+Ostatecznie, zgodnie z wynikami eksperymentów, algorytm starzenia oparty na funkcji kwadratowej
+nie wykazał znacznej przewagi nad konwencjonalnymi klasyfikatorami pod względem ogólnej wydajności.
+W kolejnym artykule pochodzącym z 2006 roku [26] Ramanathan i Chellappa opisują podejście, które
+zamiast szacować wiek, szacuje różnicę wieku między parą twarzy tej samej osoby. Wektory różnic między parami twarzy są używane do ustalania rozkładów statystycznych dla różnych przedziałów wiekowych. Różnica między obrazami uzyskanymi z pary obrazów twarzy stanowi podstawę klasyfikacji, do której użyto klasyfikatora Bayesa. Auto- 2.2. Przegląd literatury 7 rzy publikacji zwracają uwagę na fakt, że zrozumienie procesu starzenia się ludzkich twarzy ma kluczowe znaczenie dla rozwoju systemów odpornych na efekty starzenia. Modelowanie procesu starzenia może być zrealizowane nie tylko na podstawie osobnych obrazów twarzy różnych osób czy par obrazów twarzy tej samej osoby, ale również całej sekwencji obrazów starzejących się twarzy należących do jednej osoby. Podejście to zostało zbadane w 2007 roku przez Geng i in. [9] i przedstawione pod nazwą AGES (ang. AGing pattErn Subspace). Podstawą tej metody jest modelowanie wzorca starzenia poprzez skonstruowanie reprezentatywnej podprzestrzeni. Wzorzec starzenia definiowany jest jako ciąg obrazów twarzy jednej osoby posortowanych w kolejności czasowej. Każdy punkt w podprzestrzeni odpowiada jednemu wzorcowi starzenia. Metoda AGES działa na etapie uczenia się jak i na etapie oceny wieku. Jeśli dla danej osoby ze zbioru treningowego dostępna jest cała sekwencja obrazów w każdym wieku, to wzorzec starzenia nazywany jest pełnym wzorcem starzenia. W przeciwnym przypadku, czyli jeśli w ciągu istnieją jakieś braki, jest to niekompletny wzorzec starzenia. Metoda AGES uzupełnia brakujące elementy za pomocą iteracyjnego algorytmu uczenia się typu EM (ang. Expectation–Maximization). Podczas szacowania wieku algorytm musi znaleźć dla obrazu testowego odpowiedni wzorzec starzenia i jego pozycję w tym wzorcu. Położenie twarzy we wzorcu będzie wskazywać na jej wiek. W tym celu twarz testowa jest weryfikowana na każdej możliwej pozycji we wzorcu starzenia i wybierana jest pozycja z minimalnym błędem rekonstrukcji. We wnioskach końcowych autorzy piszą, że przynajmniej w konfiguracji eksperymentalnej wydajność metody AGES jest nie tylko znacznie lepsza niż w przypadku najnowocześniejszych algorytmów, ale także porównywalna z postrzeganiem człowieka. W 2008 roku Suo i in. [33] opisali rozwiązanie oparte na hierarchicznym, graficznym modelu twarzy dla twarzy pojawiających się odpowiednio w niskiej, średniej i wysokiej rozdzielczości. Pierwszy z trzech poziomów to ogólny wygląd twarzy. W drugim poziomie brane są pod uwagę lokalne obszary twarzy, a ostatni, trzeci poziom wykorzystuje drobne szczegóły np. zmarszczki. Wyniki eksperymentalne wskazują, że wykorzystanie cech lokal- 8 Rozdział 2. Problem szacowania wieku w wizji komputerowej nych jest ważne dla uzyskania lepszej wydajności. Praca opublikowana przez Wang i in. w 2009 roku [36], podobnie jak [14] przedstawia kategoryzację wiekową, czyli klasyfikację danej osoby do jednej z czterech grup wiekowych (dzieci, nastolatkowie, dorośli, starsi). Autorzy wyjaśniają swoją motywację do takiego podejścia trudnością rozwiązania problemu dokładnego szacowania wieku, przy jednoczesnym stwierdzeniu, że tak naprawdę dla wielu systemów czy aplikacji sama kategoryzacja wiekowa jest wystarczająca. Metoda kategoryzacji wiekowej opisana w publikacji stosuje kody korygujące błędy, ECOC (ang. Error-Correcting Output Codes) do cech wyodrębnionych metodą lokalnych wzorców binarnych (LBP, ang. Local Binary Patterns) połączonej z filtrem Gabora. Jest to pierwsze takie wykorzystanie połączenia tych dwóch metod, a wyniki opisane w pracy pokazują, że wykorzystanie tego połączenia jest lepsze niż użycie samego filtru Gabora lub samego LBP. Kolejną pracą jest praca autorstwa M. Dehshibi oraz A. Bastanfard opublikowana w 2010 roku [7]. Przedstawia ona nowy algorytm rozpoznawania grupy wiekowej na podstawie twarzy. Twarze klasyfikowane są do czterech różnych kategorii wiekowych: dzieci (1 - 10 lat), nastolatki (11 - 20 lat), młodsi dorośli (21 - 40 lat), osoby w średnim wieku (41 - 60 lat) oraz starsi (60 - 85 lat). Algorytm składa się z czterech etapów: wstępnego przetwarzania, ekstrakcji cech twarzy według nowatorskiej metody opartej na proporcjach twarzy, analizy cech twarzy oraz klasyfikacji wieku. Informacje o zmarszczkach pobierane są z pięciu obszarów twarzy: czoła, kącików oczu oraz policzków. Określenie tych obszarów jest możliwe dzięki proporcjom twarzy oraz wcześniejszemu wykryciu oczu, nosa, ust, brody, boków twarzy i najwyższego punktu czoła. Po przeprowadzeniu na obrazach twarzy wykrywania krawędzi metodą Canny’ego, dla danych pięciu obszarów twarzy obliczone jest ich zagęszczenie. Ostatecznie do klasyfikacji grupy wiekowej stosowana jest sieć neuronowa wykorzystująca informacje o zmarszczkach oraz proporcjach twarzy. Wyniki eksperymentalne wykazały identyfikację grupy wiekowej z dokładnością 86,64%. Artykuł Han i in. z 2013 roku opisuje hierarchiczne podejście do automatycznej oceny wieku. Zawiera także analizę tego, w jaki sposób starzenie 2.2. Przegląd literatury 9 wpływa na poszczególne składniki twarzy. W publikacji podkreślane jest, w jak dużym stopniu starzenie się twarzy determinowane jest przez czynniki wewnętrzne (geny) i zewnętrzne (środowisko, styl życia, zdrowie). Interesujący jest fakt, że autorzy zbadali również zdolność człowieka do szacowania wieku na podstawie danych zebranych za pośrednictwem tzw. crowdsourcingu2 i pokazali, że skuteczność proponowanej metody szacowania wieku okazała się lepsza lub porównywalna z ocenami wieku dostarczonymi przez ludzi. Tharwat i in. w publikacji również z 2013 roku formułują problem szacowania wieku jako problem regresyjny. Zaprojektowali i opracowali trzy różne klasyfikatory oparte na koncepcji klasyfikatora K najbliższych sąsiadów, KNN (ang. K Nearest Neighbours). Pierwszy klasyfikator to standardowe podejście KNN-distance polegające na obliczeniu minimalnej odległości między różnymi obrazami twarzy testowej. Drugi klasyfikator jest zmodyfikowaną wersją KNN, a wyniki punktacji klasyfikatora interpolowano w celu dokładnego oszacowania wieku. W trzecim klasyfikatorze wykorzystano podejście klasyfikacji i regresji, aby poprawić dokładność systemu szacowania wieku. Rozwiązanie przetestowano na znanym benchmarkowym zbiorze danych FG-NET, a wyniki eksperymentów pokazały skuteczność proponowanego podejścia. Większość dotychczasowych prac badających problem szacowania wieku wykorzystuje obrazy twarzy w skali szarości. Zighem i in. w 2017 roku zaproponowali nowatorskie podejście do szacowania wieku oparte na kolorowych obrazach twarzy w przestrzeni barw RGB [38]. Metoda polega na ekstrakcji rysów twarzy za pomocą metody lokalnego wzorca binarnego, LBP. Następnie w fazie regresji pomocniczej wykorzystywana jest metoda wektorów wspierających, SVM (ang. Super Vector Machine). Wyniki eksperymentalne pokazują, że opisany algorytm przewyższa inne metody. Średni błąd absolutny szacowania wieku wyniósł 6,7 lat. Kolejną z nowszych publikacji jest praca również z 2017 roku [10] au2 crowdsourcing - strategia polegająca na angażowaniu tłumu (klientów, fanów marki i ekspertów) do wspólnych zadań organizacji. Termin ten pochodzi od słów crowd – tłum i sourcing - pozyskiwanie [4]. 10 Rozdział 2. Problem szacowania wieku w wizji komputerowej torstwa Hu i in. W artykule badany jest problem oszacowania wieku bez etykiety wieku i proponowane jest podejście oceny wieku przy pomocy informacji o różnicy wieku między parą obrazów. Autorzy przedstawiają nowatorski schemat uczenia się wykorzystujący słabo etykietowane dane i stosujący głębokie konwolucyjne (splotowe) sieci neuronowe. Wyniki badań pokazują dużą przewagę proponowanej metody nad innymi metodami i określane są jako najnowocześniejsze
+
 Jak dziala algorytm programu...
 
-2.1 Metoda wykrywania twarzy
-Jest duzo metod i generalnie estrkahuje sie cechy -
-%//todo tutaj cos dopisac wiecej o roznych metodach rozpoznawania
+\section Metoda wykrywania twarzy
 
 Sposoby wykrywania twarzy:
-https://sci-hub.tw/10.1007/s10462-018-9650-2
+Byc moze z tego https://sci-hub.tw/10.1007/s10462-018-9650-2 linka wezmiemy kilka prostych metod i opiszemy je zamiast
+tej z
+https://sci-hub.tw/10.1016/S0031-3203(00)00134-5
 
 
 Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie:
@@ -92,59 +120,53 @@ Druga metoda:
 
 https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
 
+Jako trzecia metode mozna podac ta nasza ktora stosowalismy...
 
-Ekstrakcja cech polega na stosowaniu filtrow funkcji bla bla bla.
-
-Viola Jones
-https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf
-https://courses.cs.washington.edu/courses/cse455/16wi/notes/15_FaceDetection.pdf
-Piszemy nagle o algorytmie Haara Cascade?
-Mozna sie domyslac ze odwolulemy sie do Filtrow Haara, ale wczesniej trzeba napisac co nieco o tym.
-%todo opisac jak dzialaja filtry gabora, jadram analiza skladowych gornych oraz napisac ze Haar jest zastosowany w
-%Haar Cascades
-
-2.1.1 Wstęp do algorytmu Haar Cascade
-file:///E:/Studia/Praca%20magisterska%20informatyka/Materialy/viola-cvpr-01.pdf
-Haar jest z wizji komputerowej zostal zbudowanu przez... filtry haara, zdjecia negatywne pozytywne...
-krociotenkie opisy
-Przejscie na szarosc %todo moze to na poczatek tego rozdzialu? popisac o przestrzeniach barw - nie tylko rgb.
-
-2.1.2 Konwersja do skali szarosci
+Tutaj nastepnie mozna napisac o przestrzeniach barw i przejsciu na skale szarosci...
+\section Konwersja do skali szarosci oraz przestrzenie barw
 sa 3 kanaly w rgb.. opisane jak to tam dziala w skrocie…
 Opisane fajnie inne przestrzenie barw:
 https://sci-hub.tw/10.1007/s10462-018-9650-2
 
+\section Algorytm Haar Cascade
+file:///E:/Studia/Praca%20magisterska%20informatyka/Materialy/viola-cvpr-01.pdf
+Haar jest z wizji komputerowej zostal zbudowanu przez... filtry haara, zdjecia negatywne pozytywne...
+krociotenkie opisy
 
-2.1.3 Kontunuacja Haar Cascade %todo to jest z dupy nazwa rozdzialu
 Suma jasnosci pikseli z obrazka
 Opis obrazu scalkowanego - dosyc spoko opisany
 Cos tam o Adaboost - krotko oraz o kaskadowosci.
 
 \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
-
+%tutaj bedzie opis najpierw ze wyznaczamy obszaru oczu ust nowa i na podstawie tego wyznaczamy strefy zmarszczkowe
+%Raczej zadna literatura. Czysta matematyka noi obrazki ofc.
 \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
+%Tutaj teoria jak dziala Canny - to napewno. noi jakie parametry byly zastosowane.
 
 \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
-
+%Algorytm wyliczania sumarycznego wrinkle feature ze wszystkich stref.
 \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
-
+%tutaj o roznych bazach danych mozna napisac - jakos je porownac
+%Jak to wygladalo - lopatologicznie, jakis obrazek
 \section{Grupowanie danych - FCM}\label{sec:grupowanieDanych}
-
+%Tutaj jakims wstepem o grupowaniu - moze zamiast ponizszego subsection...
 \subsection{Wstęp do grupowania danych}
+%jw
 \subsection{Metoda FCM}
-
+%opis naszego fcm
 \section{Wyznaczanie wieku}\label{sec:wyznaczanieWieku}
-
+%koncowka algorytmu - czyli jak wyznaczono wiek na podstawie wytrenowanego wektora
 
 %Tutaj powinno byc 5000 slow
 
 \chapter{Modyfikacje metody bazowej}
 
 \section{Odjęcie wybranej strefy}
-
+%krociotko dlaczego i jak - moze jakis obrazek
 \subsection{Zmiana algorytmu względem metody bazowej}
-
+%jw
 \section{Zastosowanie metody HOG}
+%cos o HOG-u
 \subsection{Opis algorytmu HOG}
 \subsection{Zastosowanie w projekcie}
 
@@ -157,11 +179,3 @@ Cos tam o Adaboost - krotko oraz o kaskadowosci.
 %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
 %    przetwarzania), zajetosc pamieci
 \chapter{Podsumowanie}
-
-
-
-\begin{document}
-
-
-
-\end{document}
