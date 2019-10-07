@@ -522,7 +522,7 @@ Karolina Nurzyńska}
     Tak wytrenowany model jest później wykorzystywany do wykrywania twarzy.
 
 
-    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów.
+    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów  \cite{mehdiRizvi}.
     %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
     %    Pose: The images of a face vary due to the relative camera-face pose (frontal, 45
     %    degree, profile, upside down), and some facial features such as an eye or the nose
@@ -542,7 +542,47 @@ Karolina Nurzyńska}
     %    Każda z nich wyodrębnia z obrazu pewne cechy, które
     %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
 
-    Jednym z nich jest nieodpowiednia
+    Jednym z nich jest nieodpowiednia poza.
+    Wiąże się to z różnymi ustawieniami twarzy wobec aparatu fotograficznego lub kamery.
+    Twarz może być nachylona, przechylona, odchylona.
+    Inaczej mówiąc może mieć różne położenie w trzech wymiarach.
+    Niektóre części twarzy lub cechy mogą zostać przysłonięte.
+    Im mniej cech widocznych na twarzy tym mniej danych, które algorytm może wyodrębnić z twarzy.
+    Im mniej danych posiada algorytm tym mniejsze prawdopodobieństwo prawidłowego wykrycia twarzy.
+
+    Pewne twarze mogą zawierać lub nie pewne cechy tj. brody, blizny, okulary.
+    Różnorodność tych cech także wpływa na efektywność wykrywania twarzy.
+
+    Wyrazy mimiczne wpływają na zwiększenie ilości zmarszczeń na twarzy.
+    Ponadto zmienia się kształt ust, pojawiają się ostre krawędzie wynikające z pracy mięśni twarzowych.
+    Widoczne mogą być różne pofałdowania skóry.
+
+    Zdarza się, że część twarzy zostaje przysłonięta przez jakiś inny obiekt.
+    Na zdjęciu na którym jest wiele osób część twarzy może być przysłonięta przez inną twarz.
+    Przysłonięcie przez inny obiekt wiąże się z utratą informacji o części twarzy co zmniejsza prawdopodobieństwo
+    prawidłowego wykrycia twarzy.
+
+    Istotnym elementem jest także oświetlenie twarzy.
+    Gdy twarz oświetlona jest tzw. twardym światłem występują na
+    niej tzw. ostre cienie i światła \ref{fig.oswietlenieTwarzy}.
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{Obrazy/oswietlenieTwarzy.jpg}
+        \caption{Przykład twarzy oświetlonej twardym (twarz po lewej) oraz miękkim światłem. \cite{oswietlenieTwarzy}}
+        \label{fig.oswietlenieTwarzy}
+    \end{figure}
+    W tym przypadku występuje większe ryzyko utraty szczegółów oświetlanej twarzy.
+    Gdy twarz jest skierowana na wprost słońca z dużym
+    prawdopodobieństwem można powiedzieć, że zostanie oświetlona twardym światłem.
+    Miękkie światło jest generowane na przykład przez zachmurzone niebo.
+    Istotne jest także źródło światła.
+    Źródło może być punktowe lub rozproszone.
+    Przy punktowym źródle światła twarz będzie
+    posiadać jednolity cień, którego intensywność będzie zależała od "twardości" światła.
+    Przy świetle rozproszonym intensywność cieni zostanie zmniejszona.
+
+
+
     Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
     zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
 
