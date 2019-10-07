@@ -479,7 +479,7 @@ Karolina Nurzyńska}
 
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy.
-    Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie:
+    Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie \cite{mehdiRizvi}:
     %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
     %     Knowledge-based methods: These rule-based methods encode human knowledge
     %    of what constitutes a typical face. Usually, the rules capture the relationships
@@ -496,7 +496,33 @@ Karolina Nurzyńska}
     %    representative variability of facial appearance. These learned models are then used
     %    for detection. These methods are designed mainly for face detection.
 
-    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów tj:
+    \begin{itemize}
+        \item metoda oparta na nauce
+        \item metoda niezmienności cech
+        \item metoda dopasowania szablonu twarzy
+        \item metoda bazująca na wyglądzie
+    \end{itemize}
+    Metoda oparta na nauce kieruje się wiedzą na temat wyglądu twarz.
+    Dokładniej chodzi o charakterystyczne cechy,
+    które pozwalają na wyodrębnienie obszaru twarzy na zdjęciu.
+    Mowa tutaj o cechach takich jak kształt twarzy, kolor, miejsca o różnej jasności czy krawędzie tworzone np przez
+    usta.
+
+    Metoda niezmienności cech wyszukuje takie strukturalne cechy twarzy, które są widoczne w każdych warunkach
+    oświetleniowych.
+    Ponadto powyższe cechy są widoczne bez względu na punkt widzenia np.
+    profil czy kąt nachylenia twarzy.
+
+    Metoda dopasowania szablonu twarzy wykorzystuje kilka standardowych wzorów opisujących twarz.
+    Na wejściu algorytmu obraz jest porównywany z powyższymi wzorami.
+    Na wyjściu dostajemy informację w jakim stopniu obraz jest dopasowany do szablonu twarzy.
+
+    Ideą metody bazującej na wyglądzie jest trenowanie dużego zbioru obrazów twarzy, tak aby wychwycić zmienność cech
+    twarzy.
+    Tak wytrenowany model jest później wykorzystywany do wykrywania twarzy.
+
+
+    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów.
     %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
     %    Pose: The images of a face vary due to the relative camera-face pose (frontal, 45
     %    degree, profile, upside down), and some facial features such as an eye or the nose
@@ -515,6 +541,8 @@ Karolina Nurzyńska}
     %    lenses) affect the appearance of a face.
     %    Każda z nich wyodrębnia z obrazu pewne cechy, które
     %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
+
+    Jednym z nich jest nieodpowiednia
     Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
     zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
 
