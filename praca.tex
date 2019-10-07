@@ -581,7 +581,14 @@ Karolina Nurzyńska}
     posiadać jednolity cień, którego intensywność będzie zależała od "twardości" światła.
     Przy świetle rozproszonym intensywność cieni zostanie zmniejszona.
 
-
+    Na Rys \ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{Obrazy/technikiWykrywaniaTwarzy.jpg}
+        \caption{Przykład twarzy oświetlonej twardym (twarz po lewej) oraz miękkim światłem. \cite{faceDetectionTechniques}}
+        \label{fig.technikiWykrywaniaTwarzy}
+    \end{figure}
+    %    https://sci-hub.tw/10.1007/s10462-018-9650-2
 
     Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
     zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
@@ -609,14 +616,11 @@ Karolina Nurzyńska}
     różnych regionów obszaru twarzy, poddanego uprzednio normalizacji.
     Algorytm jest w stanie wykryć także obszar twarzy, gdy głowa jest przechylona
 
-    %    Warto wymienić
-    %    najczęściej stosowane metody służące do ekstrakcji cech \cite{computerVision}:
-    %    \begin{itemize}
-    %        \item Filtry Gabora
-    %        \item Filtry Haara
-    %        \item Funkcje jądra
-    %        \item Analiza składowych górnych
-    %    \end{itemize}
+    %todo Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
+    %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
+
+
+    %todo trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
     Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Właśnie ta
     biblioteka była jednym z niezbędnym elementów programu przy wykrywaniu wieku z tekstury twarzy.
     W związku z powyższym w wykrywaniu twarzy zastosowano algorytm Haar Cascade.
@@ -632,38 +636,8 @@ Karolina Nurzyńska}
 
     %    opisac jak dokladnie zaimplementowano to u nas
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
-    \subsection{Wstęp do algorytmu Haar Cascade}
-    Haar Cascade jest algorytmem z dziedziny uczenia maszynowego służącym do wykrywania obiektów w wizji komputerowej.
-    Został stworzony przez Paula Viola oraz Michaela Jonesa \cite{violaJones}.
-    Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć.
-    Zdjęcia są dzielone na
-    dwie kategorie - pozytywne oraz negatywne.
-    Na zdjęciach klasyfikowanych jako pozytywne istnieje obiekt, który ma zostać wykryty, natomiast
-    na zdjęciach negatywnych nie ma tego obiektu.
-
-    Ekstrakcja cech w algorytmie Violi i Jonesa jest realizowana przez filtry Haara.
-    Są to prostokątne okienka
-    nakładane na obraz, które analizują jasność pikseli (Rysunek \ref{fig.haarRectangles}).
-    \begin{figure}
-        \centering
-        \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
-        \caption{Filtr Haara a) krawędziowy b) liniowy c) szachownica \cite{haar}}
-        \label{fig.haarRectangles}
-    \end{figure}
-
-    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości, która jest rodzajem
-    odwzorowania koloru.
-    Wyróżnia się 3 podstawowe tryby koloru:
-    \begin{itemize}
-        \item kolorowy
-        \item monochromatyczny (skala szarości)
-        \item czarno-biały
-    \end{itemize}
-    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny co opisano w sekcji
-    \ref{sec:konwersjaDoSzarosci}.
-
-    \subsection{Konwersja do skali szarości}
-    \label{sec:konwersjaDoSzarosci}
+    \subsection{Konwersja do skali szarości oraz przestrzenie barw}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
+    %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
     Najczęściej spotykana
     reprezentacja to RGB. Przestrzeń kolorów RGB składa się z trzech kanałów \cite{kolory}:
@@ -685,7 +659,7 @@ Karolina Nurzyńska}
 
     \begin{figure}
         \centering
-        \includegraphics[width=10cm]{Obrazy/mieszanieKolorow.jpg}
+        \includegraphics[width=7cm]{Obrazy/mieszanieKolorow.jpg}
         \caption{Mieszanie kanałów RGB. \cite{colorMixing}}
         \label{fig.mieszanieKolorow}
     \end{figure}
@@ -735,8 +709,37 @@ Karolina Nurzyńska}
     \normalsize
 
     W niniejszej pracy zastosowano konwersję za pomocą metody średniej.
+    \subsection{Algorytm Haar Cascade}\label{subsec:algorytm-haar-cascade}
 
-    \subsection{Kontynuacja opisu algorytmu Haar Cascade}
+    Haar Cascade jest algorytmem z dziedziny uczenia maszynowego służącym do wykrywania obiektów w wizji komputerowej.
+    Został stworzony przez Paula Viola oraz Michaela Jonesa \cite{violaJones}.
+    Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć.
+    Zdjęcia są dzielone na
+    dwie kategorie - pozytywne oraz negatywne.
+    Na zdjęciach klasyfikowanych jako pozytywne istnieje obiekt, który ma zostać wykryty, natomiast
+    na zdjęciach negatywnych nie ma tego obiektu.
+
+    Ekstrakcja cech w algorytmie Violi i Jonesa jest realizowana przez filtry Haara.
+    Są to prostokątne okienka
+    nakładane na obraz, które analizują jasność pikseli (Rysunek \ref{fig.haarRectangles}).
+    \begin{figure}
+        \centering
+        \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
+        \caption{Filtr Haara a) krawędziowy b) liniowy c) szachownica \cite{haar}}
+        \label{fig.haarRectangles}
+    \end{figure}
+
+    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości, która jest rodzajem
+    odwzorowania koloru.
+    Wyróżnia się 3 podstawowe tryby koloru:
+    \begin{itemize}
+        \item kolorowy
+        \item monochromatyczny (skala szarości)
+        \item czarno-biały
+    \end{itemize}
+    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny co opisano w sekcji
+    \ref{sec:konwersjaDoSzarosci}.
+
     Każde okienko zawiera białe oraz czarne prostokąty.
     Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
     następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
