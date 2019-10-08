@@ -567,7 +567,7 @@ Karolina Nurzyńska}
     niej tzw. ostre cienie i światła \ref{fig.oswietlenieTwarzy}.
     \begin{figure}
         \centering
-        \includegraphics[width=8cm]{Obrazy/oswietlenieTwarzy.jpg}
+        \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
         \caption{Przykład twarzy oświetlonej twardym (twarz po lewej) oraz miękkim światłem. \cite{oswietlenieTwarzy}}
         \label{fig.oswietlenieTwarzy}
     \end{figure}
@@ -584,18 +584,20 @@ Karolina Nurzyńska}
     Na Rys \ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
     \begin{figure}
         \centering
-        \includegraphics[width=8cm]{Obrazy/technikiWykrywaniaTwarzy.jpg}
+        \includegraphics[width=15cm]{Obrazy/technikiWykrywaniaTwarzy.jpg}
         \caption{Różne techniki wykrywania twarzy. \cite{faceDetectionTechniques}}
         \label{fig.technikiWykrywaniaTwarzy}
     \end{figure}
     %    https://sci-hub.tw/10.1007/s10462-018-9650-2
 
-    Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
-    zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
+    %    Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
+    %    zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
 
+    Jak widać metod wykrywania twarzy jest sporo.
+    Omówienie każdej z nich zajęłoby dużo czasu.
+    Poniżej zostaną przytoczone dwie metody wykrywania twarzy.
+    Dodatkowo zostanie omówiona metoda, która posłużyła do wykrywania twarzy w niniejszej pracy.
 
-    Poniżej jest przedstawione kilka przykładów procesów
-    i technik wykrywania twarzy, opisanych w literaturze.
     %https://sci-hub.tw/10.1016/S0031-3203(00)00134-5
     W pracy ,,An efficient algorithm for human face detection and facial
     feature extraction under different conditions'' (\cite{wongLamSiu})
@@ -618,12 +620,31 @@ Karolina Nurzyńska}
 
     %todo Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
     %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
-
+    W roku 1997 w pracy pt. ,,Vision for man-machine interaction'' opisano metodę wykrywania twarzy bazującą na
+    wykrywaniu cechy jaką jest kolor skóry \cite{clowleyCoutaz}.
+    Kolor skóry jest najbardziej widoczną cechą twarzy zarówno dla człowieka jak i dla maszyny.
+    Ponadto kolor jest przetwarzany znacznie szybciej od innych cech.
+    Przy dobrych warunkach oświetleniowych ustawienie twarzy nie ma wpływu na skuteczność wykrywalności twarzy
+    opisywaną metodą.
+    Każda metoda wykrywania twarzy posiada wady.
+    Jedną z tych wad jest problem wykrywalności twarzy przy nierównomiernym oświetleniu.
+    Problem pojawia się także, gdy na obrazie widoczny jest obszar skóry z poza twarzy np. z rąk.
+    Warto zaznaczyć, że kolor twarzy na obrazie jest zależny od względnego kierunku oświetlenia.
+    Obszar twarzy w omawianym algorytmie jest wykrywany poprzez normalizacje histogramu kolorów.
+    Normalizacja jest potrzebna do redukcji wpływu luminancji na kolor.
 
     %todo trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
     Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Właśnie ta
     biblioteka była jednym z niezbędnym elementów programu przy wykrywaniu wieku z tekstury twarzy.
     W związku z powyższym w wykrywaniu twarzy zastosowano algorytm Haar Cascade.
+    Omawiany algorytm został zaprezentowany w książce ,,Rapid Object Detection using a Boosted Cascade of Simple
+    Features'' w 2001 i składa się z trzech faz \cite{violaJones}.
+    W pierwszej obraz wejściowy przekształcany jest na obraz scałkowany.
+    Następnie wykorzystywany jest algorytm do boostingu, który zmniejsza ilość klasyfikatorów tylko do tych
+    najbardziej istotnych.
+    W ostatniej fazie klasyfikatory łączone są w kaskady w celu przyspieszenia procesu wykrywania twarzy.
+    Znaczna większość metod wykrywania obiektów na obrazie (w tym twarzy) wymaga wstępnego przekształcenia obrazu do
+    skali szarości.
 
     %    https://towardsdatascience.com/face-recognition-with-opencv-haar-cascade-a289b6ff042a
     %    przez kogo został zaproponowany...
