@@ -824,7 +824,8 @@ Karolina Nurzyńska}
 
     Podczas treningu klasyfikatora
     a każdego obrazu otrzymujemy dużą ilość danych.
-    W celu poprawy efektywności sumowania pikseli w filtrze Haara stosowane są
+    W celu poprawy efektywności sumowania pikseli w filtrze Haara stosowane są %todo bzdura - to nie jest stosowane w
+    %todo w filtrze Haara
     rozwiązanie zwane w języku angielskim Summed-area table \cite{violaJonesRealTimeOb}.Summed-area table jest również
     nazywana w literaturze Integral Image, czyli obrazem scałkowanym.
     Ideą obrazu scałkowanego jest,
@@ -885,22 +886,23 @@ Karolina Nurzyńska}
     \end{math} sumowanie okna zwykłym sposobem
     wymagałoby \begin{math}
                    9x9=81
+                   %todo zweryfikowac trzeba
     \end{math} operacji.
     Natomiast przy użyciu obrazu scałkowanego liczba operacji jest
     stała i wynosi dokładnie 4 \cite{violaJones}.
 
     Liczba cech wykrywanych w zdjęciu za
-    pomocą filtru Haara wynosi zwykle powyżej stu tysięcy \cite{violaJones}.
+    pomocą filtru Haara wynosi zwykle powyżej stu tysięcy \cite{violaJones}. %todo w Violi to jest dobrze opisane
     Wiele z nich nie ma
     większego znaczenia w procesie wykrywania twarzy.
     Natomiast przy tak dużej ilości cech na obrazie potrzebna jest dodatkowa
     technika, która przyspieszy detekcję twarzy.
-    Taką właśnie techniką jest AdaBoost.
+    Taką właśnie techniką jest AdaBoost. %todo dopisac o adaboost
     Została ona opracowana
     przez Yoava Freunda oraz Roberta Schapire'a. \cite{dataMiningInferencePrediction}.
 
     Główną koncepcją tego algorytmu jest wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
-    wytworzenia silnych klasyfikatorów.
+    wytworzenia silnych klasyfikatorów. %todo opisac kaskade
     Silny klasyfikator powstaje jako liniowa kombinacja słabych
     klasyfikatorów ważonych.
     Z kolei słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
