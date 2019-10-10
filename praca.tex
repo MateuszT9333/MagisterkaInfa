@@ -660,15 +660,65 @@ Karolina Nurzyńska}
     \subsection{Konwersja do skali szarości oraz przestrzenie barw}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
     %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
-    Najczęściej spotykana
-    reprezentacja to RGB. Przestrzeń kolorów RGB składa się z trzech kanałów \cite{kolory}:
+    Najczęściej są to 3 lub 4 wartości \cite{przestrzenieKolorow}.
+    Pierwszą przestrzenią barw była CIEXYZ. Została ona stworzona w 1931 przez
+    Międzynarodowa Komisja ds. Oświetlenia (International Commission on Illumination).
+    Przestrzeń barw CIEXYZ została specjalnie stworzona, by odtworzyć sposób postrzegania barw przez ludzkie oko.
+    Barwa jest opisywana w trzech współrzędnych trójchromatycznych X,Y,Z.
+    Powyższe współrzędne są zależne od składowych - sprawności wizualnych czopków.
+    Czopki to światłoczułe receptory siatkówki ludzkiego oka \cite{przestrzenieKolorow}.
+    Współrzędne X,Y,Z wyliczane są na podstawie trzech podstawowych barw R (czerwonej),
+    G (zielonej) i B (niebieskiej).
+    Współrzędne XYZ są często reprezentowane przez luminancję Y oraz współrzędne x, y chromatyczności.
+    Wyliczanie współrzędnych x, y przedstawiono na wzorach \ref{wzor.chromX} oraz \ref{wzor.chromY}.
+    \large
+    \begin{equation}
+        x = \frac{X}{X+Y+Z}
+        \label{wzor.chromX}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        y = \frac{Y}{X+Y+Z}
+        \label{wzor.chromY}
+    \end{equation}
+    \normalsize
+
+    Na rysunku \ref{fig.CIEXYZ} przedstawiono diagram chromatyczności reprezentujący przestrzeń barw CIEXYZ.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=6cm]{Obrazy/CIEXYZ.jpg}
+        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy. \cite{diagramCIEXYZ}}
+        \label{fig.CIEXYZ}
+    \end{figure}
+
+    Kolory mogą byc także odwzorowane przez przestrzeń barw CMYK.
+    Skrót CMYK oznacza odpowiednio:
+    \begin{itemize}
+        \item Cyan - odcień niebieskiego
+        \item Magenta - kolor karmazynowy
+        \item Yellow - kolor żółty
+        \item K - key colour - kolor czarny
+    \end{itemize}
+    Barwa wynikowa powstaje poprzez mieszanie trzech kolorów - niebieskiego, karmazynowego oraz żółtego.
+    Mieszanie zachodzi według zasady syntezy subtraktywnej \cite{przestrzenieKolorow}.
+    Synteza subtraktywna polega na mieszaniu kolorów przez odejmowanie promieniowań widzialnych różnych długości.
+    Przykładem syntezy subtraktywnej jest np. mieszanie farb o różnych kolorach.
+
+    Najczęściej barwy są reprezentowane przez przestrzeń barw RGB \cite{przestrzenieKolorow}.
+    Przestrzeń kolorów RGB składa się z trzech kanałów
+    \cite{kolory}:
 
     \begin{itemize}
         \item R - czerwonego (z angielskiego Red)
         \item G - zielonego (z angielskiego Green)
         \item B - niebieskiego (z angielskiego Blue)
     \end{itemize}
-
+    Barwy mieszane są poprzez syntezę addytywną .
+    W przeciwieństwie do syntezy subtraktywnej barwa wynikowa powstaje poprzez sumowanie wiązek światła widzialnego o
+    różnych długościach \cite{przestrzenieKolorow}.
     Każdy piksel opisany za pomocą przestrzenie barw RGB ma trzy 8-bitowe wartości reprezentujący każdy kanał.
     Spotykane
     są 12- lub 16-bitowe reprezentacje kanałów, jednak 8-bitowa jest najpopularniejsza.
@@ -697,6 +747,10 @@ Karolina Nurzyńska}
     Kolor (Rysunek \ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym \#99D9EA.
     Każda
     wartość heksadecymalna odpowiada kolejno kanałowi R, G, B.
+
+    Obraz może też być przedstawiony stosując odcienie jednej barwy.
+    Taka obraz nazywa się obrazem monochromatycznym.
+    Najczęściej stosowaną barwą w takich obrazach jest szarość \cite{przestrzenieKolorow}.
 
     Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny \cite{colorMixing}.
     \begin{itemize}
@@ -750,16 +804,9 @@ Karolina Nurzyńska}
         \label{fig.haarRectangles}
     \end{figure}
 
-    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości, która jest rodzajem
-    odwzorowania koloru.
-    Wyróżnia się 3 podstawowe tryby koloru:
-    \begin{itemize}
-        \item kolorowy
-        \item monochromatyczny (skala szarości)
-        \item czarno-biały
-    \end{itemize}
+    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości
     W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny co opisano w sekcji
-    \ref{sec:konwersjaDoSzarosci}.
+    \ref{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}.
 
     Każde okienko zawiera białe oraz czarne prostokąty.
     Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
