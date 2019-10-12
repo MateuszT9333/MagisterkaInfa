@@ -786,8 +786,9 @@ Karolina Nurzyńska}
     W niniejszej pracy zastosowano konwersję za pomocą metody średniej.
     \subsection{Algorytm Haar Cascade}\label{subsec:algorytm-haar-cascade}
 
-    Haar Cascade jest algorytmem z dziedziny uczenia maszynowego służącym do wykrywania obiektów w wizji komputerowej.
-    Został stworzony przez Paula Viola oraz Michaela Jonesa \cite{violaJones}.
+    Haar Cascade jest algorytmem służącym do wykrywania obiektów na obrazach.
+    Został stworzony przez Paula Viola oraz Michaela Jonesa w 2001 roku\cite{violaJones}.
+
     Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć.
     Zdjęcia są dzielone na
     dwie kategorie - pozytywne oraz negatywne.
@@ -822,10 +823,7 @@ Karolina Nurzyńska}
         \label{fig.haarEmmaWatson}
     \end{figure}
 
-    Podczas treningu klasyfikatora
-    a każdego obrazu otrzymujemy dużą ilość danych.
-    W celu poprawy efektywności sumowania pikseli w filtrze Haara stosowane są %todo bzdura - to nie jest stosowane w
-    %todo w filtrze Haara
+    W celu poprawy efektywności sumowania pikseli stosowane są
     rozwiązanie zwane w języku angielskim Summed-area table \cite{violaJonesRealTimeOb}.Summed-area table jest również
     nazywana w literaturze Integral Image, czyli obrazem scałkowanym.
     Ideą obrazu scałkowanego jest,
@@ -881,32 +879,38 @@ Karolina Nurzyńska}
     na Rysunku \ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
     (analogicznie I(B), I(C), I(D)) - (Rysunek \ref{fig.sumowanieOkna}).
 
-    Zakładając większy rozmiar okna np. \begin{math}
-                                            9x9
-    \end{math} sumowanie okna zwykłym sposobem
-    wymagałoby \begin{math}
-                   9x9=81
-                   %todo zweryfikowac trzeba
-    \end{math} operacji.
-    Natomiast przy użyciu obrazu scałkowanego liczba operacji jest
-    stała i wynosi dokładnie 4 \cite{violaJones}.
+    W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum co
+    wymaga ośmiu operacji.
+    Reprezentacja obrazu za pomocą obrazu scałkowanego znacznie zwiększa efektywność obliczania wartości w filtrze
+    Haara.
+
 
     Liczba cech wykrywanych w zdjęciu za
-    pomocą filtru Haara wynosi zwykle powyżej stu tysięcy \cite{violaJones}. %todo w Violi to jest dobrze opisane
-    Wiele z nich nie ma
-    większego znaczenia w procesie wykrywania twarzy.
-    Natomiast przy tak dużej ilości cech na obrazie potrzebna jest dodatkowa
-    technika, która przyspieszy detekcję twarzy.
-    Taką właśnie techniką jest AdaBoost. %todo dopisac o adaboost
-    Została ona opracowana
-    przez Yoava Freunda oraz Roberta Schapire'a. \cite{dataMiningInferencePrediction}.
+    pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie \cite{violaJones}.
+    Dla obrazu o rozmiarze 384x288 liczba cech wynosi ponad 180000.
+    Autorzy algorytmu stwierdzili, że dla zwiększenia szybkości algorytmu należy wybrać małą grupę cech,
+    które razem mogą stworzyć jeden efektywny klasyfikator obiektu.
+    W celu wyodrębnienia tych istotnych cech zastosowano algorytm Adaboost, który został opisany poniżej.
 
-    Główną koncepcją tego algorytmu jest wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
-    wytworzenia silnych klasyfikatorów. %todo opisac kaskade
-    Silny klasyfikator powstaje jako liniowa kombinacja słabych
-    klasyfikatorów ważonych.
-    Z kolei słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
-    obiektu \cite{dataMiningInferencePrediction}.
+    Zbiór n obrazów do trenowania można oznaczyć tak jak we wzorze \ref{wzor.zbiorTrenujacy}:
+    \large
+    \begin{equation}
+        (x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
+        \label{wzor.zbiorTrenujacy}
+    \end{equation}
+    \normalsize
+    \begin{math}
+        y_i = 0, 1
+    \end{math}
+    oznacza, że obraz jest odpowiednio negatywny lub pozytywny.
+    Następnym krokiem jest inicjalizacja wag.
+
+    %    Główną koncepcją tego algorytmu jest wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
+    %    wytworzenia silnych klasyfikatorów. %todo opisac kaskade
+    %    Silny klasyfikator powstaje jako liniowa kombinacja słabych
+    %    klasyfikatorów ważonych.
+    %    Z kolei słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
+    %    obiektu \cite{dataMiningInferencePrediction}.
 
     W ostatniej fazie stosowany jest algorytm kaskady klasyfikatorów.
     Klasyfikatory są podzielone na grupy i
