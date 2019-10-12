@@ -903,15 +903,24 @@ Karolina Nurzyńska}
         y_i = 0, 1
     \end{math}
     oznacza, że obraz jest odpowiednio negatywny lub pozytywny.
-    Następnym krokiem jest inicjalizacja wag.
+    Następnym krokiem jest inicjalizacja wag. %todo dopisac opis Adaboostu.
 
     %    Główną koncepcją tego algorytmu jest wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
-    %    wytworzenia silnych klasyfikatorów. %todo opisac kaskade
+    %    wytworzenia silnych klasyfikatorów.
     %    Silny klasyfikator powstaje jako liniowa kombinacja słabych
     %    klasyfikatorów ważonych.
     %    Z kolei słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
     %    obiektu \cite{dataMiningInferencePrediction}.
 
+    %Opis kaskady
+    %    The overall form of the detection process is that of a degenerate decision tree, what we call a “cascade” (see Figure 4). A positive result from the first classifier triggers the
+    %    evaluation of a second classifier which has also been adjusted to achieve very high detection rates. A positive result
+    %    from the second classifier triggers a third classifier, and so
+    %    on. A negative outcome at any point leads to the immediate
+    %    rejection of the sub-window.
+    %    Stages in the cascade are constructed by training classifiers using AdaBoost and then adjusting the threshold to
+    %    minimize false negatives. Note that the default AdaBoost
+    %    threshold is designed to yield a low error rate on the training data. In general a lower threshold yields higher de
     W ostatniej fazie stosowany jest algorytm kaskady klasyfikatorów.
     Klasyfikatory są podzielone na grupy i
     połączone ze sobą kaskadowo.
