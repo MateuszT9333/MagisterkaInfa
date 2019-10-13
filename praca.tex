@@ -899,13 +899,59 @@ Karolina Nurzyńska}
         \label{wzor.zbiorTrenujacy}
     \end{equation}
     \normalsize
-    \begin{math}
-        y_i = 0, 1
-    \end{math}
-    oznacza, że obraz jest odpowiednio negatywny lub pozytywny.
-    Następnym krokiem jest inicjalizacja wag. %todo dopisac opis Adaboostu.
 
-    %    Główną koncepcją tego algorytmu jest wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
+    oznacza, że obraz jest odpowiednio negatywny lub pozytywny.
+    Następnym krokiem jest inicjalizacja wag (Wzór \ref{wzor.wagi}).
+
+    \large
+    \begin{equation}
+        w_{1,i} = \frac{1}{2m}, \frac{1}{2l}
+        \label{wzor.wagi}
+    \end{equation}
+    odpowiednio dla $y_i = 0, 1$
+    , gdzie m, l oznacza odpowiednio liczbę negatywnych oraz pozytywnych zdjęć.
+    Następnie
+    Dla t = 1, \ldots, T:
+
+    1. Normalizowane są wagi (Wzór \ref{wzor.adaboost1}):
+    \large
+    \begin{equation}
+        w_{t,i} = \frac{w_{t,i}}{\sum_{j=1}^{n}w_{t,j}}
+        \label{wzor.adaboost1}
+    \end{equation}
+    $w_{t}$ jest rozkładem prawdopodobieństwa
+
+    2. Dla każdej cechy j, trenowany jest klasyfikator $h_{j}$, który używa tylko jedną cechę wyliczoną z filtru Haara.
+    Błąd jest wyliczony następująco (Wzór \ref{wzor.adaboost2}):
+    \large
+    \begin{equation}
+        w_{t}, \epsilon_{j} = \sum_{i}^{}w_{i} \abs{h_{j}(x_{i}) - y_{i}}
+        \label{wzor.adaboost2}
+    \end{equation}
+
+    3. Wybierany jest klasyfikator $h_{t}$ z najmniejszym błędem \epsilon_{t}.
+
+    4. Następuje aktualizacja wag (Wzór \ref{wzor.adaboost3}):
+    \large
+    \begin{equation}
+        w_{t+1,i} = w_{t,i}\beta_{t}^{1-e_{i}}
+        \label{wzor.adaboost3}
+    \end{equation}
+    , gdzie $e_{i} = 0$. Jeśli $x_{i}$ jest sklasyfikowane prawidłowo, wtedy $e_{i}=1$,
+    w innym wypadku $\beta_{t} = \frac{\epsilon_{t}}{1 - \epsilon_{t}}$.
+
+    Silny klasyfikator $h(x)$ jest opisany równaniem:
+    \large
+    \begin{equation}
+        h(x) = \left\{ \begin{array}{ll}
+                           1 & \textrm{gdy $\sum_{t=1}^{T}\alpha_{t}h_{t}(x) >= \frac{1}{2} \sum_{t=1}^{T}\alpha_{t}$}\\
+                           0 & \textrm{w przeciwnym wypadku}\\
+        \end{array} \right.
+        \label{wzor.adaboost4}
+    \end{equation}
+    , gdzie $\alpha_{t} = \lg \frac{1}{\beta_{t}}$
+
+    %    Główną koncepcją tego algorytmu jest  wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
     %    wytworzenia silnych klasyfikatorów.
     %    Silny klasyfikator powstaje jako liniowa kombinacja słabych
     %    klasyfikatorów ważonych.
