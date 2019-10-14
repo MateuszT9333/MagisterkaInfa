@@ -951,13 +951,66 @@ Karolina Nurzyńska}
     \end{equation}
     , gdzie $\alpha_{t} = \lg \frac{1}{\beta_{t}}$
 
-    %    Główną koncepcją tego algorytmu jest  wyodrębnienie najlepszych cech z obrazu, które następnie są używane do
-    %    wytworzenia silnych klasyfikatorów.
-    %    Silny klasyfikator powstaje jako liniowa kombinacja słabych
-    %    klasyfikatorów ważonych.
-    %    Z kolei słabe klasyfikatory są reprezentowane przez dane, które nie miały istotnego wpływu przy wykrywaniu pożądanego
-    %    obiektu \cite{dataMiningInferencePrediction}.
+    Algorytm Adaboost zmniejsza ilość cech Haara z ponad stu tysięcy do kilkuset - do tych najistotniejszych cech.
 
+    Ostatnim etapem jest wytworzenie kaskady klasyfikatorów.
+    Zwiększa ona znacznie szybkość wykrywania pożądanego obiektu na obrazie.
+    Ideą kaskady jest zgrupowanie klasyfikatorów,
+    które powstały w poprzednim procesie - procesie boostingu.
+    Klasyfikatory są grupowane w okna.
+    Okna są połączone ze sobą tak jak na rysunku \ref{fig.kaskadaHaar}.
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/kaskadaHaar.jpg}
+        \caption{Kaskada klasyfikatorów. \cite{kaskadaHaarObraz}}
+        \label{fig.kaskadaHaar}
+    \end{figure}
+    Okna są oznaczone jako P1, P2, \ldots, Pn.
+    Gdy dane okno wykryje obiekt przechodzi do kolejnego okna w kaskadzie.
+    W przeciwnym wypadku algorytm przerywa działanie i na danym obrazie nie zostaje zidentyfikowany obiekt.
+    Okna są poustawiane tak aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
+    prawdopodobieństwem błędu.
+    Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (Rysunek \ref{fig.ConfusionMatrix}).
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/ConfusionMatrix.jpg}
+        \caption{Macierz pomyłek.}
+        \label{fig.ConfusionMatrix}
+    \end{figure}
+
+    Z macierzy \ref{fig.ConfusionMatrix} można odczytać czy klasyfikator poprawnie sklasyfikował dane testowe.
+    W macierzy użyto 4 pojęcia:
+    \begin{itemize}
+        \item TP (true positive) - poprawna klasyfikacja, jako obiekt
+        \item TN (true negative) - poprawna klasyfikacja, jako nie - obiekt
+        \item FP (false positive) - błędna klasyfikacja jako obiekt
+        \item FN (false negative) - błędna klasyfikacja jako nie - obiekt
+    \end{itemize}
+
+    Prawdopodobieństwo błędu wyliczane jest ze współczynnika FPR (false positive rate) (Wzór \ref{wzor.fpr}).
+
+    \large
+    \begin{equation}
+        FPR= \frac{FP}{FP+TN}
+        \label{wzor.fpr}
+    \end{equation}
+
+    Natomiast prawdopodobieństwo wykrycia obiektu wyliczane jest ze współczynnika TPR (true positive ratio)
+    (Wzór \ref{wzor.tpr})
+    \large
+    \begin{equation}
+        TPR= \frac{TP}{TP+FN}
+        \label{wzor.tpr}
+    \end{equation}
+
+    Pierwsze okna posiadają klasyfikatory o słabszym TPR oraz FPR niż kolejne okna.
+    Oznacza to, że prawdopodobieństwo TPR w oknie $P_{x-1}$ jest mniejsze od tego w $P_{x}$.
+    Natomiast prawdopodobieństwo FPR w oknie $P_{x-1}$ jest większe od tego w $P_{x}$.
+    Ostatnie okna mają największy współczynnik TPR oraz najmniejszy FRP ze wszystkich.
+    Takie ustawienie okien ma na celu wstępne przepuszczenie przez okna obrazy,
+    które z dużym prawdopodobieństwem zawierają szukany obiekt.
+    Natomiast ostatnie okna w kaskadzie analizują niewielką część obrazu wejściowego.
     %Opis kaskady
     %    The overall form of the detection process is that of a degenerate decision tree, what we call a “cascade” (see Figure 4). A positive result from the first classifier triggers the
     %    evaluation of a second classifier which has also been adjusted to achieve very high detection rates. A positive result
@@ -967,12 +1020,12 @@ Karolina Nurzyńska}
     %    Stages in the cascade are constructed by training classifiers using AdaBoost and then adjusting the threshold to
     %    minimize false negatives. Note that the default AdaBoost
     %    threshold is designed to yield a low error rate on the training data. In general a lower threshold yields higher de
-    W ostatniej fazie stosowany jest algorytm kaskady klasyfikatorów.
-    Klasyfikatory są podzielone na grupy i
-    połączone ze sobą kaskadowo.
-    W algorytmie każda grupa może podjąć dwie decyzje - przekazanie danych z klasyfikatorów
-    do kolejnej grupy lub ich odrzucenie.
-    Ma to na celu odrzucenie wielu negatywnych danych z klasyfikatorów \cite{cascade}.
+    %    W ostatniej fazie stosowany jest algorytm kaskady klasyfikatorów.
+    %    Klasyfikatory są podzielone na grupy i
+    %    połączone ze sobą kaskadowo.
+    %    W algorytmie każda grupa może podjąć dwie decyzje - przekazanie danych z klasyfikatorów
+    %    do kolejnej grupy lub ich odrzucenie.
+    %    Ma to na celu odrzucenie wielu negatywnych danych z klasyfikatorów \cite{cascade}.
 
     Biblioteka OpenCV zawiera wytrenowane klasyfikatory, które zostały użyte w tej pracy magisterskiej.
     Wykorzystano
@@ -982,7 +1035,7 @@ Karolina Nurzyńska}
 
     %1600 wyrazow
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
-
+    %Wzory na wyznaczenie stref z "okienek"
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
 
     \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
