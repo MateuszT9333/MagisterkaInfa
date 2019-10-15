@@ -1036,10 +1036,73 @@ Karolina Nurzyńska}
     %1600 wyrazow
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
     %Wzory na wyznaczenie stref z "okienek"
+    Przed wyznaczeniem stref zmarszczkowych należy zidentyfikować na twarzy oczy oraz nos
+    (Rysunek \ref{fig.wykrywanieOczuNosa}).
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{Obrazy/wykrywanieOczuNosa.jpg}
+        \caption{Wykryty nos oraz oczy.}
+        \label{fig.wykrywanieOczuNosa}
+    \end{figure}
+
+
+    Należy podkreślić, że algorytm przerywa działanie jeśli nie zostanie wykryta twarz, oczy lub nos.
+
+    Gdy zostanie wykryty obszar twarzy oczu oraz nosa wyznaczone zostaje sześć stref zmarszczkowych
+    (Rysunek \ref{fig.wykrywanieStrefZmarszczkowych}).
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{Obrazy/wykrywanieStrefZmarszczkowych.jpg}
+        \caption{Strefy zmarszczkowe widoczne w białych prostokątach.}
+        \label{fig.wykrywanieStrefZmarszczkowych}
+    \end{figure}
+
+    Strefy zmarszczkowe są na czole, w górnej części nosa, górnej części policzków oraz w okolicach powiek.
+    To właśnie te miejsca zostały uznane przez autorów książki ,,Age Estimation from Face Image using Wrinkle
+    Features'' \cite{wrinkleFeatures} za najbardziej znaczące w detekcji wieku.
+
+    Po detekcji oczu należy zmierzyć odległość pomiędzy środkiem lewego oka ($x_{l},y_{l}$),
+    a prawego ($x_{p},y_{p}$)
+    (Wzór \ref{wzor.odlegloscPomiedzyOczami}).
+    \large
+    \begin{equation}
+        d= \sqrt{\left ( x_{r} - x_{l} \right )^{2}+\left (y_{r} - y_{l}  \right )^{2}}
+        \label{wzor.odlegloscPomiedzyOczami}
+    \end{equation}
+    \normalsize
+
+    Odległość d służy do wyznaczanie strefy znajdującej się na czole (Rysunek \ref{fig.wyznaczenieCzola}).
+
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/wyliczenieCzolka.jpg}
+        \caption{Wyznaczenie strefy znajdującej się na czole.}
+        \label{fig.wyznaczenieCzola}
+    \end{figure}
+
+    Autorzy \cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczy do linii brwi wynosi $0,4 \times d$.
+    Natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
+
+    Na Rysunku \ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
+    stref zmarszczkowych.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/wspolrzedneDoWyliczeniaStref.jpg}
+        \caption{Pomocnicze współrzędne do wyliczania stref zmarszczkowych.}
+        \label{fig.wspolrzedneDoWyliczeniaStref}
+    \end{figure}
+
+    %todo opisac poszczegolne strefy
+    %np strefa kolo powieki to polowa odleglosci pomiedzy x1,y1 a x1,y2 czyli de facto x1, y1-y2/2
+    %i dodatkowo polowa cos tam
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
-
+    %todo opis detektora z wiki angielskiej
+    %moze troche opisu configu Cannego od Anielskiej
     \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
-
+    %todo jak sie sumowalo
     \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
 
     \section{Grupowanie danych - FCM}\label{sec:grupowanieDanych}
