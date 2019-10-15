@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                        %
-% Szablon pracy dyplomowej magisterskiej % 
+% Szablon pracy dyplomowej magisterskiej %
 %                                        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -43,7 +43,7 @@ commentstyle=\color{gray}
 %%%% LIST GENERATOR %%%%%%%%%
 
 %\usepackage{tikz}
-%\usepackage{manfnt}   % dangerous sign 
+%\usepackage{manfnt}   % dangerous sign
 \usepackage{color}
 \definecolor{brickred}      {cmyk}{0 , 0.89, 0.94, 0.28}
 
@@ -92,7 +92,7 @@ commentstyle=\color{gray}
 }
 
 
-%%%%%%%%%%%%% OBCE WTRETY  
+%%%%%%%%%%%%% OBCE WTRETY
 \newcommand{\obcy}[1]{\emph{#1}}
 \newcommand{\ang}[1]{{\selectlanguage{british}\obcy{#1}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -502,20 +502,20 @@ Karolina Nurzyńska}
         \item metoda dopasowania szablonu twarzy
         \item metoda bazująca na wyglądzie
     \end{itemize}
-    Metoda oparta na nauce kieruje się wiedzą na temat wyglądu twarz.
-    Dokładniej chodzi o charakterystyczne cechy,
-    które pozwalają na wyodrębnienie obszaru twarzy na zdjęciu.
-    Mowa tutaj o cechach takich jak kształt twarzy, kolor, miejsca o różnej jasności czy krawędzie tworzone np przez
+    Metoda oparta na nauce kieruje się wiedzą na temat wyglądu twarzy, a
+    bardziej precyzyjnie chodzi o charakterystyczne cechy,
+    dzięki którym na zdjęciu można wyodrębnić obszar twarzy.
+    Mowa tutaj o cechach takich jak kształt twarzy, kolor, miejsca o różnej jasności czy specyficzne krawędzie tworzone np przez
     usta.
 
-    Metoda niezmienności cech wyszukuje takie strukturalne cechy twarzy, które są widoczne w każdych warunkach
+    W metodzie niezmienności cech wyszukuje się takie strukturalne cechy twarzy, które są widoczne w każdych warunkach
     oświetleniowych.
-    Ponadto powyższe cechy są widoczne bez względu na punkt widzenia np.
-    profil czy kąt nachylenia twarzy.
+    Ponadto te cechy są widoczne bez względu na punkt widzenia, nawet jeśli twarz jest widoczna
+    z profilu czy przechylona pod kątem.
 
-    Metoda dopasowania szablonu twarzy wykorzystuje kilka standardowych wzorów opisujących twarz.
-    Na wejściu algorytmu obraz jest porównywany z powyższymi wzorami.
-    Na wyjściu dostajemy informację w jakim stopniu obraz jest dopasowany do szablonu twarzy.
+    Z kolei metoda dopasowania szablonu twarzy wykorzystuje kilka standardowych wzorów opisujących twarz.
+    Na wejściu algorytmu obraz jest porównywany z tymi wzorami, a
+    na wyjściu dostajemy informację, w jakim stopniu obraz jest dopasowany do szablonu twarzy.
 
     Ideą metody bazującej na wyglądzie jest trenowanie dużego zbioru obrazów twarzy, tak aby wychwycić zmienność cech
     twarzy.
@@ -542,44 +542,44 @@ Karolina Nurzyńska}
     %    Każda z nich wyodrębnia z obrazu pewne cechy, które
     %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
 
-    Jednym z nich jest nieodpowiednia poza.
+    Jednym z problemów jest nieodpowiednia poza.
     Wiąże się to z różnymi ustawieniami twarzy wobec aparatu fotograficznego lub kamery.
-    Twarz może być nachylona, przechylona, odchylona.
-    Inaczej mówiąc może mieć różne położenie w trzech wymiarach.
-    Niektóre części twarzy lub cechy mogą zostać przysłonięte.
-    Im mniej cech widocznych na twarzy tym mniej danych, które algorytm może wyodrębnić z twarzy.
-    Im mniej danych posiada algorytm tym mniejsze prawdopodobieństwo prawidłowego wykrycia twarzy.
+    Twarz może być nachylona, przechylona lub odchylona.
+    Inaczej mówiąc może mieć różne położenie w trzech wymiarach, a
+    niektóre części twarzy lub jej cechy mogą zostać przysłonięte.
+    Im mniej cech widocznych na twarzy, tym mniej danych, które algorytm może z niej wyodrębnić, a
+    im mniej danych, którymi algorytm operuje, tym mniejsze prawdopodobieństwo prawidłowego wykrycia twarzy.
 
-    Pewne twarze mogą zawierać lub nie pewne cechy tj. brody, blizny, okulary.
+    Niektóre twarze mogą zawierać pewne wyróżniające je cechy takie jak broda, blizny czy okulary.
     Różnorodność tych cech także wpływa na efektywność wykrywania twarzy.
 
-    Wyrazy mimiczne wpływają na zwiększenie ilości zmarszczeń na twarzy.
-    Ponadto zmienia się kształt ust, pojawiają się ostre krawędzie wynikające z pracy mięśni twarzowych.
+    Ilość zmarszczeń na twarzy jest zmienna, w zależności od wyrazu mimicznego.
+    Przy różnych minach zmienia się kształt ust, a czasem pojawiają się ostre krawędzie wynikające z pracy mięśni twarzowych.
     Widoczne mogą być różne pofałdowania skóry.
 
-    Zdarza się, że część twarzy zostaje przysłonięta przez jakiś inny obiekt.
-    Na zdjęciu na którym jest wiele osób część twarzy może być przysłonięta przez inną twarz.
-    Przysłonięcie przez inny obiekt wiąże się z utratą informacji o części twarzy co zmniejsza prawdopodobieństwo
-    prawidłowego wykrycia twarzy.
+    Zdarza się, że twarz zostaje częściowo przysłonięta przez jakiś inny obiekt. Na przykład
+    na zdjęciu, które obejmuje grupę wielu osób, część danej twarzy może być przysłonięta przez inną twarz.
+    Takie przysłonięcie przez inny obiekt wiąże się z utratą informacji o części twarzy, co zmniejsza prawdopodobieństwo
+    prawidłowego jej wykrycia.
 
-    Istotnym elementem jest także oświetlenie twarzy.
-    Gdy twarz oświetlona jest tzw. twardym światłem występują na
-    niej tzw. ostre cienie i światła \ref{fig.oswietlenieTwarzy}.
+    Kolejnym istotnym elementem jest oświetlenie twarzy.
+    Gdy twarz oświetlona jest tzw. twardym światłem, występują na
+    niej cienie i światła określane jako ostre \ref{fig.oswietlenieTwarzy}.
     \begin{figure}
         \centering
         \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
         \caption{Przykład twarzy oświetlonej twardym (twarz po lewej) oraz miękkim światłem. \cite{oswietlenieTwarzy}}
         \label{fig.oswietlenieTwarzy}
     \end{figure}
-    W tym przypadku występuje większe ryzyko utraty szczegółów oświetlanej twarzy.
-    Gdy twarz jest skierowana na wprost słońca z dużym
-    prawdopodobieństwem można powiedzieć, że zostanie oświetlona twardym światłem.
-    Miękkie światło jest generowane na przykład przez zachmurzone niebo.
-    Istotne jest także źródło światła.
-    Źródło może być punktowe lub rozproszone.
-    Przy punktowym źródle światła twarz będzie
-    posiadać jednolity cień, którego intensywność będzie zależała od "twardości" światła.
-    Przy świetle rozproszonym intensywność cieni zostanie zmniejszona.
+    W tym przypadku ryzyko utraty szczegółów oświetlanej twarzy jest większe.
+    Kiedy twarz jest skierowana na wprost słońca, z dużym
+    prawdopodobieństwem można stwierdzić, że zostanie oświetlona twardym światłem.
+    Z kolei miękkie światło jest generowane na przykład przez zachmurzone niebo.
+    Istotne jest także źródło światła, które
+    może być punktowe lub rozproszone.
+    Przy punktowym źródle światła cała twarz jest
+    okryta jednolitym cieniem, którego intensywność zależy od "twardości" światła.
+    Natomiast przy świetle rozproszonym intensywność cieni jest mniejsza.
 
     Na Rys \ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
     \begin{figure}
