@@ -908,6 +908,7 @@ Karolina Nurzyńska}
         w_{1,i} = \frac{1}{2m}, \frac{1}{2l}
         \label{wzor.wagi}
     \end{equation}
+    \normalsize
     odpowiednio dla $y_i = 0, 1$
     , gdzie m, l oznacza odpowiednio liczbę negatywnych oraz pozytywnych zdjęć.
     Następnie
@@ -919,6 +920,7 @@ Karolina Nurzyńska}
         w_{t,i} = \frac{w_{t,i}}{\sum_{j=1}^{n}w_{t,j}}
         \label{wzor.adaboost1}
     \end{equation}
+    \normalsize
     $w_{t}$ jest rozkładem prawdopodobieństwa
 
     2. Dla każdej cechy j, trenowany jest klasyfikator $h_{j}$, który używa tylko jedną cechę wyliczoną z filtru Haara.
@@ -928,6 +930,7 @@ Karolina Nurzyńska}
         w_{t}, \epsilon_{j} = \sum_{i}^{}w_{i} \abs{h_{j}(x_{i}) - y_{i}}
         \label{wzor.adaboost2}
     \end{equation}
+    \normalsize
 
     3. Wybierany jest klasyfikator $h_{t}$ z najmniejszym błędem \epsilon_{t}.
 
@@ -937,6 +940,7 @@ Karolina Nurzyńska}
         w_{t+1,i} = w_{t,i}\beta_{t}^{1-e_{i}}
         \label{wzor.adaboost3}
     \end{equation}
+    \normalsize
     , gdzie $e_{i} = 0$. Jeśli $x_{i}$ jest sklasyfikowane prawidłowo, wtedy $e_{i}=1$,
     w innym wypadku $\beta_{t} = \frac{\epsilon_{t}}{1 - \epsilon_{t}}$.
 
@@ -949,6 +953,7 @@ Karolina Nurzyńska}
         \end{array} \right.
         \label{wzor.adaboost4}
     \end{equation}
+    \normalsize
     , gdzie $\alpha_{t} = \lg \frac{1}{\beta_{t}}$
 
     Algorytm Adaboost zmniejsza ilość cech Haara z ponad stu tysięcy do kilkuset - do tych najistotniejszych cech.
@@ -995,6 +1000,7 @@ Karolina Nurzyńska}
         FPR= \frac{FP}{FP+TN}
         \label{wzor.fpr}
     \end{equation}
+    \normalsize
 
     Natomiast prawdopodobieństwo wykrycia obiektu wyliczane jest ze współczynnika TPR (true positive ratio)
     (Wzór \ref{wzor.tpr})
@@ -1003,6 +1009,7 @@ Karolina Nurzyńska}
         TPR= \frac{TP}{TP+FN}
         \label{wzor.tpr}
     \end{equation}
+    \normalsize
 
     Pierwsze okna posiadają klasyfikatory o słabszym TPR oraz FPR niż kolejne okna.
     Oznacza to, że prawdopodobieństwo TPR w oknie $P_{x-1}$ jest mniejsze od tego w $P_{x}$.
@@ -1053,12 +1060,13 @@ Karolina Nurzyńska}
 
     \begin{figure}
         \centering
-        \includegraphics[width=8cm]{Obrazy/wykrywanieStrefZmarszczkowych.jpg}
+        \includegraphics[width=8cm]{Obrazy/strefyZmarszczkowe.jpg}
         \caption{Strefy zmarszczkowe widoczne w białych prostokątach.}
         \label{fig.wykrywanieStrefZmarszczkowych}
     \end{figure}
 
-    Strefy zmarszczkowe są na czole, w górnej części nosa, górnej części policzków oraz w okolicach powiek.
+    Strefy zmarszczkowe są na czole (Strefa ,,1''), w górnej części nosa (Strefa ,,2''), górnej części policzków
+    (Strefa ,,4'' i ,,5'') oraz w okolicach powiek (Strefa ,,3'' i ,,6'').
     To właśnie te miejsca zostały uznane przez autorów książki ,,Age Estimation from Face Image using Wrinkle
     Features'' \cite{wrinkleFeatures} za najbardziej znaczące w detekcji wieku.
 
@@ -1082,7 +1090,7 @@ Karolina Nurzyńska}
         \label{fig.wyznaczenieCzola}
     \end{figure}
 
-    Autorzy \cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczy do linii brwi wynosi $0,4 \times d$.
+    Autorzy \cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczy do linii brwi wynosi $0,4 * d$.
     Natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
 
     Na Rysunku \ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
@@ -1090,7 +1098,7 @@ Karolina Nurzyńska}
 
     \begin{figure}
         \centering
-        \includegraphics[width=11cm]{Obrazy/wspolrzedneDoWyliczeniaStref.jpg}
+        \includegraphics[width=9cm]{Obrazy/wspolrzedneDoWyliczeniaStref.jpg}
         \caption{Pomocnicze współrzędne do wyliczania stref zmarszczkowych.}
         \label{fig.wspolrzedneDoWyliczeniaStref}
     \end{figure}
@@ -1098,6 +1106,185 @@ Karolina Nurzyńska}
     %todo opisac poszczegolne strefy
     %np strefa kolo powieki to polowa odleglosci pomiedzy x1,y1 a x1,y2 czyli de facto x1, y1-y2/2
     %i dodatkowo polowa cos tam
+    Strefa 2 została wyznaczona znając położenie prawego oka, dystansu między oczami oraz strefy ,,1''.
+    Każda strefa może być wyznaczona przez jeden punkt (Rysunek \ref{fig.wykrywanieStrefZmarszczkowychPunkty})
+    oraz jej wymiary.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{Obrazy/wykrywanieStrefZmarszczkowychPunkty.jpg}
+        \caption{Punkty wyznaczające położenie stref.}
+        \label{fig.wykrywanieStrefZmarszczkowychPunkty}
+    \end{figure}
+
+    Współrzędna x punktu A została wyznaczona ze wzoru \ref{wzor.punktXA}
+
+    \large
+    \begin{equation}
+        x_{A}=x_{6} + 0,375 \times d
+        \label{wzor.punktXA}
+    \end{equation}
+    \normalsize
+    , gdzie $x_{6}$ to współrzędna z Rysunku \ref{fig.wspolrzedneDoWyliczeniaStref}.
+    Natomiast $d$ jest odległością pomiędzy oczami (Wzór \ref{wzor.odlegloscPomiedzyOczami}).
+
+    Współrzędna y punktu A - Wzór \ref{wzor.punktYA}:
+
+    \large
+    \begin{equation}
+        y_{A}=y_{7}
+        \label{wzor.punktYA}
+    \end{equation}
+    \normalsize
+    Współrzędna $y_{7}$ analogicznie jak $x_{6}$ znajduje się na Rysunku \ref{fig.wspolrzedneDoWyliczeniaStref}.
+
+    Zakładając, że prawe oko ma współrzędne $x_{o}$ oraz  $y_{o}$ wyznaczana jest wysokość strefy 2
+    (Wzór \ref{wzor.punktHA}).
+    \large
+    \begin{equation}
+        h_{A}=y_{o}-y_{7}
+        \label{wzor.punktHA}
+    \end{equation}
+    \normalsize
+
+    Szerokość strefy 2 (Wzór \ref{wzor.punktWA}):
+    \large
+    \begin{equation}
+        w_{A}=0,25 * d
+        \label{wzor.punktWA}
+    \end{equation}
+    \normalsize
+    Wartość 0,25 ze wzoru  \ref{wzor.punktWA} została dobrana empirycznie.
+
+    Współrzędne punktu C (strefa 4) zostają wyznaczone ze Wzoru \ref{wzor.punktXC} oraz \ref{wzor.punktYC}.
+    \large
+    \begin{equation}
+        x_{C}=x_{3}
+        \label{wzor.punktXC}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        y_{C}= \frac{y_{4} - y_{3}}{2}
+        \label{wzor.punktYC}
+    \end{equation}
+    \normalsize
+
+    Wysokość oraz szerokość strefy 4 (Wzór \ref{wzor.punktHC} oraz \ref{wzor.punktWC})
+
+    \large
+    \begin{equation}
+        h_{C}=y_{C} - y_{3}
+        \label{wzor.punktHC}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        w_{C}= x_{3} - x_{1}
+        \label{wzor.punktWC}
+    \end{equation}
+    \normalsize
+
+    Strefa 5 zawiera punkt D - Wzór \ref{wzor.punktXD} oraz \ref{wzor.punktYD}.
+
+    \large
+    \begin{equation}
+        x_{D}=x_{4}
+        \label{wzor.punktXD}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        y_{D}= y_{C}
+        \label{wzor.punktYD}
+    \end{equation}
+    \normalsize
+
+    Dla strefy 5 wyznaczamy wysokość (Wzór \ref{wzor.punktHD}) oraz szerokość (Wzór \ref{wzor.punktWD}).
+
+    \large
+    \begin{equation}
+        h_{D}=h_{C}
+        \label{wzor.punktHD}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        w_{D}= x_{2} - x_{4}
+        \label{wzor.punktWD}
+    \end{equation}
+    \normalsize
+
+    Strefa 3 zawiera punkt B wyznaczany ze Wzorów \ref{wzor.punktXB} i \ref{wzor.punktYB}
+
+    \large
+    \begin{equation}
+        x_{B}=x_{1}
+        \label{wzor.punktXB}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        y_{B}= \frac{y_{2} - y_{1}}{2}
+        \label{wzor.punktYB}
+    \end{equation}
+    \normalsize
+
+    Wysokość (Wzór \ref{wzor.punktHB}) oraz szerokość (Wzór \ref{wzor.punktWB}) strefy 3.
+
+    \large
+    \begin{equation}
+        h_{B}=y_{C} - y_{B}
+        \label{wzor.punktHB}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        w_{B}= w_{C} * 0,4
+        \label{wzor.punktWB}
+    \end{equation}
+    \normalsize
+
+    Na samym końcu zostaje wyznaczona strefa 6.
+    Wyznaczona zostaje współrzędna E - Wzór \ref{wzor.punktXE} i \ref{wzor.punktYE}.
+    \large
+    \begin{equation}
+        x_{E}=x_{2}
+        \label{wzor.punktXE}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        y_{E}= y_{B}
+        \label{wzor.punktYE}
+    \end{equation}
+
+    Szerokość oraz wysokość strefy 6.
+
+    \large
+    \begin{equation}
+        h_{E}=h_{B}
+        \label{wzor.punktHE}
+    \end{equation}
+    \normalsize
+
+    \large
+    \begin{equation}
+        w_{E}= w_{D} * 0,4
+        \label{wzor.punktWE}
+    \end{equation}
+    \normalsize
+
+    Należy zauważyć, że szerokość strefy 3 i 6 jest pomnożona przez 0,4 razy szerokość odpowiednio
+    strefy 4 i 5.
+    Wartość ,,0,4'' została dobrana empirycznie.
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
     %todo opis detektora z wiki angielskiej
     %moze troche opisu configu Cannego od Anielskiej
