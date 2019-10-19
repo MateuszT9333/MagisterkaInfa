@@ -1310,7 +1310,7 @@ Karolina Nurzyńska}
     Rachunek wariacyjny to dziedzina analizy matematycznej.
     Dziedzina ta analizuje przestrzenie funkcyjne i znajduje w nich ekstrema funkcjonałów.
     Funkcjonały natomiast odwzorowują przestrzeń wektorową na liczby rzeczywiste.
-    Reasumując, rachunek wariacyjny pomaga znaleźć charakterystyczną funkcję.
+    Rachunek wariacyjny pomaga znaleźć charakterystyczną funkcję.
     Funkcjonał dla powyższej funkcji przyjmuje wartość ekstremalną.
     Algorytm detektora jest podzielony na kilka kroków~\cite{Canny}:
     \begin{itemize}
@@ -1448,14 +1448,42 @@ Karolina Nurzyńska}
     , gdzie WF to wrinkle feature - parametr określający ilość zmarszczek dla danej osoby.
 
     \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
+    W celu skonstruowania programu wyznaczającego wiek na podstawie tekstury należy wcześniej zbadać zależność ilości
+    zmarszczek od wieku.
+    W tym celu należy posiadać odpowiednią bazę zdjęć, na których można przeprowadzić wyżej wspomniane badania.
 
-    \section{Grupowanie danych - FCM}\label{sec:grupowanieDanych}
+    Jest wiele darmowych źródeł obrazów twarzy.
+    Najczęściej używane bazy to FG-NET, MORTH II.
+    Zawierają one dziesiątki tysięcy zdjęć.
+    Zdjęcia są różnej jakości i nie każda baza zdjęć nadaje się do konkretnych badań~\cite{khryashchevGanin}.
+    Przy realizacji tej pracy użyto bazę UTKFace,
+    ponieważ ścieżka pliku dla każdego obrazu zawiera informacje na temat rzeczywistego wieku.
+    W związku z powyższym z każdego zdjęcia z tej bazy otrzymywano dwie informację - rzeczywisty wiek danej osoby oraz
+    współczynnik zmarszczek.
 
-    \subsection{Wstęp do grupowania danych}\label{subsec:wstęp-do-grupowania-danych}
-    \subsection{Metoda FCM}\label{subsec:metoda-fcm}
+    Autorzy algorytmu do trenowania użyli algorytm grupowania - Fuzzy C-Means.
+    W wyniku działania algorytmu otrzymuje się dane dzięki, którym można na podstawie współczynnika zmarszczek można
+    oszacować wiek~\cite{wrinkleFeatures}.
+    \section{Grupowanie danych - Fuzzy C-Means}\label{sec:grupowanieDanych}
+    %    Grupowanie danych zwane również klasteryzacją polega na podzieleniu dużego zbioru danych na grupy.
+    %    Powyższe grupy posiadają dane, które są podobne do siebie.
+    Grupowanie danych zwane również klasteryzacją jest szeroko stosowane w uczeniu maszynowym, rozpoznawaniu wzorców,
+    analizie obrazu, bioinformatyce, kompresji danych czy w grafice komputerowej.
+    Grupowanie polega na podzieleniu dużego zbioru danych na grupy.
+    Powyższe grupy posiadają dane, które są podobne do siebie~\cite{clusterWstep}.
 
+    %todo - wstep, jaki jest sens grupowania
+
+    %    https://pl.wikipedia.org/wiki/Analiza_skupień
+    %    https://en.wikipedia.org/wiki/Cluster_analysis
+    %    https://sci-hub.tw/10.1109/ICCSA.2019.000-1
+    %    https://www.researchgate.net/publication/329424581_Data_clustering
+    %    Podac rozne przyklady algorytmow - hierarchiczne, niehierarchiczne
+    %todo - dokladny opis jak to dziala
+    %    https://sci-hub.tw/10.1007/s12046-019-1166-1
+    %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
     \section{Wyznaczanie wieku}\label{sec:wyznaczanieWieku}
-
+    % opisac wraz z przykladem moze jakis rysuneczek.
 
     %Tutaj powinno byc 5000 slow
 
