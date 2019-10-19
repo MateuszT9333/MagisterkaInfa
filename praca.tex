@@ -1,3 +1,4 @@
+%! Suppress = TooLargeSection
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                        %
 % Szablon pracy dyplomowej magisterskiej %
@@ -1279,7 +1280,7 @@ Karolina Nurzyńska}
     Należy zauważyć, że szerokość strefy 3 i 6 jest pomnożona przez 0,4 razy szerokość odpowiednio
     strefy 4 i 5.
     Wartość ,,0,4'' została dobrana empirycznie.
-    \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
+    \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanie-zmarszczek---detektor-canny}
     %todo opis detektora z wiki angielskiej
     %moze troche opisu configu Cannego od Anielskiej
     Następnym krokiem algorytmu po wyznaczeniu stref zmarszczkowych jest wyodrębnienie zmarszczek.
@@ -1311,7 +1312,7 @@ Karolina Nurzyńska}
     Funkcjonały natomiast odwzorowują przestrzeń wektorową na liczby rzeczywiste.
     Reasumując, rachunek wariacyjny pomaga znaleźć charakterystyczną funkcję.
     Funkcjonał dla powyższej funkcji przyjmuje wartość ekstremalną.
-    Algorytm detektora jest podzielony na kilka kroków:
+    Algorytm detektora jest podzielony na kilka kroków~\cite{Canny}:
     \begin{itemize}
         \item Redukcja szumów na obrazie filtrem Gaussa.
         \item Szukanie gradientów jasności.
@@ -1334,11 +1335,10 @@ Karolina Nurzyńska}
     Efekt szumu jest spotykany również w fotografii analogowej.
     W fotografii cyfrowej szum wzrasta na skutek zwiększania czułości matrycy lub przez wzrost jej temperatury.
     Redukcję szumów można uzyskać stosując filtr Gaussa.
-    Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szu
-    mu.
+    Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szumu.
     Filtr Gaussa może mieć różne wymiary.
     Najczęściej stosowanym jest 5x5.
-    Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu.
+    Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu~\cite{Canny}.
     \subsection{Szukanie gradientów jasności}\label{subsec:szukanie-gradientów-jasności}
     Istotnym parametrem w wykrywaniu krawędzi jest gradient jasności.
     Określa on jak bardzo zmienia się jasność danego piksela względem sąsiadujących pikseli.
@@ -1366,7 +1366,7 @@ Karolina Nurzyńska}
     lub $\Theta = 135^{\circ}$ stopni).
     Każdy piksel obrazu otrzymuje wartość gradientu (Wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
-    W wyniku powyższego działania zostaje otrzymany obraz gradientowy.
+    W wyniku powyższego działania zostaje otrzymany obraz gradientowy~\cite{Canny}.
     \subsection{Zastosowanie techniki pocieniania krawędzi}\label{subsec:zastosowanie-techniki-pocieniania-krawędzi}
     Pocienianie krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
     Krawędzie wykryte za pomocą gradientu są rozmyte (nieostre).
@@ -1378,18 +1378,73 @@ Karolina Nurzyńska}
 
     Odczytana zostaje wartość gradientu oraz jego kierunek dla danego piksela.
     Następnie wartość gradientu zostaje porównana z wartościami gradientu dla
-    pikseli, które znajdują się wzdłuż dwóch linii.
-    Jedna z nich jest wyznaczona przed aktualny kierunek gradientu, a druga przez przeciwny kierunek.
+    dwóch sąsiednich pikseli.
+    Pierwszy sąsiedni piksel jest wyznaczony przed aktualny kierunek gradientu, a drugi przez przeciwny kierunek.
     Jeśli wartość danego piksela jest największa spośród pikseli wzdłuż wyżej wymienionych linii,
-    to dany piksel należy do najostrzejszej krawędzi.
+    to dany piksel należy do najostrzejszej krawędzi~\cite{Canny}.
 
-    \subsection{Likwidacja krawędzi o małym gradiencie jasności}\label{subsec:likwidacja-krawędzi-o-małym-gradiencie-jasności}
+    \subsection{Filtracja krawędzi o małym gradiencie jasności}\label{subsec:filtracja-krawędzi-o-małym-gradiencie-jasności}
+    Zastosowanie techniki pocieniania krawędzi zostawia wiele krawędzi, które są wygenerowane przez szum i zmiany
+    kolorów na obrazie.
+    Kolejnym krokiem jest filtracja powyższych krawędzi, gdyż są one nadmiarowe.
+    W tym celu ustawiany jest pewien próg - próg mały.
+    Oprócz progu małego ustawiany jest próg duży w celu wyodrębnienia krawędzi o wysokim gradiencie jasności.
+    Jeśli wartość gradientu dla danej krawędzi jest mniejsza od progu małego, to zostaje ona usunięta.
+    W przypadku, gdy wartość jest większa od progu małego, ale mniejsza od progu dużego to dana krawędź
+    zostaje oznaczona jako słaba.
+    Krawędź zostaje oznaczona jako mocna, gdy wartość gradientu dla niej jest większa od wartości progu dużego~\cite{Canny}.
+
     \subsection{Filtracja poprzez histerezę}\label{subsec:filtracja-poprzez-histerezę}
-
-
+    W wyniku działania algorytmu do tej pory zostały uzyskane słabe oraz mocne krawędzie.
+    Mocne krawędzie zostaną oznaczone jako prawdziwe krawędzie znajdujące się na obrazie.
+    Słabe krawędzie mogą być częścią mocnych krawędzi.
+    Ponadto mogą zostać wygenerowane przez szum lub zmiany kolorów.
+    Powyższe krawędzie nie są prawdziwymi krawędziami w obrazie, więc w ostatnim kroku algorytmu powinny zostać
+    przefiltrowane.
+    Słabe krawędzie, które są powiązane z mocnymi znajdują się w najbliższym sąsiedztwie z mocnymi krawędziami.
+    W celu odnalezienia tych powiązań pomiędzy krawędziami zostaje zastosowana analiza spójności krawędzi.
+    Jeśli zostaje zidentyfikowane powiązanie pomiędzy mocną, a słabą krawędzią to słaba krawędź zostaje w obrazie.
+    W przypadku, gdy słaba krawędź nie jest powiązana z żadną mocną krawędzie - zostaje usunięta~\cite{Canny}.
 
     \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
-    %todo jak sie sumowalo
+    W wyniku działania detektora Cannego, który został opisany w sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
+    wygenerowany zostaje obraz binarny z wyodrębnionymi krawędziami.
+    Obraz binarny zawiera piksele o dwóch wartościach jasności pikseli.
+    Piksel może być albo biały albo czarny.
+    Krawędzie można rozpoznać jako białe piksele, natomiast czarne piksele oznaczają brak krawędzi (Rysunek~\ref{fig.mojaTwarzGray}).
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/mojaTwarzGray.jpg}
+        \caption{a) Oryginalny obraz b) Obraz z wykrytymi krawędziami.}
+        \label{fig.mojaTwarzGray}
+    \end{figure}
+
+    Na Rysunku \ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
+    Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
+    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja \ref{sec:wyznaczanieStref}),
+    które identyfikują zmarszczki.
+    Ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek na twarzy danej
+    osoby.
+
+    Z każdej strefy zmarszczkowej obliczany jest stosunek ilości białych pikseli do wszystkich
+    pikseli(Wzór ~\ref{wzor.wspolczynnikZmarszczek}).
+    \large
+    \begin{equation}
+        W_{s1} = \frac{suma białych pikseli w strefie 1}{suma wszystkich pikseli w strefie 1}
+        \label{wzor.wspolczynnikZmarszczek}
+    \end{equation}
+    \normalsize
+    , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1.
+    Analogicznie obliczane są stosunki pikseli dla pozostałych stref.
+    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór \ref{wzor.wrinkleFeature}).
+    \large
+    \begin{equation}
+        WF = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
+        \label{wzor.wrinkleFeature}
+    \end{equation}
+    , gdzie WF to wrinkle feature - parametr określający ilość zmarszczek dla danej osoby.
+    \normalsize
     \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
 
     \section{Grupowanie danych - FCM}\label{sec:grupowanieDanych}
