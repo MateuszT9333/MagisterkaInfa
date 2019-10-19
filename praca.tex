@@ -1428,14 +1428,15 @@ Karolina Nurzyńska}
     osoby.
 
     Z każdej strefy zmarszczkowej obliczany jest stosunek ilości białych pikseli do wszystkich
-    pikseli(Wzór ~\ref{wzor.wspolczynnikZmarszczek}).
+    pikseli (Wzór ~\ref{wzor.wspolczynnikZmarszczek}).
     \large
     \begin{equation}
-        W_{s1} = \frac{suma białych pikseli w strefie 1}{suma wszystkich pikseli w strefie 1}
+        W_{s1} = \frac{PB_{s1}}{PW_{s1}}
         \label{wzor.wspolczynnikZmarszczek}
     \end{equation}
     \normalsize
-    , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1.
+    , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1,
+    $PB_{s1}$ - suma białych pikseli w strefie 1, $PW_{s1}$ - suma wszystkich pikseli w strefie 1.
     Analogicznie obliczane są stosunki pikseli dla pozostałych stref.
     Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór \ref{wzor.wrinkleFeature}).
     \large
@@ -1443,8 +1444,9 @@ Karolina Nurzyńska}
         WF = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
         \label{wzor.wrinkleFeature}
     \end{equation}
-    , gdzie WF to wrinkle feature - parametr określający ilość zmarszczek dla danej osoby.
     \normalsize
+    , gdzie WF to wrinkle feature - parametr określający ilość zmarszczek dla danej osoby.
+
     \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
 
     \section{Grupowanie danych - FCM}\label{sec:grupowanieDanych}
