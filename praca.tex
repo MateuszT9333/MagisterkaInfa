@@ -314,7 +314,7 @@ Karolina Nurzyńska}
 
     %%%%%%%%%%%%%% wlasciwa tresc pracy %%%%%%%%%%%%%%%%%
 
-    \chapter{Wstęp}
+    \chapter{Wstęp}\label{ch:wstęp}
 
     %\begin{itemize}
     %\item wprowadzenie w problem/zagadnienie
@@ -339,12 +339,12 @@ Karolina Nurzyńska}
     Wykrycie twarzy na teksturze jest możliwe dzięki algorytmom rozpoznawaniu obrazu.
     Rozpoznawanie obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
     Mogą
-    to być osoby, pojazdy, przedmioty itp. (Rys. \ref{fig.rozpoznawanieObiektow})
+    to być osoby, pojazdy, przedmioty itp. (Rys.~\ref{fig.rozpoznawanieObiektow})
 
     \begin{figure}
         \centering
-        \includegraphics[width=11cm]{Obrazy/rozpoznawanieObiektow}
-        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy. \cite{rozpoznawanieObiektow}}
+        \includegraphics[width=11cm]{Obrazy/rozpoznawanieObiektow.jpeg}
+        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy.~\cite{rozpoznawanieObiektow}}
         \label{fig.rozpoznawanieObiektow}
     \end{figure}
 
@@ -370,7 +370,7 @@ Karolina Nurzyńska}
     Można znaleźć o wiele więcej potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie
     tekstury (obrazu) twarzy.
     Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
-    opiera się w głównej mierze na sztucznej inteligencji \cite{computerVision}.
+    opiera się w głównej mierze na sztucznej inteligencji~\cite{computerVision}.
     %275 wyrazow
 
     %    \section{Cel i zakres pracy}
@@ -389,8 +389,8 @@ Karolina Nurzyńska}
     %    \section{Metoda b}
     %    \section{Metoda wrinkle feature}
 
-    \chapter{Metoda bazowa - wrinkle feature}
-    %todo rozne metody
+    \chapter{Metoda bazowa - wrinkle feature}\label{ch:metoda-bazowa---wrinkle-feature}
+
     Istnieje wiele metod wyznaczania wieku z obrazu twarzy.
     W literaturze spotkano rozwiązania, w których wyznaczany
     jest konkretny
@@ -399,7 +399,7 @@ Karolina Nurzyńska}
     interpretacji zmarszczek.
     Była ona w stanie ze stu procentową poprawnością wyznaczyć czy dana osoba jest osobą
     dorosłą lub
-    dzieckiem \cite{kwonLobo}.
+    dzieckiem~\cite{kwonLobo}.
 
     W kolejnych latach algorytmy i techniki szacowania wieku były udoskonalane.
     Badano wpływ starzenia się osób na
@@ -409,29 +409,29 @@ Karolina Nurzyńska}
     Takimi czynnikami są min.
     płeć, poziom stresu, ekspozycja na działanie środowiska zewnętrznego.
     Powyższe metody zastosowano w pracy ,,Toward automatic simulation
-    of aging effects on face images'' autorstwa A. Lanitis, Ch. J. Taylor oraz T. F. Cootes \cite{lanitisTaylor}.
+    of aging effects on face images'' autorstwa A. Lanitis, Ch. J. Taylor oraz T. F. Cootes~\cite{lanitisTaylor}.
     Należy dodać, że w powyższej pracy stosowano trenowanie zbioru zdjęć.
     Trenowanie polega na wykryciu relacji pewnych cech twarzy do wieku osób.
 
     W kolejnych latach pojawiło się podejście porównywania cech twarzy tej samej osoby w różnym wieku.
     Różnice w powyższych cechach posłużyły do zbudowania statystyki zmian cech twarzy wraz ze starzeniem się.
     Powyższe podejście zostało zaprezentowane w pracy ,,Face verification across age progression''
-    autorstwa N. Ramanathan oraz R. Chellappa \cite{ramanthanChelappa}.
+    autorstwa N. Ramanathan oraz R. Chellappa~\cite{ramanthanChelappa}.
 
     Rozwinięciem tego pomysłu była praca ,,Automatic age estimation based
-    on facial aging patterns'' autorstwa X. Geng, Z. Zhou i K. Smith-Miles \cite{gengZhou}.
+    on facial aging patterns'' autorstwa X. Geng, Z. Zhou i K. Smith-Miles~\cite{gengZhou}.
     W tej pracy porównywano sekwencje wielu zdjęć twarzy jednej osoby.
     Zdjęcia przestawiały twarz w różnym wieku.
     Powyższe badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
 
     Praca ,,A new algorithm for age recognition
-    from facial images'' autorstwa M.M. Dehshibi oraz A. Bastanfard \cite{dehshibiBastard} przy szacowaniu wieku
+    from facial images'' autorstwa M.M. \ Dehshibi oraz A. Bastanfard~\cite{dehshibiBastard} przy szacowaniu wieku
     analizuje proporcje twarzy oraz ilość zmarszczek.
 
     Praca ,,Age Estimation from Face Images: Challenging
     Problem for Audience Measurement Systems'' autorstwa
     Vladimira Khryashcheva, Alexandra Ganina, Olgi Stepanovej oraz
-    Antona Lebedeva podsumowała techniki szacowania wieku \cite{khryashchevGanin}.
+    Antona Lebedeva podsumowała techniki szacowania wieku~\cite{khryashchevGanin}.
     Z podsumowania wynikło, że najczęściej stosuje się do wyodrębniania cech z twarzy BIF,
     czyli biologically inspired features.
     Powyższa metoda została zaprezentowana w książce ,,Human Age Estimation Using Bio-inspired Features''
@@ -446,12 +446,12 @@ Karolina Nurzyńska}
     Zastosowany algorytm wykrywania został
     opisany w sekcji \ref{sec:metodaWykrywaniaTwarzy}
     Następnie należy wyznaczyć strefy zmarszczkowe na twarzy.
-    W artykule \cite{wrinkleFeatures} udowodniono,
+    W artykule~\cite{wrinkleFeatures} udowodniono,
     że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
     Powyższe strefy zostały wymienione w sekcji \ref{sec:wyznaczanieStref}.
     Sekcja \ref{sec:wykrywanieZmarszczek} przedstawia technikę wykrywania zmarszczek znajdujących się w strefach.
     Wykryte zmarszczki
-    pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji \ref{sec:wyliczanieWrinkleFeature}.
+    pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
     W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby (Rysunek \ref{fig.faza1Algorytmu}).
     Kolejna faza
     jest potrzebna do
@@ -479,7 +479,7 @@ Karolina Nurzyńska}
 
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy.
-    Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie \cite{mehdiRizvi}:
+    Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie~\cite{mehdiRizvi}:
     %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
     %     Knowledge-based methods: These rule-based methods encode human knowledge
     %    of what constitutes a typical face. Usually, the rules capture the relationships
@@ -522,7 +522,7 @@ Karolina Nurzyńska}
     Tak wytrenowany model jest później wykorzystywany do wykrywania twarzy.
 
 
-    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów  \cite{mehdiRizvi}.
+    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów~\cite{mehdiRizvi}.
     %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
     %    Pose: The images of a face vary due to the relative camera-face pose (frontal, 45
     %    degree, profile, upside down), and some facial features such as an eye or the nose
@@ -557,18 +557,19 @@ Karolina Nurzyńska}
     Przy różnych minach zmienia się kształt ust, a czasem pojawiają się ostre krawędzie wynikające z pracy mięśni twarzowych.
     Widoczne mogą być różne pofałdowania skóry.
 
-    Zdarza się, że twarz zostaje częściowo przysłonięta przez jakiś inny obiekt. Na przykład
-    na zdjęciu, które obejmuje grupę wielu osób, część danej twarzy może być przysłonięta przez inną twarz.
+    Zdarza się, że twarz zostaje częściowo przysłonięta przez jakiś inny obiekt.
+    Na przykład na zdjęciu,
+    które obejmuje grupę wielu osób, część danej twarzy może być przysłonięta przez inną twarz.
     Takie przysłonięcie przez inny obiekt wiąże się z utratą informacji o części twarzy, co zmniejsza prawdopodobieństwo
     prawidłowego jej wykrycia.
 
     Kolejnym istotnym elementem jest oświetlenie twarzy.
     Gdy twarz oświetlona jest tzw. twardym światłem, występują na
-    niej cienie i światła określane jako ostre \ref{fig.oswietlenieTwarzy}.
+    niej cienie i światła określane jako ostre (Sekcja \ref{fig.oswietlenieTwarzy}).
     \begin{figure}
         \centering
         \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
-        \caption{Przykład twarzy oświetlonej twardym (twarz po lewej) oraz miękkim światłem. \cite{oswietlenieTwarzy}}
+        \caption{Przykład twarzy oświetlonej twardym (twarz po lewej) oraz miękkim światłem.~\cite{oswietlenieTwarzy}}
         \label{fig.oswietlenieTwarzy}
     \end{figure}
     W tym przypadku ryzyko utraty szczegółów oświetlanej twarzy jest większe.
@@ -585,7 +586,7 @@ Karolina Nurzyńska}
     \begin{figure}
         \centering
         \includegraphics[width=15cm]{Obrazy/technikiWykrywaniaTwarzy.jpg}
-        \caption{Różne techniki wykrywania twarzy. \cite{faceDetectionTechniques}}
+        \caption{Różne techniki wykrywania twarzy.~\cite{faceDetectionTechniques}}
         \label{fig.technikiWykrywaniaTwarzy}
     \end{figure}
     %    https://sci-hub.tw/10.1007/s10462-018-9650-2
@@ -600,7 +601,7 @@ Karolina Nurzyńska}
 
     %https://sci-hub.tw/10.1016/S0031-3203(00)00134-5
     W pracy ,,An efficient algorithm for human face detection and facial
-    feature extraction under different conditions'' (\cite{wongLamSiu})
+    feature extraction under different conditions''~\cite{wongLamSiu}
     przedstawiono opisaną w skrócie poniżej technikę wykrywania twarzy.
     W pierwszym etapie procesu obszary, gdzie może znajdować się ludzkie oko,
     są wykrywane przez przeprowadzenie testów na zacienionych rejonach obrazu.
@@ -621,7 +622,7 @@ Karolina Nurzyńska}
     %todo Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
     %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
     W roku 1997 w pracy pt. ,,Vision for man-machine interaction'' opisano metodę wykrywania twarzy bazującą na
-    wykrywaniu cechy jaką jest kolor skóry \cite{clowleyCoutaz}.
+    wykrywaniu cechy jaką jest kolor skóry~\cite{clowleyCoutaz}.
     Kolor skóry jest najbardziej widoczną cechą twarzy zarówno dla człowieka jak i dla maszyny.
     Ponadto kolor jest przetwarzany znacznie szybciej od innych cech.
     Przy dobrych warunkach oświetleniowych ustawienie twarzy nie ma wpływu na skuteczność wykrywalności twarzy
@@ -638,7 +639,7 @@ Karolina Nurzyńska}
     biblioteka była jednym z niezbędnym elementów programu przy wykrywaniu wieku z tekstury twarzy.
     W związku z powyższym w wykrywaniu twarzy zastosowano algorytm Haar Cascade.
     Omawiany algorytm został zaprezentowany w książce ,,Rapid Object Detection using a Boosted Cascade of Simple
-    Features'' w 2001 i składa się z trzech faz \cite{violaJones}.
+    Features'' w 2001 i składa się z trzech faz~\cite{violaJones}.
     W pierwszej obraz wejściowy przekształcany jest na obraz scałkowany.
     Następnie wykorzystywany jest algorytm do boostingu, który zmniejsza ilość klasyfikatorów tylko do tych
     najbardziej istotnych.
@@ -660,13 +661,13 @@ Karolina Nurzyńska}
     \subsection{Konwersja do skali szarości oraz przestrzenie barw}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
     %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
-    Najczęściej są to 3 lub 4 wartości \cite{przestrzenieKolorow}.
+    Najczęściej są to 3 lub 4 wartości~\cite{przestrzenieKolorow}.
     Pierwszą przestrzenią barw była CIEXYZ. Została ona stworzona w 1931 przez
     Międzynarodowa Komisja ds. Oświetlenia (International Commission on Illumination).
     Przestrzeń barw CIEXYZ została specjalnie stworzona, by odtworzyć sposób postrzegania barw przez ludzkie oko.
     Barwa jest opisywana w trzech współrzędnych trójchromatycznych X,Y,Z.
     Powyższe współrzędne są zależne od składowych - sprawności wizualnych czopków.
-    Czopki to światłoczułe receptory siatkówki ludzkiego oka \cite{przestrzenieKolorow}.
+    Czopki to światłoczułe receptory siatkówki ludzkiego oka~\cite{przestrzenieKolorow}.
     Współrzędne X,Y,Z wyliczane są na podstawie trzech podstawowych barw R (czerwonej),
     G (zielonej) i B (niebieskiej).
     Współrzędne XYZ są często reprezentowane przez luminancję Y oraz współrzędne x, y chromatyczności.
@@ -685,12 +686,12 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Na rysunku \ref{fig.CIEXYZ} przedstawiono diagram chromatyczności reprezentujący przestrzeń barw CIEXYZ.
+    Na Rysunku~\ref{fig.CIEXYZ} przedstawiono diagram chromatyczności reprezentujący przestrzeń barw CIEXYZ.
 
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/CIEXYZ.jpg}
-        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy. \cite{diagramCIEXYZ}}
+        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy.~\cite{diagramCIEXYZ}}
         \label{fig.CIEXYZ}
     \end{figure}
 
@@ -703,13 +704,12 @@ Karolina Nurzyńska}
         \item K - key colour - kolor czarny
     \end{itemize}
     Barwa wynikowa powstaje poprzez mieszanie trzech kolorów - niebieskiego, karmazynowego oraz żółtego.
-    Mieszanie zachodzi według zasady syntezy subtraktywnej \cite{przestrzenieKolorow}.
+    Mieszanie zachodzi według zasady syntezy subtraktywnej~\cite{przestrzenieKolorow}.
     Synteza subtraktywna polega na mieszaniu kolorów przez odejmowanie promieniowań widzialnych różnych długości.
     Przykładem syntezy subtraktywnej jest np. mieszanie farb o różnych kolorach.
 
-    Najczęściej barwy są reprezentowane przez przestrzeń barw RGB \cite{przestrzenieKolorow}.
-    Przestrzeń kolorów RGB składa się z trzech kanałów
-    \cite{kolory}:
+    Najczęściej barwy są reprezentowane przez przestrzeń barw RGB~\cite{przestrzenieKolorow}.
+    Przestrzeń kolorów RGB składa się z trzech kanałów~\cite{kolory}:
 
     \begin{itemize}
         \item R - czerwonego (z angielskiego Red)
@@ -718,7 +718,7 @@ Karolina Nurzyńska}
     \end{itemize}
     Barwy mieszane są poprzez syntezę addytywną .
     W przeciwieństwie do syntezy subtraktywnej barwa wynikowa powstaje poprzez sumowanie wiązek światła widzialnego o
-    różnych długościach \cite{przestrzenieKolorow}.
+    różnych długościach~\cite{przestrzenieKolorow}.
     Każdy piksel opisany za pomocą przestrzenie barw RGB ma trzy 8-bitowe wartości reprezentujący każdy kanał.
     Spotykane
     są 12- lub 16-bitowe reprezentacje kanałów, jednak 8-bitowa jest najpopularniejsza.
@@ -726,16 +726,16 @@ Karolina Nurzyńska}
     wartość ,,0''
     danego kanału oznacza brak jasności, natomiast ,,255'' maksymalną jasność.
     Poprzez mieszanie jasności tych trzech kanałów
-    można uzyskać szerokie spektrum barw (Rysunek \ref{fig.mieszanieKolorow}).
+    można uzyskać szerokie spektrum barw (Rysunek~\ref{fig.mieszanieKolorow}).
 
     \begin{figure}
         \centering
         \includegraphics[width=7cm]{Obrazy/mieszanieKolorow.jpg}
-        \caption{Mieszanie kanałów RGB. \cite{colorMixing}}
+        \caption{Mieszanie kanałów RGB~\cite{colorMixing}.}
         \label{fig.mieszanieKolorow}
     \end{figure}
 
-    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na Rysunku \ref{fig.mieszanieKolorowBlekitny}
+    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na Rysunku~\ref{fig.mieszanieKolorowBlekitny}
 
     \begin{figure}
         \centering
@@ -744,21 +744,21 @@ Karolina Nurzyńska}
         \label{fig.mieszanieKolorowBlekitny}
     \end{figure}
 
-    Kolor (Rysunek \ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym \#99D9EA.
+    Kolor (Rysunek~\ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym \#99D9EA.
     Każda
     wartość heksadecymalna odpowiada kolejno kanałowi R, G, B.
 
     Obraz może też być przedstawiony stosując odcienie jednej barwy.
     Taka obraz nazywa się obrazem monochromatycznym.
-    Najczęściej stosowaną barwą w takich obrazach jest szarość \cite{przestrzenieKolorow}.
+    Najczęściej stosowaną barwą w takich obrazach jest szarość~\cite{przestrzenieKolorow}.
 
-    Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny \cite{colorMixing}.
+    Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny~\cite{colorMixing}.
     \begin{itemize}
         \item największej jasności
         \item średnia
         \item luminancji
     \end{itemize}
-    Metoda największej jasności konwertuje na skalę szarości wg wzoru \ref{wzor.najwiekszaJasnosc}.
+    Metoda największej jasności konwertuje na skalę szarości wg wzoru\ref{wzor.najwiekszaJasnosc}.
 
     \large
     \begin{equation}
@@ -766,8 +766,7 @@ Karolina Nurzyńska}
         \label{wzor.najwiekszaJasnosc}
     \end{equation}
     \normalsize
-    Metoda średnia bazuje na wzorze \ref{wzor.metodaSrednia}, natomiast metodę luminancji ilustruje wzór
-    \ref{wzor.metodaLuminancji}.
+    Metoda średnia bazuje na wzorze~\ref{wzor.metodaSrednia}, natomiast metodę luminancji ilustruje wzór~\ref{wzor.metodaLuminancji}.
 
     \large
     \begin{equation}
@@ -787,7 +786,7 @@ Karolina Nurzyńska}
     \subsection{Algorytm Haar Cascade}\label{subsec:algorytm-haar-cascade}
 
     Haar Cascade jest algorytmem służącym do wykrywania obiektów na obrazach.
-    Został stworzony przez Paula Viola oraz Michaela Jonesa w 2001 roku\cite{violaJones}.
+    Został stworzony przez Paula Viola oraz Michaela Jonesa w 2001 roku~\cite{violaJones}.
 
     Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć.
     Zdjęcia są dzielone na
@@ -797,41 +796,39 @@ Karolina Nurzyńska}
 
     Ekstrakcja cech w algorytmie Violi i Jonesa jest realizowana przez filtry Haara.
     Są to prostokątne okienka
-    nakładane na obraz, które analizują jasność pikseli (Rysunek \ref{fig.haarRectangles}).
+    nakładane na obraz, które analizują jasność pikseli (Rysunek~\ref{fig.haarRectangles}).
     \begin{figure}
         \centering
         \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
-        \caption{Filtr Haara a) krawędziowy b) liniowy c) szachownica \cite{haar}}
+        \caption{Filtr Haara a) krawędziowy b) liniowy c) szachownica~\cite{haar}}
         \label{fig.haarRectangles}
     \end{figure}
 
     Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości
-    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny co opisano w sekcji
-    \ref{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}.
+    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny co opisano w sekcji~\ref{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}.
 
     Każde okienko zawiera białe oraz czarne prostokąty.
     Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
     następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
     Opisywany algorytm ma zastosowanie w wykrywaniu krawędzi.
     Na granicy krawędzi istnieje różnica w jasności pikseli
-    (Rysunek \ref{fig.haarEmmaWatson}).
+    (Rysunek~\ref{fig.haarEmmaWatson}).
 
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/haarEmmaWatson.jpg}
-        \caption{Filtr Haara nałożony na krawędź twarzy \cite{haar}}
+        \caption{Filtr Haara nałożony na krawędź twarzy~\cite{haar}}
         \label{fig.haarEmmaWatson}
     \end{figure}
 
     W celu poprawy efektywności sumowania pikseli stosowane są
-    rozwiązanie zwane w języku angielskim Summed-area table \cite{violaJonesRealTimeOb}.Summed-area table jest również
+    rozwiązanie zwane w języku angielskim Summed-area table~\cite{violaJonesRealTimeOb}.Summed-area table jest również
     nazywana w literaturze Integral Image, czyli obrazem scałkowanym.
     Ideą obrazu scałkowanego jest,
     aby każdy obraz
     został
     przekształcony w
-    tabelę, w której każdy element x,y tej tabeli odpowiada sumie jasności wszystkich pikseli według wzoru \ref{wzor
-    .summedAreaTable}.
+    tabelę, w której każdy element x,y tej tabeli odpowiada sumie jasności wszystkich pikseli według wzoru~\ref{wzor.summedAreaTable}.
 
     \large
     \begin{equation}
@@ -842,28 +839,28 @@ Karolina Nurzyńska}
     gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), i(x,y) - jasność piksela o
     współrzędnych x,y na obrazie.
 
-    Na Rysunku \ref{fig.przedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed
+    Na Rysunku~\ref{fig.przedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed
     zastosowaniem całkowania obrazu.
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/przedCalkowaniem.jpg}
-        \caption{Tabela jasności poszczególnych pikseli przed zastosowaniem całkowania \cite{integralImages}}
+        \caption{Tabela jasności poszczególnych pikseli przed zastosowaniem całkowania~\cite{integralImages}}
         \label{fig.przedCalkowaniem}
     \end{figure}
 
-    Po całkowaniu otrzymujemy tabelę podobną do przedstawionej na Rysunku \ref{fig.poCalkowaniu}.
+    Po całkowaniu otrzymujemy tabelę podobną do przedstawionej na Rysunku~\ref{fig.poCalkowaniu}.
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/poCalkowaniu.jpg}
-        \caption{Filtr Haara nałożony na krawędź twarzy \cite{integralImages}}
+        \caption{Filtr Haara nałożony na krawędź twarzy~\cite{integralImages}}
         \label{fig.poCalkowaniu}
     \end{figure}
 
-    Sumowanie przykładowego okna (Rysunek \ref{fig.sumowanieOkna}) wymaga 4 operacji (Wzór \ref{wzor.windowsSum}).
+    Sumowanie przykładowego okna (Rysunek~\ref{fig.sumowanieOkna}) wymaga 4 operacji (Wzór~\ref{wzor.windowsSum}).
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/sumowanieOkna.jpg}
-        \caption{Sumowanie okna \cite{integralImages}}
+        \caption{Sumowanie okna~\cite{integralImages}}
         \label{fig.sumowanieOkna}
     \end{figure}
 
@@ -876,8 +873,8 @@ Karolina Nurzyńska}
     \normalsize
     gdzie lewa część równania oznacza sumę jasności pikseli
     zaznaczonego okna tj.
-    na Rysunku \ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
-    (analogicznie I(B), I(C), I(D)) - (Rysunek \ref{fig.sumowanieOkna}).
+    na Rysunku~\ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
+    (analogicznie I(B), I(C), I(D)) - (Rysunek~\ref{fig.sumowanieOkna}).
 
     W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum co
     wymaga ośmiu operacji.
@@ -886,13 +883,13 @@ Karolina Nurzyńska}
 
 
     Liczba cech wykrywanych w zdjęciu za
-    pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie \cite{violaJones}.
+    pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie~\cite{violaJones}.
     Dla obrazu o rozmiarze 384x288 liczba cech wynosi ponad 180000.
     Autorzy algorytmu stwierdzili, że dla zwiększenia szybkości algorytmu należy wybrać małą grupę cech,
     które razem mogą stworzyć jeden efektywny klasyfikator obiektu.
     W celu wyodrębnienia tych istotnych cech zastosowano algorytm Adaboost, który został opisany poniżej.
 
-    Zbiór n obrazów do trenowania można oznaczyć tak jak we wzorze \ref{wzor.zbiorTrenujacy}:
+    Zbiór n obrazów do trenowania można oznaczyć tak jak we wzorze~\ref{wzor.zbiorTrenujacy}:
     \large
     \begin{equation}
         (x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
@@ -901,7 +898,7 @@ Karolina Nurzyńska}
     \normalsize
 
     oznacza, że obraz jest odpowiednio negatywny lub pozytywny.
-    Następnym krokiem jest inicjalizacja wag (Wzór \ref{wzor.wagi}).
+    Następnym krokiem jest inicjalizacja wag (Wzór~\ref{wzor.wagi}).
 
     \large
     \begin{equation}
@@ -914,7 +911,7 @@ Karolina Nurzyńska}
     Następnie
     Dla t = 1, \ldots, T:
 
-    1. Normalizowane są wagi (Wzór \ref{wzor.adaboost1}):
+    1. Normalizowane są wagi (Wzór~\ref{wzor.adaboost1}):
     \large
     \begin{equation}
         w_{t,i} = \frac{w_{t,i}}{\sum_{j=1}^{n}w_{t,j}}
@@ -924,7 +921,7 @@ Karolina Nurzyńska}
     $w_{t}$ jest rozkładem prawdopodobieństwa
 
     2. Dla każdej cechy j, trenowany jest klasyfikator $h_{j}$, który używa tylko jedną cechę wyliczoną z filtru Haara.
-    Błąd jest wyliczony następująco (Wzór \ref{wzor.adaboost2}):
+    Błąd jest wyliczony następująco (Wzór~\ref{wzor.adaboost2}):
     \large
     \begin{equation}
         w_{t}, \epsilon_{j} = \sum_{i}^{}w_{i} \abs{h_{j}(x_{i}) - y_{i}}
@@ -934,7 +931,7 @@ Karolina Nurzyńska}
 
     3. Wybierany jest klasyfikator $h_{t}$ z najmniejszym błędem \epsilon_{t}.
 
-    4. Następuje aktualizacja wag (Wzór \ref{wzor.adaboost3}):
+    4. Następuje aktualizacja wag (Wzór~\ref{wzor.adaboost3}):
     \large
     \begin{equation}
         w_{t+1,i} = w_{t,i}\beta_{t}^{1-e_{i}}
@@ -963,11 +960,11 @@ Karolina Nurzyńska}
     Ideą kaskady jest zgrupowanie klasyfikatorów,
     które powstały w poprzednim procesie - procesie boostingu.
     Klasyfikatory są grupowane w okna.
-    Okna są połączone ze sobą tak jak na rysunku \ref{fig.kaskadaHaar}.
+    Okna są połączone ze sobą tak jak na rysunku~\ref{fig.kaskadaHaar}.
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/kaskadaHaar.jpg}
-        \caption{Kaskada klasyfikatorów. \cite{kaskadaHaarObraz}}
+        \caption{Kaskada klasyfikatorów.~\cite{kaskadaHaarObraz}}
         \label{fig.kaskadaHaar}
     \end{figure}
     Okna są oznaczone jako P1, P2, \ldots, Pn.
@@ -975,7 +972,7 @@ Karolina Nurzyńska}
     W przeciwnym wypadku algorytm przerywa działanie i na danym obrazie nie zostaje zidentyfikowany obiekt.
     Okna są poustawiane tak aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
     prawdopodobieństwem błędu.
-    Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (Rysunek \ref{fig.ConfusionMatrix}).
+    Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (Rysunek~\ref{fig.ConfusionMatrix}).
 
     \begin{figure}
         \centering
@@ -984,7 +981,7 @@ Karolina Nurzyńska}
         \label{fig.ConfusionMatrix}
     \end{figure}
 
-    Z macierzy \ref{fig.ConfusionMatrix} można odczytać czy klasyfikator poprawnie sklasyfikował dane testowe.
+    Z macierzy\ref{fig.ConfusionMatrix} można odczytać czy klasyfikator poprawnie sklasyfikował dane testowe.
     W macierzy użyto 4 pojęcia:
     \begin{itemize}
         \item TP (true positive) - poprawna klasyfikacja, jako obiekt
@@ -993,7 +990,7 @@ Karolina Nurzyńska}
         \item FN (false negative) - błędna klasyfikacja jako nie - obiekt
     \end{itemize}
 
-    Prawdopodobieństwo błędu wyliczane jest ze współczynnika FPR (false positive rate) (Wzór \ref{wzor.fpr}).
+    Prawdopodobieństwo błędu wyliczane jest ze współczynnika FPR (false positive rate) (Wzór~\ref{wzor.fpr}).
 
     \large
     \begin{equation}
@@ -1003,7 +1000,7 @@ Karolina Nurzyńska}
     \normalsize
 
     Natomiast prawdopodobieństwo wykrycia obiektu wyliczane jest ze współczynnika TPR (true positive ratio)
-    (Wzór \ref{wzor.tpr})
+    (Wzór~\ref{wzor.tpr})
     \large
     \begin{equation}
         TPR= \frac{TP}{TP+FN}
@@ -1032,7 +1029,7 @@ Karolina Nurzyńska}
     %    połączone ze sobą kaskadowo.
     %    W algorytmie każda grupa może podjąć dwie decyzje - przekazanie danych z klasyfikatorów
     %    do kolejnej grupy lub ich odrzucenie.
-    %    Ma to na celu odrzucenie wielu negatywnych danych z klasyfikatorów \cite{cascade}.
+    %    Ma to na celu odrzucenie wielu negatywnych danych z klasyfikatorów~\cite{cascade}.
 
     Biblioteka OpenCV zawiera wytrenowane klasyfikatory, które zostały użyte w tej pracy magisterskiej.
     Wykorzystano
@@ -1044,7 +1041,7 @@ Karolina Nurzyńska}
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
     %Wzory na wyznaczenie stref z "okienek"
     Przed wyznaczeniem stref zmarszczkowych należy zidentyfikować na twarzy oczy oraz nos
-    (Rysunek \ref{fig.wykrywanieOczuNosa}).
+    (Rysunek~\ref{fig.wykrywanieOczuNosa}).
     \begin{figure}
         \centering
         \includegraphics[width=8cm]{Obrazy/wykrywanieOczuNosa.jpg}
@@ -1056,7 +1053,7 @@ Karolina Nurzyńska}
     Należy podkreślić, że algorytm przerywa działanie jeśli nie zostanie wykryta twarz, oczy lub nos.
 
     Gdy zostanie wykryty obszar twarzy oczu oraz nosa wyznaczone zostaje sześć stref zmarszczkowych
-    (Rysunek \ref{fig.wykrywanieStrefZmarszczkowych}).
+    (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
 
     \begin{figure}
         \centering
@@ -1068,11 +1065,11 @@ Karolina Nurzyńska}
     Strefy zmarszczkowe są na czole (Strefa ,,1''), w górnej części nosa (Strefa ,,2''), górnej części policzków
     (Strefa ,,4'' i ,,5'') oraz w okolicach powiek (Strefa ,,3'' i ,,6'').
     To właśnie te miejsca zostały uznane przez autorów książki ,,Age Estimation from Face Image using Wrinkle
-    Features'' \cite{wrinkleFeatures} za najbardziej znaczące w detekcji wieku.
+    Features''~\cite{wrinkleFeatures} za najbardziej znaczące w detekcji wieku.
 
     Po detekcji oczu należy zmierzyć odległość pomiędzy środkiem lewego oka ($x_{l},y_{l}$),
     a prawego ($x_{p},y_{p}$)
-    (Wzór \ref{wzor.odlegloscPomiedzyOczami}).
+    (Wzór~\ref{wzor.odlegloscPomiedzyOczami}).
     \large
     \begin{equation}
         d= \sqrt{\left ( x_{r} - x_{l} \right )^{2}+\left (y_{r} - y_{l}  \right )^{2}}
@@ -1080,7 +1077,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Odległość d służy do wyznaczanie strefy znajdującej się na czole (Rysunek \ref{fig.wyznaczenieCzola}).
+    Odległość d służy do wyznaczanie strefy znajdującej się na czole (Rysunek~\ref{fig.wyznaczenieCzola}).
 
 
     \begin{figure}
@@ -1090,10 +1087,10 @@ Karolina Nurzyńska}
         \label{fig.wyznaczenieCzola}
     \end{figure}
 
-    Autorzy \cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczy do linii brwi wynosi $0,4 * d$.
+    Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczy do linii brwi wynosi $0,4 * d$.
     Natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
 
-    Na Rysunku \ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
+    Na Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
     stref zmarszczkowych.
 
     \begin{figure}
@@ -1103,11 +1100,8 @@ Karolina Nurzyńska}
         \label{fig.wspolrzedneDoWyliczeniaStref}
     \end{figure}
 
-    %todo opisac poszczegolne strefy
-    %np strefa kolo powieki to polowa odleglosci pomiedzy x1,y1 a x1,y2 czyli de facto x1, y1-y2/2
-    %i dodatkowo polowa cos tam
     Strefa 2 została wyznaczona znając położenie prawego oka, dystansu między oczami oraz strefy ,,1''.
-    Każda strefa może być wyznaczona przez jeden punkt (Rysunek \ref{fig.wykrywanieStrefZmarszczkowychPunkty})
+    Każda strefa może być wyznaczona przez jeden punkt (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowychPunkty})
     oraz jej wymiary.
 
     \begin{figure}
@@ -1117,7 +1111,7 @@ Karolina Nurzyńska}
         \label{fig.wykrywanieStrefZmarszczkowychPunkty}
     \end{figure}
 
-    Współrzędna x punktu A została wyznaczona ze wzoru \ref{wzor.punktXA}
+    Współrzędna x punktu A została wyznaczona ze wzoru~\ref{wzor.punktXA}
 
     \large
     \begin{equation}
@@ -1125,10 +1119,10 @@ Karolina Nurzyńska}
         \label{wzor.punktXA}
     \end{equation}
     \normalsize
-    , gdzie $x_{6}$ to współrzędna z Rysunku \ref{fig.wspolrzedneDoWyliczeniaStref}.
-    Natomiast $d$ jest odległością pomiędzy oczami (Wzór \ref{wzor.odlegloscPomiedzyOczami}).
+    , gdzie $x_{6}$ to współrzędna z Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
+    Natomiast $d$ jest odległością pomiędzy oczami (Wzór~\ref{wzor.odlegloscPomiedzyOczami}).
 
-    Współrzędna y punktu A - Wzór \ref{wzor.punktYA}:
+    Współrzędna y punktu A - Wzór~\ref{wzor.punktYA}:
 
     \large
     \begin{equation}
@@ -1136,10 +1130,10 @@ Karolina Nurzyńska}
         \label{wzor.punktYA}
     \end{equation}
     \normalsize
-    Współrzędna $y_{7}$ analogicznie jak $x_{6}$ znajduje się na Rysunku \ref{fig.wspolrzedneDoWyliczeniaStref}.
+    Współrzędna $y_{7}$ analogicznie jak $x_{6}$ znajduje się na Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
 
     Zakładając, że prawe oko ma współrzędne $x_{o}$ oraz  $y_{o}$ wyznaczana jest wysokość strefy 2
-    (Wzór \ref{wzor.punktHA}).
+    (Wzór~\ref{wzor.punktHA}).
     \large
     \begin{equation}
         h_{A}=y_{o}-y_{7}
@@ -1147,16 +1141,16 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Szerokość strefy 2 (Wzór \ref{wzor.punktWA}):
+    Szerokość strefy 2 (Wzór~\ref{wzor.punktWA}):
     \large
     \begin{equation}
         w_{A}=0,25 * d
         \label{wzor.punktWA}
     \end{equation}
     \normalsize
-    Wartość 0,25 ze wzoru  \ref{wzor.punktWA} została dobrana empirycznie.
+    Wartość 0,25 ze wzoru~\ref{wzor.punktWA} została dobrana empirycznie.
 
-    Współrzędne punktu C (strefa 4) zostają wyznaczone ze Wzoru \ref{wzor.punktXC} oraz \ref{wzor.punktYC}.
+    Współrzędne punktu C (strefa 4) zostają wyznaczone ze Wzoru~\ref{wzor.punktXC} oraz~\ref{wzor.punktYC}.
     \large
     \begin{equation}
         x_{C}=x_{3}
@@ -1171,7 +1165,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Wysokość oraz szerokość strefy 4 (Wzór \ref{wzor.punktHC} oraz \ref{wzor.punktWC})
+    Wysokość oraz szerokość strefy 4 (Wzór~\ref{wzor.punktHC} oraz~\ref{wzor.punktWC})
 
     \large
     \begin{equation}
@@ -1187,7 +1181,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Strefa 5 zawiera punkt D - Wzór \ref{wzor.punktXD} oraz \ref{wzor.punktYD}.
+    Strefa 5 zawiera punkt D - Wzór~\ref{wzor.punktXD} oraz~\ref{wzor.punktYD}.
 
     \large
     \begin{equation}
@@ -1203,7 +1197,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Dla strefy 5 wyznaczamy wysokość (Wzór \ref{wzor.punktHD}) oraz szerokość (Wzór \ref{wzor.punktWD}).
+    Dla strefy 5 wyznaczamy wysokość (Wzór~\ref{wzor.punktHD}) oraz szerokość (Wzór~\ref{wzor.punktWD}).
 
     \large
     \begin{equation}
@@ -1219,7 +1213,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Strefa 3 zawiera punkt B wyznaczany ze Wzorów \ref{wzor.punktXB} i \ref{wzor.punktYB}
+    Strefa 3 zawiera punkt B wyznaczany ze Wzorów~\ref{wzor.punktXB} i~\ref{wzor.punktYB}
 
     \large
     \begin{equation}
@@ -1235,7 +1229,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Wysokość (Wzór \ref{wzor.punktHB}) oraz szerokość (Wzór \ref{wzor.punktWB}) strefy 3.
+    Wysokość (Wzór~\ref{wzor.punktHB}) oraz szerokość (Wzór~\ref{wzor.punktWB}) strefy 3.
 
     \large
     \begin{equation}
@@ -1252,7 +1246,7 @@ Karolina Nurzyńska}
     \normalsize
 
     Na samym końcu zostaje wyznaczona strefa 6.
-    Wyznaczona zostaje współrzędna E - Wzór \ref{wzor.punktXE} i \ref{wzor.punktYE}.
+    Wyznaczona zostaje współrzędna E - Wzór~\ref{wzor.punktXE} i~\ref{wzor.punktYE}.
     \large
     \begin{equation}
         x_{E}=x_{2}
@@ -1288,39 +1282,145 @@ Karolina Nurzyńska}
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanieZmarszczek}
     %todo opis detektora z wiki angielskiej
     %moze troche opisu configu Cannego od Anielskiej
+    Następnym krokiem algorytmu po wyznaczeniu stref zmarszczkowych jest wyodrębnienie zmarszczek.
+    W celu identyfikacji zmarszczek zastosowano detektor Canny.
+    Detekcja krawędzi pozwala na wyodrębnienie wielu użytecznych cech z obrazu.
+    Ponadto znacznie zmniejsza ilość informacji do przetworzenia przez algorytm,
+    który wyodrębnia cechy z obrazu.
+    Istnieje wiele detektorów krawędzi,
+    jednak detektor Canny jest jednym z najbardziej dokładnych i niezawodnych.
+    Metoda detekcji została opracowana przez Johna F. Canny w 1986 roku.
+    Oprócz samej implementacji algorytmu Canny zaprezentował teorię obliczeniową,
+    która wyjaśnia działanie tej metody. Canny ponadto zauważył,
+    że wymagania dotyczące implementacji detekcji krawędzi są podobne do siebie w wielu systemach wizyjnych.
+    W związku z powyższym jego algorytm może zostać zastosowany w wielu systemach wizyjnych.
+    Najważniejsze zasady,
+    które są niezbędne do dobrej detekcji krawędzi w opisywanym algorytmie są przedstawione poniżej:
+    \begin{itemize}
+        \item Detekcja krawędzi z niskim prawdopodobieństwem błędu:
+        Oznacza to, że algorytm powinien wykryć jak najwięcej krawędzi, które rzeczywiście istnieją.
+        Natomiast ilość krawędzi wykrytych błędnie powinna być jak najmniejsza.
+        \item Precyzja detekcji: Algorytm powinien precyzyjnie zlokalizować krawędź
+        \item Brak redundantnych detekcji:
+        Krawędź powinna być zlokalizowana jednokrotnie.
+        Szum na obrazie nie powinien generować dodatkowych krawędzi.
+    \end{itemize}
+    W algorytmie detekcji Canny używa rachunku wariacyjnego.
+    Rachunek wariacyjny to dziedzina analizy matematycznej.
+    Dziedzina ta analizuje przestrzenie funkcyjne i znajduje w nich ekstrema funkcjonałów.
+    Funkcjonały natomiast odwzorowują przestrzeń wektorową na liczby rzeczywiste.
+    Reasumując, rachunek wariacyjny pomaga znaleźć charakterystyczną funkcję.
+    Funkcjonał dla powyższej funkcji przyjmuje wartość ekstremalną.
+    Algorytm detektora jest podzielony na kilka kroków:
+    \begin{itemize}
+        \item Redukcja szumów na obrazie filtrem Gaussa.
+        \item Szukanie gradientów jasności.
+        \item Zastosowanie techniki pocieniania krawędzi.
+        \item Likwidacja krawędzi o małym gradiencie jasności.
+        \item Filtracja poprzez histerezę.
+    \end{itemize}
+    \subsection{Redukcja szumów na obrazie filtrem Gaussa}\label{subsec:redukcja-szumów-na-obrazie-filtrem-gaussa}
+    Szum na obrazie to piksele o losowym kolorze, jasności oraz umiejscowieniu (współrzędnych na obrazie).
+    Powyższe piksele są nadmiarowymi informacjami o obrazie oraz są efektem ubocznym przetwarzania obrazu
+    przez matrycę cyfrową (Rysunek~\ref{fig.lenkaSzumy}).
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/lenkaSzumy.jpg}
+        \caption{a) Obraz z nieznaczną ilością szumów b) Obraz ze znaczną ilością szumu.~\cite{lenkaSzumy}}
+        \label{fig.lenkaSzumy}
+    \end{figure}
+
+    Efekt szumu jest spotykany również w fotografii analogowej.
+    W fotografii cyfrowej szum wzrasta na skutek zwiększania czułości matrycy lub przez wzrost jej temperatury.
+    Redukcję szumów można uzyskać stosując filtr Gaussa.
+    Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szu
+    mu.
+    Filtr Gaussa może mieć różne wymiary.
+    Najczęściej stosowanym jest 5x5.
+    Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu.
+    \subsection{Szukanie gradientów jasności}\label{subsec:szukanie-gradientów-jasności}
+    Istotnym parametrem w wykrywaniu krawędzi jest gradient jasności.
+    Określa on jak bardzo zmienia się jasność danego piksela względem sąsiadujących pikseli.
+    Gradient jasności otrzymany zostaje ze wzoru~\ref{wzor.gradientJasnosci}:
+    \large
+    \begin{equation}
+        G = \sqrt{G_{x}^{2} + G_{y}^{2}}
+        \label{wzor.gradientJasnosci}
+    \end{equation}
+    \normalsize
+    gdzie Gx jest zmianą jasności danego piksela w kierunku poziomym, a Gy w kierunku pionowym
+    Kierunek gradientu opisuje wzór~\ref{wzor.kierunekGradientu}
+    \large
+    \begin{equation}
+        \Theta = atan2(G_{y}, G_{x})
+        \label{wzor.kierunekGradientu}
+    \end{equation}
+    \normalsize
+    Krawędzie na obrazie charakteryzują się pewną zmianą jasności na danym obszarze obrazu.
+    Krawędź na obrazie może być położona pod różnym kątem.
+    Opisywany detektor używa 4 filtry w celu wykrycia pionowych, poziomych, ukośnych krawędzi.
+
+    Kierunek jest zaokrąglony do jednego z filtrów kierunku: poziomego ($\Theta = 0^{\circ}$),
+    pionowego($\Theta = 90^{\circ}$) lub ukośnego ($\Theta = 45^{\circ}$
+    lub $\Theta = 135^{\circ}$ stopni).
+    Każdy piksel obrazu otrzymuje wartość gradientu (Wzór~\ref{wzor.gradientJasnosci})
+    oraz kierunek - zgodny z powyższym filtrem kierunku.
+    W wyniku powyższego działania zostaje otrzymany obraz gradientowy.
+    \subsection{Zastosowanie techniki pocieniania krawędzi}\label{subsec:zastosowanie-techniki-pocieniania-krawędzi}
+    Pocienianie krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
+    Krawędzie wykryte za pomocą gradientu są rozmyte (nieostre).
+    Technika pocienianie krawędzi szuka na małym obszarze gradientów o największej wartości.
+    Wszystkie mniejsze są ignorowane.
+    Dzięki temu zostawiane są gradienty o największej wartości, które identyfikują najostrzejsze krawędzie.
+    Algorytm operuje na obrazie gradientowym powstałym przez algorytm opisany w sekcji~\ref{subsec:szukanie-gradientów-jasności}
+    Działa on następująco.
+
+    Odczytana zostaje wartość gradientu oraz jego kierunek dla danego piksela.
+    Następnie wartość gradientu zostaje porównana z wartościami gradientu dla
+    pikseli, które znajdują się wzdłuż dwóch linii.
+    Jedna z nich jest wyznaczona przed aktualny kierunek gradientu, a druga przez przeciwny kierunek.
+    Jeśli wartość danego piksela jest największa spośród pikseli wzdłuż wyżej wymienionych linii,
+    to dany piksel należy do najostrzejszej krawędzi.
+
+    \subsection{Likwidacja krawędzi o małym gradiencie jasności}\label{subsec:likwidacja-krawędzi-o-małym-gradiencie-jasności}
+    \subsection{Filtracja poprzez histerezę}\label{subsec:filtracja-poprzez-histerezę}
+
+
+
     \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
     %todo jak sie sumowalo
     \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
 
     \section{Grupowanie danych - FCM}\label{sec:grupowanieDanych}
 
-    \subsection{Wstęp do grupowania danych}
-    \subsection{Metoda FCM}
+    \subsection{Wstęp do grupowania danych}\label{subsec:wstęp-do-grupowania-danych}
+    \subsection{Metoda FCM}\label{subsec:metoda-fcm}
 
     \section{Wyznaczanie wieku}\label{sec:wyznaczanieWieku}
 
 
     %Tutaj powinno byc 5000 slow
 
-    \chapter{Modyfikacje metody bazowej}
+    \chapter{Modyfikacje metody bazowej}\label{ch:modyfikacje-metody-bazowej}
 
-    \section{Odjęcie wybranej strefy}
+    \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
 
-    \subsection{Zmiana algorytmu względem metody bazowej}
+    \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
 
-    \section{Zastosowanie metody HOG}
-    \subsection{Opis algorytmu HOG}
-    \subsection{Zastosowanie w projekcie}
+    \section{Zastosowanie metody HOG}\label{sec:zastosowanie-metody-hog}
+    \subsection{Opis algorytmu HOG}\label{subsec:opis-algorytmu-hog}
+    \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
 
-    \section{Metoda HOG oraz grupowanie KNN}
-    \subsection{Grupowanie KNN}
-    \subsection{Zastosowanie w projekcie}
+    \section{Metoda HOG oraz grupowanie KNN}\label{sec:metoda-hog-oraz-grupowanie-knn}
+    \subsection{Grupowanie KNN}\label{subsec:grupowanie-knn}
+    \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %Tutaj powinno byc okolo 7000
-    \chapter{Badania}
+    \chapter{Badania}\label{ch:badania}
 
     %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
     %    przetwarzania), zajetosc pamieci
-    \chapter{Podsumowanie}
+    \chapter{Podsumowanie}\label{ch:podsumowanie}
 
 
 
