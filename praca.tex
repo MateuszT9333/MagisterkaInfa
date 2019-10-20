@@ -807,7 +807,7 @@ Karolina Nurzyńska}
     \end{figure}
 
     Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości
-    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny co opisano w sekcji~\ref{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}.
+    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny, co opisano w sekcji~\ref{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}.
 
     Każde okienko zawiera białe oraz czarne prostokąty.
     Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
@@ -838,7 +838,7 @@ Karolina Nurzyńska}
         \label{wzor.summedAreaTable}
     \end{equation}
     \normalsize
-    gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), i(x,y) - jasność piksela o
+    gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), natomiast i(x,y) oznacza jasność piksela o
     współrzędnych x,y na obrazie.
 
     Na Rysunku~\ref{fig.przedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed
@@ -858,7 +858,8 @@ Karolina Nurzyńska}
         \label{fig.poCalkowaniu}
     \end{figure}
 
-    Sumowanie przykładowego okna (Rysunek~\ref{fig.sumowanieOkna}) wymaga 4 operacji (Wzór~\ref{wzor.windowsSum}).
+    Sumowanie przykładowego okna (Rysunek~\ref{fig.sumowanieOkna}) wymaga czterech operacji (Wzór~\ref{wzor
+    .windowsSum}).
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/sumowanieOkna.jpg}
@@ -878,16 +879,16 @@ Karolina Nurzyńska}
     na Rysunku~\ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
     (analogicznie I(B), I(C), I(D)) - (Rysunek~\ref{fig.sumowanieOkna}).
 
-    W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum co
-    wymaga ośmiu operacji.
+    W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum, zatem konieczne jest wykonanie
+    ośmiu operacji.
     Reprezentacja obrazu za pomocą obrazu scałkowanego znacznie zwiększa efektywność obliczania wartości w filtrze
     Haara.
 
 
-    Liczba cech wykrywanych w zdjęciu za
+    Liczba cech wykrywanych w danym zdjęciu za
     pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie~\cite{violaJones}.
-    Dla obrazu o rozmiarze 384x288 liczba cech wynosi ponad 180000.
-    Autorzy algorytmu stwierdzili, że dla zwiększenia szybkości algorytmu należy wybrać małą grupę cech,
+    Dla obrazu o wymiarach 384x288 pikseli liczba cech wynosi ponad 180000.
+    Autorzy algorytmu stwierdzili, że dla zwiększenia jego szybkości należy wybrać małą grupę cech,
     które razem mogą stworzyć jeden efektywny klasyfikator obiektu.
     W celu wyodrębnienia tych istotnych cech zastosowano algorytm Adaboost, który został opisany poniżej.
 
@@ -922,8 +923,8 @@ Karolina Nurzyńska}
     \normalsize
     $w_{t}$ jest rozkładem prawdopodobieństwa
 
-    2. Dla każdej cechy j, trenowany jest klasyfikator $h_{j}$, który używa tylko jedną cechę wyliczoną z filtru Haara.
-    Błąd jest wyliczony następująco (Wzór~\ref{wzor.adaboost2}):
+    2. Dla każdej cechy j, trenowany jest klasyfikator $h_{j}$, który używa tylko jednej cechy wyliczonej z filtru Haara.
+    Błąd jest liczony następująco (Wzór~\ref{wzor.adaboost2}):
     \large
     \begin{equation}
         w_{t}, \epsilon_{j} = \sum_{i}^{}w_{i} \abs{h_{j}(x_{i}) - y_{i}}
@@ -960,9 +961,9 @@ Karolina Nurzyńska}
     Ostatnim etapem jest wytworzenie kaskady klasyfikatorów.
     Zwiększa ona znacznie szybkość wykrywania pożądanego obiektu na obrazie.
     Ideą kaskady jest zgrupowanie klasyfikatorów,
-    które powstały w poprzednim procesie - procesie boostingu.
-    Klasyfikatory są grupowane w okna.
-    Okna są połączone ze sobą tak jak na rysunku~\ref{fig.kaskadaHaar}.
+    które powstały w poprzednim procesie - tzw. procesie boostingu.
+    Klasyfikatory są grupowane w okna,
+    które są połączone ze sobą tak jak na rysunku~\ref{fig.kaskadaHaar}.
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/kaskadaHaar.jpg}
@@ -970,9 +971,9 @@ Karolina Nurzyńska}
         \label{fig.kaskadaHaar}
     \end{figure}
     Okna są oznaczone jako P1, P2, \ldots, Pn.
-    Gdy dane okno wykryje obiekt przechodzi do kolejnego okna w kaskadzie.
+    Gdy dane okno wykryje obiekt, przechodzi do kolejnego okna w kaskadzie.
     W przeciwnym wypadku algorytm przerywa działanie i na danym obrazie nie zostaje zidentyfikowany obiekt.
-    Okna są poustawiane tak aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
+    Okna są poustawiane tak, aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
     prawdopodobieństwem błędu.
     Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (Rysunek~\ref{fig.ConfusionMatrix}).
 
@@ -1014,7 +1015,7 @@ Karolina Nurzyńska}
     Oznacza to, że prawdopodobieństwo TPR w oknie $P_{x-1}$ jest mniejsze od tego w $P_{x}$.
     Natomiast prawdopodobieństwo FPR w oknie $P_{x-1}$ jest większe od tego w $P_{x}$.
     Ostatnie okna mają największy współczynnik TPR oraz najmniejszy FRP ze wszystkich.
-    Takie ustawienie okien ma na celu wstępne przepuszczenie przez okna obrazy,
+    Takie ustawienie okien ma na celu wstępne przepuszczenie przez okna obrazów,
     które z dużym prawdopodobieństwem zawierają szukany obiekt.
     Natomiast ostatnie okna w kaskadzie analizują niewielką część obrazu wejściowego.
     %Opis kaskady
@@ -1054,7 +1055,7 @@ Karolina Nurzyńska}
 
     Należy podkreślić, że algorytm przerywa działanie jeśli nie zostanie wykryta twarz, oczy lub nos.
 
-    Gdy zostanie wykryty obszar twarzy oczu oraz nosa wyznaczone zostaje sześć stref zmarszczkowych
+    Gdy zostanie wykryty obszar twarzy, oczu oraz nosa wyznaczone zostaje sześć stref zmarszczkowych
     (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
 
     \begin{figure}
@@ -1089,8 +1090,8 @@ Karolina Nurzyńska}
         \label{fig.wyznaczenieCzola}
     \end{figure}
 
-    Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczy do linii brwi wynosi $0,4 * d$.
-    Natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
+    Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczu do linii brwi wynosi $0,4 * d$,
+    natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
 
     Na Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
     stref zmarszczkowych.
@@ -1102,7 +1103,7 @@ Karolina Nurzyńska}
         \label{fig.wspolrzedneDoWyliczeniaStref}
     \end{figure}
 
-    Strefa 2 została wyznaczona znając położenie prawego oka, dystansu między oczami oraz strefy ,,1''.
+    Strefa 2 została wyznaczona dzięki znajomości położenia prawego oka, dystansu między oczami oraz strefy ,,1''.
     Każda strefa może być wyznaczona przez jeden punkt (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowychPunkty})
     oraz jej wymiary.
 
@@ -1134,7 +1135,7 @@ Karolina Nurzyńska}
     \normalsize
     Współrzędna $y_{7}$ analogicznie jak $x_{6}$ znajduje się na Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
 
-    Zakładając, że prawe oko ma współrzędne $x_{o}$ oraz  $y_{o}$ wyznaczana jest wysokość strefy 2
+    Zakładając, że prawe oko ma współrzędne $x_{o}$ oraz  $y_{o}$ wysokość strefy 2 wyznaczana jest w poniższy sposób
     (Wzór~\ref{wzor.punktHA}).
     \large
     \begin{equation}
@@ -1143,7 +1144,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Szerokość strefy 2 (Wzór~\ref{wzor.punktWA}):
+    Natomiast szerokość strefy 2 oblicza się następująco: (Wzór~\ref{wzor.punktWA}):
     \large
     \begin{equation}
         w_{A}=0,25 * d
@@ -1199,7 +1200,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Dla strefy 5 wyznaczamy wysokość (Wzór~\ref{wzor.punktHD}) oraz szerokość (Wzór~\ref{wzor.punktWD}).
+    Dla strefy 5 wyznacza sie wysokość (Wzór~\ref{wzor.punktHD}) oraz szerokość na podstawie wzoru (Wzór~\ref{wzor.punktWD}).
 
     \large
     \begin{equation}
@@ -1278,66 +1279,66 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Należy zauważyć, że szerokość strefy 3 i 6 jest pomnożona przez 0,4 razy szerokość odpowiednio
-    strefy 4 i 5.
+    Należy zauważyć, że szerokość stref 3 i 6 jest pomnożona przez 0,4 szerokości odpowiednio
+    stref 4 i 5.
     Wartość ,,0,4'' została dobrana empirycznie.
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanie-zmarszczek---detektor-canny}
     %todo opis detektora z wiki angielskiej
     %moze troche opisu configu Cannego od Anielskiej
     Następnym krokiem algorytmu po wyznaczeniu stref zmarszczkowych jest wyodrębnienie zmarszczek.
     W celu identyfikacji zmarszczek zastosowano detektor Canny.
-    Detekcja krawędzi pozwala na wyodrębnienie wielu użytecznych cech z obrazu.
-    Ponadto znacznie zmniejsza ilość informacji do przetworzenia przez algorytm,
+    Detekcja krawędzi pozwala na wyodrębnienie wielu użytecznych cech z obrazu,
+    ponadto znacznie zmniejsza ilość informacji do przetworzenia przez algorytm,
     który wyodrębnia cechy z obrazu.
     Istnieje wiele detektorów krawędzi,
     jednak detektor Canny jest jednym z najbardziej dokładnych i niezawodnych.
     Metoda detekcji została opracowana przez Johna F. Canny w 1986 roku.
-    Oprócz samej implementacji algorytmu Canny zaprezentował teorię obliczeniową,
-    która wyjaśnia działanie tej metody. Canny ponadto zauważył,
+    Oprócz samej implementacji algorytmu jego twórca zaprezentował teorię obliczeniową,
+    która wyjaśnia działanie tej metody. Ponadto Canny zauważył,
     że wymagania dotyczące implementacji detekcji krawędzi są podobne do siebie w wielu systemach wizyjnych.
-    W związku z powyższym jego algorytm może zostać zastosowany w wielu systemach wizyjnych.
-    Najważniejsze zasady,
-    które są niezbędne do dobrej detekcji krawędzi w opisywanym algorytmie są przedstawione poniżej:
+    W związku z powyższym jego algorytm może zostać skutecznie zastosowany w różnych systemach wizyjnych.
+    Poniżej przedstawiono najważniejsze zasady,
+    które są niezbędne do dobrej detekcji krawędzi w opisywanym algorytmie:
     \begin{itemize}
         \item Detekcja krawędzi z niskim prawdopodobieństwem błędu:
         Oznacza to, że algorytm powinien wykryć jak najwięcej krawędzi, które rzeczywiście istnieją.
         Natomiast ilość krawędzi wykrytych błędnie powinna być jak najmniejsza.
-        \item Precyzja detekcji: Algorytm powinien precyzyjnie zlokalizować krawędź
+        \item Precyzja detekcji: Algorytm powinien precyzyjnie zlokalizować krawędź.
         \item Brak redundantnych detekcji:
-        Krawędź powinna być zlokalizowana jednokrotnie.
-        Szum na obrazie nie powinien generować dodatkowych krawędzi.
+        Krawędź powinna być zlokalizowana jednokrotnie,
+        a szum na obrazie nie powinien generować dodatkowych krawędzi.
     \end{itemize}
     W algorytmie detekcji Canny używa rachunku wariacyjnego.
-    Rachunek wariacyjny to dziedzina analizy matematycznej.
-    Dziedzina ta analizuje przestrzenie funkcyjne i znajduje w nich ekstrema funkcjonałów.
-    Funkcjonały natomiast odwzorowują przestrzeń wektorową na liczby rzeczywiste.
-    Rachunek wariacyjny pomaga znaleźć charakterystyczną funkcję.
-    Funkcjonał dla powyższej funkcji przyjmuje wartość ekstremalną.
+    Rachunek wariacyjny to dziedzina analizy matematycznej, która
+    analizuje przestrzenie funkcyjne i znajduje w nich ekstrema funkcjonałów.
+    Funkcjonały natomiast przekształcają przestrzeń wektorową na liczby rzeczywiste.
+    Zatem rachunek wariacyjny ma za zadanie pomóc w znalezieniu charakterystycznej funkcji,
+    dla której funkcjonał przyjmuje wartość ekstremalną.
     Algorytm detektora jest podzielony na kilka kroków~\cite{Canny}:
     \begin{itemize}
         \item Redukcja szumów na obrazie filtrem Gaussa.
         \item Szukanie gradientów jasności.
-        \item Zastosowanie techniki pocieniania krawędzi.
+        \item Zastosowanie techniki zmniejszania grubości krawędzi.
         \item Likwidacja krawędzi o małym gradiencie jasności.
         \item Filtracja poprzez histerezę.
     \end{itemize}
     \subsection{Redukcja szumów na obrazie filtrem Gaussa}\label{subsec:redukcja-szumów-na-obrazie-filtrem-gaussa}
     Szum na obrazie to piksele o losowym kolorze, jasności oraz umiejscowieniu (współrzędnych na obrazie).
-    Powyższe piksele są nadmiarowymi informacjami o obrazie oraz są efektem ubocznym przetwarzania obrazu
+    Takie piksele są nadmiarowymi informacjami o obrazie oraz stanowią efekt uboczny przetwarzania obrazu
     przez matrycę cyfrową (Rysunek~\ref{fig.lenkaSzumy}).
 
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/lenkaSzumy.jpg}
-        \caption{a) Obraz z nieznaczną ilością szumów b) Obraz ze znaczną ilością szumu.~\cite{lenkaSzumy}}
+        \caption{a) Obraz z nieznaczną ilością szumów b) Obraz ze znaczną ilością szumów.~\cite{lenkaSzumy}}
         \label{fig.lenkaSzumy}
     \end{figure}
 
     Efekt szumu jest spotykany również w fotografii analogowej.
     W fotografii cyfrowej szum wzrasta na skutek zwiększania czułości matrycy lub przez wzrost jej temperatury.
     Redukcję szumów można uzyskać stosując filtr Gaussa.
-    Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szumu.
-    Filtr Gaussa może mieć różne wymiary.
+    Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szumów.
+    Filtr Gaussa może mieć różne wymiary, natomiast
     Najczęściej stosowanym jest 5x5.
     Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu~\cite{Canny}.
     \subsection{Szukanie gradientów jasności}\label{subsec:szukanie-gradientów-jasności}
@@ -1350,7 +1351,7 @@ Karolina Nurzyńska}
         \label{wzor.gradientJasnosci}
     \end{equation}
     \normalsize
-    gdzie Gx jest zmianą jasności danego piksela w kierunku poziomym, a Gy w kierunku pionowym
+    gdzie Gx jest zmianą jasności danego piksela w kierunku poziomym, a Gy w kierunku pionowym.
     Kierunek gradientu opisuje wzór~\ref{wzor.kierunekGradientu}
     \large
     \begin{equation}
@@ -1360,52 +1361,53 @@ Karolina Nurzyńska}
     \normalsize
     Krawędzie na obrazie charakteryzują się pewną zmianą jasności na danym obszarze obrazu.
     Krawędź na obrazie może być położona pod różnym kątem.
-    Opisywany detektor używa 4 filtry w celu wykrycia pionowych, poziomych, ukośnych krawędzi.
+    Opisywany detektor używa czterech filtrów w celu wykrycia pionowych, poziomych oraz ukośnych krawędzi.
 
-    Kierunek jest zaokrąglony do jednego z filtrów kierunku: poziomego ($\Theta = 0^{\circ}$),
+    Kierunek gradientu jest zaokrąglony do jednego z filtrów kierunku: poziomego ($\Theta = 0^{\circ}$),
     pionowego($\Theta = 90^{\circ}$) lub ukośnego ($\Theta = 45^{\circ}$
     lub $\Theta = 135^{\circ}$ stopni).
     Każdy piksel obrazu otrzymuje wartość gradientu (Wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
-    W wyniku powyższego działania zostaje otrzymany obraz gradientowy~\cite{Canny}.
-    \subsection{Zastosowanie techniki pocieniania krawędzi}\label{subsec:zastosowanie-techniki-pocieniania-krawędzi}
-    Pocienianie krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
+    W wyniku tego działania zostaje otrzymany obraz gradientowy~\cite{Canny}.
+    \subsection{Zastosowanie techniki zmniejszania grubości
+    krawędzi}\label{subsec:zastosowanie-zmniejszania-grubości-krawędzi}
+    Zmniejszanie grubości krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
     Krawędzie wykryte za pomocą gradientu są rozmyte (nieostre).
-    Technika pocienianie krawędzi szuka na małym obszarze gradientów o największej wartości.
-    Wszystkie mniejsze są ignorowane.
-    Dzięki temu zostawiane są gradienty o największej wartości, które identyfikują najostrzejsze krawędzie.
-    Algorytm operuje na obrazie gradientowym powstałym przez algorytm opisany w sekcji~\ref{subsec:szukanie-gradientów-jasności}
-    Działa on następująco.
+    Dzięki technice zmniejszania grubości krawędzi można odszukać na małym obszarze gradienty o największej wartości.
+    Wszystkie inne, o mniejszej wartości, są ignorowane.
+    Dzięki temu pozostawia się gradienty o największej wartości, które identyfikują najostrzejsze krawędzie.
+    Algorytm operuje na obrazie gradientowym powstałym jako wynik działania algorytmu opisanego w sekcji~\ref{subsec:szukanie-gradientów-jasności}
+    Działa on następująco:
 
     Odczytana zostaje wartość gradientu oraz jego kierunek dla danego piksela.
-    Następnie wartość gradientu zostaje porównana z wartościami gradientu dla
+    Następnie wartość gradientu porównuje się z wartościami gradientu dla
     dwóch sąsiednich pikseli.
-    Pierwszy sąsiedni piksel jest wyznaczony przed aktualny kierunek gradientu, a drugi przez przeciwny kierunek.
+    Pierwszy sąsiedni piksel jest wyznaczony przed aktualny kierunek gradientu, a drugi przez kierunek przeciwny.
     Jeśli wartość danego piksela jest największa spośród pikseli wzdłuż wyżej wymienionych linii,
     to dany piksel należy do najostrzejszej krawędzi~\cite{Canny}.
 
     \subsection{Filtracja krawędzi o małym gradiencie jasności}\label{subsec:filtracja-krawędzi-o-małym-gradiencie-jasności}
-    Zastosowanie techniki pocieniania krawędzi zostawia wiele krawędzi, które są wygenerowane przez szum i zmiany
-    kolorów na obrazie.
+    Zastosowanie techniki zmniejszania grubości krawędzi pozostawia na obrazie wiele krawędzi, które są wygenerowane przez szum i zmiany
+    kolorów.
     Kolejnym krokiem jest filtracja powyższych krawędzi, gdyż są one nadmiarowe.
-    W tym celu ustawiany jest pewien próg - próg mały.
-    Oprócz progu małego ustawiany jest próg duży w celu wyodrębnienia krawędzi o wysokim gradiencie jasności.
+    W tym celu ustawiany jest pewien próg, zwany progiem małym.
+    Oprócz progu małego ustawiany jest również próg duży w celu wyodrębnienia krawędzi o wysokim gradiencie jasności.
     Jeśli wartość gradientu dla danej krawędzi jest mniejsza od progu małego, to zostaje ona usunięta.
-    W przypadku, gdy wartość jest większa od progu małego, ale mniejsza od progu dużego to dana krawędź
+    W przypadku, gdy wartość jest większa od progu małego, ale mniejsza od progu dużego, dana krawędź
     zostaje oznaczona jako słaba.
-    Krawędź zostaje oznaczona jako mocna, gdy wartość gradientu dla niej jest większa od wartości progu dużego~\cite{Canny}.
+    Krawędź oznacza się jako mocną, gdy wartość gradientu dla niej jest większa od wartości progu dużego~\cite{Canny}.
 
     \subsection{Filtracja poprzez histerezę}\label{subsec:filtracja-poprzez-histerezę}
     W wyniku działania algorytmu do tej pory zostały uzyskane słabe oraz mocne krawędzie.
     Mocne krawędzie zostaną oznaczone jako prawdziwe krawędzie znajdujące się na obrazie.
-    Słabe krawędzie mogą być częścią mocnych krawędzi.
-    Ponadto mogą zostać wygenerowane przez szum lub zmiany kolorów.
-    Powyższe krawędzie nie są prawdziwymi krawędziami w obrazie, więc w ostatnim kroku algorytmu powinny zostać
+    Słabe krawędzie mogą być częścią mocnych krawędzi, ale
+    mogą również zostać wygenerowane przez szum lub zmiany kolorów.
+    Krawędzie tego typu nie są prawdziwymi krawędziami w obrazie, więc w ostatnim kroku algorytmu powinny zostać
     przefiltrowane.
-    Słabe krawędzie, które są powiązane z mocnymi znajdują się w najbliższym sąsiedztwie z mocnymi krawędziami.
+    Słabe krawędzie, które są powiązane z mocnymi znajdują się w najbliższym sąsiedztwie mocnych krawędzi.
     W celu odnalezienia tych powiązań pomiędzy krawędziami zostaje zastosowana analiza spójności krawędzi.
-    Jeśli zostaje zidentyfikowane powiązanie pomiędzy mocną, a słabą krawędzią to słaba krawędź zostaje w obrazie.
-    W przypadku, gdy słaba krawędź nie jest powiązana z żadną mocną krawędzie - zostaje usunięta~\cite{Canny}.
+    Jeśli zostaje zidentyfikowane powiązanie pomiędzy mocną, a słabą krawędzią, to słabą krawędź pozostawia się w obrazie.
+    W przypadku, gdy słaba krawędź nie jest powiązana z żadną mocną krawędzią - zostaje usunięta~\cite{Canny}.
 
     \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
     W wyniku działania detektora Cannego, który został opisany w sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
@@ -1421,9 +1423,9 @@ Karolina Nurzyńska}
         \label{fig.mojaTwarzGray}
     \end{figure}
 
-    Na Rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
+    Na Rysunku \ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
     Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
-    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja~\ref{sec:wyznaczanieStref}),
+    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja \ref{sec:wyznaczanieStref}),
     które identyfikują zmarszczki.
     Ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek na twarzy danej
     osoby.
@@ -1439,7 +1441,7 @@ Karolina Nurzyńska}
     , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1,
     $PB_{s1}$ - suma białych pikseli w strefie 1, $PW_{s1}$ - suma wszystkich pikseli w strefie 1.
     Analogicznie obliczane są stosunki pikseli dla pozostałych stref.
-    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór~\ref{wzor.wrinkleFeature}).
+    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór \ref{wzor.wrinkleFeature}).
     \large
     \begin{equation}
         WF = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
@@ -1454,31 +1456,33 @@ Karolina Nurzyńska}
     W tym celu należy posiadać odpowiednią bazę zdjęć, na których można przeprowadzić wyżej wspomniane badania.
 
     Jest wiele darmowych źródeł obrazów twarzy.
-    Najczęściej używane bazy to FG-NET, MORTH II.
-    Zawierają one dziesiątki tysięcy zdjęć.
+    Najczęściej używane bazy to FG-NET oraz MORTH II, które
+    zawierają dziesiątki tysięcy zdjęć.
     Zdjęcia są różnej jakości i nie każda baza zdjęć nadaje się do konkretnych badań~\cite{khryashchevGanin}.
-    Przy realizacji tej pracy użyto bazę UTKFace,
-    ponieważ ścieżka pliku dla każdego obrazu zawiera informacje na temat rzeczywistego wieku.
-    W związku z powyższym z każdego zdjęcia z tej bazy otrzymywano dwie informację - rzeczywisty wiek danej osoby oraz
+    Przy realizacji tej pracy wykorzystana została baza UTKFace,
+    ponieważ w jej przypadku ścieżka pliku każdego obrazu zawiera informacje na temat rzeczywistego wieku.
+    W związku z powyższym z każdego zdjęcia z tej bazy otrzymywano dwie informacje - rzeczywisty wiek danej osoby oraz
     współczynnik zmarszczek.
 
-    Autorzy algorytmu do trenowania użyli algorytm grupowania - Fuzzy C-Means.
-    W wyniku działania algorytmu otrzymuje się dane dzięki, którym można na podstawie współczynnika zmarszczek można
+    Autorzy algorytmu do trenowania wykorzystali algorytm grupowania - Fuzzy C-Means.
+    W wyniku działania tego algorytmu otrzymuje się dane, dzięki którym na podstawie współczynnika zmarszczek można
     oszacować wiek~\cite{wrinkleFeatures}.
-    \section{Grupowanie danych - Fuzzy C-Means}\label{sec:grupowanieDanych}
+    \section{Grupowanie danych - Fuzzy C-Means oraz wyznaczanie wieku}\label{sec:grupowanieDanych}
     %    https://pl.wikipedia.org/wiki/Analiza_skupień
     %    https://en.wikipedia.org/wiki/Cluster_analysis
     %    https://sci-hub.tw/10.1109/ICCSA.2019.000-1
     %    https://www.researchgate.net/publication/329424581_Data_clustering
     %    Podac rozne przyklady algorytmow - hierarchiczne, niehierarchiczne
-    Grupowanie danych zwane również klasteryzacją jest szeroko stosowane w uczeniu maszynowym, rozpoznawaniu wzorców,
+    %todo mozna dopisac o roznych odleglosciach stosowanych do przydzielania do klastrow
+    Grupowanie danych, zwane również klasteryzacją, jest szeroko stosowane w uczeniu maszynowym, rozpoznawaniu wzorców,
     analizie obrazu, bioinformatyce, kompresji danych czy w grafice komputerowej.
-    Grupowanie polega na podzieleniu dużego zbioru danych na grupy.
-    Powyższe grupy posiadają dane, które są podobne do siebie~\cite{clusterWstep}.
+    Polega na podzieleniu dużego zbioru danych na grupy.
+    Powyższe grupy zawierają dane, które są podobne do siebie~\cite{clusterWstep}.
 
     Klasteryzacja nie jest algorytmem, lecz zadaniem, które może zostać wykonane na wiele sposobów.
-    Klasteryzacja jest iteracyjnym procesem odkrywania danych w celu odnalezieniu relacji pomiędzy nimi.
-    Odpowiedni algorytm grupowania i ustawienia parametrów (w tym parametry,
+    Jest również iteracyjnym procesem odkrywania danych w celu odnalezieniu relacji pomiędzy nimi.
+
+    Odpowiedni algorytm grupowania i ustawienia parametrów (w tym parametrów
     takie jak funkcja odległości lub liczba oczekiwanych grup)
     zależą od zestawu danych i sposobu wykorzystania wyników.
     Dane nieraz muszą zostać przefiltrowane lub potrzebna jest zmiana parametrów grupowania w celu osiągnięcia
@@ -1486,19 +1490,17 @@ Karolina Nurzyńska}
 
     Algorytmy różnią się pod względem implementacji grupowania czy wydajności.
     Najczęściej grupa jest definiowana przez jak najmniejszą odległość pomiędzy jej członkami.
-    Odległość pomiędzy członkami grupy jest głównym parametrem klasteryzacji hierarchicznej.
-    Istnieje wiele innych modeli grupowania.
-    Jednym z nich jest centroidowy.
-    Zakłada on, że każda grupa jest zdefiniowana przez jeden wektor, który posiada wartość średnią.
-    Istnieją też modele, które opierają sie na sieciach neuronowych.
-    Zakładają one, że dane grupują się za pomocą nienadzorowanych sieci neuronowych.
+    Zarazem odległość pomiędzy członkami grupy jest głównym parametrem klasteryzacji hierarchicznej.
+    Istnieje również wiele innych modeli grupowania.
+    Jednym z nich jest model centroidowy,
+    który zakłada, że każda grupa jest zdefiniowana przez jeden wektor, posiadający wartość średnią.
+    Istnieją też modele, które opierają się na sieciach neuronowych.
+    Ich podstawą jest założenie, że dane grupują się za pomocą nienadzorowanych sieci neuronowych.
     Spotykany jest także model oparty o rozkłady statystyczne.
 
     Klasteryzacja może być twarda lub miękka.
     Twarda klasteryzacja oznacza, że każdy element danych może należeć tylko do jednej grupy.
-    Natomiast miękka klasteryzacja oznacza, że każdy element danych może w pewnym stopniu należeć do każdej z grup.
-    %    To oznacza, że dany obiekt może na przykład w 10\% należeć do grupy x, a w 30\% do grupy y itd.
-    Istnieje wiele innych rodzajów modeli grupowania.
+    Natomiast w przypadku miękkiej klasteryzacji każdy element danych może w pewnym stopniu należeć do każdej z grup.
     Autorzy algorytmu szacowania wieku opisywanego w niniejszej pracy zastosowali grupowanie metodą Fuzzy C-means.
     Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
 
@@ -1517,7 +1519,7 @@ Karolina Nurzyńska}
     \normalsize
     W parametrze algorytmu zostaje ustalona liczba grup c.
     Każda grupa posiada charakterystyczną wartość nazywana centroidem $p_{j}\subset \mathbb{R}$.
-    Jak zostało wspomniane na początku tego rozdziału w algorytmie C-means zastosowana jest miękka klasteryzacja.
+    Jak zostało wspomniane na początku tego rozdziału, w algorytmie C-means zastosowana jest miękka klasteryzacja.
     Każdy element danych ma przypisywany wektor $U_{i}$ przynależności do grupy (Wzór~\ref{wzor.wektorPrzynaleznosci}).
     \large
     \begin{equation}
@@ -1542,9 +1544,9 @@ Karolina Nurzyńska}
         \label{wzor.funkcjaPrzynaleznosci}
     \end{equation}
     \normalsize
-    Wyrażenie $\left \| x_{i} - p_{j} \right \|$ oznacza odległość Euklidesową pomiędzy elementem $x_{i}$, a
-    centroidem $p_{j}$. Parametr ,,m'' jest nazywany współczynnikiem rozmycia. Współczynnik ,,m'' może być w zakresie
-    od 1 do nieskończoności. W większości przypadków współczynnik jest równy 2.
+    Wyrażenie $\left \| x_{i} - p_{j} \right \|$ oznacza odległość Euklidesową pomiędzy elementem $x_{i}$ a
+    centroidem $p_{j}$. Parametr ,,m'' jest nazywany współczynnikiem rozmycia. Współczynnik ten może być w zakresie
+    od 1 do nieskończoności, jednak w większości przypadków jest równy 2.
 
     W kroku $(k+1)^{th}$ centroid $p_{j}^{(k+1)}$ jest uaktualniany według Wzoru \ref{wzor.kaPLusJeden}.
     \large
@@ -1587,20 +1589,78 @@ Karolina Nurzyńska}
     Element $x_{i}$ będzie należał do klastru k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
 
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
-    %todo
+    Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wrinkle feature
+    $F_{i}$.
+    W algorytmie Fuzzy C-means są grupowane dane zawierające wartości wrinkle feature $F_{i}$.
+    Jak wiadomo z powyższego opisu algorytmu Fuzzy C-means, każdy element (w tym przypadku $F_{i}$) ma określony stopień
+    przynależności do każdego klastra. Dany element $F_{i}$ będzie należał do klastra o największym stopniu
+    przynależności. Każde zdjęcie jest grupowane według wyżej opisanego algorytmu.
 
-    \section{Wyznaczanie wieku}\label{sec:wyznaczanieWieku}
+    Każdy klaster ma określony centroid j, który posiada parametr $P_{fj}$  oraz dodatkowy parametr - średnią
+    wartość wieku $P_{aj}$. $P_{fj}$ oznacza wartość wrinkle feature dla danego centroida.
+    $P_{aj}$ jest wyznaczany ze Wzoru \ref{wzor.avgJ}.
+    \large
+    \begin{equation}
+        P_{aj}=\frac{\sum_{}^{}A_{c}}{N_{j}}
+        \label{wzor.avgJ}
+    \end{equation}
+    \normalsize
+    , gdzie $A_{c}$ to rzeczywisty wiek osoby z obrazu c, który należy do klastru j.
+    Natomiast $N_{j}$ to liczba zdjęć zaklasyfikowanych do klastru j.
+
+    W powyższym akapicie został opisany algorytm trenowania, który generuje n centroidów, które reprezentują każdą
+    grupę. Natomiast osobnym etapem jest szacowanie wieku. Należy podkreślić, że zdjęcia do testowania algorytmu szacowania wieku
+    pochodzą z innej bazy obrazów niż obrazy wykorzystane w treningu. Ma to na celu eliminację błędów w testowaniu algorytmu.
+    %    Każdy centroid posiada parametr
+    %    W wyniku działania algorytmu wygenerowanych zostaje n grup. Każda grupa posiada centroid wraz ze średnim wiekiem.
+    W pierwszej fazie działanie algorytmu jest dokładnie takie same jak w sekcjach od \ref{sec:metodaWykrywaniaTwarzy}
+    do \ref{sec:wyliczanieWrinkleFeature}:
+    Algorytm szacowania wieku w pierwszej kolejności dokonuje detekcji twarzy, oczu, ust na danym obrazie $O_{i}$.
+    Jeśli powyższe elementy zostały zidentyfikowane, wyznaczane są strefy zmarszczkowe,
+    a następnie zostaje wyliczony parametr wrinkle feature $F_{i}$.
+
+    Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
+    według Wzoru \ref{wzor.wektorPrzynaleznosci}.
+    Przy założeniu zgodnego ze Wzorem \ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek $PA$ wynosi %todo popraw
+    (Wzór \ref{wzor.szacowanyWiek}).
+    \large
+    \begin{equation}
+        PA=\sum_{j=1}^{c}(u_{ij}*P_{aj})
+        \label{wzor.szacowanyWiek}
+    \end{equation}
+    \normalsize
+    , gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów.
+    Natomiast $P_{aj}$ jest średnim wiekiem dla j-tego centroida.
+    %    Zbiór zdjęć użytych do treningu wynosi około 22000.
     % opisac wraz z przykladem moze jakis rysuneczek.
 
     %Tutaj powinno byc 5000 slow
-
     \chapter{Modyfikacje metody bazowej}\label{ch:modyfikacje-metody-bazowej}
+    W pracy została odtworzona oryginalna praca autorów, która
+    będzie dalej nazywana metodą bazową.
+    W celu poprawienia wyników metody bazowej wprowadzono kilka modyfikacji, a
+    w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
+
+    Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
+    który został określony we Wzorze \ref{wzor.mae}.
+    \large
+    \begin{equation}
+        MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
+        \label{wzor.mae}
+    \end{equation}
+    \normalsize
+    , gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
+    Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
+
 
     \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
 
     \section{Zastosowanie metody HOG}\label{sec:zastosowanie-metody-hog}
+    %https://sci-hub.tw/10.2139/ssrn.3268935
+    %https://www.learnopencv.com/histogram-of-oriented-gradients/
+    %    https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients
     \subsection{Opis algorytmu HOG}\label{subsec:opis-algorytmu-hog}
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
 
@@ -1609,7 +1669,7 @@ Karolina Nurzyńska}
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %Tutaj powinno byc okolo 7000
     \chapter{Badania}\label{ch:badania}
-
+    % napisac cos ile bylo zdjec w zbiorze danych, ile przeszlo walidacje.
     %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
     %    przetwarzania), zajetosc pamieci
     \chapter{Podsumowanie}\label{ch:podsumowanie}
