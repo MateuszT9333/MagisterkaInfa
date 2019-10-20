@@ -1,3 +1,4 @@
+%! Suppress = LineBreak
 %! Suppress = TooLargeSection
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                        %
@@ -1472,7 +1473,33 @@ Karolina Nurzyńska}
     Grupowanie polega na podzieleniu dużego zbioru danych na grupy.
     Powyższe grupy posiadają dane, które są podobne do siebie~\cite{clusterWstep}.
 
-    %todo - wstep, jaki jest sens grupowania
+    Klasteryzacja nie jest algorytmem, lecz zadaniem, które może zostać wykonane na wiele sposobów.
+    Klasteryzacja jest iteracyjnym procesem odkrywania danych w celu odnalezieniu relacji pomiędzy nimi.
+    Odpowiedni algorytm grupowania i ustawienia parametrów (w tym parametry,
+    takie jak funkcja odległości lub liczba oczekiwanych grup)
+    zależą od zestawu danych i sposobu wykorzystania wyników.
+    Dane nieraz muszą zostać przefiltrowane lub potrzebna jest zmiana parametrów grupowania w celu osiągnięcia
+    zamierzonego efektu~\cite{clusterWstep}.
+
+    Algorytmy różnią się pod względem implementacji grupowania czy wydajności.
+    Najczęściej grupa jest definiowana przez jak najmniejszą odległość pomiędzy jej członkami.
+    Odległość pomiędzy członkami grupy jest głównym parametrem klasteryzacji hierarchicznej.
+    Istnieje wiele innych modeli grupowania.
+    Jednym z nich jest centroidowy.
+    Zakłada on, że każda grupa jest zdefiniowana przez jeden wektor, który posiada wartość średnią.
+    Istnieją też modele, które opierają sie na sieciach neuronowych.
+    Zakładają one, że dane grupują się za pomocą nienadzorowanych sieci neuronowych.
+    Spotykany jest także model oparty o rozkłady statystyczne.
+
+    Klasteryzacja może być twarda lub miękka.
+    Twarda klasteryzacja oznacza, że każdy obiekt może należeć tylko do jednej grupy.
+    Natomiast miękka klasteryzacja oznacza, że każdy obiekt może w pewnym stopniu należeć do każdej z grup.
+    To oznacza, że dany obiekt może na przykład w 10\% należeć do grupy x, a w 30\% do grupy y itd.
+    Istnieje wiele innych rodzajów modeli grupowania.
+    Autorzy algorytmu szacowania wieku opisywanego w niniejszej pracy zastosowali grupowanie metodą Fuzzy C-means.
+    Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
+
+
 
     %    https://pl.wikipedia.org/wiki/Analiza_skupień
     %    https://en.wikipedia.org/wiki/Cluster_analysis
