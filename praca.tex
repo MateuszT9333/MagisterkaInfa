@@ -446,24 +446,24 @@ Karolina Nurzyńska}
     Wykrywanie wieku dzieli się na kilka faz.
     Na początku należy wykryć twarz.
     Zastosowany algorytm wykrywania został
-    opisany w sekcji \ref{sec:metodaWykrywaniaTwarzy}
+    opisany w sekcji~\ref{sec:metodaWykrywaniaTwarzy}
     Następnie należy wyznaczyć strefy zmarszczkowe na twarzy.
     W artykule~\cite{wrinkleFeatures} udowodniono,
     że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
-    Powyższe strefy zostały wymienione w sekcji \ref{sec:wyznaczanieStref}.
-    Sekcja \ref{sec:wykrywanieZmarszczek} przedstawia technikę wykrywania zmarszczek znajdujących się w strefach.
+    Powyższe strefy zostały wymienione w sekcji~\ref{sec:wyznaczanieStref}.
+    Sekcja~\ref{sec:wykrywanieZmarszczek} przedstawia technikę wykrywania zmarszczek znajdujących się w strefach.
     Wykryte zmarszczki
     pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
-    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby (Rysunek \ref{fig.faza1Algorytmu}).
+    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby (Rysunek~\ref{fig.faza1Algorytmu}).
     Kolejna faza
     jest potrzebna do
     znalezienia relacji pomiędzy wrinkle feature a wiekiem.
     Do tego celu należy zastosować algorytm trenujący, który
-    został opisany w sekcji \ref{sec:algorytmTrenowania}.
+    został opisany w sekcji~\ref{sec:algorytmTrenowania}.
     Wynikiem algorytmu trenującego jest zbiór danych, który
-    należy pogrupować, tak jak to opisano w sekcji \ref{sec:grupowanieDanych}.
+    należy pogrupować, tak jak to opisano w sekcji~\ref{sec:grupowanieDanych}.
     Ostatnią fazą algorytmu jest wykrywanie wieku
-    na podstawie wyników działania FCM - sekcja \ref{sec:wyznaczanieWieku} (Rysunek \ref{fig.faza2Algorytmu}).
+    na podstawie wyników działania FCM - sekcja~\ref{sec:wyznaczanieWieku} (Rysunek~\ref{fig.faza2Algorytmu}).
 
     \begin{figure}[h]
         \centering
@@ -567,7 +567,7 @@ Karolina Nurzyńska}
 
     Kolejnym istotnym elementem jest oświetlenie twarzy.
     Gdy twarz oświetlona jest tzw. twardym światłem, występują na
-    niej cienie i światła określane jako ostre (Sekcja \ref{fig.oswietlenieTwarzy}).
+    niej cienie i światła określane jako ostre (Sekcja~\ref{fig.oswietlenieTwarzy}).
     \begin{figure}
         \centering
         \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
@@ -584,7 +584,7 @@ Karolina Nurzyńska}
     okryta jednolitym cieniem, którego intensywność zależy od "twardości" światła.
     Natomiast przy świetle rozproszonym intensywność cieni jest mniejsza.
 
-    Na Rys \ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
+    Na Rys~\ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
     \begin{figure}
         \centering
         \includegraphics[width=15cm]{Obrazy/technikiWykrywaniaTwarzy.jpg}
@@ -673,7 +673,7 @@ Karolina Nurzyńska}
     Współrzędne X,Y,Z wyliczane są na podstawie trzech podstawowych barw R (czerwonej),
     G (zielonej) i B (niebieskiej).
     Współrzędne XYZ są często reprezentowane przez luminancję Y oraz współrzędne x, y chromatyczności.
-    Wyliczanie współrzędnych x, y przedstawiono na wzorach \ref{wzor.chromX} oraz \ref{wzor.chromY}.
+    Wyliczanie współrzędnych x, y przedstawiono na wzorach~\ref{wzor.chromX} oraz~\ref{wzor.chromY}.
     \large
     \begin{equation}
         x = \frac{X}{X+Y+Z}
@@ -1421,9 +1421,9 @@ Karolina Nurzyńska}
         \label{fig.mojaTwarzGray}
     \end{figure}
 
-    Na Rysunku \ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
+    Na Rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
     Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
-    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja \ref{sec:wyznaczanieStref}),
+    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja~\ref{sec:wyznaczanieStref}),
     które identyfikują zmarszczki.
     Ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek na twarzy danej
     osoby.
@@ -1439,7 +1439,7 @@ Karolina Nurzyńska}
     , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1,
     $PB_{s1}$ - suma białych pikseli w strefie 1, $PW_{s1}$ - suma wszystkich pikseli w strefie 1.
     Analogicznie obliczane są stosunki pikseli dla pozostałych stref.
-    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór \ref{wzor.wrinkleFeature}).
+    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór~\ref{wzor.wrinkleFeature}).
     \large
     \begin{equation}
         WF = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
@@ -1466,8 +1466,11 @@ Karolina Nurzyńska}
     W wyniku działania algorytmu otrzymuje się dane dzięki, którym można na podstawie współczynnika zmarszczek można
     oszacować wiek~\cite{wrinkleFeatures}.
     \section{Grupowanie danych - Fuzzy C-Means}\label{sec:grupowanieDanych}
-    %    Grupowanie danych zwane również klasteryzacją polega na podzieleniu dużego zbioru danych na grupy.
-    %    Powyższe grupy posiadają dane, które są podobne do siebie.
+    %    https://pl.wikipedia.org/wiki/Analiza_skupień
+    %    https://en.wikipedia.org/wiki/Cluster_analysis
+    %    https://sci-hub.tw/10.1109/ICCSA.2019.000-1
+    %    https://www.researchgate.net/publication/329424581_Data_clustering
+    %    Podac rozne przyklady algorytmow - hierarchiczne, niehierarchiczne
     Grupowanie danych zwane również klasteryzacją jest szeroko stosowane w uczeniu maszynowym, rozpoznawaniu wzorców,
     analizie obrazu, bioinformatyce, kompresji danych czy w grafice komputerowej.
     Grupowanie polega na podzieleniu dużego zbioru danych na grupy.
@@ -1492,23 +1495,100 @@ Karolina Nurzyńska}
     Spotykany jest także model oparty o rozkłady statystyczne.
 
     Klasteryzacja może być twarda lub miękka.
-    Twarda klasteryzacja oznacza, że każdy obiekt może należeć tylko do jednej grupy.
-    Natomiast miękka klasteryzacja oznacza, że każdy obiekt może w pewnym stopniu należeć do każdej z grup.
-    To oznacza, że dany obiekt może na przykład w 10\% należeć do grupy x, a w 30\% do grupy y itd.
+    Twarda klasteryzacja oznacza, że każdy element danych może należeć tylko do jednej grupy.
+    Natomiast miękka klasteryzacja oznacza, że każdy element danych może w pewnym stopniu należeć do każdej z grup.
+    %    To oznacza, że dany obiekt może na przykład w 10\% należeć do grupy x, a w 30\% do grupy y itd.
     Istnieje wiele innych rodzajów modeli grupowania.
     Autorzy algorytmu szacowania wieku opisywanego w niniejszej pracy zastosowali grupowanie metodą Fuzzy C-means.
     Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
 
-
-
-    %    https://pl.wikipedia.org/wiki/Analiza_skupień
-    %    https://en.wikipedia.org/wiki/Cluster_analysis
-    %    https://sci-hub.tw/10.1109/ICCSA.2019.000-1
-    %    https://www.researchgate.net/publication/329424581_Data_clustering
-    %    Podac rozne przyklady algorytmow - hierarchiczne, niehierarchiczne
     %todo - dokladny opis jak to dziala
     %    https://sci-hub.tw/10.1007/s12046-019-1166-1
     %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
+    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Została opisana ona w książce
+    ,,A Fuzzy Relative of the ISODATA Process and Its Use in Detecting Compact Well-Separated Clusters''.
+
+    Klasteryzacja Fuzzy C-means dzieli zbiór X (Wzór~\ref{wzor.zbiorX}):
+    \large
+    \begin{equation}
+        X:=\{x_{1},x_{2},x_{3},\ldots,x_{n}\}\subset \mathbb{R}
+        \label{wzor.zbiorX}
+    \end{equation}
+    \normalsize
+    W parametrze algorytmu zostaje ustalona liczba grup c.
+    Każda grupa posiada charakterystyczną wartość nazywana centroidem $p_{j}\subset \mathbb{R}$.
+    Jak zostało wspomniane na początku tego rozdziału w algorytmie C-means zastosowana jest miękka klasteryzacja.
+    Każdy element danych ma przypisywany wektor $U_{i}$ przynależności do grupy (Wzór~\ref{wzor.wektorPrzynaleznosci}).
+    \large
+    \begin{equation}
+        U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
+        \label{wzor.wektorPrzynaleznosci}
+    \end{equation}
+    \normalsize
+    , gdzie $u_{i1}$ oznacza stopień przynależności elementu $x_{i}$ do grupy 1.
+    Analogicznie $u_{i2}$ oznacza stopień przynależności elementu $x_{i}$ do grupy 2.
+
+    W pierwszym kroku zbiór centroidów P jest inicjalizowany losowo (Wzór~\ref{wzor.zbiorCentroidow}).
+    \large
+    \begin{equation}
+        P^{0}=(p_{1}^{0}, p_{2}^{0}, p_{3}^{0}, \ldots, p_{c}^{0})
+        \label{wzor.zbiorCentroidow}
+    \end{equation}
+    \normalsize
+    W k-tym kroku algorytmu wyliczona jest macierz funkcji przynależności $U^{k} = {u_{ij}^{k}}$ (Wzór~\ref{wzor.funkcjaPrzynaleznosci}).
+    \large
+    \begin{equation}
+        u_{ij}^{k} = \frac{1}{\sum_{k=1}^{c}\left ( \frac{\left \| x_{i} - p_{j}^{k} \right \|}{\left \|x_{i} - p_{k}^{k}  \right \|} \right )^{\frac{2}{m-1}}}
+        \label{wzor.funkcjaPrzynaleznosci}
+    \end{equation}
+    \normalsize
+    Wyrażenie $\left \| x_{i} - p_{j} \right \|$ oznacza odległość Euklidesową pomiędzy elementem $x_{i}$, a
+    centroidem $p_{j}$. Parametr ,,m'' jest nazywany współczynnikiem rozmycia. Współczynnik ,,m'' może być w zakresie
+    od 1 do nieskończoności. W większości przypadków współczynnik jest równy 2.
+
+    W kroku $(k+1)^{th}$ centroid $p_{j}^{(k+1)}$ jest uaktualniany według Wzoru \ref{wzor.kaPLusJeden}.
+    \large
+    \begin{equation}
+        p_{j}^{(k+1)}=\frac{\sum_{i=1}^{n}u_{ij}^{(k+1)m}x_{j}}{\sum_{i=1}^{n}u_{ij}^{(k+1)m}}
+        \label{wzor.kaPLusJeden}
+    \end{equation}
+    \normalsize
+    Algorytm w kolejnych iteracjach minimalizuje kryterium $J(U,P)$ podane Wzorem \ref{wzor.kryteriumFCM}:
+
+    \large
+    \begin{equation}
+        J(U,P)= \sum_{i=1}^{n}\sum_{j=1}^{c}u_{ij}^{m}\left \| x_{i}-p_{j} \right \|^{2}
+        \label{wzor.kryteriumFCM}
+    \end{equation}
+    \normalsize
+    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany Wzorem \ref{wzor.koniecIteracjiWarunek}
+    \large
+    \begin{equation}
+        \left \| J^{(k+1)}(U,P) - J^{(k)}(U,P)) \right \| < \epsilon
+        \label{wzor.koniecIteracjiWarunek}
+    \end{equation}
+    \normalsize
+    , gdzie $\epsilon > 0$. Parametr $\epsilon$ jest parametrem ustawianym przed uruchomieniem klasteryzacji.
+    W niektórych implementacjach istnieje możliwość zakończenia działania algorytmu po określonej liczbę iteracji,
+    jeśli wcześniej nie zostanie osiągnięte kryterium ze Wzoru \ref{wzor.koniecIteracjiWarunek}.
+
+    Po zakończeniu działania wyżej opisanego algorytmu zostaje wyliczony wektor przynależności $U$
+    (Wzór \ref{wzor.wektorPrzynaleznosci}).
+    %    U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
+    Zakładając, że suma wektora przynależności $U_{i}$, dla elementu $x_{i}$ jest opisana
+    Wzorem \ref{wzor.sumaWektorPrzynaleznosci}
+    \large
+    \begin{equation}
+        \sum_{j=0}^{j=c} u_{ij}=1
+        \label{wzor.sumaWektorPrzynaleznosci}
+    \end{equation}
+    \normalsize
+    , gdzie c oznacza liczbę klastrów.
+    Element $x_{i}$ będzie należał do klastru k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
+
+    W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
+    %todo
+
     \section{Wyznaczanie wieku}\label{sec:wyznaczanieWieku}
     % opisac wraz z przykladem moze jakis rysuneczek.
 
