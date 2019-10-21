@@ -1660,17 +1660,17 @@ Karolina Nurzyńska}
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
     Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
-    wykrywa także włosy. Przeglądając wiele zdjęć zauważono, że w obrębie
+    wykrywa także włosy. Podczas przeglądania wielu zdjęć zauważono, że w obrębie
     strefy zmarszczek nr 2 (Obraz \ref{fig.wykrywanieStrefZmarszczkowych}) wykrywane są części brwi oprócz samych
-    zmarszczek. Generuje to błąd, dlatego wyżej wymienionej strefy nie uwzględniano w obliczeniach.
-    W Sekcji \ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed wyżej
-    wymienioną modyfikacją i po modyfikacji.
+    zmarszczek. Generuje to błąd, dlatego wyżej wymienionej strefy nie uwzględniono w obliczeniach.
+    W Sekcji \ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed opisaną wyżej
+    modyfikacją i po niej.
 
     \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
     Przed modyfikacją metody bazowej parametr wrinkle feature był obliczany według Wzoru \ref{wzor.wrinkleFeature},
     który jest umieszczony w Sekcji \ref{sec:wyliczanieWrinkleFeature}.
 
-    Po modyfikacji parametr wrinkle feature jest obliczany według Wzoru \ref{wzor.wrinkleFeature2}.
+    Po modyfikacji parametr wrinkle feature oblicza się według Wzoru \ref{wzor.wrinkleFeature2}.
     \large
     \begin{equation}
         WF = W_{s1} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
@@ -1686,25 +1686,24 @@ Karolina Nurzyńska}
     %    https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients
     %    https://hal.inria.fr/inria-00548512/document
     Metoda HOG (Histogram of Oriented Gradients) jest deskryptorem cech z obrazu.
-    Deskryptor cech wyodrębnia pewne cechy z obrazu.
-    Do takich cech należą między innymi kształty, kolory, tekstury.
-    Podobnie tak jak w metodzie bazowej taką rolę spełnia detektor
+    Deskryptor cech wyodrębnia z obrazu pewne cechy, do których należą między innymi kształty, kolory czy tekstury.
+    W metodzie bazowej rolę deskryptora tego rodzaju spełnia detektor
     krawędzi Canny (Sekcja \ref{sec:wykrywanie-zmarszczek---detektor-canny}), który wykrywa krawędzie,
-    które identyfikują zmarszczki.
-    Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
-    Liczenie jest dokonywane w pewnych obszarach obrazów.
+    identyfikowane jako zmarszczki.
+    Z kolei Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
+    Liczenie jest dokonywane tylko w pewnych obszarach obrazów.
     Metoda HOG została wymyślona i opisana w 1982 przez Roberta K. McConella.
-    Robert K. McConell pracował w ówczesnych czasach dla firmy Wayland Research Inc.
-    A opis jego metody został zawarty w patencie ,,Method of and apparatus for pattern recognition'' \cite{patentHOG}.
-    Jednak metoda została pierwszy raz zaimplementowana w 2005 roku przez Navneeta Dalala i Billa Triggsa \cite{hogZabojady}
+    Robert K. McConell pracował w ówczesnych czasach dla firmy Wayland Research Inc.,
+    a opis jego metody został zawarty w patencie ,,Method of and apparatus for pattern recognition'' \cite{patentHOG}.
+    Jednak jego metoda została po raz pierwszy zaimplementowana dopiero w 2005 roku przez Navneeta Dalala i Billa Triggsa \cite{hogZabojady}
     z francuskiego instytutu zajmującego się badaniami w zakresie informatyki i automatyki
     (INRIA - Institut national de recherche en informatique et en automatique).
-    Powyższa metoda została zastosowana do detekcji pieszych na zdjęciach.
-    Później metoda została rozszerzona o wykrywanie ludzi w filmach wideo.
-    Ponadto zastosowano ją do wykrywania zwierząt oraz pojazdów na zdjęciach.
+    Metoda McConella została wtedy zastosowana do detekcji pieszych na zdjęciach.
+    Później metoda została rozszerzona o wykrywanie ludzi w filmach wideo,
+    ponadto później stosowano ją także do wykrywania zwierząt oraz pojazdów na zdjęciach.
 
     Metoda Histogram of Oriented Gradients opiera się na założeniu, że wygląd i kształt obiektów na obrazie może zostać
-    opisany przez gradient jasności oraz jego kierunek. Dobrze to jest widoczne na
+    opisany przez gradient jasności oraz jego kierunek. Jest to dobrze widoczne na
     Rysunku~\ref{fig.gradientJasnosciNaGlowie}
 
     \begin{figure}
@@ -1714,21 +1713,20 @@ Karolina Nurzyńska}
         \label{fig.gradientJasnosciNaGlowie}
     \end{figure}
     Na granicy pomiędzy tłem, a głową sportowca widoczne są duże wartości gradientu jasności.
-    W ten sposób zostaję zidentyfikowana krawędź głowy.
+    W ten sposób zostaje zidentyfikowana krawędź głowy.
 
-    Algorytm działa w skrócie w następujący sposób. Obraz jest dzielony na małe obszary zwane komórkami.
-    Zwykle obszary mają wymiar kilka na kilka pikseli.
+    Działanie algorytmu można pokrótce opisać w następujący sposób. Obraz jest dzielony na małe obszary zwane komórkami, które zwykle mają wymiar kilka na kilka pikseli.
     Dla każdego piksela w komórce tworzony jest histogram kierunków gradientu.
-    Histogramy są łączone w jeden wspólny deskryptor.
+    Następnie histogramy są łączone w jeden wspólny deskryptor.
     Dla zwiększenia dokładności lokalne histogramy normalizowane są pod względem kontrastu.
-    Realizowane jest to przez pomiar jasności obszaru zwanym blokiem.
-    Blok składa się z kilku komórek. Normalizacja zapewnia zmniejszenia niepożądanego efektu generowanego przez
-    różnice w oświetleniu różnych obszarów zdjęcia. Powyższa sytuacja występują na przykład, gdy zdjęcie wykonywane
+    Realizowane jest to przez pomiar jasności obszaru zwanego blokiem, który
+    składa się z kilku komórek. Normalizacja zapewnia zmniejszenia niepożądanego efektu generowanego przez
+    różnice w oświetleniu różnych obszarów zdjęcia. Wspomniana sytuacja występuje na przykład, gdy zdjęcie wykonywane
     jest w nieprawidłowych warunkach oświetleniowych (Rysunek \ref{fig.oswietlenieTwarzy}).
 
-    W tym akapicie zostanie przedstawiony dokładny opis metody Histogram of Oriented Gradients.
-    W pierwszej fazie obraz obraz powinien być przeskalowany, tak aby jego wymiary były podzielne przez rozmiar
-    pojedyńczej komórki.
+    W poniższym akapicie zostanie przedstawiony dokładny opis metody Histogram of Oriented Gradients.
+    W pierwszej fazie obraz powinien zostać przeskalowany, tak aby jego wymiary były podzielne przez rozmiar
+    pojedynczej komórki.
     (Rysunek \ref{fig.komorkiHoga}).
 
     \begin{figure}
@@ -1737,20 +1735,20 @@ Karolina Nurzyńska}
         \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu.~\cite{hogOpenCv}}
         \label{fig.komorkiHoga}
     \end{figure}
-    Warto dodać, że w wielu metodach generujących deskryptory pierwszą fazą jest korekcja luminacji.
+    Warto wspomnieć, że w wielu metodach generujących deskryptory pierwszą fazą jest korekcja luminacji.
     Jednak ten krok może zostać pominięty, gdyż w późniejszym kroku stosowana jest normalizacja,
-    która dokonuje korekcję luminacji cieni oraz świateł.
+    która dokonuje korekcji luminacji cieni oraz świateł.
     W kolejnej fazie muszą zostać wyznaczone gradienty jasności.
-    Wyznaczenie gradientów jasności zostało opisane w Sekcji \ref{subsec:szukanie-gradientów-jasności}.
+    Wyznaczenie gradientów jasności zostało szczegółowo opisane w Sekcji \ref{subsec:szukanie-gradientów-jasności}.
     W kolejnej fazie zostają wyznaczone histogramy gradientów dla każdej komórki.
-    Na Rysunku \ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania poprzedniego kroku.
-    Zostają wygenerowane dwie macierze. Pierwsza zawiera informację o gradiencie jasności każdego piksela komórki.
-    Natomiast druga zawiera informację o kierunku każdego gradientu.
+    Na Rysunku \ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania tego kroku.
+    Zostają wygenerowane dwie macierze. Pierwsza zawiera informację o gradiencie jasności każdego piksela komórki,
+    natomiast druga - informację o kierunku każdego gradientu.
     Wartości kierunku gradientu wyrażone są w stopniach. W metodzie Histogram of Oriented Gradients
-    zastosowano kierunki gradientu bez znaku. Oznacza to, że zakres kierunków jest od $0^{\circ}$ do $180^{\circ}$.
+    zastosowano kierunki gradientu bez znaku. Oznacza to, że zakres kierunków mieści się w granicach od $0^{\circ}$ do $180^{\circ}$.
     Kierunek gradientu ze znakiem posiadałby zakres od $0^{\circ}$ do $180^{\circ}$ oraz jego ujemny odpowiednik
     (od $-179^{\circ}$ do $-1^{\circ}$). Użycie kierunku gradientu bez znaku jest uzasadnione tym,
-    że wartość kierunku o takiej samej wartości lecz różnych znakach reprezentuje gradient o tym samym kierunku lecz
+    że wartość kierunku o takiej samej wartości, lecz różnych znakach reprezentuje gradient o tym samym kierunku, lecz
     różnych zwrotach. Dla detekcji kształtów krawędzi czy kształtów istotny jest kierunek, a nie zwrot.
     Na podstawie kierunku gradientu oraz wartości gradientu jasności zostaje wygenerowany histogram gradientów.
     W parametrze wejściowym algorytmu HOG ustawiana jest ilość komórek histogramu.
@@ -1767,12 +1765,12 @@ Karolina Nurzyńska}
     Piksel zaznaczony na niebiesko posiada gradient o wartości 2 oraz kierunek o kącie $80^{\circ}$
     Wartość gradientu zostaje dodana do komórki histogramu reprezentującego kąt $80^{\circ}$.
     Piksel zaznaczony na czerwono posiada gradient o wartości 4 oraz kierunek o kącie $10^{\circ}$.
-    Wartość gradientu równa 4 zostaje rozdzielona na dwie proporcjonalne wartości: 2 oraz 2, które zostają dodane do
+    Wartość gradientu równa 4 zostaje rozdzielona na dwie proporcjonalne wartości: 2 oraz 2, które są dodawane do
     komórek reprezentujących kąt $0^{\circ}$ oraz $20^{\circ}$.
     Proporcje zależą od kąta gradientu i od kątów w komórkach histogramu.
-    Tak jak w powyższym przypadku, jeśli wartość kąta wynosi $10^{\circ}$ wartości gradientu są przydzielane do
+    Tak jak w powyższym przypadku, jeśli wartość kąta wynosi $10^{\circ}$, wartości gradientu są przydzielane do
     komórek reprezentujące dwa kąty (w tym przypadku przedziały reprezentujące kąt od $0^{\circ}$ do
-    $20^{\circ}$). W związku z tym, że powyższy kąt wynosi $10^{\circ}$ wartości dla komórek histogramu są obliczane
+    $20^{\circ}$). W związku z tym, że powyższy kąt wynosi $10^{\circ}$, wartości dla komórek histogramu są obliczane
     według Wzoru \ref{wzor.komorkaHistogramu1} oraz Wzoru \ref{wzor.komorkaHistogramu2}:
 
     \large
@@ -1781,10 +1779,10 @@ Karolina Nurzyńska}
         \label{wzor.komorkaHistogramu1}
     \end{equation}
     \normalsize
-    , gdzie $X_{a}$ oznacza wartość przydzielaną do komórki reprezentujący mniejszy kąt (tak jak $0^{\circ}$
+    , gdzie $X_{a}$ oznacza wartość przydzielaną do komórki reprezentującej mniejszy kąt (tak jak $0^{\circ}$
     dla powyższego przykładu), $A_{x}$ oznacza wartość kąta gradientu dla danego piksela (tak jak $10^{\circ}$
-    dla powyższego przykładu), $A_{a}$ oznacza kąt dla komórki reprezentujący mniejszy kąt (tak jak $0^{\circ}$
-    dla powyższego przykładu), $A_{b}$ oznacza kąt dla komórki reprezentujący większy kąt (tak jak $20^{\circ}$
+    dla powyższego przykładu), $A_{a}$ oznacza kąt dla komórki reprezentującej mniejszy kąt (tak jak $0^{\circ}$
+    dla powyższego przykładu), $A_{b}$ oznacza kąt dla komórki reprezentującej większy kąt (tak jak $20^{\circ}$
     dla powyższego przykładu), $G_{x}$ oznacza wartość gradientu dla danego piksela (tak jak 4 dla powyższego
     przykładu).
     \large
@@ -1799,18 +1797,18 @@ Karolina Nurzyńska}
     przydzielana proporcjonalnie do komórki $160^{\circ}$ oraz $0^{\circ}$ zgodnie ze
     Wzorem \ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
     a wyliczona wartość zostaje przydzielona do komórki reprezentującej kąt $0^{\circ}$.
-    Powyższa procedura jest powtarzana. Kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
+    Powyższa procedura jest powtarzana, a kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
     w komórkach histogramu. Końcowy efekt tej fazy dostarcza histogram reprezentujący komórkę. Wartości histogramu
     dla danej komórki reprezentują część wektoru deskryptora. Deskryptor składa się z n histogramów, gdzie n oznacza
     liczbę komórek w danym obrazie.
 
-    Kolejnym krokiem jest normalizacja bloków. Blok składa się z komórek. Zwykle blok ma wymiary 2x2 komórki.
-    Gradienty jasności są czułe na zmiany oświetlenia na obrazie. Celem tej fazy algorytmu jest normalizacja oświetlania
+    Kolejnym krokiem jest normalizacja bloków. Blok składa się z komórek i zazwyczaj ma wymiary 2x2 komórki.
+    Gradienty jasności są czułe na zmiany oświetlenia na obrazie. Celem tej fazy algorytmu jest normalizacja oświetlania,
     aby uodpornić deskryptor na zmiany oświetlania.
     Istnieje wiele sposobów normalizacji. Zostanie tutaj opisana normalizacja za pomocą parametru L2-norm.
     Najpierw zostaje wyliczona wartość L2-norm. L2 jest wartością normalizującą wektor $v$, który reprezentuje wartości
-    deskryptora dla danego bloku. Powyższy wektor składa się z wartości zawartych komórkach histogramu. Jak wiadomo z
-    powyższego opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
+    deskryptora dla danego bloku. Wspomniany wektor składa się z wartości zawartych w komórkach histogramu. Jak wiadomo z
+    przedstawionego wyżej opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
     Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
     wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
     Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, więc wektor $v$ będzie
@@ -1823,7 +1821,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm, natomiast $v(i)$ jest i-tym elementem wektora $v$.
-    Normalizacja jest realizowana stosując Wzór
+    Normalizacja jest realizowana przy zastosowaniu Wzoru
     \large
     \begin{equation}
         v = \frac{v}{\left \|v  \right \|_{2}}
@@ -1833,35 +1831,35 @@ Karolina Nurzyńska}
     , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm dla wektora $v$. Działanie zgodne ze
     Wzorem \ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
     $\left \|v  \right\|_{2}$.
-    Powyższy proces jest powtarzany dla wszystkich bloków.
+    Powyższy proces powtarza się dla wszystkich bloków.
     W wyniku działania algorytmu Histograms of Oriented Gradients wygenerowany zostaje deskryptor, czyli wektor
     reprezentujący wartości histogramów wszystkich komórek w obrazie.
 
     Deskryptor HOG posiada kluczową zaletę w stosunku do innych metod ekstrakcji cech.
-    Metoda Histogram of Oriented Gradients jest odporna na działanie przekształceń geometrycznych
+    Jest nią odporność metody Histogram of Oriented Gradients na działanie przekształceń geometrycznych
     dzięki temu, że dokonuje działań na komórkach lokalnych.
     Przekształcenia geometryczne to działania, które przekształcają figury z jednej przestrzeni geometrycznej w drugą.
     Przykładem przestrzeni geometrycznej jest przestrzeń euklidesowa czy przestrzeń rzutowa.
     Ponadto działania na komórkach lokalnych pozwalają zmniejszyć efekt powstający przy ruchu pieszego.
-    W związku z powyższym opisywana metoda nadaje sie do detekcji ludzi na obrazach.
+    Z uwagi na powyższe zalety ta metoda nadaje się do detekcji ludzi na obrazach.
 
-    W pracy opisywana metoda posłużyła do wykrywania krawędzi, które informują o zmarszczkach. Dokładny sposób
-    zaimplementowania w pracy został opisany w Sekcji \ref{subsec:zastosowanie-w-projekcie2}
+    W niniejszej pracy opisywana metoda posłużyła do wykrywania krawędzi, które informują o zmarszczkach. Dokładny sposób jej
+    zaimplementowania w pracy opisuje Sekcja  \ref{subsec:zastosowanie-w-projekcie2}
 
     \subsection{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
-    W poprzedniej Sekcji \ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG w wyniku, którego
+    W poprzedniej Sekcji \ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG, w wyniku którego
     generowany jest deskryptor dla danego obrazu.
 
-    Powyższy deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
+    Omówiony wyżej deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
     Sekcji~\ref{sec:zastosowanie-metody-hog} metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
-    obszarze jest dużo krawędzi to w wektorze deskryptora będzie pewna ilość elementów tego wektora o znacznej wartości.
+    obszarze jest dużo krawędzi, to w wektorze deskryptora będzie pewna ilość elementów tego wektora o znacznej wartości.
     Wyżej opisywane, charakterystyczne elementy wektora będą identyfikowały krawędzie w obrazie. Jak wiadomo z
-    Sekcji \ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczka.
+    Sekcji \ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
     W związku z powyższym zmodyfikowano sposób obliczenia wrinkle feature dla obrazu twarzy opierając się o
     deskryptor wygenerowany przez algorytm HOG.
 
-    W bibliotece OpenCv zaimplementowany jest algorytm HOG, który na podstawie pewnego obszaru obrazu lub całego
-    obrazu generuje wektor reprezentujący deskryptor. Biblioteka umożliwia ustawienie różnych parametrów HOG-a.
+    W bibliotece OpenCv zaimplementowany jest algorytm HOG, który na podstawie całego
+    obrazu lub jego pewnego obszaru generuje wektor reprezentujący deskryptor. Biblioteka umożliwia ustawienie różnych parametrów HOG-a.
     Do tych parametrów zalicza się:
     \begin{itemize}
         \item rozmiar komórki w pikselach
@@ -1900,7 +1898,10 @@ Karolina Nurzyńska}
     wyznaczana jest para danych $WF_{HOG}$ (Wzór \ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
     zbiór danych jest trenowany za pomocą Fuzzy C-means (Sekcja \ref{sec:grupowanieDanych}) - tak samo jak w metodzie
     bazowej.
+    Wiek szacowany jest dokładnie tak samo jak w metodzie bazowej.
+    Kolejna modyfikacja metody bazowej została opisana w Sekcji \ref{sec:metoda-hog-oraz-grupowanie-knn}
     \section{Metoda HOG oraz grupowanie KNN}\label{sec:metoda-hog-oraz-grupowanie-knn}
+
     %Trening generuje pare wiek -> wektor sumy hogow z kazdej strefy
     %Szacowanie wieku polega na generacji z testowego zdjeic pary jw. i za pomoca KNN przydzielenie do jakiejs klasy
     %    - czytaj wieku.
@@ -1908,9 +1909,43 @@ Karolina Nurzyńska}
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %Tutaj powinno byc okolo 7000
     \chapter{Badania}\label{ch:badania}
-    % napisac cos ile bylo zdjec w zbiorze danych, ile przeszlo walidacje.
+    \section{Środowisko badań}\label{sec:środowisko-pracy}
+    %napisac z czego korzystano
+    %czyli matlab
+    %    do czego byl uzywany matlab a do czego Intellij
+    %intellij
+    %jakie biblioteki uzywano z jaka dokladnocia liczono
+    %    jakich technologii uzywano np. log4j do logowania
+    \section{Wykrywanie zmarszczek przez detektor Canny}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
+    %Ustalone parametry
+    %    Tutaj mogą być zdjęcia jak to wygladalo, jakie były problemy np, ze wykrywalo wlosy, ze blednie wykrywalo itp
+    \section{Statystyki z działania programu}\label{sec:statystyki-z-działania-programu}
     %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
     %    przetwarzania), zajetosc pamieci
+    % napisac cos ile bylo zdjec w zbiorze danych, ile przeszlo walidacje.
+    %przykladowe dane generowane przez metode glowna
+
+
+    %dzialanie poszczegolnych czesci algorytmu
+    %wykrywanie twarzy, oczu itd. tutaj beda zdjecia
+    %logi z dzialania
+    \section{Porównanie metod}
+    %    Wstep jakie metody porownano i co tam zmieniano
+    \subsection{Metoda bazowa}
+    %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
+    \subsection{Metoda 1}
+    \subsection{Metoda 2}
+    \subsection{Metoda 3}
+    \section{Podsumowanie}
+    \section{Wnioski}
+
+
+
+
+    %troche logow z aplikacji
+    %casy co sie dzialo jak nie wykryto twarzy, czy czesci twarzy wrac z logami
+    %pomiar czyli ile danych przypomniec sie o mae.
+
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
 
