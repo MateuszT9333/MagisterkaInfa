@@ -1621,7 +1621,9 @@ Karolina Nurzyńska}
 
     Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
     według Wzoru \ref{wzor.wektorPrzynaleznosci}.
-    Przy założeniu zgodnego ze Wzorem \ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek $PA$ wynosi %todo popraw
+    Przy założeniu dla wektoru przynależności zgodnym ze Wzorem \ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek
+    $PA$
+    wynosi
     (Wzór \ref{wzor.szacowanyWiek}).
     \large
     \begin{equation}
@@ -1661,8 +1663,171 @@ Karolina Nurzyńska}
     %https://sci-hub.tw/10.2139/ssrn.3268935
     %https://www.learnopencv.com/histogram-of-oriented-gradients/
     %    https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients
-    \subsection{Opis algorytmu HOG}\label{subsec:opis-algorytmu-hog}
-    \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
+    %    https://hal.inria.fr/inria-00548512/document
+    Metoda HOG (Histogram of Oriented Gradients) jest deskryptorem cech z obrazu.
+    Deskryptor cech wyodrębnia pewne cechy z obrazu.
+    Do takich cech należą między innymi kształty, kolory, tekstury.
+    Podobnie tak jak w metodzie bazowej taką rolę spełnia detektor
+    krawędzi Canny (Sekcja \ref{sec:wykrywanie-zmarszczek---detektor-canny}), który wykrywa krawędzie,
+    które identyfikują zmarszczki.
+    Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
+    Liczenie jest dokonywane w pewnych obszarach obrazów.
+    Metoda HOG została wymyślona i opisana w 1982 przez Roberta K. McConella.
+    Robert K. McConell pracował w ówczesnych czasach dla firmy Wayland Research Inc.
+    A opis jego metody został zawarty w patencie ,,Method of and apparatus for pattern recognition'' \cite{patentHOG}.
+    Jednak metoda została pierwszy raz zaimplementowana w 2005 roku przez Navneeta Dalala i Billa Triggsa \cite{hogZabojady}
+    z francuskiego instytutu zajmującego się badaniami w zakresie informatyki i automatyki
+    (INRIA - Institut national de recherche en informatique et en automatique).
+    Powyższa metoda została zastosowana do detekcji pieszych na zdjęciach.
+    Później metoda została rozszerzona o wykrywanie ludzi w filmach wideo.
+    Ponadto zastosowano ją do wykrywania zwierząt oraz pojazdów na zdjęciach.
+
+    Metoda Histogram of Oriented Gradients opiera się na założeniu, że wygląd i kształt obiektów na obrazie może zostać
+    opisany przez gradient jasności oraz jego kierunek. Dobrze to jest widoczne na
+    Rysunku~\ref{fig.gradientJasnosciNaGlowie}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/gradientJasnosciNaGlowie.jpg}
+        \caption{Gradient jasności identyfikujący granicę pomiędzy głową a tłem.~\cite{hogOpenCv}}
+        \label{fig.gradientJasnosciNaGlowie}
+    \end{figure}
+    Na granicy pomiędzy tłem, a głową sportowca widoczne są duże wartości gradientu jasności.
+    W ten sposób zostaję zidentyfikowana krawędź głowy.
+
+    Algorytm działa w skrócie w następujący sposób. Obraz jest dzielony na małe obszary zwane komórkami.
+    Zwykle obszary mają wymiar kilka na kilka pikseli.
+    Dla każdego piksela w komórce tworzony jest histogram kierunków gradientu.
+    Histogramy są łączone w jeden wspólny deskryptor.
+    Dla zwiększenia dokładności lokalne histogramy normalizowane są pod względem kontrastu.
+    Realizowane jest to przez pomiar jasności obszaru zwanym blokiem.
+    Blok składa się z kilku komórek. Normalizacja zapewnia zmniejszenia niepożądanego efektu generowanego przez
+    różnice w oświetleniu różnych obszarów zdjęcia. Powyższa sytuacja występują na przykład, gdy zdjęcie wykonywane
+    jest w nieprawidłowych warunkach oświetleniowych (Rysunek \ref{fig.oswietlenieTwarzy}).
+
+    W tym akapicie zostanie przedstawiony dokładny opis metody Histogram of Oriented Gradients.
+    W pierwszej fazie obraz obraz powinien być przeskalowany, tak aby jego wymiary były podzielne przez rozmiar
+    pojedyńczej komórki.
+    (Rysunek \ref{fig.komorkiHoga}).
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=4cm]{Obrazy/komorkiHoga.jpg}
+        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu.~\cite{hogOpenCv}}
+        \label{fig.komorkiHoga}
+    \end{figure}
+    Warto dodać, że w wielu metodach generujących deskryptory pierwszą fazą jest korekcja luminacji.
+    Jednak ten krok może zostać pominięty, gdyż w późniejszym kroku stosowana jest normalizacja,
+    która dokonuje korekcję luminacji cieni oraz świateł.
+    W kolejnej fazie muszą zostać wyznaczone gradienty jasności.
+    Wyznaczenie gradientów jasności zostało opisane w Sekcji \ref{subsec:szukanie-gradientów-jasności}.
+    W kolejnej fazie zostają wyznaczone histogramy gradientów dla każdej komórki.
+    Na Rysunku \ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania poprzedniego kroku.
+    Zostają wygenerowane dwie macierze. Pierwsza zawiera informację o gradiencie jasności każdego piksela komórki.
+    Natomiast druga zawiera informację o kierunku każdego gradientu.
+    Wartości kierunku gradientu wyrażone są w stopniach. W metodzie Histogram of Oriented Gradients
+    zastosowano kierunki gradientu bez znaku. Oznacza to, że zakres kierunków jest od $0^{\circ}$ do $180^{\circ}$.
+    Kierunek gradientu ze znakiem posiadałby zakres od $0^{\circ}$ do $180^{\circ}$ oraz jego ujemny odpowiednik
+    (od $-179^{\circ}$ do $-1^{\circ}$). Użycie kierunku gradientu bez znaku jest uzasadnione tym,
+    że wartość kierunku o takiej samej wartości lecz różnych znakach reprezentuje gradient o tym samym kierunku lecz
+    różnych zwrotach. Dla detekcji kształtów krawędzi czy kształtów istotny jest kierunek, a nie zwrot.
+    Na podstawie kierunku gradientu oraz wartości gradientu jasności zostaje wygenerowany histogram gradientów.
+    W parametrze wejściowym algorytmu HOG ustawiana jest ilość komórek histogramu.
+    Najczęściej stosuje się 9 komórek. Każda komórka histogramu odpowiada pewnemu zakresowi kąta kierunku gradientu.
+    Przykładowo dla histogramu o szerokości 9 komórek każda komórka odpowiada następującym kątom:
+    $0^{\circ}$, $20^{\circ}$, $40^{\circ}$, \ldots, $160^{\circ}$ .
+    Na Rysunku \ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do komórek histogramu.
+    \begin{figure}
+        \centering
+        \includegraphics[width=11cm]{Obrazy/hogTworzenieHistogramu.jpg}
+        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu.~\cite{hogOpenCv}}
+        \label{fig.hogTworzenieHistogramu}
+    \end{figure}
+    Piksel zaznaczony na niebiesko posiada gradient o wartości 2 oraz kierunek o kącie $80^{\circ}$
+    Wartość gradientu zostaje dodana do komórki histogramu reprezentującego kąt $80^{\circ}$.
+    Piksel zaznaczony na czerwono posiada gradient o wartości 4 oraz kierunek o kącie $10^{\circ}$.
+    Wartość gradientu równa 4 zostaje rozdzielona na dwie proporcjonalne wartości: 2 oraz 2, które zostają dodane do
+    komórek reprezentujących kąt $0^{\circ}$ oraz $20^{\circ}$.
+    Proporcje zależą od kąta gradientu i od kątów w komórkach histogramu.
+    Tak jak w powyższym przypadku, jeśli wartość kąta wynosi $10^{\circ}$ wartości gradientu są przydzielane do
+    komórek reprezentujące dwa kąty (w tym przypadku przedziały reprezentujące kąt od $0^{\circ}$ do
+    $20^{\circ}$). W związku z tym, że powyższy kąt wynosi $10^{\circ}$ wartości dla komórek histogramu są obliczane
+    według Wzoru \ref{wzor.komorkaHistogramu1} oraz Wzoru \ref{wzor.komorkaHistogramu2}:
+
+    \large
+    \begin{equation}
+        X_{a} = \frac{A_{x}-A_{a}}{A_{b}-A_{a}}*G_{x}
+        \label{wzor.komorkaHistogramu1}
+    \end{equation}
+    \normalsize
+    , gdzie $X_{a}$ oznacza wartość przydzielaną do komórki reprezentujący mniejszy kąt (tak jak $0^{\circ}$
+    dla powyższego przykładu), $A_{x}$ oznacza wartość kąta gradientu dla danego piksela (tak jak $10^{\circ}$
+    dla powyższego przykładu), $A_{a}$ oznacza kąt dla komórki reprezentujący mniejszy kąt (tak jak $0^{\circ}$
+    dla powyższego przykładu), $A_{b}$ oznacza kąt dla komórki reprezentujący większy kąt (tak jak $20^{\circ}$
+    dla powyższego przykładu), $G_{x}$ oznacza wartość gradientu dla danego piksela (tak jak 4 dla powyższego
+    przykładu).
+    \large
+    \begin{equation}
+        X_{b} = \frac{A_{b}-A_{x}}{A_{b}-A_{a}}*G_{x}
+        \label{wzor.komorkaHistogramu2}
+    \end{equation}
+    \normalsize
+    , gdzie $X_{b}$ oznacza wartość przydzieloną dla kąta o większej wartości (tak jak $20^{\circ}$
+    dla powyższego przykładu). Reszta zmiennych odpowiada zmiennym we Wzorze \ref{wzor.komorkaHistogramu1}.
+    W przypadku, gdy kąt kierunku gradientu jest większy od $160^{\circ}$ to wartość danego gradientu jest
+    przydzielana proporcjonalnie do komórki $160^{\circ}$ oraz $0^{\circ}$ zgodnie ze
+    Wzorem \ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
+    a wyliczona wartość zostaje przydzielona do komórki reprezentującej kąt $0^{\circ}$.
+    Powyższa procedura jest powtarzana. Kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
+    w komórkach histogramu. Końcowy efekt tej fazy dostarcza histogram reprezentujący komórkę. Wartości histogramu
+    dla danej komórki reprezentują część wektoru deskryptora. Deskryptor składa się z n histogramów, gdzie n oznacza
+    liczbę komórek w danym obrazie.
+
+    Kolejnym krokiem jest normalizacja bloków. Blok składa się z komórek. Zwykle blok ma wymiary 2x2 komórki.
+    Gradienty jasności są czułe na zmiany oświetlenia na obrazie. Celem tej fazy algorytmu jest normalizacja oświetlania
+    aby uodpornić deskryptor na zmiany oświetlania.
+    Istnieje wiele sposobów normalizacji. Zostanie tutaj opisana normalizacja za pomocą parametru L2-norm.
+    Najpierw zostaje wyliczona wartość L2-norm. L2 jest wartością normalizującą wektor $v$, który reprezentuje wartości
+    deskryptora dla danego bloku. Powyższy wektor składa się z wartości zawartych komórkach histogramu. Jak wiadomo z
+    powyższego opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
+    Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
+    wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
+    Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, więc wektor $v$ będzie
+    miał długość $9x4$, czyli 36.
+    L2-norm dla wektora $v$jest obliczane według Wzoru \ref{wzor.l2norm}
+    \large
+    \begin{equation}
+        \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
+        \label{wzor.l2norm}
+    \end{equation}
+    \normalsize
+    , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm, natomiast $v(i)$ jest i-tym elementem wektora $v$.
+    Normalizacja jest realizowana stosując Wzór
+    \large
+    \begin{equation}
+        v = \frac{v}{\left \|v  \right \|_{2}}
+        \label{wzor.l2norm2}
+    \end{equation}
+    \normalsize
+    , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm dla wektora $v$. Działanie zgodne ze
+    Wzorem \ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
+    $\left \|v  \right\|_{2}$.
+    Powyższy proces jest powtarzany dla wszystkich bloków.
+    W wyniku działania algorytmu Histograms of Oriented Gradients wygenerowany zostaje deskryptor, czyli wektor
+    reprezentujący wartości histogramów wszystkich komórek w obrazie.
+
+    Deskryptor HOG posiada kluczową zaletę w stosunku do innych metod ekstrakcji cech.
+    Metoda Histogram of Oriented Gradients jest odporna na działanie przekształceń geometrycznych
+    dzięki temu, że dokonuje działań na komórkach lokalnych.
+    Przekształcenia geometryczne to działania, które przekształcają figury z jednej przestrzeni geometrycznej w drugą.
+    Przykładem przestrzeni geometrycznej jest przestrzeń euklidesowa czy przestrzeń rzutowa.
+    Ponadto działania na komórkach lokalnych pozwalają zmniejszyć efekt powstający przy ruchu pieszego.
+    W związku z powyższym opisywana metoda nadaje sie do detekcji ludzi na obrazach.
+
+    W pracy opisywana metoda posłużyła do wykrywania krawędzi, które informują o zmarszczkach. Dokładny sposób
+    zaimplementowania w pracy został opisany w Sekcji \ref{subsec:zastosowanie-w-projekcie2}
+
+    \subsection{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
 
     \section{Metoda HOG oraz grupowanie KNN}\label{sec:metoda-hog-oraz-grupowanie-knn}
     %Trening generuje pare wiek -> wektor sumy hogow z kazdej strefy
@@ -1701,12 +1866,9 @@ Karolina Nurzyńska}
         \chapter*{Spis skrótów i symboli}
 
         \begin{itemize}
-            \item[DNA] kwas deoksyrybonukleinowy (ang. \ang{deoxyribonucleic acid})
-            \item[MVC] model -- widok -- kontroler (ang. \ang{model--view--controller})
-            \item[$N$] liczebność zbioru danych
-            \item[$\mu$] stopnień przynależności do zbioru
-            \item[$\mathbb{E}$] zbiór krawędzi grafu
-            \item[$\mathcal{L}$] transformata Laplace'a
+            \item[FCM] \ang{Fuzzy C-means} - metoda klasteryzacji miękkiej (rozmytego).
+            \item[HOG] \ang{Histograms of Oriented Gradients} - metoda generacji deskryptora obrazu
+            \item[KNN] \ang{ k-nearest neighbors} - algorytm regresji lub klasyfikacji.
         \end{itemize}
 
 
