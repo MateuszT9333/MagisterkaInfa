@@ -1463,8 +1463,12 @@ Karolina Nurzyńska}
     ponieważ w jej przypadku ścieżka pliku każdego obrazu zawiera informacje na temat rzeczywistego wieku.
     W związku z powyższym z każdego zdjęcia z tej bazy otrzymywano dwie informacje - rzeczywisty wiek danej osoby oraz
     współczynnik zmarszczek.
+    Następnie dla całej bazy wygenerowano zbiór danych, który w dalszej kolejności był odpowiednio analizowany w celu
+    sprawdzenia zależności pomiędzy współczynnikiem zmarszczek, a wiekiem. Wyżej wymieniony proces nazywany jest
+    także trenowaniem zbioru danych.
 
-    Autorzy algorytmu do trenowania wykorzystali algorytm grupowania - Fuzzy C-Means.
+    Autorzy algorytmu w celu analizy wyżej wygenerowanego zbioru danych wykorzystali algorytm grupowania -
+    Fuzzy C-Means.
     W wyniku działania tego algorytmu otrzymuje się dane, dzięki którym na podstawie współczynnika zmarszczek można
     oszacować wiek~\cite{wrinkleFeatures}.
     \section{Grupowanie danych - Fuzzy C-Means oraz wyznaczanie wieku}\label{sec:grupowanieDanych}
@@ -1655,9 +1659,26 @@ Karolina Nurzyńska}
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
-
+    Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
+    wykrywa także włosy. Przeglądając wiele zdjęć zauważono, że w obrębie
+    strefy zmarszczek nr 2 (Obraz \ref{fig.wykrywanieStrefZmarszczkowych}) wykrywane są części brwi oprócz samych
+    zmarszczek. Generuje to błąd, dlatego wyżej wymienionej strefy nie uwzględniano w obliczeniach.
+    W Sekcji \ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed wyżej
+    wymienioną modyfikacją i po modyfikacji.
 
     \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
+    Przed modyfikacją metody bazowej parametr wrinkle feature był obliczany według Wzoru \ref{wzor.wrinkleFeature},
+    który jest umieszczony w Sekcji \ref{sec:wyliczanieWrinkleFeature}.
+
+    Po modyfikacji parametr wrinkle feature jest obliczany według Wzoru \ref{wzor.wrinkleFeature2}.
+    \large
+    \begin{equation}
+        WF = W_{s1} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
+        \label{wzor.wrinkleFeature2}
+    \end{equation}
+    \normalsize
+    Kolejną modyfikacją było zastosowanie metody HOG - Histograms of Oriented Gradients, która została opisana w Sekcji
+    \ref{sec:zastosowanie-metody-hog}.
 
     \section{Zastosowanie metody HOG}\label{sec:zastosowanie-metody-hog}
     %https://sci-hub.tw/10.2139/ssrn.3268935
@@ -1794,7 +1815,7 @@ Karolina Nurzyńska}
     wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
     Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, więc wektor $v$ będzie
     miał długość $9x4$, czyli 36.
-    L2-norm dla wektora $v$jest obliczane według Wzoru \ref{wzor.l2norm}
+    L2-norm dla wektora $v$ jest obliczane według Wzoru \ref{wzor.l2norm}
     \large
     \begin{equation}
         \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
@@ -1828,7 +1849,57 @@ Karolina Nurzyńska}
     zaimplementowania w pracy został opisany w Sekcji \ref{subsec:zastosowanie-w-projekcie2}
 
     \subsection{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
+    W poprzedniej Sekcji \ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG w wyniku, którego
+    generowany jest deskryptor dla danego obrazu.
 
+    Powyższy deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
+    Sekcji~\ref{sec:zastosowanie-metody-hog} metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
+    obszarze jest dużo krawędzi to w wektorze deskryptora będzie pewna ilość elementów tego wektora o znacznej wartości.
+    Wyżej opisywane, charakterystyczne elementy wektora będą identyfikowały krawędzie w obrazie. Jak wiadomo z
+    Sekcji \ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczka.
+    W związku z powyższym zmodyfikowano sposób obliczenia wrinkle feature dla obrazu twarzy opierając się o
+    deskryptor wygenerowany przez algorytm HOG.
+
+    W bibliotece OpenCv zaimplementowany jest algorytm HOG, który na podstawie pewnego obszaru obrazu lub całego
+    obrazu generuje wektor reprezentujący deskryptor. Biblioteka umożliwia ustawienie różnych parametrów HOG-a.
+    Do tych parametrów zalicza się:
+    \begin{itemize}
+        \item rozmiar komórki w pikselach
+        \item rozmiar bloku w pikselach
+        \item liczba komórek w histogramie
+        \item rozmiar okna - wielkość analizowanego obrazu w pikselach
+    \end{itemize}
+
+    W celu oszacowania ilości zmarszczek dla danego zdjęcia posłużono się następującym algorytmem.
+
+    W pierwszej fazie zostały wyznaczone strefy zmarszczkowe nr 1,3,4,5,6.
+    (Rysunek \ref{fig.wykrywanieStrefZmarszczkowych}).
+    Następnie dla każdej wyżej wymienionej strefy został wyznaczony deskryptor. Dla strefy 1 deskryptor jest opisany
+    zmienną $v_{1}$, dla strefy 3 zmienną $v_{3}$ i tak dalej.
+    Wrinkle feature jest obliczany ze Wzoru \ref{wzor.hogWrinkleFeature}:
+    \large
+    \begin{equation}
+        WF_{HOG} = \left \|v_{1}  \right \|_{1}+\left \|v_{3}  \right \|_{1}+\left \|v_{4}  \right \|_{1}+\left
+        \|v_{5}  \right \|_{1}+\left \|v_{6}  \right \|_{1}
+        \label{wzor.hogWrinkleFeature}
+    \end{equation}
+    \normalsize
+    , gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1-norm dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
+    \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
+
+    Parametr L1-norm dla danego wektora $v$ jest wyznaczany ze Wzoru \ref{wzor.l1norm}:
+    \large
+    \begin{equation}
+        \left \|v  \right \|_{1} = \sum_{i=1}^{n}\left |v(i)  \right |
+        \label{wzor.l1norm}
+    \end{equation}
+    \normalsize
+    , gdzie $v(i)$ jest i-tym elementem wektora.
+
+    Dla każdego zdjęcia ze zbioru podobnie jak w metodzie bazowej \ref{sec:wykrywanie-zmarszczek---detektor-canny}
+    wyznaczana jest para danych $WF_{HOG}$ (Wzór \ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
+    zbiór danych jest trenowany za pomocą Fuzzy C-means (Sekcja \ref{sec:grupowanieDanych}) - tak samo jak w metodzie
+    bazowej.
     \section{Metoda HOG oraz grupowanie KNN}\label{sec:metoda-hog-oraz-grupowanie-knn}
     %Trening generuje pare wiek -> wektor sumy hogow z kazdej strefy
     %Szacowanie wieku polega na generacji z testowego zdjeic pary jw. i za pomoca KNN przydzielenie do jakiejs klasy
