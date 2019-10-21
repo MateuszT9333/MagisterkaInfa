@@ -1423,9 +1423,9 @@ Karolina Nurzyńska}
         \label{fig.mojaTwarzGray}
     \end{figure}
 
-    Na Rysunku \ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
+    Na Rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
     Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
-    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja \ref{sec:wyznaczanieStref}),
+    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja~\ref{sec:wyznaczanieStref}),
     które identyfikują zmarszczki.
     Ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek na twarzy danej
     osoby.
@@ -1441,7 +1441,7 @@ Karolina Nurzyńska}
     , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1,
     $PB_{s1}$ - suma białych pikseli w strefie 1, $PW_{s1}$ - suma wszystkich pikseli w strefie 1.
     Analogicznie obliczane są stosunki pikseli dla pozostałych stref.
-    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór \ref{wzor.wrinkleFeature}).
+    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór~\ref{wzor.wrinkleFeature}).
     \large
     \begin{equation}
         WF = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
@@ -1552,14 +1552,14 @@ Karolina Nurzyńska}
     centroidem $p_{j}$. Parametr ,,m'' jest nazywany współczynnikiem rozmycia. Współczynnik ten może być w zakresie
     od 1 do nieskończoności, jednak w większości przypadków jest równy 2.
 
-    W kroku $(k+1)^{th}$ centroid $p_{j}^{(k+1)}$ jest uaktualniany według Wzoru \ref{wzor.kaPLusJeden}.
+    W kroku $(k+1)^{th}$ centroid $p_{j}^{(k+1)}$ jest uaktualniany według Wzoru~\ref{wzor.kaPLusJeden}.
     \large
     \begin{equation}
         p_{j}^{(k+1)}=\frac{\sum_{i=1}^{n}u_{ij}^{(k+1)m}x_{j}}{\sum_{i=1}^{n}u_{ij}^{(k+1)m}}
         \label{wzor.kaPLusJeden}
     \end{equation}
     \normalsize
-    Algorytm w kolejnych iteracjach minimalizuje kryterium $J(U,P)$ podane Wzorem \ref{wzor.kryteriumFCM}:
+    Algorytm w kolejnych iteracjach minimalizuje kryterium $J(U,P)$ podane Wzorem~\ref{wzor.kryteriumFCM}:
 
     \large
     \begin{equation}
@@ -1567,7 +1567,7 @@ Karolina Nurzyńska}
         \label{wzor.kryteriumFCM}
     \end{equation}
     \normalsize
-    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany Wzorem \ref{wzor.koniecIteracjiWarunek}
+    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany Wzorem~\ref{wzor.koniecIteracjiWarunek}
     \large
     \begin{equation}
         \left \| J^{(k+1)}(U,P) - J^{(k)}(U,P)) \right \| < \epsilon
@@ -1576,13 +1576,13 @@ Karolina Nurzyńska}
     \normalsize
     , gdzie $\epsilon > 0$. Parametr $\epsilon$ jest parametrem ustawianym przed uruchomieniem klasteryzacji.
     W niektórych implementacjach istnieje możliwość zakończenia działania algorytmu po określonej liczbę iteracji,
-    jeśli wcześniej nie zostanie osiągnięte kryterium ze Wzoru \ref{wzor.koniecIteracjiWarunek}.
+    jeśli wcześniej nie zostanie osiągnięte kryterium ze Wzoru~\ref{wzor.koniecIteracjiWarunek}.
 
     Po zakończeniu działania wyżej opisanego algorytmu zostaje wyliczony wektor przynależności $U$
-    (Wzór \ref{wzor.wektorPrzynaleznosci}).
+    (Wzór~\ref{wzor.wektorPrzynaleznosci}).
     %    U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
     Zakładając, że suma wektora przynależności $U_{i}$, dla elementu $x_{i}$ jest opisana
-    Wzorem \ref{wzor.sumaWektorPrzynaleznosci}
+    Wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
     \large
     \begin{equation}
         \sum_{j=0}^{j=c} u_{ij}=1
@@ -1602,7 +1602,7 @@ Karolina Nurzyńska}
 
     Każdy klaster ma określony centroid j, który posiada parametr $P_{fj}$  oraz dodatkowy parametr - średnią
     wartość wieku $P_{aj}$. $P_{fj}$ oznacza wartość wrinkle feature dla danego centroida.
-    $P_{aj}$ jest wyznaczany ze Wzoru \ref{wzor.avgJ}.
+    $P_{aj}$ jest wyznaczany ze Wzoru~\ref{wzor.avgJ}.
     \large
     \begin{equation}
         P_{aj}=\frac{\sum_{}^{}A_{c}}{N_{j}}
@@ -1617,18 +1617,18 @@ Karolina Nurzyńska}
     pochodzą z innej bazy obrazów niż obrazy wykorzystane w treningu. Ma to na celu eliminację błędów w testowaniu algorytmu.
     %    Każdy centroid posiada parametr
     %    W wyniku działania algorytmu wygenerowanych zostaje n grup. Każda grupa posiada centroid wraz ze średnim wiekiem.
-    W pierwszej fazie działanie algorytmu jest dokładnie takie same jak w sekcjach od \ref{sec:metodaWykrywaniaTwarzy}
-    do \ref{sec:wyliczanieWrinkleFeature}:
+    W pierwszej fazie działanie algorytmu jest dokładnie takie same jak w sekcjach od~\ref{sec:metodaWykrywaniaTwarzy}
+    do~\ref{sec:wyliczanieWrinkleFeature}:
     Algorytm szacowania wieku w pierwszej kolejności dokonuje detekcji twarzy, oczu, ust na danym obrazie $O_{i}$.
     Jeśli powyższe elementy zostały zidentyfikowane, wyznaczane są strefy zmarszczkowe,
     a następnie zostaje wyliczony parametr wrinkle feature $F_{i}$.
 
     Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
-    według Wzoru \ref{wzor.wektorPrzynaleznosci}.
-    Przy założeniu dla wektoru przynależności zgodnym ze Wzorem \ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek
+    według Wzoru~\ref{wzor.wektorPrzynaleznosci}.
+    Przy założeniu dla wektoru przynależności zgodnym ze Wzorem~\ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek
     $PA$
     wynosi
-    (Wzór \ref{wzor.szacowanyWiek}).
+    (Wzór~\ref{wzor.szacowanyWiek}).
     \large
     \begin{equation}
         PA=\sum_{j=1}^{c}(u_{ij}*P_{aj})
@@ -1648,7 +1648,7 @@ Karolina Nurzyńska}
     w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
 
     Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
-    który został określony we Wzorze \ref{wzor.mae}.
+    który został określony we Wzorze~\ref{wzor.mae}.
     \large
     \begin{equation}
         MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
@@ -1661,24 +1661,23 @@ Karolina Nurzyńska}
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
     Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
     wykrywa także włosy. Podczas przeglądania wielu zdjęć zauważono, że w obrębie
-    strefy zmarszczek nr 2 (Obraz \ref{fig.wykrywanieStrefZmarszczkowych}) wykrywane są części brwi oprócz samych
+    strefy zmarszczek nr 2 (Obraz~\ref{fig.wykrywanieStrefZmarszczkowych}) wykrywane są części brwi oprócz samych
     zmarszczek. Generuje to błąd, dlatego wyżej wymienionej strefy nie uwzględniono w obliczeniach.
-    W Sekcji \ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed opisaną wyżej
+    W Sekcji~\ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed opisaną wyżej
     modyfikacją i po niej.
 
     \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
-    Przed modyfikacją metody bazowej parametr wrinkle feature był obliczany według Wzoru \ref{wzor.wrinkleFeature},
-    który jest umieszczony w Sekcji \ref{sec:wyliczanieWrinkleFeature}.
+    Przed modyfikacją metody bazowej parametr wrinkle feature był obliczany według Wzoru~\ref{wzor.wrinkleFeature},
+    który jest umieszczony w Sekcji~\ref{sec:wyliczanieWrinkleFeature}.
 
-    Po modyfikacji parametr wrinkle feature oblicza się według Wzoru \ref{wzor.wrinkleFeature2}.
+    Po modyfikacji parametr wrinkle feature oblicza się według Wzoru~\ref{wzor.wrinkleFeature2}.
     \large
     \begin{equation}
         WF = W_{s1} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
         \label{wzor.wrinkleFeature2}
     \end{equation}
     \normalsize
-    Kolejną modyfikacją było zastosowanie metody HOG - Histograms of Oriented Gradients, która została opisana w Sekcji
-    \ref{sec:zastosowanie-metody-hog}.
+    Kolejną modyfikacją było zastosowanie metody HOG - Histograms of Oriented Gradients, która została opisana w Sekcji~\ref{sec:zastosowanie-metody-hog}.
 
     \section{Zastosowanie metody HOG}\label{sec:zastosowanie-metody-hog}
     %https://sci-hub.tw/10.2139/ssrn.3268935
@@ -1688,14 +1687,14 @@ Karolina Nurzyńska}
     Metoda HOG (Histogram of Oriented Gradients) jest deskryptorem cech z obrazu.
     Deskryptor cech wyodrębnia z obrazu pewne cechy, do których należą między innymi kształty, kolory czy tekstury.
     W metodzie bazowej rolę deskryptora tego rodzaju spełnia detektor
-    krawędzi Canny (Sekcja \ref{sec:wykrywanie-zmarszczek---detektor-canny}), który wykrywa krawędzie,
+    krawędzi Canny (Sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny}), który wykrywa krawędzie,
     identyfikowane jako zmarszczki.
     Z kolei Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
     Liczenie jest dokonywane tylko w pewnych obszarach obrazów.
     Metoda HOG została wymyślona i opisana w 1982 przez Roberta K. McConella.
     Robert K. McConell pracował w ówczesnych czasach dla firmy Wayland Research Inc.,
-    a opis jego metody został zawarty w patencie ,,Method of and apparatus for pattern recognition'' \cite{patentHOG}.
-    Jednak jego metoda została po raz pierwszy zaimplementowana dopiero w 2005 roku przez Navneeta Dalala i Billa Triggsa \cite{hogZabojady}
+    a opis jego metody został zawarty w patencie ,,Method of and apparatus for pattern recognition''~\cite{patentHOG}.
+    Jednak jego metoda została po raz pierwszy zaimplementowana dopiero w 2005 roku przez Navneeta Dalala i Billa Triggsa~\cite{hogZabojady}
     z francuskiego instytutu zajmującego się badaniami w zakresie informatyki i automatyki
     (INRIA - Institut national de recherche en informatique et en automatique).
     Metoda McConella została wtedy zastosowana do detekcji pieszych na zdjęciach.
@@ -1722,12 +1721,12 @@ Karolina Nurzyńska}
     Realizowane jest to przez pomiar jasności obszaru zwanego blokiem, który
     składa się z kilku komórek. Normalizacja zapewnia zmniejszenia niepożądanego efektu generowanego przez
     różnice w oświetleniu różnych obszarów zdjęcia. Wspomniana sytuacja występuje na przykład, gdy zdjęcie wykonywane
-    jest w nieprawidłowych warunkach oświetleniowych (Rysunek \ref{fig.oswietlenieTwarzy}).
+    jest w nieprawidłowych warunkach oświetleniowych (Rysunek~\ref{fig.oswietlenieTwarzy}).
 
     W poniższym akapicie zostanie przedstawiony dokładny opis metody Histogram of Oriented Gradients.
     W pierwszej fazie obraz powinien zostać przeskalowany, tak aby jego wymiary były podzielne przez rozmiar
     pojedynczej komórki.
-    (Rysunek \ref{fig.komorkiHoga}).
+    (Rysunek~\ref{fig.komorkiHoga}).
 
     \begin{figure}
         \centering
@@ -1739,9 +1738,9 @@ Karolina Nurzyńska}
     Jednak ten krok może zostać pominięty, gdyż w późniejszym kroku stosowana jest normalizacja,
     która dokonuje korekcji luminacji cieni oraz świateł.
     W kolejnej fazie muszą zostać wyznaczone gradienty jasności.
-    Wyznaczenie gradientów jasności zostało szczegółowo opisane w Sekcji \ref{subsec:szukanie-gradientów-jasności}.
+    Wyznaczenie gradientów jasności zostało szczegółowo opisane w Sekcji~\ref{subsec:szukanie-gradientów-jasności}.
     W kolejnej fazie zostają wyznaczone histogramy gradientów dla każdej komórki.
-    Na Rysunku \ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania tego kroku.
+    Na Rysunku~\ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania tego kroku.
     Zostają wygenerowane dwie macierze. Pierwsza zawiera informację o gradiencie jasności każdego piksela komórki,
     natomiast druga - informację o kierunku każdego gradientu.
     Wartości kierunku gradientu wyrażone są w stopniach. W metodzie Histogram of Oriented Gradients
@@ -1755,7 +1754,7 @@ Karolina Nurzyńska}
     Najczęściej stosuje się 9 komórek. Każda komórka histogramu odpowiada pewnemu zakresowi kąta kierunku gradientu.
     Przykładowo dla histogramu o szerokości 9 komórek każda komórka odpowiada następującym kątom:
     $0^{\circ}$, $20^{\circ}$, $40^{\circ}$, \ldots, $160^{\circ}$ .
-    Na Rysunku \ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do komórek histogramu.
+    Na Rysunku~\ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do komórek histogramu.
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/hogTworzenieHistogramu.jpg}
@@ -1771,7 +1770,7 @@ Karolina Nurzyńska}
     Tak jak w powyższym przypadku, jeśli wartość kąta wynosi $10^{\circ}$, wartości gradientu są przydzielane do
     komórek reprezentujące dwa kąty (w tym przypadku przedziały reprezentujące kąt od $0^{\circ}$ do
     $20^{\circ}$). W związku z tym, że powyższy kąt wynosi $10^{\circ}$, wartości dla komórek histogramu są obliczane
-    według Wzoru \ref{wzor.komorkaHistogramu1} oraz Wzoru \ref{wzor.komorkaHistogramu2}:
+    według Wzoru~\ref{wzor.komorkaHistogramu1} oraz Wzoru~\ref{wzor.komorkaHistogramu2}:
 
     \large
     \begin{equation}
@@ -1792,10 +1791,10 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $X_{b}$ oznacza wartość przydzieloną dla kąta o większej wartości (tak jak $20^{\circ}$
-    dla powyższego przykładu). Reszta zmiennych odpowiada zmiennym we Wzorze \ref{wzor.komorkaHistogramu1}.
+    dla powyższego przykładu). Reszta zmiennych odpowiada zmiennym we Wzorze~\ref{wzor.komorkaHistogramu1}.
     W przypadku, gdy kąt kierunku gradientu jest większy od $160^{\circ}$ to wartość danego gradientu jest
     przydzielana proporcjonalnie do komórki $160^{\circ}$ oraz $0^{\circ}$ zgodnie ze
-    Wzorem \ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
+    Wzorem~\ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
     a wyliczona wartość zostaje przydzielona do komórki reprezentującej kąt $0^{\circ}$.
     Powyższa procedura jest powtarzana, a kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
     w komórkach histogramu. Końcowy efekt tej fazy dostarcza histogram reprezentujący komórkę. Wartości histogramu
@@ -1813,7 +1812,7 @@ Karolina Nurzyńska}
     wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
     Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, więc wektor $v$ będzie
     miał długość $9x4$, czyli 36.
-    L2-norm dla wektora $v$ jest obliczane według Wzoru \ref{wzor.l2norm}
+    L2-norm dla wektora $v$ jest obliczane według Wzoru~\ref{wzor.l2norm}
     \large
     \begin{equation}
         \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
@@ -1829,7 +1828,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm dla wektora $v$. Działanie zgodne ze
-    Wzorem \ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
+    Wzorem~\ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
     $\left \|v  \right\|_{2}$.
     Powyższy proces powtarza się dla wszystkich bloków.
     W wyniku działania algorytmu Histograms of Oriented Gradients wygenerowany zostaje deskryptor, czyli wektor
@@ -1844,17 +1843,17 @@ Karolina Nurzyńska}
     Z uwagi na powyższe zalety ta metoda nadaje się do detekcji ludzi na obrazach.
 
     W niniejszej pracy opisywana metoda posłużyła do wykrywania krawędzi, które informują o zmarszczkach. Dokładny sposób jej
-    zaimplementowania w pracy opisuje Sekcja  \ref{subsec:zastosowanie-w-projekcie2}
+    zaimplementowania w pracy opisuje Sekcja~\ref{subsec:zastosowanie-w-projekcie2}
 
     \subsection{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
-    W poprzedniej Sekcji \ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG, w wyniku którego
+    W poprzedniej Sekcji~\ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG, w wyniku którego
     generowany jest deskryptor dla danego obrazu.
 
     Omówiony wyżej deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
     Sekcji~\ref{sec:zastosowanie-metody-hog} metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
     obszarze jest dużo krawędzi, to w wektorze deskryptora będzie pewna ilość elementów tego wektora o znacznej wartości.
     Wyżej opisywane, charakterystyczne elementy wektora będą identyfikowały krawędzie w obrazie. Jak wiadomo z
-    Sekcji \ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
+    Sekcji~\ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
     W związku z powyższym zmodyfikowano sposób obliczenia wrinkle feature dla obrazu twarzy opierając się o
     deskryptor wygenerowany przez algorytm HOG.
 
@@ -1871,10 +1870,10 @@ Karolina Nurzyńska}
     W celu oszacowania ilości zmarszczek dla danego zdjęcia posłużono się następującym algorytmem.
 
     W pierwszej fazie zostały wyznaczone strefy zmarszczkowe nr 1,3,4,5,6.
-    (Rysunek \ref{fig.wykrywanieStrefZmarszczkowych}).
+    (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
     Następnie dla każdej wyżej wymienionej strefy został wyznaczony deskryptor. Dla strefy 1 deskryptor jest opisany
     zmienną $v_{1}$, dla strefy 3 zmienną $v_{3}$ i tak dalej.
-    Wrinkle feature jest obliczany ze Wzoru \ref{wzor.hogWrinkleFeature}:
+    Wrinkle feature jest obliczany ze Wzoru~\ref{wzor.hogWrinkleFeature}:
     \large
     \begin{equation}
         WF_{HOG} = \left \|v_{1}  \right \|_{1}+\left \|v_{3}  \right \|_{1}+\left \|v_{4}  \right \|_{1}+\left
@@ -1885,7 +1884,7 @@ Karolina Nurzyńska}
     , gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1-norm dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
     \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
 
-    Parametr L1-norm dla danego wektora $v$ jest wyznaczany ze Wzoru \ref{wzor.l1norm}:
+    Parametr L1-norm dla danego wektora $v$ jest wyznaczany ze Wzoru~\ref{wzor.l1norm}:
     \large
     \begin{equation}
         \left \|v  \right \|_{1} = \sum_{i=1}^{n}\left |v(i)  \right |
@@ -1894,18 +1893,26 @@ Karolina Nurzyńska}
     \normalsize
     , gdzie $v(i)$ jest i-tym elementem wektora.
 
-    Dla każdego zdjęcia ze zbioru podobnie jak w metodzie bazowej \ref{sec:wykrywanie-zmarszczek---detektor-canny}
-    wyznaczana jest para danych $WF_{HOG}$ (Wzór \ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
-    zbiór danych jest trenowany za pomocą Fuzzy C-means (Sekcja \ref{sec:grupowanieDanych}) - tak samo jak w metodzie
+    Dla każdego zdjęcia ze zbioru podobnie jak w metodzie bazowej~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
+    wyznaczana jest para danych $WF_{HOG}$ (Wzór~\ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
+    zbiór danych jest trenowany za pomocą Fuzzy C-means (Sekcja~\ref{sec:grupowanieDanych}) - tak samo jak w metodzie
     bazowej.
     Wiek szacowany jest dokładnie tak samo jak w metodzie bazowej.
-    Kolejna modyfikacja metody bazowej została opisana w Sekcji \ref{sec:metoda-hog-oraz-grupowanie-knn}
+    Kolejna modyfikacja metody bazowej została opisana w Sekcji~\ref{sec:metoda-hog-oraz-grupowanie-knn}
     \section{Metoda HOG oraz grupowanie KNN}\label{sec:metoda-hog-oraz-grupowanie-knn}
-
+    %http://zsi.tech.us.edu.pl/~nowak/si/w4.pdf
+    %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
     %Trening generuje pare wiek -> wektor sumy hogow z kazdej strefy
     %Szacowanie wieku polega na generacji z testowego zdjeic pary jw. i za pomoca KNN przydzielenie do jakiejs klasy
     %    - czytaj wieku.
+    %zdefiniowac problem odleglosci oraz jak bedzie ta odleglosc liczona dla wektorow (Euclidan) : http://mathonline.wikidot.com/the-distance-between-two-vectors
+    %jak wyglada trenowanie danych, przeprowadzenie normalizacji itp (ze jest opcjonalne) wzory itp:
+    %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
+    % wybor parametru - k jak wplywa
     \subsection{Grupowanie KNN}\label{subsec:grupowanie-knn}
+    algorytm regresji
+    nieparametrycznej używany w statystyce do
+    prognozowania wartości pewnej zmiennej losowej
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %Tutaj powinno byc okolo 7000
     \chapter{Badania}\label{ch:badania}
@@ -1930,6 +1937,9 @@ Karolina Nurzyńska}
     %wykrywanie twarzy, oczu itd. tutaj beda zdjecia
     %logi z dzialania
     \section{Porównanie metod}
+    %Skad wzielismy dane testowe
+    %porownanie metod testowych
+    %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
     %    Wstep jakie metody porownano i co tam zmieniano
     \subsection{Metoda bazowa}
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
@@ -1938,7 +1948,7 @@ Karolina Nurzyńska}
     \subsection{Metoda 3}
     \section{Podsumowanie}
     \section{Wnioski}
-
+    % za maly zbior danych testowych byc moze dlatego takie slabe wyniki?
 
 
 
@@ -1947,7 +1957,7 @@ Karolina Nurzyńska}
     %pomiar czyli ile danych przypomniec sie o mae.
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
-
+    %todo poprawic bibliografie
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
