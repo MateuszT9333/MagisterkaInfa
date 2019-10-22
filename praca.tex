@@ -1911,7 +1911,7 @@ Karolina Nurzyńska}
     %jak wyglada trenowanie danych, przeprowadzenie normalizacji itp (ze jest opcjonalne) wzory itp:
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
     % wybor parametru - k jak wplywa
-    Kolejna modyfikacja polegała na zmianie sposoby wyznaczania wrinkle feature.
+    Kolejna modyfikacja polegała na zmianie sposobu wyznaczania wrinkle feature.
     W Sekcji \ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wrinkle feature,
     który polegał na sumowaniu deskryptorów z poszczególnych stref (Wzór \ref{wzor.hogWrinkleFeature}).
     W celu poprawy wyników uwzględniono deskryptory ze wszystkich stref.
@@ -1925,7 +1925,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     W wyniku treningu zbioru zdjęć zostaje wygenerowany zbiór zawierający wyżej wymienioną parę danych.
-    W celu oszacowania wieku zostaje wykorzystany algorytm KNN, który został opisany w
+    Następnie w celu oszacowania wieku zostaje wykorzystany algorytm KNN, który został opisany w
     Sekcji \ref{subsec:grupowanie-knn}.
     \subsection{Grupowanie KNN}\label{subsec:grupowanie-knn}
     Algorytm KNN (ang. k-Nearest Neighbor) to algorytm regresji
@@ -1936,7 +1936,7 @@ Karolina Nurzyńska}
     %    W wyniku działania algorytmu KNN do klasyfikacji obiekt zostaje sklasyfikowany do jednej z klas.
     %    Natomiast w regresji
     Algorytm KNN na wejściu otrzymuje zbiór danych nazywany zbiorem uczącym.
-    Zbiór uczący posiada dane zwane obserwacjami. Powyższe obserwacje są parą danych (Wzór \ref{wzor.obserwacjaKnn}).
+    Zbiór uczący zawiera dane zwane obserwacjami. Wspomniane obserwacje są parą danych (Wzór \ref{wzor.obserwacjaKnn}).
     \large
     \begin{equation}
         O_{i} = (K_{i}, V_{i})
@@ -1947,11 +1947,11 @@ Karolina Nurzyńska}
     Przykładowo taką jedną obserwację może tworzyć klasa określająca wiek danej osoby, a wektorem może być ilość
     zmarszczek.
 
-    Natomiast zbiór uczący będzie posiadał n powyższych obserwacji na podstawie, których można wywnioskować do jakiej
+    Natomiast zbiór uczący będzie posiadał n powyższych obserwacji na podstawie których można wywnioskować, do jakiej
     klasy będzie zaliczana obserwacja testowa. Obserwacja testowa to obserwacja, która posiada wektor zmiennych
     objaśniających i może zostać zaliczona do danej klasy za pomocą algorytmu KNN.
     Wracając do powyższego przykładu, obserwacja testowa będzie zawierała tylko wektor określający ilość zmarszczek.
-    Natomiast algorytm KNN przypiszę powyższą obserwację do klasy (wieku).
+    Natomiast algorytm KNN przypisze powyższą obserwację do klasy (wieku).
     Przypisywanie do danej klasy jest realizowane przez ocenę podobieństwa obserwacji testowej do zbioru uczącego.
     Ocena podobieństwa jest zrealizowana poprzez obliczanie odległości pomiędzy wektorami zmiennych
     objaśniających~\cite{knnOpis}.
@@ -2012,7 +2012,7 @@ Karolina Nurzyńska}
 
     W celu zmniejszenia błędów klasyfikacji w algorytmie KNN może być zastosowana standaryzacja lub normalizacja danych.
     Zastosowanie wyżej wymienionych technik pozwala na zmniejszenie dominacji wartości wektorów, których wartość jest
-    znacznie większa lub mniejsza od ogólnej średniej. Przykładowo, jeśli zakładając, że
+    znacznie większa lub mniejsza od ogólnej średniej. Przykładowo, przy założeniu, że
     wartością objaśniającą byłaby długość wyrażona w metrach i średnia powyższej wartości w całym zbiorze uczącym
     wyniosłaby 1 m,
     to dominującą wartością w tym zbiorze byłaby np. wartość 100 metrów.
@@ -2044,10 +2044,10 @@ Karolina Nurzyńska}
     wektora ${v}_{u}$. Natomiast $\min({v}_{u})$ minimalną wartość spośród elementów
     wektora ${v}_{u}$.
 
-    Powyżej zostały objaśnione terminy i idea algorytmu KNN. W tym akapicie zostanie przedstawiony algorytm.
+    Powyżej zostały objaśnione terminy i idea algorytmu KNN. W tym akapicie zostanie przedstawiony sam algorytm.
     Tak jak zostało opisane wyżej - algorytm otrzymuję zbiór uczący zawierający obserwację. Następnie zbiór uczący
     może być standaryzowany lub normalizowany. Ponadto algorytm otrzymuje parametr $k$.
-    W celu wywnioskowania, do której klasy należy obserwacja testowa zawierająca wektor $V_{i}$ szukanych jest $k$
+    W celu wywnioskowania, do której klasy należy obserwacja testowa zawierająca wektor $V_{i}$, szukanych jest $k$
     najbliższych wektorów (wektorów sąsiadów) ze zbioru uczącego (według kryterium odległości). Obserwacja testowa
     zostaje przydzielona do klasy, która najczęściej występowała wśród $k$ sąsiednich obserwacji.
     Problem klasyfikacji algorytmem KNN jest pokazany na Rysunku \ref{fig.klasyfikacjaKNN}
@@ -2059,15 +2059,15 @@ Karolina Nurzyńska}
     \end{figure}
 
     Na Rysunku \ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy ,,A'' oraz klasy
-    ,,B''. Ponadto jest na środku Rysunku \ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
+    ,,B''. Ponadto na środku Rysunku \ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
     sklasyfikowany do jednej z wyżej wymienionych klas.
     Dla parametru ,,k'' równego 3 wektor testowy zostanie przypisany do klasy ,,B'', gdyż z 3 najbliższych wektorów 2
     należą do klasy ,,B''. W przypadku, gdy parametr ,,k'' będzie równy 7 wektor testowy zostanie przypisany do klasy
-    ,,A''. Z pośród siedmiu najbliższych sąsiadów 4 należą do klasy ,,A'', natomiast 3 do klasy ,,B''.
+    ,,A''. Spośród siedmiu najbliższych sąsiadów, cztery wektory należą do klasy ,,A'', natomiast trzy - do klasy ,,B''.
 
-    Wybór parametru $k$ jest zależny od rodzaju danych. Im większa wartość $k$ tym mniejszy wpływ szumu podczas
-    klasyfikacji. Szum określa błędne dane w zbiorze uczącym. Istnieją metody dobierające optymalną wartość $k$ dla
-    danego zbioru uczącego. Do jednej z tych metod należy optymalizacja hiperparametryczna.
+    Wybór parametru $k$ jest zależny od rodzaju danych. Im większa wartość $k$, tym mniejszy wpływ na proces
+    klasyfikacji ma szum, który określa błędne dane w zbiorze uczącym. Istnieją metody dobierające optymalną wartość $k$ dla
+    danego zbioru uczącego. Do jednej z nich należy optymalizacja hiperparametryczna.
 
     Na końcu Sekcji \ref{subsec:zastosowanie-w-projekcie} został przedstawiony sposób, w jaki generowany jest zbiór
     uczący.
@@ -2075,16 +2075,16 @@ Karolina Nurzyńska}
     Wzorem \ref{wzor.hogKnn}.
     Następnym krokiem jest przydzielenie danego wektoru do klasy (wieku).
 
-    W Sekcji \ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
+    W Sekcji~\ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
 
     \chapter{Badania}\label{ch:badania}
     W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz ich modyfikacji.
-    W Sekcji \ref{sec:środowisko-pracy} przedstawione zostało środowisko pracy, a dokładniej mówiąc wszystkie
+    W Sekcji~\ref{sec:środowisko-pracy} przedstawione zostało środowisko pracy, a dokładniej mówiąc wszystkie
     niezbędne rzeczy, które pozwoliły skutecznie przeprowadzić badania.
-    W Sekcji \ref{sec:wykrywanie-krawędzi-przez-detektor-canny} pokazano efekty wykrywania zmarszczek przez detektor
-    Canny. W następnej Sekcji \ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
+    W Sekcji~\ref{sec:wykrywanie-krawędzi-przez-detektor-canny} pokazano efekty wykrywania zmarszczek przez detektor
+    Canny. W następnej Sekcji~\ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
     części algorytmów, zarówno trenujących jak i szacujących wiek.
-    W Sekcji \ref{sec:skuteczność-poszczególnych-metod-szacowania-wieku} porównano metodę bazową oraz jej modyfikację
+    W Sekcji~\ref{sec:skuteczność-poszczególnych-metod-szacowania-wieku} porównano metodę bazową oraz jej modyfikację
     pod względem skuteczności szacowania wieku.
 
     \section{Środowisko badań}\label{sec:środowisko-pracy}
@@ -2095,7 +2095,7 @@ Karolina Nurzyńska}
     istnieją modyfikację biblioteki, które napisana jest w innym języku. Najczęściej spotykane modyfikację są
     stworzone w języku Java oraz Python. Ponadto w Javie generowano dane dla metody bazowej oraz wszystkich
     jej modyfikacji. Dodatkowo w wyżej wymienionym języku zrealizowano szacowanie wieku we wszystkich metodach z
-    pominięciem metody, która stosuje algorytm KNN (Sekcja \ref{sec:metoda-hog-oraz-grupowanie-knn}).
+    pominięciem metody, która stosuje algorytm KNN (Sekcja~\ref{sec:metoda-hog-oraz-algorytm-knn}).
 
     Grupowanie danych algorytmem Fuzzy C-means zostało zrealizowane za pomocą programu Matlab.
     Szacowanie wieku dla metody stosującej algorytm KNN również zostało zrealizowane za pomocą wyżej wymienionego
@@ -2106,6 +2106,7 @@ Karolina Nurzyńska}
     %jakie biblioteki uzywano z jaka dokladnocia liczono
     %    jakich technologii uzywano np. log4j do logowania
     \section{Wykrywanie zmarszczek przez detektor Canny}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
+    W tej Sekcji zostanie przedstawiony sposób detekcji zmarszczek przez detektor Canny.
     %Ustalone parametry
     %    Tutaj mogą być zdjęcia jak to wygladalo, jakie były problemy np, ze wykrywalo wlosy, ze blednie wykrywalo itp
     \section{Statystyki z działania programu}\label{sec:statystyki-z-działania-programu}
