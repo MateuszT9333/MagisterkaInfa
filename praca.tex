@@ -1914,7 +1914,7 @@ Karolina Nurzyńska}
     W Sekcji \ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wrinkle feature,
     który polegał na sumowaniu deskryptorów z poszczególnych stref (Wzór \ref{wzor.hogWrinkleFeature}).
     W celu poprawy wyników uwzględniono deskryptory ze wszystkich stref.
-    Dla każdego zdjęcia ze zbioru wyznaczana jest para danych - wiek oraz wektor
+    Dla każdego zdjęcia ze zbioru wyznaczana jest para danych - wiek oraz wektor.
     $\overrightarrow{v_{KNN}}$ składający się z elementów według Wzoru \ref{wzor.hogKnn}
     \large
     \begin{equation}
@@ -1929,8 +1929,152 @@ Karolina Nurzyńska}
     \subsection{Grupowanie KNN}\label{subsec:grupowanie-knn}
     Algorytm KNN (ang. k-Nearest Neighbor) to algorytm regresji
     nieparametrycznej używany w statystyce do
-    prognozowania wartości pewnej zmiennej losowej.
-    KNN tłumaczone jest na język polski jako algorytm k- najbliższych sąsiadów.
+    prognozowania wartości pewnej zmiennej losowej. Został stworzony w roku 1970.
+    KNN tłumaczone jest na język polski, jako algorytm k- najbliższych sąsiadów.
+    %    Powyższy algorytm jest używany w regresji oraz klasyfikacji.
+    %    W wyniku działania algorytmu KNN do klasyfikacji obiekt zostaje sklasyfikowany do jednej z klas.
+    %    Natomiast w regresji
+    Algorytm KNN na wejściu otrzymuje zbiór danych nazywany zbiorem uczącym.
+    Zbiór uczący posiada dane zwane obserwacjami. Powyższe obserwacje są parą danych (Wzór \ref{wzor.obserwacjaKnn}).
+    \large
+    \begin{equation}
+        O_{i} = (K_{i}, V_{i})
+        \label{wzor.obserwacjaKnn}
+    \end{equation}
+    \normalsize
+    , gdzie $O_{i}$ jest daną obserwacją, $K_{i}$ - klasą, natomiast $V_{i}$ - wektorem zmiennych objaśniających.
+    Przykładowo taką jedną obserwację może tworzyć klasa określająca wiek danej osoby, a wektorem może być ilość
+    zmarszczek.
+
+    Natomiast zbiór uczący będzie posiadał n powyższych obserwacji na podstawie, których można wywnioskować do jakiej
+    klasy będzie zaliczana obserwacja testowa. Obserwacja testowa to obserwacja, która posiada wektor zmiennych
+    objaśniających i może zostać zaliczona do danej klasy za pomocą algorytmu KNN.
+    Wracając do powyższego przykładu, obserwacja testowa będzie zawierała tylko wektor określający ilość zmarszczek.
+    Natomiast algorytm KNN przypiszę powyższą obserwację do klasy (wieku).
+    Przypisywanie do danej klasy jest realizowane przez ocenę podobieństwa obserwacji testowej do zbioru uczącego.
+    Ocena podobieństwa jest zrealizowana poprzez obliczanie odległości pomiędzy wektorami zmiennych
+    objaśniających~\cite{knnOpis}.
+
+    Przykładowymi miarami odległości są:
+    \begin{itemize}
+        \item miara Euklidesowa
+        \item miara Manhattan
+        \item miara Czebyszewa
+        \item miara Minkowskiego
+    \end{itemize}
+    Odległość pomiędzy dwoma wektorami w mierze Euklidesowej jest opisana Wzorem \ref{wzor.euklides}
+    \large
+    \begin{equation}
+        D(\overrightarrow{n},\overrightarrow{m})=\sum_{i=1}^{c}(n(i)-m(i))^{2}
+        \label{wzor.euklides}
+    \end{equation}
+    \normalsize
+    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
+    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
+    $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
+
+    Odległość pomiędzy dwoma wektorami w mierze Manhattan jest opisana Wzorem \ref{wzor.manhattan}
+    \large
+    \begin{equation}
+        D(\overrightarrow{n},\overrightarrow{m})=\sum_{i=1}^{c}\left |n(i)-m(i)\right |
+        \label{wzor.manhattan}
+    \end{equation}
+    \normalsize
+    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
+    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
+    $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
+
+    Odległość pomiędzy dwoma wektorami w mierze Czebyszewa jest opisana Wzorem \ref{wzor.manhattan}
+    \large
+    \begin{equation}
+        D(\overrightarrow{n},\overrightarrow{m})=\max_{i=1:n}( \left |n(i)-m(i) \right |)
+        \label{wzor.czebyszew}
+    \end{equation}
+    \normalsize
+    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
+    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
+    $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
+
+    Odległość pomiędzy dwoma wektorami w mierze Minkowskiego jest opisana Wzorem \ref{wzor.minkowski}
+    \large
+    \begin{equation}
+        D(\overrightarrow{n},\overrightarrow{m})=(\sum_{i=1}^{c} \left |n(i)-m(i) \right |^{p})^{\frac{1}{p}}
+        \label{wzor.minkowski}
+    \end{equation}
+    \normalsize
+    Zmienne są dokładnie takie same jak we Wzorze \ref{wzor.euklides}.
+    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
+    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
+    $\overrightarrow{m}$, $c$ jest długością wektora $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
+    Parametr $p$ nazywany jest dystansem Minkowskiego.
+    %normalizacja i standaryzacja
+
+    W celu zmniejszenia błędów klasyfikacji w algorytmie KNN może być zastosowana standaryzacja lub normalizacja danych.
+    Zastosowanie wyżej wymienionych technik pozwala na zmniejszenie dominacji wartości wektorów, których wartość jest
+    znacznie większa lub mniejsza od ogólnej średniej. Przykładowo, jeśli zakładając, że
+    wartością objaśniającą byłaby długość wyrażona w metrach i średnia powyższej wartości w całym zbiorze uczącym
+    wyniosłaby 1 m,
+    to dominującą wartością w tym zbiorze byłaby np. wartość 100 metrów.
+
+    Standaryzacja ma na celu obliczenie nowych wartości elementów wektorów ze zbioru uczącego.
+    Standaryzacja jest zrealizowana poprzez Wzór \ref{wzor.standaryzacja}:
+    \large
+    \begin{equation}
+    {v}
+        _{u}(i) = \frac{{v}_{u}(i)-m({v}_{u})}{\sigma({v}_{u})}
+        \label{wzor.standaryzacja}
+    \end{equation}
+    \normalsize
+    , gdzie ${v}_{u}$ jest wektorem zmiennej objaśniającej ze zbioru uczącego, $u$ - indeksem wektora zmiennej
+    objaśniającej, $i$ jest elementem wektora ${v}_{u}$, $m({v}_{u})$ jest średnią elementów wektora
+    ${v}_{u}$. Natomiast $\sigma({v}_{u})$ jest odchyleniem standardowym elementów wektora ${v}_{u}$.
+
+    Normalizacja generuje wartości elementów wektorów ze zbioru uczącego, tak aby powyższe wartości były z przedziału
+    od 0 do 1 (Wzór \ref{wzor.normalizacja}).
+    \large
+    \begin{equation}
+    {v}
+        _{u}(i) = \frac{{v}_{u}(i)-\min({{v}_{u}})}{\max({{v}_{u})}-\min({{v}_{u}})}
+        \label{wzor.normalizacja}
+    \end{equation}
+    \normalsize
+    , gdzie ${v}_{u}$ jest wektorem zmiennej objaśniającej ze zbioru uczącego, $u$ - indeksem wektora zmiennej
+    objaśniającej, $i$ jest elementem wektora ${v}_{u}$, $\max({v}_{u})$ oznacza maksymalną wartość spośród elementów
+    wektora ${v}_{u}$. Natomiast $\min({v}_{u})$ minimalną wartość spośród elementów
+    wektora ${v}_{u}$.
+
+    Powyżej zostały objaśnione terminy i idea algorytmu KNN. W tym akapicie zostanie przedstawiony algorytm.
+    Tak jak zostało opisane wyżej - algorytm otrzymuję zbiór uczący zawierający obserwację. Następnie zbiór uczący
+    może być standaryzowany lub normalizowany. Ponadto algorytm otrzymuje parametr $k$.
+    W celu wywnioskowania, do której klasy należy obserwacja testowa zawierająca wektor $V_{i}$ szukanych jest $k$
+    najbliższych wektorów (wektorów sąsiadów) ze zbioru uczącego (według kryterium odległości). Obserwacja testowa
+    zostaje przydzielona do klasy, która najczęściej występowała wśród $k$ sąsiednich obserwacji.
+    Problem klasyfikacji algorytmem KNN jest pokazany na Rysunku \ref{fig.klasyfikacjaKNN}
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{Obrazy/klasyfikacjaKNN.jpg}
+        \caption{Przykład klasyfikacji KNN~\cite{KNNObraz}.}
+        \label{fig.klasyfikacjaKNN}
+    \end{figure}
+
+    Na Rysunku \ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy ,,A'' oraz klasy
+    ,,B''. Ponadto jest na środku Rysunku \ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
+    sklasyfikowany do jednej z wyżej wymienionych klas.
+    Dla parametru ,,k'' równego 3 wektor testowy zostanie przypisany do klasy ,,B'', gdyż z 3 najbliższych wektorów 2
+    należą do klasy ,,B''. W przypadku, gdy parametr ,,k'' będzie równy 7 wektor testowy zostanie przypisany do klasy
+    ,,A''. Z pośród siedmiu najbliższych sąsiadów 4 należą do klasy ,,A'', natomiast 3 do klasy ,,B''.
+
+    Wybór parametru $k$ jest zależny od rodzaju danych. Im większa wartość $k$ tym mniejszy wpływ szumu podczas
+    klasyfikacji. Szum określa błędne dane w zbiorze uczącym. Istnieją metody dobierające optymalną wartość $k$ dla
+    danego zbioru uczącego. Do jednej z tych metod należy optymalizacja hiperparametryczna.
+
+    Na końcu Sekcji \ref{subsec:zastosowanie-w-projekcie} został przedstawiony sposób, w jaki generowany jest zbiór
+    uczący.
+    Szacowanie wieku metodą KNN w pierwszym kroku polega na stworzeniu wektoru, który został opisany
+    Wzorem \ref{wzor.hogKnn}.
+    Następnym krokiem jest przydzielenie danego wektoru do klasy (wieku).
+
+    W Sekcji \ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
 
     \chapter{Badania}\label{ch:badania}
     \section{Środowisko badań}\label{sec:środowisko-pracy}
