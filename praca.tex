@@ -374,7 +374,8 @@ Karolina Nurzyńska}
     Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
     opiera się w głównej mierze na sztucznej inteligencji~\cite{computerVision}.
     %275 wyrazow
-
+    TODO cel i zakres pracy
+    %todo cel i zakres pracy
     %    \section{Cel i zakres pracy}
     %    Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
     %
@@ -566,22 +567,22 @@ Karolina Nurzyńska}
     prawidłowego jej wykrycia.
 
     Kolejnym istotnym elementem jest oświetlenie twarzy.
-    Gdy twarz oświetlona jest tzw. twardym światłem, występują na
+    Gdy twarz oświetlona jest tzw. silnym światłem, występują na
     niej cienie i światła określane jako ostre (Sekcja~\ref{fig.oswietlenieTwarzy}).
     \begin{figure}
         \centering
         \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
-        \caption{Przykład twarzy oświetlonej twardym (twarz po lewej) oraz miękkim światłem.~\cite{oswietlenieTwarzy}}
+        \caption{Przykład twarzy oświetlonej silnym (twarz po lewej) oraz miękkim światłem.~\cite{oswietlenieTwarzy}}
         \label{fig.oswietlenieTwarzy}
     \end{figure}
     W tym przypadku ryzyko utraty szczegółów oświetlanej twarzy jest większe.
     Kiedy twarz jest skierowana na wprost słońca, z dużym
-    prawdopodobieństwem można stwierdzić, że zostanie oświetlona twardym światłem.
+    prawdopodobieństwem można stwierdzić, że zostanie oświetlona silnym światłem.
     Z kolei miękkie światło jest generowane na przykład przez zachmurzone niebo.
     Istotne jest także źródło światła, które
     może być punktowe lub rozproszone.
     Przy punktowym źródle światła cała twarz jest
-    okryta jednolitym cieniem, którego intensywność zależy od "twardości" światła.
+    okryta jednolitym cieniem, którego intensywność zależy od rodzaju światła.
     Natomiast przy świetle rozproszonym intensywność cieni jest mniejsza.
 
     Na Rys~\ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
@@ -1085,7 +1086,7 @@ Karolina Nurzyńska}
 
     \begin{figure}
         \centering
-        \includegraphics[width=11cm]{Obrazy/wyliczenieCzolka.jpg}
+        \includegraphics[width=8cm]{Obrazy/wyliczenieCzolka.jpg}
         \caption{Wyznaczenie strefy znajdującej się na czole.}
         \label{fig.wyznaczenieCzola}
     \end{figure}
@@ -1899,7 +1900,7 @@ Karolina Nurzyńska}
     bazowej.
     Wiek szacowany jest dokładnie tak samo jak w metodzie bazowej.
     Kolejna modyfikacja metody bazowej została opisana w Sekcji~\ref{sec:metoda-hog-oraz-grupowanie-knn}
-    \section{Metoda HOG oraz grupowanie KNN}\label{sec:metoda-hog-oraz-grupowanie-knn}
+    \section{Metoda HOG oraz algorytm KNN}\label{sec:metoda-hog-oraz-algorytm-knn}
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %http://zsi.tech.us.edu.pl/~nowak/si/w4.pdf
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
@@ -2077,11 +2078,31 @@ Karolina Nurzyńska}
     W Sekcji \ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
 
     \chapter{Badania}\label{ch:badania}
+    W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz ich modyfikacji.
+    W Sekcji \ref{sec:środowisko-pracy} przedstawione zostało środowisko pracy, a dokładniej mówiąc wszystkie
+    niezbędne rzeczy, które pozwoliły skutecznie przeprowadzić badania.
+    W Sekcji \ref{sec:wykrywanie-krawędzi-przez-detektor-canny} pokazano efekty wykrywania zmarszczek przez detektor
+    Canny. W następnej Sekcji \ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
+    części algorytmów, zarówno trenujących jak i szacujących wiek.
+    W Sekcji \ref{sec:skuteczność-poszczególnych-metod-szacowania-wieku} porównano metodę bazową oraz jej modyfikację
+    pod względem skuteczności szacowania wieku.
+
     \section{Środowisko badań}\label{sec:środowisko-pracy}
-    %napisac z czego korzystano
-    %czyli matlab
-    %    do czego byl uzywany matlab a do czego Intellij
-    %intellij
+
+    W celu przeprowadzenia badań do niniejszej pracy magisterskiej wymagane było stworzenie programu,
+    który wykrywa twarz oraz wyodrębnia cechy z twarzy. Wyżej wymieniony program został napisany w języku Java.
+    Biblioteka, która pomogła wyodrębniać cechy z obrazu to OpenCv. Biblioteka jest stworzona w języku C++. Jednak
+    istnieją modyfikację biblioteki, które napisana jest w innym języku. Najczęściej spotykane modyfikację są
+    stworzone w języku Java oraz Python. Ponadto w Javie generowano dane dla metody bazowej oraz wszystkich
+    jej modyfikacji. Dodatkowo w wyżej wymienionym języku zrealizowano szacowanie wieku we wszystkich metodach z
+    pominięciem metody, która stosuje algorytm KNN (Sekcja \ref{sec:metoda-hog-oraz-grupowanie-knn}).
+
+    Grupowanie danych algorytmem Fuzzy C-means zostało zrealizowane za pomocą programu Matlab.
+    Szacowanie wieku dla metody stosującej algorytm KNN również zostało zrealizowane za pomocą wyżej wymienionego
+    programu.
+
+    Dane z treningu były generowane do plików CSV. Ponadto większość kluczowych operacji była logowana do plików. Do
+    tego celu posłużyła popularna biblioteka Log4j.
     %jakie biblioteki uzywano z jaka dokladnocia liczono
     %    jakich technologii uzywano np. log4j do logowania
     \section{Wykrywanie zmarszczek przez detektor Canny}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
@@ -2097,7 +2118,7 @@ Karolina Nurzyńska}
     %dzialanie poszczegolnych czesci algorytmu
     %wykrywanie twarzy, oczu itd. tutaj beda zdjecia
     %logi z dzialania
-    \section{Porównanie metod}
+    \section{Skuteczność poszczególnych metod szacowania wieku}\label{sec:skuteczność-poszczególnych-metod-szacowania-wieku}
     %Skad wzielismy dane testowe
     %porownanie metod testowych
     %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
