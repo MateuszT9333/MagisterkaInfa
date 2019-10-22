@@ -1900,6 +1900,7 @@ Karolina Nurzyńska}
     Wiek szacowany jest dokładnie tak samo jak w metodzie bazowej.
     Kolejna modyfikacja metody bazowej została opisana w Sekcji~\ref{sec:metoda-hog-oraz-grupowanie-knn}
     \section{Metoda HOG oraz grupowanie KNN}\label{sec:metoda-hog-oraz-grupowanie-knn}
+    \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %http://zsi.tech.us.edu.pl/~nowak/si/w4.pdf
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
     %Trening generuje pare wiek -> wektor sumy hogow z kazdej strefy
@@ -1909,12 +1910,28 @@ Karolina Nurzyńska}
     %jak wyglada trenowanie danych, przeprowadzenie normalizacji itp (ze jest opcjonalne) wzory itp:
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
     % wybor parametru - k jak wplywa
+    Kolejna modyfikacja polegała na zmianie sposoby wyznaczania wrinkle feature.
+    W Sekcji \ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wrinkle feature,
+    który polegał na sumowaniu deskryptorów z poszczególnych stref (Wzór \ref{wzor.hogWrinkleFeature}).
+    W celu poprawy wyników uwzględniono deskryptory ze wszystkich stref.
+    Dla każdego zdjęcia ze zbioru wyznaczana jest para danych - wiek oraz wektor
+    $\overrightarrow{v_{KNN}}$ składający się z elementów według Wzoru \ref{wzor.hogKnn}
+    \large
+    \begin{equation}
+        \overrightarrow{v_{KNN}} = (\left \|v_{1}  \right \|_{1},\left \|v_{3}  \right \|_{1},\left \|v_{4}  \right
+        \|_{1},\left \|v_{5}  \right \|_{1},\left \|v_{6}  \right \|_{1})
+        \label{wzor.hogKnn}
+    \end{equation}
+    \normalsize
+    W wyniku treningu zbioru zdjęć zostaje wygenerowany zbiór zawierający wyżej wymienioną parę danych.
+    W celu oszacowania wieku zostaje wykorzystany algorytm KNN, który został opisany w
+    Sekcji \ref{subsec:grupowanie-knn}.
     \subsection{Grupowanie KNN}\label{subsec:grupowanie-knn}
-    algorytm regresji
+    Algorytm KNN (ang. k-Nearest Neighbor) to algorytm regresji
     nieparametrycznej używany w statystyce do
-    prognozowania wartości pewnej zmiennej losowej
-    \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
-    %Tutaj powinno byc okolo 7000
+    prognozowania wartości pewnej zmiennej losowej.
+    KNN tłumaczone jest na język polski jako algorytm k- najbliższych sąsiadów.
+
     \chapter{Badania}\label{ch:badania}
     \section{Środowisko badań}\label{sec:środowisko-pracy}
     %napisac z czego korzystano
