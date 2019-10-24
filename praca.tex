@@ -2111,7 +2111,7 @@ Karolina Nurzyńska}
     %    jakich technologii uzywano np. log4j do logowania
     \section{Rozmiar obrazu}\label{sec:rozmiar-obrazu}
     Wymiary obrazu z bazy UTKface miał zakres od 186 pikseli do 1300. Natomiast obszar wykrytej
-    twarzy miał zakres od 165 do 738 pikseli.
+    twarzy miał zakres od 165 do 450 pikseli.
     Sprawdzono wskaźnik zmarszczek wygenerowany za pomocą detektora Canny oraz HOG dla jednego zdjęcia ze zbioru
     treningowego oraz kilku rozmiarów.
     Dla detektora Canny zmieniano wartość powiększenia zdjęcia od 0,8 do 1,20. Zmiana wrinkle feature nie uległa
@@ -2163,9 +2163,9 @@ Karolina Nurzyńska}
     Należy wydedukować, w pierwszym kroku, jaki obszar zajmuję w przybliżeniu strefa 3 i 6 w stosunku do obszaru twarzy.
     Na podstawie logów aplikacji wygenerowanych w trakcie detekcji stref dla zdjęć z bazy treningowej, wyznaczono
     średni obszar strefy 3 i 6. Porównano rozmiar obszaru twarzy w pikselach z rozmiarem strefy 3 i 6.
-    Dla kilkudziesięciu zdjęć porównano wyżej wymienione wymiary. Na podstawie powyższych danych obliczono (Wzór) jaki
-    procent
-    szerokość i długości obszaru twarzy zajmuje strefa 3 i 6. (Obrazeczek z danymi?).
+    Dla kilkudziesięciu zdjęć porównano wyżej wymienione wymiary. Na podstawie powyższych danych po prostych
+    obliczeniach stwierdzono, że strefa 3 i 6 zajmuje od 8\% do 15\% na szerokość obszaru twarzy oraz od 15\% do 25\%
+    na długość obszaru twarzy.
     Minimalna wartość procentowa dla szerokości wyniosła x, a dla długości y. W związku z powyższych minimalna
     szerokość obszaru twarzy powinna być x razy większa od szerokości bloku.
     Natomiast długość obszaru zawierającego twarz powinna być y razy większa od długości bloku.
