@@ -2081,6 +2081,7 @@ Karolina Nurzyńska}
     W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz ich modyfikacji.
     W Sekcji~\ref{sec:środowisko-pracy} przedstawione zostało środowisko pracy, a dokładniej mówiąc wszystkie
     niezbędne rzeczy, które pozwoliły skutecznie przeprowadzić badania.
+    W Sekcji \ref{sec:rozmiar-obrazu} przedstawiono wpływ rozmiaru na wyniki badań
     W Sekcji~\ref{sec:wykrywanie-krawędzi-przez-detektor-canny} pokazano efekty wykrywania zmarszczek przez detektor
     Canny. W następnej Sekcji~\ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
     części algorytmów, zarówno trenujących jak i szacujących wiek.
@@ -2101,19 +2102,133 @@ Karolina Nurzyńska}
     Szacowanie wieku dla metody stosującej algorytm KNN również zostało zrealizowane za pomocą wyżej wymienionego
     programu.
 
-    Dane z treningu były generowane do plików CSV. Ponadto większość kluczowych operacji była logowana do plików. Do
+    Dane z treningu były generowane do plików CSV oraz JSON. Ponadto większość kluczowych operacji była logowana do plików. Do
     tego celu posłużyła popularna biblioteka Log4j.
+    Generacja plików JSON była zrealizowana przez bibliotekę GSON z pakietu com.google.code.gson.
+    Do generacji plików CSV nie została wykorzystana zewnętrzna biblioteka.
 
     %jakie biblioteki uzywano z jaka dokladnocia liczono
     %    jakich technologii uzywano np. log4j do logowania
-    \section{Wykrywanie zmarszczek przez detektor Canny}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
-    W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny.
-    W wielu zdjęciach dokonywane były nieprawidłowe detekcje zmarszczek.
+    \section{Rozmiar obrazu}\label{sec:rozmiar-obrazu}
+    Wymiary obrazu z bazy UTKface miał zakres od 186 pikseli do 1300. Natomiast obszar wykrytej
+    twarzy miał zakres od 165 do 738 pikseli.
+    Sprawdzono wskaźnik zmarszczek wygenerowany za pomocą detektora Canny oraz HOG dla jednego zdjęcia ze zbioru
+    treningowego oraz kilku rozmiarów.
+    Dla detektora Canny zmieniano wartość powiększenia zdjęcia od 0,8 do 1,20. Zmiana wrinkle feature nie uległa
+    zmianie. Natomiast ponad i poniżej powyższego zakresu powiększenia detektor nie mógł wykryć zlokalizować prawidłowo
+    oczu.
 
-    Pierwszym przykładem było coś tam...
+    Dla detektora opartego na algorytmie HOG wrinkle feature był następujący:
+    \begin{itemize}
+        \item powiększenie 0.8: 11.944
+        \item powiększenie 0.9: 11.813538
+        \item powiększenie 1.0: 12.01074
+        \item powiększenie 1.1: 11.117805
+        \item powiększenie 1.2: 11.125154
+    \end{itemize}
+
+    Dla detektora opartego na algorytmie HOG wraz z klasyfikatorem KNN wrinkle feature był następujący:
+
+    \begin{itemize}
+        \item powiększenie 0.8: [2.455685, 2.4238224, 2.3258488, 2.5089853, 2.22999]
+        \item powiększenie 0.9: [2.3424015, 2.183178, 2.402356, 2.6400175, 2.245584]
+        \item powiększenie 1.0: [2.4636364, 2.3633847, 2.4149206, 2.171613, 2.5971856]
+        \item powiększenie 1.1: [2.3787472, 2.184542, 2.335689, 1.9784055, 2.2404206]
+        \item powiększenie 1.2: [2.3283577, 2.1853786, 2.3087728, 2.0892627, 2.2133815]
+    \end{itemize}
+
+    Na podstawie wyników można wywnioskować, ze wskaźnik zmarszczek nie zwiększał sie przy zmianie
+    powiększenia zdjęcia dla metody opartej na detektorze Canny. Natomiast zauważalne zmiany były zarówno dla metody
+    korzystającej z algorytmu HOG oraz HOG z klasyfikatorem KNN.
+
+    Okazało sie, że w pewnych warunkach detekcja metodą Hog i KNN nie obliczała współczynnika zmarszczek dla strefy 3
+    i 6.
+    Wynikało to z rozmiaru obrazu oraz parametrów HOG.
+    Okazało się, że gdy szerokość obszaru zmarszczek jest mniejsza od szerokości pojedyńczego bloku lub długość wyżej
+    wymienionego obszaru jest mniejsza od długości pojedyńczego bloku
+    to długość deskryptora wynosi 0. Zgodnie z powyższym suma deskryptora dla opisywanego obszaru jest równa 0.
+    Tracone są w ten sposób informacje o zmarszczkach.
+
+    Problem został zauważony dla wymiarów obrazu 165 x 213 pikseli i dla następujących parametrów HOG:
+    \begin{itemize}
+        \item blok 18 x 18 pikseli
+        \item komorka 9 x 9 pikseli
+    \end{itemize}
+    Analogiczna sytuacja może nastąpić, gdy długość bloku jest większa długości obszaru zmarszczek.
+
+    Można przyjąć pewien minimalny wymiary obrazu twarzy, zakładając, że maksymalna długość i szerokość bloku wyniesie 18 pikseli.
+    W związku z powyższym szerokość i/lub długość strefy zmarszczkowej nie może być mniejsza od 18 pikseli.
+    Tak jak wcześniej zostało wspomniane, najbardziej wrażliwymi strefami na brak generacji deskryptora, są strefy 3
+    i 6.
+    Należy wydedukować, w pierwszym kroku, jaki obszar zajmuję w przybliżeniu strefa 3 i 6 w stosunku do obszaru twarzy.
+    Na podstawie logów aplikacji wygenerowanych w trakcie detekcji stref dla zdjęć z bazy treningowej, wyznaczono
+    średni obszar strefy 3 i 6. Porównano rozmiar obszaru twarzy w pikselach z rozmiarem strefy 3 i 6.
+    Dla kilkudziesięciu zdjęć porównano wyżej wymienione wymiary. Na podstawie powyższych danych obliczono (Wzór) jaki
+    procent
+    szerokość i długości obszaru twarzy zajmuje strefa 3 i 6. (Obrazeczek z danymi?).
+    Minimalna wartość procentowa dla szerokości wyniosła x, a dla długości y. W związku z powyższych minimalna
+    szerokość obszaru twarzy powinna być x razy większa od szerokości bloku.
+    Natomiast długość obszaru zawierającego twarz powinna być y razy większa od długości bloku.
+
+    W drugim kroku należy odnaleźć jaki obszar zajmuje twarz w stosunku do wymiarów obrazu.
+    Porównano zdjęcia z bazy treningowej pod kątem wyżej wymienionych obszarów. Podobnie jak wyżej porównano
+    kilkadziesiąt zdjęć.
+    Okazało się, że twarz zajęła minimalnie obszar x \% na szerokość całego obrazu oraz y \% na długość.
+    W związku w powyższym obszar twarzy jest x razy węższy oraz y razy krótszy.
+
+    Zgodnie z wynikiem z pierwszej fazie obszar twarzy powinien być x razy szerszy od szerokości bloku, natomiast obszar twarzy jest x razy węższy,
+    więc szerokość obrazu powinna być większa od szerokości bloku o współczynnik w1.
+
+    Wzor....
+
+    Podobnie obliczenia są realizowane dla współczynnika w2. Obszar twarzy powinien być y razy dłuższy od długości bloku. Obszar twarzy jest y razy krótszy.
+    W związku z powyższym długość obrazu powinna być dłuższa o współczynnik w2 wynosi:
+    Wzor
+
+
+
+    \section{Wykrywanie zmarszczek przez detektor Canny oraz Histogram of Oriented Gradients}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
+    W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
+    W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
+
+    Krawędzie związane ze zmarszczkami są widoczne na Obrazie (zdjęcie z dobra detekcja zmarszczek).
+    Powyższy Obraz będzie dobrym punktem odniesienia w porównaniu do błędnych detekcji zmarszczek.
+
+    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (moje zdjęcie) dla osoby w wieku 17 lat.
+    Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (Obraz (referencja do zdjęcia z opisanymi strefami))
+    jest duża i nie identyfikują one zmarszczek.
+
+    Porównano średnia ilość krawędzi ze strefy 2 dla osób z wieku 17 lat z ilością krawędzi wykrytych z tej samej
+    strefy na Obrazie (zdjeciu moim).
+    Powyższe porównanie ma na celu sprawdzenie wpływu nieprawidłowej detekcji zmarszczek.
+    Średnia ilość zmarszczek dla strefy 2 i dla osób w wieku 17 lat wyniosła:
+    \begin{itemize}
+        \item Dla HOG-a %todo
+        \item Dla Canny
+        %todo
+    \end{itemize}
+
+    Natomiast dla zdjęcia zawierającego błędnie wykryte zmarszczki (Obraz) ilość zmarszczek wyniosła
+    \begin{itemize}
+        \item Dla HOG-a %todo
+        \item Dla Canny
+        %todo
+    \end{itemize}
+
+    Kolejnym problemem była grzywka nachodząca na obszar strefy 1.  %todo opisac + dokonac obliczen jak powyzej
+
+
     %Ustalone parametry
     %    Tutaj mogą być zdjęcia jak to wygladalo, jakie były problemy np, ze wykrywalo wlosy, ze blednie wykrywalo itp
     \section{Statystyki z działania programu}\label{sec:statystyki-z-działania-programu}
+    W tej sekcji zostaną przedstawione ogólne statystyki z działania programu.
+    Baza UTKface zawiera 20000 zdjęć. Detektor twarzy był w stanie wyznaczyć obszar twarzy dla 14000 obrazów.
+    Z pośród 14000 obrazów tylko 10000 brało udział w liczeniu zmarszczek, ponieważ w tej grupie algorytm wykrył
+    obszar nosa oraz oczy
+    , które są niezbędne do dalszych obliczeń.
+    Średnia zajętość RAM-u przez program wyniosła 790 MB.
+    Natomiast maksymalnie program zajmował 1974 MB pamięci RAM.
+
     %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
     %    przetwarzania), zajetosc pamieci
     % napisac cos ile bylo zdjec w zbiorze danych, ile przeszlo walidacje.
@@ -2124,15 +2239,34 @@ Karolina Nurzyńska}
     %wykrywanie twarzy, oczu itd. tutaj beda zdjecia, jakie byly bledy
     %logi z dzialania
     \section{Skuteczność poszczególnych metod szacowania wieku}\label{sec:skuteczność-poszczególnych-metod-szacowania-wieku}
+    Do oceny skuteczności szacowania wieku poszczególnych metod potrzebna jest baza treningowa oraz testowa.
+    Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
+    treningową oraz testową.
+    Jednym z nich jest rozdzielenie bazy opierając się na stosunku. Oznacza, to, że zbiór treningowy będzie wynosił
+    $x$ procent np. 90\%, zbiór testowy $100\% -x$, np 10\%.
+
+    Drugim ze sposobów to schemat CV-n zwany również walidacją krzyżową.
+    Zakłada ona, że zbiór danych zostaje dzielony na n-równych podzbiorów.
+    Następnie jest wykonywane n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym natomiast reszta
+    podzbiorów tworzy zbiór treningowy.
+    Każda iteracja daje wynik działania klasyfikatora. W wyniku ,,n'' iteracji otrzymuje się uśredniony wynik działania klasyfikatora.
+
+    Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów należy do zbioru treningowego.
+    Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces jest powtarzany dla wszystkich obiektów.
+    Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów w zbiorze danych.
+
+    Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE Wzór \ref{wzor.mae}.
+
+
     %Skad wzielismy dane testowe
     %porownanie metod testowych
     %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
     %    Wstep jakie metody porownano i co tam zmieniano
     \subsection{Metoda bazowa}
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
-    \subsection{Metoda 1}
-    \subsection{Metoda 2}
-    \subsection{Metoda 3}
+    \subsection{Odjęcie strefy 2}
+    \subsection{Metoda HOG}
+    \subsection{Metoda HOG + KNN}
     \section{Podsumowanie}
     \section{Wnioski}
     % za maly zbior danych testowych byc moze dlatego takie slabe wyniki?
