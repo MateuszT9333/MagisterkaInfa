@@ -2219,40 +2219,104 @@ Karolina Nurzyńska}
     Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (Obraz (referencja do zdjęcia z opisanymi strefami))
     jest duża i nie identyfikują one zmarszczek.
 
-    Porównano średnią ilość krawędzi ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej samej
+    Porównano średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej samej
     strefy na Obrazie (zdjeciu moim).
-    Takie porównanie ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
-    Średnia ilość zmarszczek w strefie 2 dla osób w wieku 17 lat wyniosła:
+    Powyższe porównanie ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
+    Średni współczynnik zmarszczek w strefie 2 dla osób w wieku 17 lat wyniosła:
+
     \begin{itemize}
-        \item Dla HOG-a %todo
+        \item Dla HOG-a (parametry takie i taki)%todo
         \item Dla Canny
         %todo
     \end{itemize}
 
     Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (Obraz) ilość zmarszczek wyniosła
     \begin{itemize}
-        \item Dla HOG-a %todo
+        \item Dla HOG-a (parametry takie i taki)%todo
         \item Dla Canny
         %todo
     \end{itemize}
 
-    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.  %todo opisac + dokonac obliczen jak powyzej
+    W związku z powyższym różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku 17 lat
+    ,a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz \ref):
+    \begin{itemize}
+    \item Dla HOG-a (parametry takie i taki)%todo
+    \item Dla Canny
+            %todo
+    \end{itemize}
 
+    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1. Na obrazie (ref) można zauważyć wykryte krawędzie,
+    które identyfikują włosy. Obraz (ref) należy do x letniej osoby. Podobnie, jak powyżej, dokonano porównanie,
+    które ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
+    Do powyższego celu obliczono średni współczynnik zmarszczek ze strefy 2 dla osób w wieku x lat, który wyniósł:
+
+    \begin{itemize}
+        \item Dla HOG-a (parametry takie i taki)%todo
+        \item Dla Canny
+        %todo
+    \end{itemize}
+
+    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (Obraz) ilość zmarszczek wyniosła
+    \begin{itemize}
+        \item Dla HOG-a (parametry takie i taki)%todo
+        \item Dla Canny
+        %todo
+    \end{itemize}
+
+    Różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku x lat
+    ,a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz \ref):
+    \begin{itemize}
+        \item Dla HOG-a (parametry takie i taki)%todo
+        \item Dla Canny
+        %todo
+    \end{itemize}
 
     %Ustalone parametry
     %    Tutaj mogą być zdjęcia jak to wygladalo, jakie były problemy np, ze wykrywalo wlosy, ze blednie wykrywalo itp
+
     \section{Statystyki z działania programu}\label{sec:statystyki-z-działania-programu}
     W tej sekcji zostaną przedstawione ogólne statystyki z działania programu.
-    Baza UTKface zawiera 20000 zdjęć. Detektor twarzy był w stanie wyznaczyć obszar twarzy dla 14000 obrazów.
-    Jednak spośród 14000 obrazów tylko 10000 brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm poprawnie wykrył
-    obszar nosa oraz oczy,
-    które są niezbędne do dalszych obliczeń.
+    Baza UTKface zawiera x zdjęć. Detektor twarzy był w stanie wyznaczyć obszar twarzy dla x obrazów.
+    Jednak spośród x obrazów tylko x brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm poprawnie wykrył
+    obszar nosa oraz oczu, które są niezbędne do dalszych obliczeń.
     Średnia zajętość RAM-u przez program wyniosła 790 MB.
     Natomiast maksymalnie program zajmował 1974 MB pamięci RAM.
 
+    Na podstawie logów aplikacji sprawdzono czasy prztwarzania poszczególnych części algorytmów.
+
+    Średni czas wykrywania twarzy trwał x sekund, maksymalny czas wykrywania wynosił x sekund, natomiast minimalny czas wyniósł
+    x sekund.
+
+
+    Średni czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
+    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+
+    Maksymalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
+    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+
+    Minimalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
+    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+
+    W związku z powyższym najszybciej generował wrinkle feature algorytm x.
+
+    Warto porównać szybkość szacowania wieku na podstawie danego wrinkle feature.
+
+    Średni czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
+    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+
+    Maksymalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
+    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+
+    Minimalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
+    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+
+    Najszybciej szacował wiek algorytm x.
+    Warto podkreślić, że szacowanie wieku dla metody HOG wraz z klasyfikacją KNN realizował program realizowany przez skrypt w Matlabie.
+    Reszta algorytmów szacowania wieku została zrealizowana w programie w języku Java. W związku z powyższym porównanie szybkości działania
+    algorytmu zaimplementowanego w Matlabie do algorytmu zaimplementowanego w Javie może być niedokładne.
+
     %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
     %    przetwarzania), zajetosc pamieci
-    % napisac cos ile bylo zdjec w zbiorze danych, ile przeszlo walidacje.
     %przykladowe dane generowane przez metode glowna
 
 
