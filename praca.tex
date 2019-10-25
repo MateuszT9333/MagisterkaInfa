@@ -2208,6 +2208,8 @@ Karolina Nurzyńska}
     Obszar twarzy powinien być 6,7 razy dłuższy od długości bloku, a jednocześnie jest 1,25 razy krótszy od długości obrazu.
     W związku z powyższym długość obrazu powinna być $6,7*1,25$, czyli w przybliżeniu 8,4 razy większa od długości bloku.
 
+    W celu obliczenia parametru wrinkle feature dla strefy 3 i 6 obrazy, które miały zbyt mały rozmiar zostały powiększone.
+
     \section{Wykrywanie zmarszczek przez detektor Canny oraz Histogram of Oriented Gradients}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
     W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
@@ -2349,6 +2351,22 @@ Karolina Nurzyńska}
     %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
     %    Wstep jakie metody porownano i co tam zmieniano
     \subsection{Metoda bazowa}
+    Pierwsza została przetestowana metoda bazowa.
+    Przetestowano dokładność szacowania wieku zmieniając parametry algorytmu trenującego Fuzzy C-means:
+
+    rozmycia, \epsilon, ilości grup, liczby iteracji
+
+    Przykładowy wynik testowania metody został przedstawiony na (obrazie?, tabeli).
+    Dla parametrów rozmycie = 2.0, liczba iteracji = 100 \epsilon = 1e-5 oraz liczba grup = 10 błąd MAE wyniósł 12,75 lat.
+    Następnie zmieniono rozmycie do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 lat u wyniosła 11,3.
+    Ostatnią testowana wartość parametru rozmycia wyniosła 5. W wyniku testu MAE wyniosło 11,67 lat.
+
+    W kolejnym kroku przetestowano wpływ parametru \epsilon dla metody oryginalnej.
+    Dla parametrów rozmycie = 2.0, liczba iteracji = 100 \epsilon = 1e-6 oraz liczba grup = 10 błąd MAE wyniósł 11,19 lat.
+    Zmiana parametru \epsilon do 1e-7 spowodowała, że parametr MAE wyniósł 11,24 lat.
+    Dla wartości 1e-8 parametru \epsilon parametr MAE również wyniósł 11,24 lat.
+    Należy podkreślić, że liczba iteracji została zmieniona do 1000, ponieważ ograniczała ona osiągnięcie zadanej wartości \epsilon zarówno
+    dla wartości \epsilon 1e-7 oraz 1e-8.
 
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
 
