@@ -2099,7 +2099,7 @@ Karolina Nurzyńska}
     pominięciem metody, która stosuje algorytm KNN (Sekcja~\ref{sec:metoda-hog-oraz-algorytm-knn}).
 
     Grupowanie danych algorytmem Fuzzy C-means zostało zrealizowane za pomocą programu Matlab.
-  Również szacowanie wieku dla metody stosującej algorytm KNN przeprowadzono za pomocą wyżej wymienionego
+    Również szacowanie wieku dla metody stosującej algorytm KNN przeprowadzono za pomocą wyżej wymienionego
     programu.
 
     Dane z treningu były generowane do plików CSV oraz JSON. Ponadto większość kluczowych operacji była logowana do plików. Do
@@ -2158,34 +2158,55 @@ Karolina Nurzyńska}
 
     Można przyjąć pewne minimalne wymiary obrazu twarzy, zakładając, że maksymalna długość i szerokość bloku wyniesie 18 pikseli.
     W związku z powyższym szerokość i/lub długość strefy zmarszczkowej nie może być mniejsza od 18 pikseli.
-   Jak już wcześniej zostało wspomniane, najbardziej wrażliwe na brak generacji deskryptora są strefy 3
+    Jak już wcześniej zostało wspomniane, najbardziej wrażliwe na brak generacji deskryptora są strefy 3
     i 6.
-     W pierwszym kroku należało wydedukować, jaki obszar zajmuje w przybliżeniu strefa 3 i 6 w stosunku do obszaru twarzy.
+    W pierwszym kroku należało wydedukować, jaki obszar zajmuje w przybliżeniu jedna strefa 3 lub 6 w stosunku do obszaru twarzy.
     Na podstawie logów aplikacji wygenerowanych w trakcie detekcji stref dla zdjęć z bazy treningowej wyznaczono
-    średni obszar strefy 3 i 6. Następnie porównano rozmiar obszaru twarzy w pikselach z rozmiarem strefy 3 i 6.
+    średni obszar jednej strefy 3 lub 6. Następnie porównano rozmiar obszaru twarzy w pikselach z rozmiarem jednej strefy 3 lub 6.
     Porównanie wyżej wymienionych wymiarów przeprowadzono dla kilkudziesięciu zdjęć. Na podstawie uzyskanych danych po prostych
-    obliczeniach stwierdzono, że strefa 3 i 6 zajmuje od 8\% do 15\% na szerokość obszaru twarzy oraz od 15\% do 25\%
+    obliczeniach stwierdzono, że jedna strefa 3 lub 6 zajmuje od 8\% do 15\% na szerokość obszaru twarzy oraz od 15\% do 25\%
     na długość obszaru twarzy.
-    Minimalna wartość procentowa dla szerokości wyniosła x, a dla długości y. W związku z powyższych minimalna
-    szerokość obszaru twarzy powinna być x razy większa od szerokości bloku.
-    Natomiast długość obszaru zawierającego twarz powinna być y razy większa od długości bloku.
+    W związku z powyższym minimalna szerokość bloku wyniosła 8\% szerokości obszaru twarzy, natomiast długość wyniosła 15\%.
+    Minimalna szerokość obszaru twarzy w pikselach względem szerokości bloku jest opisana Wzorem \ref{wzor.stosunekSzerokoscBloku}.
+
+    \large
+    \begin{equation}
+    T_{wmin}=\frac{1}{B_{wrmin}}*B_{w}
+    \label{wzor.stosunekSzerokoscBloku}
+    \end{equation}
+    \normalsize
+    , gdzie $B_{wrmin}$ oznacza minimalną szerokość bloku w stosunku do szerokości obszaru twarzy (w %), natomiast $B_{w}$ oznacza
+    szerokość bloku w pikselach, $T_{w}$ oznacza minimalną szerokość obszaru twarzy.
+
+    Analogicznie minimalna długość obszaru twarzu względem długości bloku jest opisana Wzorem \ref{wzor.stosunekDlugosciBloku}.
+
+    \large
+    \begin{equation}
+    T_{hmin}=\frac{1}{B_{hrmin}}*B_{h}
+    \label{wzor.stosunekDlugosciBloku}
+    \end{equation}
+    \normalsize
+     , gdzie $B_{hrmin}$ oznacza minimalną długość bloku w stosunku do długości obszaru twarzy (w %), natomiast $B_{h}$ oznacza
+     długość bloku w pikselach, T_{hmin} oznacza minimalną długość obszaru twarzy.
+
+    Wobec powyższego Wzoru \ref{wzor.stosunekSzerokoscBloku} minimalna szerokość obszaru twarzy powinna
+    być conajmniej 12,5 razy większa od szerokości bloku.
+    Natomiast według Wzoru \ref{wzor.stosunekDlugosciBloku} długość obszaru zawierającego twarz powinna
+    być conajmniej 6,7 razy większa od długości bloku.
 
     W drugim kroku należało odnaleźć obszar, jaki zajmuje twarz w stosunku do wymiarów obrazu.
     W tym celu porównano zdjęcia z bazy treningowej pod kątem wyżej wymienionych obszarów. Podobnie jak wyżej, przeprowadzono porównanie dla
     kilkudziesięciu zdjęć.
-    Okazało się, że minimalny obszar zajęty przez twarz wyniósł x \% na szerokość całego obrazu oraz y \% na długość.
-    W świetle powyższych danych należy stwierdzić, że obszar twarzy jest x razy węższy oraz y razy krótszy od obszaru całego obrazu.
+    Okazało się, że minimalny obszar zajęty przez twarz wyniósł 75 \% na szerokość całego obrazu oraz 80 \% na długość.
+    W świetle powyższych danych należy stwierdzić, że obszar twarzy jest 1,33 razy węższy oraz 1,25 razy krótszy od obszaru całego obrazu.
 
-    Zgodnie z wynikami pierwszej fazy badań, obszar twarzy powinien być x razy szerszy od szerokości bloku, a jednocześnie q razy węższy od samego obrazu,
-    więc szerokość obrazu powinna być większa od szerokości bloku o współczynnik w1.
+    Zgodnie z wynikami pierwszej fazy badań, obszar twarzy powinien być 12,5 razy szerszy od szerokości bloku,
+    a jednocześnie jest 1,33 razy węższy od samego obrazu,
+    więc szerokość obrazu powinna być $12,5*1,33$, czyli w przybliżeniu 16,7 razy większa od szerokości bloku.
 
-    Wzor....
-
-    Obliczenia dla współczynnika w2 są realizowane w podobny sposób. Obszar twarzy powinien być y razy dłuższy od długości bloku, a jednocześnie jest y razy krótszy od długości obrazu.
-    W związku z powyższym długość obrazu powinna być większa od długości bloku o współczynnik w2, który wynosi:
-    Wzor
-
-
+    Obliczenia dla minimalnej długości obrazu są analogiczne do powyższych.
+    Obszar twarzy powinien być 6,7 razy dłuższy od długości bloku, a jednocześnie jest 1,25 razy krótszy od długości obrazu.
+    W związku z powyższym długość obrazu powinna być $6,7*1,25$, czyli w przybliżeniu 8,4 razy większa od długości bloku.
 
     \section{Wykrywanie zmarszczek przez detektor Canny oraz Histogram of Oriented Gradients}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
     W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
