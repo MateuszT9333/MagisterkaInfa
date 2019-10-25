@@ -2178,7 +2178,8 @@ Karolina Nurzyńska}
     , gdzie $B_{wrmin}$ oznacza minimalną szerokość bloku w stosunku do szerokości obszaru twarzy (w %), natomiast $B_{w}$ oznacza
     szerokość bloku w pikselach, $T_{w}$ oznacza minimalną szerokość obszaru twarzy.
 
-    Analogicznie minimalna długość obszaru twarzu względem długości bloku jest opisana Wzorem \ref{wzor.stosunekDlugosciBloku}.
+    Analogicznie minimalna długość obszaru twarzy względem długości bloku jest opisana
+    Wzorem \ref{wzor.stosunekDlugosciBloku}.
 
     \large
     \begin{equation}
@@ -2186,13 +2187,14 @@ Karolina Nurzyńska}
     \label{wzor.stosunekDlugosciBloku}
     \end{equation}
     \normalsize
-     , gdzie $B_{hrmin}$ oznacza minimalną długość bloku w stosunku do długości obszaru twarzy (w %), natomiast $B_{h}$ oznacza
-     długość bloku w pikselach, T_{hmin} oznacza minimalną długość obszaru twarzy.
+    , gdzie $B_{hrmin}$ oznacza minimalną długość bloku w stosunku do długości obszaru twarzy (w \%), natomiast
+    $B_{h}$ oznacza
+    długość bloku w pikselach, $T_{hmin}$ oznacza minimalną długość obszaru twarzy.
 
     Wobec powyższego Wzoru \ref{wzor.stosunekSzerokoscBloku} minimalna szerokość obszaru twarzy powinna
-    być conajmniej 12,5 razy większa od szerokości bloku.
+    być co najmniej 12,5 razy większa od szerokości bloku.
     Natomiast według Wzoru \ref{wzor.stosunekDlugosciBloku} długość obszaru zawierającego twarz powinna
-    być conajmniej 6,7 razy większa od długości bloku.
+    być co najmniej 6,7 razy większa od długości bloku.
 
     W drugim kroku należało odnaleźć obszar, jaki zajmuje twarz w stosunku do wymiarów obrazu.
     W tym celu porównano zdjęcia z bazy treningowej pod kątem wyżej wymienionych obszarów. Podobnie jak wyżej, przeprowadzono porównanie dla
@@ -2214,15 +2216,30 @@ Karolina Nurzyńska}
     W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
 
-    Krawędzie związane ze zmarszczkami są widoczne na Obrazie (zdjęcie z dobrą detekcja zmarszczek).
+    Krawędzie związane tylko ze zmarszczkami są widoczne na Obrazie \ref{fig.dobryRyjek}
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{Obrazy/dobryRyjekWszystkieStrefyGray.png}
+        \caption{Przykład prawidłowej detekcji zmarszczek.}
+        \label{fig.dobryRyjek}
+    \end{figure}
     Powyższy Obraz będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
 
-    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (moje zdjęcie) dla osoby w wieku 17 lat.
-    Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (Obraz (referencja do zdjęcia z opisanymi strefami))
+    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (Obraz \ref{fig.zlyRyjek}) dla osoby w wieku 17
+    lat.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{Obrazy/wrinkleAreas2.jpg}
+        \caption{Przykład błędnej identyfikacji zmarszczek w strefie 2.}
+        \label{fig.zlyRyjek}
+    \end{figure}
+
+    Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (Obraz (\ref{fig.wykrywanieStrefZmarszczkowych})
     jest duża i nie identyfikują one zmarszczek.
 
-    Porównano średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej samej
-    strefy na Obrazie (zdjeciu moim).
+    Porównano średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej
+    samej strefy na Obrazie \ref{fig.zlyRyjek}.
     Powyższe porównanie ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
     Średni współczynnik zmarszczek w strefie 2 dla osób w wieku 17 lat wyniosła:
 
@@ -2232,7 +2249,7 @@ Karolina Nurzyńska}
         %todo
     \end{itemize}
 
-    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (Obraz) ilość zmarszczek wyniosła
+    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie ilość zmarszczek wyniosła
     \begin{itemize}
         \item Dla HOG-a (parametry takie i taki)%todo
         \item Dla Canny
@@ -2240,7 +2257,7 @@ Karolina Nurzyńska}
     \end{itemize}
 
     W związku z powyższym różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku 17 lat
-    ,a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz \ref):
+    ,a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi :
     \begin{itemize}
     \item Dla HOG-a (parametry takie i taki)%todo
     \item Dla Canny
@@ -2284,7 +2301,7 @@ Karolina Nurzyńska}
     Średnia zajętość RAM-u przez program wyniosła 790 MB.
     Natomiast maksymalnie program zajmował 1974 MB pamięci RAM.
 
-    Na podstawie logów aplikacji sprawdzono czasy prztwarzania poszczególnych części algorytmów.
+    Na podstawie logów aplikacji sprawdzono czasy przetwarzania poszczególnych części algorytmów.
 
     Średni czas wykrywania twarzy trwał x sekund, maksymalny czas wykrywania wynosił x sekund, natomiast minimalny czas wyniósł
     x sekund.
@@ -2357,7 +2374,8 @@ Karolina Nurzyńska}
     rozmycia, \epsilon, ilości grup, liczby iteracji
 
     Przykładowy wynik testowania metody został przedstawiony na (obrazie?, tabeli).
-    Dla parametrów rozmycie = 2.0, liczba iteracji = 100 \epsilon = 1e-5 oraz liczba grup = 10 błąd MAE wyniósł 12,75 lat.
+    Dla parametrów rozmycie = 2.0, liczba iteracji = 100 $$ oraz liczba grup = 10 błąd MAE wyniósł 12,
+    75 lat.
     Następnie zmieniono rozmycie do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 lat u wyniosła 11,3.
     Ostatnią testowana wartość parametru rozmycia wyniosła 5. W wyniku testu MAE wyniosło 11,67 lat.
 
