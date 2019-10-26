@@ -22,6 +22,7 @@
 \usepackage{pgfplots}
 \usepackage{mathtools}
 \usepackage[page]{appendix} % toc,
+\usepackage[justification=centering]{caption}
 \renewcommand{\appendixtocname}{Dodatki}
 \renewcommand{\appendixpagename}{Dodatki}
 \renewcommand{\appendixname}{Dodatek}
@@ -780,7 +781,7 @@ Karolina Nurzyńska}
 
     \large
     \begin{equation}
-        0.21 R + 0.72 G + 0.07 B
+        0,21 R + 0,72 G + 0,07 B
         \label{wzor.metodaLuminancji}
     \end{equation}
     \normalsize
@@ -2081,7 +2082,7 @@ Karolina Nurzyńska}
     W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz ich modyfikacji.
     Sekcja ~\ref{sec:środowisko-pracy} prezentuje środowisko pracy, a dokładniej mówiąc wszystkie
     niezbędne narzędzia i akcesoria, które pozwoliły skutecznie przeprowadzić badania.
-    W Sekcji \ref{sec:rozmiar-obrazu} przedstawiono wpływ rozmiaru danego obrazu na wyniki badań.
+    W Sekcji~\ref{sec:rozmiar-obrazu} przedstawiono wpływ rozmiaru danego obrazu na wyniki badań.
     Sekcja~\ref{sec:wykrywanie-krawędzi-przez-detektor-canny} ukazuje efekty wykrywania zmarszczek przez detektor
     Canny. W kolejnej Sekcji~\ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
     części algorytmów, zarówno trenujących, jak i szacujących wiek.
@@ -2120,21 +2121,21 @@ Karolina Nurzyńska}
 
     Dla detektora opartego na algorytmie HOG wrinkle feature był następujący:
     \begin{itemize}
-        \item powiększenie 0.8: 11.944
-        \item powiększenie 0.9: 11.813538
-        \item powiększenie 1.0: 12.01074
-        \item powiększenie 1.1: 11.117805
-        \item powiększenie 1.2: 11.125154
+        \item powiększenie 0,8: 11.944
+        \item powiększenie 0,9: 11.813538
+        \item powiększenie 1,0: 12.01074
+        \item powiększenie 1,1: 11.117805
+        \item powiększenie 1,2: 11.125154
     \end{itemize}
 
     Dla detektora opartego na algorytmie HOG wraz z klasyfikatorem KNN wrinkle feature był następujący:
 
     \begin{itemize}
-        \item powiększenie 0.8: [2.455685, 2.4238224, 2.3258488, 2.5089853, 2.22999]
-        \item powiększenie 0.9: [2.3424015, 2.183178, 2.402356, 2.6400175, 2.245584]
-        \item powiększenie 1.0: [2.4636364, 2.3633847, 2.4149206, 2.171613, 2.5971856]
-        \item powiększenie 1.1: [2.3787472, 2.184542, 2.335689, 1.9784055, 2.2404206]
-        \item powiększenie 1.2: [2.3283577, 2.1853786, 2.3087728, 2.0892627, 2.2133815]
+        \item powiększenie 0,8: [2.455685, 2.4238224, 2.3258488, 2.5089853, 2.22999]
+        \item powiększenie 0,9: [2.3424015, 2.183178, 2.402356, 2.6400175, 2.245584]
+        \item powiększenie 1,0: [2.4636364, 2.3633847, 2.4149206, 2.171613, 2.5971856]
+        \item powiększenie 1,1: [2.3787472, 2.184542, 2.335689, 1.9784055, 2.2404206]
+        \item powiększenie 1,2: [2.3283577, 2.1853786, 2.3087728, 2.0892627, 2.2133815]
     \end{itemize}
 
     Na podstawie wyników można wywnioskować, że wskaźnik zmarszczek nie zwiększa się przy zmianie
@@ -2167,7 +2168,7 @@ Karolina Nurzyńska}
     obliczeniach stwierdzono, że jedna strefa 3 lub 6 zajmuje od 8\% do 15\% na szerokość obszaru twarzy oraz od 15\% do 25\%
     na długość obszaru twarzy.
     W związku z powyższym minimalna szerokość bloku wyniosła 8\% szerokości obszaru twarzy, natomiast długość wyniosła 15\%.
-    Minimalna szerokość obszaru twarzy w pikselach względem szerokości bloku jest opisana Wzorem \ref{wzor.stosunekSzerokoscBloku}.
+    Minimalna szerokość obszaru twarzy w pikselach względem szerokości bloku jest opisana Wzorem~\ref{wzor.stosunekSzerokoscBloku}.
 
     \large
     \begin{equation}
@@ -2179,7 +2180,7 @@ Karolina Nurzyńska}
     szerokość bloku w pikselach, $T_{w}$ oznacza minimalną szerokość obszaru twarzy.
 
     Analogicznie minimalna długość obszaru twarzy względem długości bloku jest opisana
-    Wzorem \ref{wzor.stosunekDlugosciBloku}.
+    Wzorem~\ref{wzor.stosunekDlugosciBloku}.
 
     \large
     \begin{equation}
@@ -2191,9 +2192,9 @@ Karolina Nurzyńska}
     $B_{h}$ oznacza
     długość bloku w pikselach, $T_{hmin}$ oznacza minimalną długość obszaru twarzy.
 
-    Wobec powyższego Wzoru \ref{wzor.stosunekSzerokoscBloku} minimalna szerokość obszaru twarzy powinna
+    Wobec powyższego Wzoru~\ref{wzor.stosunekSzerokoscBloku} minimalna szerokość obszaru twarzy powinna
     być co najmniej 12,5 razy większa od szerokości bloku.
-    Natomiast według Wzoru \ref{wzor.stosunekDlugosciBloku} długość obszaru zawierającego twarz powinna
+    Natomiast według Wzoru~\ref{wzor.stosunekDlugosciBloku} długość obszaru zawierającego twarz powinna
     być co najmniej 6,7 razy większa od długości bloku.
 
     W drugim kroku należało odnaleźć obszar, jaki zajmuje twarz w stosunku do wymiarów obrazu.
@@ -2216,78 +2217,90 @@ Karolina Nurzyńska}
     W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
 
-    Krawędzie związane tylko ze zmarszczkami są widoczne na Obrazie \ref{fig.dobryRyjek}
-    \begin{figure}
+    Krawędzie związane tylko ze zmarszczkami są widoczne na Obrazie~\ref{fig.dobryRyjek}
+    \begin{figure}[hp]
         \centering
-        \includegraphics[width=8cm]{Obrazy/dobryRyjekWszystkieStrefyGray.png}
-        \caption{Przykład prawidłowej detekcji zmarszczek.}
+        \includegraphics[width=11cm]{Obrazy/dobryRyjekWszystkieStrefyGray.jpg}
+        \captionsetup{justification=centering}
+        \caption{Przykład prawidłowej detekcji zmarszczek. \newline
+        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
         \label{fig.dobryRyjek}
     \end{figure}
-    Powyższy Obraz będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
+    Obraz~\ref{fig.dobryRyjek} będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
 
-    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (Obraz \ref{fig.zlyRyjek}) dla osoby w wieku 17
+    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (Obraz~\ref{fig.zlyRyjek}) dla osoby w wieku 17
     lat.
 
     \begin{figure}
         \centering
-        \includegraphics[width=8cm]{Obrazy/wrinkleAreas2.jpg}
-        \caption{Przykład błędnej identyfikacji zmarszczek w strefie 2.}
+        \includegraphics[width=11cm]{Obrazy/mojaTwarzGrayWszystieStrefy.jpg}
+        \captionsetup{justification=centering}
+        \caption{Przykład nieprawidłowej detekcji zmarszczek w strefie 2. \newline
+        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
         \label{fig.zlyRyjek}
     \end{figure}
+
 
     Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (Obraz (\ref{fig.wykrywanieStrefZmarszczkowych})
     jest duża i nie identyfikują one zmarszczek.
 
     Porównano średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej
-    samej strefy na Obrazie \ref{fig.zlyRyjek}.
+    samej strefy na Obrazie~\ref{fig.zlyRyjek}.
     Powyższe porównanie ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
+    \clearpage
     Średni współczynnik zmarszczek w strefie 2 dla osób w wieku 17 lat wyniosła:
 
     \begin{itemize}
-        \item Dla HOG-a (parametry takie i taki)%todo
-        \item Dla Canny
-        %todo
+        \item Dla HOG-a 2,43464
+        \item Dla Canny 0,2636
     \end{itemize}
 
-    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie ilość zmarszczek wyniosła
+    Natomiast dla Obrazu~\ref{fig.zlyRyjek} zawierającego nieprawidłowo wykryte krawędzie ilość zmarszczek wyniosła
     \begin{itemize}
-        \item Dla HOG-a (parametry takie i taki)%todo
-        \item Dla Canny
-        %todo
+        \item Dla HOG-a 2,97876
+        \item Dla Canny 0,3542
     \end{itemize}
 
-    W związku z powyższym różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku 17 lat
-    ,a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi :
+    W związku z powyższym różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku 17 lat,
+    a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi :
     \begin{itemize}
-    \item Dla HOG-a (parametry takie i taki)%todo
-    \item Dla Canny
-            %todo
+        \item Dla HOG-a: $2,97876 - 2,43464$, czyli 0,54412
+        \item Dla Canny: $0,3542 - 0,2636$, czyli 0,0906
     \end{itemize}
 
-    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1. Na obrazie (ref) można zauważyć wykryte krawędzie,
-    które identyfikują włosy. Obraz (ref) należy do x letniej osoby. Podobnie, jak powyżej, dokonano porównanie,
+    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.
+    Na Obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
+    które identyfikują włosy.
+
+    \begin{figure}[hb]
+        \centering
+        \includegraphics[width=11cm]{Obrazy/zlyRyjekZGrzywka.jpg}
+        \captionsetup{justification=centering}
+        \caption{Przykład nieprawidłowej detekcji zmarszczek w strefie 1. \newline
+        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
+        \label{fig.grzywka}
+    \end{figure}
+
+    Obraz~\ref{fig.grzywka} należy do 51 letniej osoby. Podobnie, jak powyżej, dokonano porównanie,
     które ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
-    Do powyższego celu obliczono średni współczynnik zmarszczek ze strefy 2 dla osób w wieku x lat, który wyniósł:
+    Do powyższego celu obliczono średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 51 lat, który wyniósł:
 
     \begin{itemize}
-        \item Dla HOG-a (parametry takie i taki)%todo
-        \item Dla Canny
-        %todo
+        \item Dla HOG-a: 2,67452
+        \item Dla Canny: 0,3267
     \end{itemize}
 
-    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (Obraz) ilość zmarszczek wyniosła
+    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (Obraz~\ref{fig.grzywka}) ilość zmarszczek wyniosła
     \begin{itemize}
-        \item Dla HOG-a (parametry takie i taki)%todo
-        \item Dla Canny
-        %todo
+        \item Dla HOG-a: 2,95635
+        \item Dla Canny: 0,3953
     \end{itemize}
 
-    Różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku x lat
-    ,a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz \ref):
+    Różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku równego 51 lat
+    , a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz~\ref{fig.grzywka}):
     \begin{itemize}
-        \item Dla HOG-a (parametry takie i taki)%todo
-        \item Dla Canny
-        %todo
+        \item Dla HOG-a: $2,95635-2,67452$, czyli 0,28183
+        \item Dla Canny $0,3953-0,3267$, czyli 0,0686
     \end{itemize}
 
     %Ustalone parametry
@@ -2295,43 +2308,55 @@ Karolina Nurzyńska}
 
     \section{Statystyki z działania programu}\label{sec:statystyki-z-działania-programu}
     W tej sekcji zostaną przedstawione ogólne statystyki z działania programu.
-    Baza UTKface zawiera x zdjęć. Detektor twarzy był w stanie wyznaczyć obszar twarzy dla x obrazów.
-    Jednak spośród x obrazów tylko x brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm poprawnie wykrył
+    Baza UTKface zawiera 23708 zdjęć. Detektor twarzy był w stanie wyznaczyć obszar twarzy dla 14583 obrazów.
+    Jednak spośród 14583 obrazów tylko 2574 brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm
+    poprawnie wykrył
     obszar nosa oraz oczu, które są niezbędne do dalszych obliczeń.
     Średnia zajętość RAM-u przez program wyniosła 790 MB.
     Natomiast maksymalnie program zajmował 1974 MB pamięci RAM.
 
     Na podstawie logów aplikacji sprawdzono czasy przetwarzania poszczególnych części algorytmów.
 
-    Średni czas wykrywania twarzy trwał x sekund, maksymalny czas wykrywania wynosił x sekund, natomiast minimalny czas wyniósł
-    x sekund.
+    Średni czas wykrywania twarzy trwał 0,125 sekund, maksymalny czas wykrywania wynosił 0,456 sekund, natomiast
+    minimalny czas wyniósł 0,056 sekund.
 
+    Średni czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,467 sekund dla metody bazowej.
+    Dla metody, w której została odjęta strefa 0,465 sekund
+    , dla metody HOG 0,543 sekund, natomiast dla metody HOG wraz z klasyfikacją KNN 0,543 sekund.
 
-    Średni czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
-    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+    Maksymalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,723 sekund dla metody bazowej. Dla
+    metody, w której została
+    odjęta strefa 0,716 sekund, dla metody HOG 0,954 sekund
+    , natomiast dla metody HOG wraz z klasyfikacją KNN 0,956 sekund.
 
-    Maksymalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
-    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+    Minimalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,286 sekund dla metody bazowej.
+    Dla metody, w której została odjęta strefa 0,274 sekund
+    , dla metody HOG 0,315 sekund, natomiast dla metody HOG wraz z klasyfikacją KNN 0,342 sekund.
 
-    Minimalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
-    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
-
-    W związku z powyższym najszybciej generował wrinkle feature algorytm x.
+    W związku z powyższym najszybciej generował wrinkle feature algorytm metody po odjęciu jednej strefy.
 
     Warto porównać szybkość szacowania wieku na podstawie danego wrinkle feature.
 
-    Średni czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
-    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+    Średni czas szacowania wieku dla danego obrazu wyniósł 0,585 sekund dla metody bazowej.
+    Dla metody, w której została
+    odjęta strefa 0,583 sekund, dla metody HOG 0,675 sekund, natomiast dla metody HOG wraz z klasyfikacją KNN 0,678
+    sekund.
 
-    Maksymalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
-    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+    Maksymalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł 0,95 sekund dla metody bazowej.
+    Dla metody, w której została
+    odjęta strefa 0,947 sekund, dla metody HOG 1,152 sekund, natomiast dla metody HOG wraz z klasyfikacją KNN 1,15
+    sekund.
 
-    Minimalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł x sekund dla metody bazowej. Dla metody, w której została
-    odjęta strefa x sekund, dla metody HOG x sekund, natomiast dla metody HOG wraz z klasyfikacją KNN x sekund.
+    Minimalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł 0,235 sekund dla metody bazowej. Dla
+    metody, w której została
+    odjęta strefa 0,23 sekund, dla metody HOG 0,426 sekund, natomiast dla metody HOG wraz z klasyfikacją KNN 0,415
+    sekund.
 
-    Najszybciej szacował wiek algorytm x.
-    Warto podkreślić, że szacowanie wieku dla metody HOG wraz z klasyfikacją KNN realizował program realizowany przez skrypt w Matlabie.
-    Reszta algorytmów szacowania wieku została zrealizowana w programie w języku Java. W związku z powyższym porównanie szybkości działania
+    Najszybciej szacował wiek algorytm zawierający odjętą strefę.
+    Warto podkreślić, że szacowanie wieku dla metody HOG wraz z klasyfikacją KNN realizował
+    program realizowany przez skrypt w Matlabie.
+    Reszta algorytmów szacowania wieku została zrealizowana w programie w języku Java.
+    W związku z powyższym porównanie szybkości działania
     algorytmu zaimplementowanego w Matlabie do algorytmu zaimplementowanego w Javie może być niedokładne.
 
     %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
@@ -2347,48 +2372,85 @@ Karolina Nurzyńska}
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
     treningową oraz testową.
     Jednym z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
-    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%.%cytat http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
-
+    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%.\cite{schematTreningu}
     Drugi ze sposobów to schemat CV-n, zwany również walidacją krzyżową.
     Zakłada ona, że zbiór danych zostanie podzielony na n-równych podzbiorów.
     Następnie jest wykonywane n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym, natomiast reszta
     podzbiorów tworzy zbiór treningowy.
-    Każda iteracja daje wynik działania klasyfikatora. W wyniku ,,n'' iteracji otrzymuje się uśredniony wynik działania klasyfikatora. %cytat http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
+    Każda iteracja daje wynik działania klasyfikatora. W wyniku ,,n'' iteracji otrzymuje się uśredniony wynik
+    działania klasyfikatora.\cite{schematTreningu}
 
     Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
     Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
-    Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów w zbiorze danych.%cytat http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
+    Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
+    w zbiorze danych.\cite{schematTreningu}
 
-    Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE Wzór \ref{wzor.mae}. Porównywano 100 zdjęć dla każdej metody.
+    Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE Wzór~\ref{wzor.mae}.
+    Dla każdej metody dokonano porównania stu zdjęć.
     Natomiast każda metoda miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
-    ulegały parametry wyżej wymienionego algorytmu. Analogicznie zmieniano parametry dla metody HOG i klasyfikatora KNN.
+    podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
 
     %Skad wzielismy dane testowe
     %porownanie metod testowych
     %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
     %    Wstep jakie metody porownano i co tam zmieniano
     \subsection{Metoda bazowa}
-    Pierwsza została przetestowana metoda bazowa.
-    Przetestowano dokładność szacowania wieku zmieniając parametry algorytmu trenującego Fuzzy C-means:
+    Jako pierwsza została przetestowana metoda bazowa.
+    Sprawdzono dokładność szacowania wieku zmieniając parametry algorytmu trenującego Fuzzy C-means:
+    \begin{itemize}
+        \item m - współczynnik rozmycia
+        \item n - liczba iteracji
+        \item g - ilość grup
+        \item $\epsilon$ - kryterium (Wzór~\ref{wzor.koniecIteracjiWarunek})
+    \end{itemize}
 
-    rozmycia, \epsilon, ilości grup, liczby iteracji
+    Przykładowy wynik testowania metody został przedstawiony w Tabeli~\ref{tab.przykladoweWyniki}
 
-    Przykładowy wynik testowania metody został przedstawiony na (obrazie?, tabeli).
-    Dla parametrów rozmycie = 2.0, liczba iteracji = 100 $$ oraz liczba grup = 10 błąd MAE wyniósł 12,
-    75 lat.
-    Następnie zmieniono rozmycie do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 lat u wyniosła 11,3.
-    Ostatnią testowana wartość parametru rozmycia wyniosła 5. W wyniku testu MAE wyniosło 11,67 lat.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \begin{tabular}[c]{@{}l@{}}
+                wiek\\   prawdziwy
+            \end{tabular} & wiek wykryty & różnica \\ \hline
+            10 & 25 & 15      \\ \hline
+            15 & 56 & 41      \\ \hline
+            16 & 26 & 10      \\ \hline
+            16 & 25 & 9       \\ \hline
+            17 & 29 & 12      \\ \hline
+            19 & 26 & 7       \\ \hline
+            1 & 22 & 21      \\ \hline
+            20 & 25 & 5       \\ \hline
+            20 & 23 & 3       \\ \hline
+            22 & 26 & 4       \\ \hline
+            22 & 26 & 4       \\ \hline
+            25 & 29 & 4       \\ \hline
+            26 & 30 & 4       \\ \hline
+            26 & 34 & 8       \\ \hline
+            26 & 26 & 0       \\ \hline
+        \end{tabular}
+        \caption{Przykładowy wynik testowania zawierający 15 ze 100 wyników.}
+        \label{tab.przykladoweWyniki}
+    \end{table}
 
-    W kolejnym kroku przetestowano wpływ parametru \epsilon dla metody oryginalnej.
-    Dla parametrów rozmycie = 2.0, liczba iteracji = 100 \epsilon = 1e-6 oraz liczba grup = 10 błąd MAE wyniósł 11,19 lat.
-    Zmiana parametru \epsilon do 1e-7 spowodowała, że parametr MAE wyniósł 11,24 lat.
-    Dla wartości 1e-8 parametru \epsilon parametr MAE również wyniósł 11,24 lat.
-    Należy podkreślić, że liczba iteracji została zmieniona do 1000, ponieważ ograniczała ona osiągnięcie zadanej wartości \epsilon zarówno
-    dla wartości \epsilon 1e-7 oraz 1e-8.
+    Dla parametrów m = 2,0, n = 100 oraz g = 10 błąd MAE wyniósł 12,75 lat.
+    Następnie zmieniono m do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 lat
+    u wyniosła 11,3.
+    Ostatnia testowana wartość parametru m wyniosła 5. W wyniku testu MAE wyniosło 11,67 lat.
+
+    W kolejnym kroku przetestowano wpływ parametru $\epsilon$ dla metody oryginalnej.
+    Dla parametrów: m = 2,0, n = 100,  $\epsilon$ = 1e-6 oraz g = 10, błąd MAE wyniósł 11,19 roku.
+    Zmiana parametru $\epsilon$ do 1e-7 spowodowała, że parametr MAE wyniósł 11,24 roku.
+    Dla wartości 1e-8 parametru $\epsilon$ błąd MAE okazał się mieć identyczną wartość 11,24 roku.
+    Należy podkreślić, że liczba iteracji została zmieniona do 1000, ponieważ początkowa wartość
+    ograniczała osiągnięcie zadanej wartości $\epsilon$ zarówno
+    dla wartości $\epsilon$ 1e-7, jak i dla 1e-8.
 
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
 
     \subsection{Odjęcie strefy 2}
+    W kolejnym kroku została przetestowana metoda, które nie uwzględnia zmarszczek ze strefy 2.
+
     \subsection{Metoda HOG}
     \subsection{Metoda HOG + KNN}
     \section{Podsumowanie}
