@@ -2394,7 +2394,7 @@ Karolina Nurzyńska}
     %porownanie metod testowych
     %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
     %    Wstep jakie metody porownano i co tam zmieniano
-    \subsection{Metoda bazowa}
+    \subsection{Metoda bazowa}\label{subsec:metoda-bazowa}
     Jako pierwsza została przetestowana metoda bazowa.
     Sprawdzono dokładność szacowania wieku zmieniając parametry algorytmu trenującego Fuzzy C-means:
     \begin{itemize}
@@ -2433,9 +2433,9 @@ Karolina Nurzyńska}
         \label{tab.przykladoweWyniki}
     \end{table}
 
-    Dla parametrów m = 2,0, n = 100 oraz g = 10 błąd MAE wyniósł 12,75 lat.
+    Dla parametrów m = 2,0, n = 100 , g = 10 oraz $\epsilon$=1e-5 błąd MAE wyniósł 12,75 lat.
     Następnie zmieniono m do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 lat
-    u wyniosła 11,3.
+    i wyniosła 11,3.
     Ostatnia testowana wartość parametru m wyniosła 5. W wyniku testu MAE wyniosło 11,67 lat.
 
     W kolejnym kroku przetestowano wpływ parametru $\epsilon$ dla metody oryginalnej.
@@ -2446,15 +2446,97 @@ Karolina Nurzyńska}
     ograniczała osiągnięcie zadanej wartości $\epsilon$ zarówno
     dla wartości $\epsilon$ 1e-7, jak i dla 1e-8.
 
+    Następnie testowano wpływ liczby grup. Dla m = 2,0, n = 100 , g = 20 oraz $\epsilon$=1e-5 MAE wyniósł 10,97 lat.
+    W kolejnym kroku zmieniono liczbę grup do 50. Otrzymano MAE wyniosło 10,66 lat. W ostatnim kroku liczba grup
+    wyniosła 100, natomiast parametr MAE był równy 10,68 lat.
+
+    Minimalna wartość MAE dla metody bazowej wyniosła 10,66 lat.
+    Została ona osiągnięta dla m = 2,0, g = 50, $\epsilon$ = 1e-5, n= 100
+
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
 
-    \subsection{Odjęcie strefy 2}
+    \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
     W kolejnym kroku została przetestowana metoda, które nie uwzględnia zmarszczek ze strefy 2.
+    Podobnie jak w Sekcji \ref{subsec:metoda-bazowa} wykonywano testy dla takich samych parametrów algorytmu Fuzzy
+    C-means.
+    Wyznaczono błąd MAE dla parametrów m = 2,0, n = 100 oraz g = 10, n = 100 oraz $\epsilon$ = 1e-5.
+    Powyższy błąd wyniósł 13,66 lat.
+    Następnie zmieniono parametr m na wartość 3,0. Parametr MAE dla powyższej wartości wyniósł 13,74 lat.
+    Ostatnią wartość m wyniosła 5,0. MAE wyniosła 14,41 lat.
 
-    \subsection{Metoda HOG}
-    \subsection{Metoda HOG + KNN}
-    \section{Podsumowanie}
+    Następnie analizowano wpływ parametru $\epsilon$. Tak jak w testach z Sekcji \ref{subsec:metoda-bazowa} należało
+    zmienić parametr n do 1000.
+    Najpierw przetestowano MAE dla wartości
+    $\epsilon$ = 1e-6.
+    Wyniosło ono 13,65. Dla wartości $\epsilon$ = 1e-7 parametr MAE był równy 13,77. MAE było równe 12,31 lat dla
+    $\epsilon$ = 1e-8.
+
+    Na samym końcu przeanalizowano wpływ liczby klastrów na MAE. Najpierw zbadano wartość MAE dla 20 grup. MAE
+    wyniosło 13,62. Następnie podwyższono wartość do g = 50. Dla powyższej wartości MAE wyniosło 13,61 lat.
+    Ostatnią wartością było g = 100 lat. MAE wyniosło 13,74 lat.
+
+    Minimalna wartość MAE dla opisywanej modyfikacji wyniosła 12,31 lat.
+    Została ona osiągnięta dla m = 2,0, g = 10, $\epsilon$ = 1e-8, n = 1000
+
+    \subsection{Metoda HOG}\label{subsec:metoda-hog}
+    Kolejną przetestowaną modyfikacją była, ta w której użyto algorytm HOG.
+    Podobnie jak w Sekcjach \ref{subsec:odjęcie-strefy-2} oraz \ref{subsec:metoda-bazowa} modyfikowano parametry
+    algorytmu Fuzzy C-means. Jednak dodatkowo modyfikowano parametry HOG. Powyższym parametrem był rozmiar komórki.
+    Najpierw ustalono wymiary komórki 3x3 pikseli, rozmiar okna wyniósł 6x6 pikseli, natomiast liczba komórek
+    histogramu była stała i wynosiła 9 dla wszystkich pomiarów. Dla komórki 6x6 piksela rozmiar okna wynosił 12x12
+    piksela, natomiast rozmiar okna wynosił 18x18 piksela dla komórki równej 9x9 piksela.
+
+    W pierwszym teście ustalono parametry Fuzzy C-means: m = 2,0, n = 100 oraz g = 10, n = 100 oraz $\epsilon$ = 1e-5.
+    Wartość MAE wyniosła 16,57. Dla wartości komórki równej 6x6 pikseli wartość MAE wyniosła 16,44. Natomiast dla
+    wymiarów komórki równych 9x9 pikseli wartość MAE wyniosła 11,3. Należy podkreślić, że powyższa wartość MAE nie
+    zmieniała się przy modyfikacji parametrów Fuzzy-C means.
+
+    Przy zmianie parametru m do 3,0 wartość MAE wyniosła 16,82 lat dla komórki 3x3 piksela, natomiast 16,73 lat dla
+    komórki 6x6 lat. Dla komórki 3x3 pikseli, zmiana m do
+    5,0 zmniejszyła MAE do 16,79 lat, natomiast komórka 6x6 piksela zwiększyła MAE do 16,89 lat.
+    Dla parametrów m = 2,0 n = 1000, $\epsilon$ 1e-6, g = 10 oraz komórki 3x3 piksela MAE wyniosło 16,44 lat,
+    natomiast przy zmianie komórki do rozmiarów 6x6 piksela MAE wyniosło 16,44 lat.
+    Dla zmiany parametru $\epsilon$ do 1e-7, MAE wyniosło 16,76 lat przy komórce o wymiarach 6x6 piksela, dla komórki
+    3x3 piksela, MAE wyniosło 16,49 lat.
+    Dla wartości $\epsilon$ = 1e-8 MAE osiągneło 16,44 lat przy rozmiarach 6x6 piksela, natomiast dla wymiarów 3x3
+    piksela wartość MAE wyniosła 16,7 lat.
+
+    Dla parametrów m = 2,0, n = 100 oraz g = 20, n = 100, $\epsilon$ = 1e-5 oraz rozmiaru komórki równej 3x3 piksela
+    MAE było równe 16,49 lat, natomiast dla rozmiarów 6x6 piksela, MAE wyniosło 16,77 lat.
+    Przy zmianie g do 50 MAE zmieniło wartość do 16,16 lat, dla komórki 6x6 piksela, przy zmianie rozmiaru komórki do
+    3x3 piksela MAE było równe 15,89 lat. Dla
+    parametru g =
+    100 MAE oraz komórki 6x6 piksela
+    wyniosło 16,5 lat, natomiast dla komórki o wymiarach 3x3 piksela MAE było równe 15,45 lat.
+
+    Minimalna wartość MAE dla tej metody wyniosła 11,3 lat. Jak wyżej wspomniano, wartość nie była zależna od
+    parametrów algorytmu Fuzzy C-means.
+
+    \subsection{Metoda HOG + KNN}\label{subsec:metoda-hog-+-knn}
+
+    Ostatnią testowaną metodą była ta, która zawiera algorytm HOG oraz do klasyfikacji i szacowania używa algorytmu KNN.
+    Zmieniano parametr n dla algorytmu KNN, natomiast dla algorytmu HOG-a rozmiary komórki.
+    Parametr n był równe 1, 3 oraz 5. Rozmiary komórki miały wartość 5x5 piksela, 7x7 piksela oraz 9x9 piksela.
+    Liczna komórek histogramu była stała i wynosiła 9. Podobnie jak w Sekcji \ref{subsec:metoda-hog} zmieniano
+    rozmiary bloku. Dla rozmiaru komórki 5x5 piksela, blok miał rozmiar 10x10 piksela. Blok o wymiarach 14x14 piksela
+    był testowany wraz z wartością komórki 7x7 piksela. Ostatni rozmiar komórki 9x9 piksela był ustawiany wraz z
+    rozmiarem bloku 18x18 piksela.
+
+    Przy parametrze n = 1 oraz wymiarach komórki 5x5 MAE wyniosło 11,75 lat. Przy zmianie parametru do n = 3 MAE
+    zmniejszyło się do 11,65 lat. Dla ostatniej wartości knn = 5 MAE było najmniejsze i było równe 11,38 lat.
+
+    Następnym krokiem było badanie jakości szacowania wieku dla wartości komórki 7x7 piksela.
+    MAE wyniosło 10,77 lat dla n = 1, 10,34 lat dla n = 3 oraz 10,56 lat dla n = 5.
+
+    Ostatnią badanym rozmiar komórki 9x9 piksela przyniósł następujący rezultat.
+    Dla n = 1 MAE wyniosło 10,15 lat. Zmiana parametru n do 3 zmieniła MAE do wartości 10,07 lat.
+    Dla ostatniej wartości n równej 5 MAE osiągnęło najmniejszą wartość w całym procesie testowania - 9,97 lat.
+
     \section{Wnioski}
+    Przetestowano metodę bazową oraz jej modyfikację pod kątem jakości szacowania wieku.
+
+    Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
+    to wartość zadawalająca, gdyż w literaturze powyższy wskaźnik osiągał wartości około 5 lat.
     % za maly zbior danych testowych byc moze dlatego takie slabe wyniki?
 
 
