@@ -2541,20 +2541,44 @@ Karolina Nurzyńska}
     Dla n = 1 MAE wyniosło 10,15 lat. Zmiana parametru n do 3 zmieniła MAE do wartości 10,07 lat.
     Dla ostatniej wartości n równej 5 MAE osiągnęło najmniejszą wartość w całym procesie testowania - 9,97 lat.
 
-    \section{Wnioski}
-    Przetestowano metodę bazową oraz jej modyfikację pod kątem jakości szacowania wieku.
-
-    Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
-    to wartość zadawalająca, gdyż w literaturze powyższy wskaźnik osiągał wartości około 5 lat.
     % za maly zbior danych testowych byc moze dlatego takie slabe wyniki?
-
-
-
     %troche logow z aplikacji
     %casy co sie dzialo jak nie wykryto twarzy, czy czesci twarzy wrac z logami
     %pomiar czyli ile danych przypomniec sie o mae.
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
+    Dla metody bazowej zmiany poszczególnych parametrów algorytmu FCM przynosiły nieznaczne zmiany MAE, z wyjątkiem
+    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniosło 12,75 lat. Dla reszty
+    parametrów zmiany MAE były w zakresie od 10,66 lat do 11,67 lat. Największe polepszenie wskaźnika MAE uzyskano
+    przy zmianie parametru g na 20 i więcej. Przy powyższej zmianie wartość MAE spadła poniżej 11 lat.
+
+    Dla modyfikacji, która polegała na odjęciu strefy nr 2 wyniki znacznie sie pogorszyły. Modyfikacja parametru m
+    pogarszała wskaźnik MAE od wartości 13,66 do 14,41 lat. Minimalna wartość MAE została osiągnięta dla parametrów
+    m = 2.0, n = 1000 $\epsilon$ = 1e-8 oraz g = 10. Warto zaznaczyć, że modyfikację liczbą klastrów nie polepszyła
+    MAE tak jak w przypadku testowania metody bazowej.
+
+    W metodzie zawierającą modyfikację z algorytmem HOG przetestowano 27 kombinacji parametrów - 3 razy więcej niż przy
+    testowaniu metody bazowej. W porównaniu do metody z odjętą strefą MAE uległo znacznemu pogorszeniu. Dla komórki o
+    rozmiarach 3x3 piksela parametry Fuzzy C-means nie dawały znacznej
+    poprawy rezultatów MAE. Wskaźnik MAE osiągał wartości od 15,45 do 16,82 lat. Podobne wartości były osiągane dla
+    komórki o rozmiarach 6x6 piksela. W tym przypadku MAE było w zakresie od 16,16 do 16,89 lat.
+
+    Ostatnia modyfikacja przyniosła poprawę w porównaniu do metody bazowej.
+    Dla rozmiaru komórki 5x5 piksela oraz dla zmiennego parametru n algorytmu KNN, MAE osiągało wartości od 11,38 do
+    11,75 lat. Warto zauważyć, że poprawa wskaźnika MAE następowała wraz ze wzrostem parametru n. Zmiana rozmiaru
+    komórki na 7x7 polepszyła wskaźnik MAE. Osiągał on wartości od 10,34 do 10,77 lat. W tym przypadku najlepszą
+    wartość MAE osiągnięto dla wartości n = 3, czyli wartości pośredniej, z pośród wszystkich przetestowanych.
+    Najlepsze wartości osiągnięto dla komórki o rozmiarach 9x9. Minimalną i zarazem najlepszą dla wszystkich testów
+    osiągnięto dla parametru n = 5.
+
+    Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
+    to wartość zadawalająca, gdyż w literaturze powyższy wskaźnik osiągał wartości około 5 lat. \cite{khryashchevGanin}
+    Udało się polepszyć algorytm bazowy. Modyfikacja zawierająca algorytm HOG oraz KNN polepszyła MAE z 10,66 lat do
+    9,97 lat. W celu poprawy wyników należałoby zwiększyć bazę treningową. Z ponad 20000 obrazów z bazy tylko 2574
+    brało udział w treningu. Wiele zdjęć było odrzuconych z powodu braku detekcji przez detektor oczu oraz nosa. W
+    związku z powyższym należałoby użyć lepszych, wyżej wymienionych detektorów lub znaleźć bazę, która zawiera
+    zdjęcia twarzy o lepszej jakości.
+
     %todo poprawic bibliografie
 
 
@@ -2583,6 +2607,7 @@ Karolina Nurzyńska}
             \item[FCM] \ang{Fuzzy C-means} - metoda klasteryzacji miękkiej (rozmytego).
             \item[HOG] \ang{Histograms of Oriented Gradients} - metoda generacji deskryptora obrazu
             \item[KNN] \ang{ k-nearest neighbors} - algorytm regresji lub klasyfikacji.
+            \item[MAE] \ang{Mean Absolute Error} - średni błąd bezwzględny
         \end{itemize}
 
 
