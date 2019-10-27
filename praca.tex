@@ -342,12 +342,12 @@ Karolina Nurzyńska}
     Wykrycie twarzy na teksturze jest możliwe dzięki algorytmom rozpoznawaniu obrazu.
     Rozpoznawanie obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
     Mogą
-    to być osoby, pojazdy, przedmioty itp. (Rys.~\ref{fig.rozpoznawanieObiektow})
+    to być osoby, pojazdy, przedmioty itp. (rys.~\ref{fig.rozpoznawanieObiektow})
 
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/rozpoznawanieObiektow.jpeg}
-        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy.~\cite{rozpoznawanieObiektow}}
+        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy~\cite{rozpoznawanieObiektow}.}
         \label{fig.rozpoznawanieObiektow}
     \end{figure}
 
@@ -391,8 +391,7 @@ Karolina Nurzyńska}
     %    \section{Metoda b}
     %    \section{Metoda wrinkle feature}
     Celem niniejszej pracy jest zbadanie pewnego algorytmu szacowania wieku.
-    Odtworzono pracę ,,Age Estimation from Face Image using Wrinkle Features'' \cite{wrinkleFeatures}
-    , a następnie zaimplementowano kilka modyfikacji powyższego algorytmu w celu polepszenia wyników.
+    Odtworzono pracę ,,Age Estimation from Face Image using Wrinkle Features''~\cite{wrinkleFeatures}, a następnie zaimplementowano kilka modyfikacji powyższego algorytmu w celu polepszenia wyników.
 
     Zakres pracy obejmuje następujące zagadnienia:
     \begin{itemize}
@@ -436,7 +435,7 @@ Karolina Nurzyńska}
     Powyższe badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
 
     M.M. Dehshibi oraz A. Bastanfard w swojej pracy ,,A new algorithm for age recognition
-    from facial images'' analizują proporcję twarzy oraz ilość zmarszczek przy szacowaniu wieku.~\cite{dehshibiBastard} przy szacowaniu wieku
+    from facial images'' analizują proporcję twarzy oraz ilość zmarszczek przy szacowaniu wieku~\cite{dehshibiBastard}.
 
     Praca ,,Age Estimation from Face Images: Challenging
     Problem for Audience Measurement Systems'' autorstwa
@@ -454,15 +453,16 @@ Karolina Nurzyńska}
     Wykrywanie wieku dzieli się na kilka faz.
     Na początku należy wykryć twarz.
     Zastosowany algorytm wykrywania został
-    opisany w sekcji~\ref{sec:metodaWykrywaniaTwarzy}
+    opisany w sekcji~\ref{sec:metodaWykrywaniaTwarzy}.
     Następnie należy wyznaczyć strefy zmarszczkowe na twarzy.
     W artykule~\cite{wrinkleFeatures} udowodniono,
     że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
     Powyższe strefy zostały wymienione w sekcji~\ref{sec:wyznaczanieStref}.
-    Sekcja~\ref{sec:wykrywanieZmarszczek} przedstawia technikę wykrywania zmarszczek znajdujących się w strefach.
+    Sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny} przedstawia technikę
+    wykrywania zmarszczek znajdujących się w strefach.
     Wykryte zmarszczki
     pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
-    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby (Rysunek~\ref{fig.faza1Algorytmu}).
+    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby (rysunek~\ref{fig.faza1Algorytmu}).
     Kolejna faza
     jest potrzebna do
     znalezienia relacji pomiędzy wrinkle feature a wiekiem.
@@ -471,16 +471,16 @@ Karolina Nurzyńska}
     Wynikiem algorytmu trenującego jest zbiór danych, który
     należy pogrupować, tak jak to opisano w sekcji~\ref{sec:grupowanieDanych}.
     Ostatnią fazą algorytmu jest wykrywanie wieku
-    na podstawie wyników działania FCM - sekcja~\ref{sec:wyznaczanieWieku} (Rysunek~\ref{fig.faza2Algorytmu}).
+    na podstawie wyników działania FCM - sekcja~\ref{sec:grupowanieDanych} (rysunek~\ref{fig.faza2Algorytmu}).
 
-    \begin{figure}[h]
+    \begin{figure}[ht!]
         \centering
         \includegraphics[width=8cm]{Obrazy/Faza1.jpg}
         \caption{Faza 1 algorytmu}
         \label{fig.faza1Algorytmu}
     \end{figure}
 
-    \begin{figure}[h]
+    \begin{figure}[ht!]
         \centering
         \includegraphics[width=8cm]{Obrazy/Faza2.jpg}
         \caption{Faza 2 algorytmu}
@@ -574,17 +574,17 @@ Karolina Nurzyńska}
     prawidłowego jej wykrycia.
 
     Kolejnym istotnym elementem jest oświetlenie twarzy.
-    Gdy twarz oświetlona jest tzw. silnym światłem, występują na
-    niej cienie i światła określane jako ostre (Sekcja~\ref{fig.oswietlenieTwarzy}).
-    \begin{figure}
+    Gdy twarz oświetlona jest tzw. ostrym światłem, występują na
+    niej cienie i światła określane jako ostre (obraz~\ref{fig.oswietlenieTwarzy}).
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
-        \caption{Przykład twarzy oświetlonej silnym (twarz po lewej) oraz miękkim światłem.~\cite{oswietlenieTwarzy}}
+        \caption{Przykład twarzy oświetlonej silnym (twarz po lewej) oraz miękkim światłem~\cite{oswietlenieTwarzy}.}
         \label{fig.oswietlenieTwarzy}
     \end{figure}
     W tym przypadku ryzyko utraty szczegółów oświetlanej twarzy jest większe.
     Kiedy twarz jest skierowana na wprost słońca, z dużym
-    prawdopodobieństwem można stwierdzić, że zostanie oświetlona silnym światłem.
+    prawdopodobieństwem można stwierdzić, że zostanie oświetlona ostrym światłem.
     Z kolei miękkie światło jest generowane na przykład przez zachmurzone niebo.
     Istotne jest także źródło światła, które
     może być punktowe lub rozproszone.
@@ -592,11 +592,11 @@ Karolina Nurzyńska}
     okryta jednolitym cieniem, którego intensywność zależy od rodzaju światła.
     Natomiast przy świetle rozproszonym intensywność cieni jest mniejsza.
 
-    Na Rys~\ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
+    Na rys.~\ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
     \begin{figure}
         \centering
         \includegraphics[width=15cm]{Obrazy/technikiWykrywaniaTwarzy.jpg}
-        \caption{Różne techniki wykrywania twarzy.~\cite{faceDetectionTechniques}}
+        \caption{Różne techniki wykrywania twarzy~\cite{faceDetectionTechniques}.}
         \label{fig.technikiWykrywaniaTwarzy}
     \end{figure}
     %    https://sci-hub.tw/10.1007/s10462-018-9650-2
@@ -629,8 +629,8 @@ Karolina Nurzyńska}
     różnych regionów obszaru twarzy, poddanego uprzednio normalizacji.
     Algorytm jest w stanie wykryć także obszar twarzy także, gdy głowa jest przechylona
 
-    %todo Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
-    %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
+    %Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
+    %https://sci-hub.tw/10.1007/s10462-018-9650-2
     W roku 1997 w pracy pt. ,,Vision for man-machine interaction'' opisano metodę wykrywania twarzy bazującą na
     wykrywaniu cechy jaką jest kolor skóry~\cite{clowleyCoutaz}.
     Kolor skóry jest najbardziej widoczną cechą twarzy zarówno dla człowieka jak i dla maszyny.
@@ -644,7 +644,7 @@ Karolina Nurzyńska}
     Obszar twarzy w omawianym algorytmie jest wykrywany poprzez normalizacje histogramu kolorów.
     Normalizacja jest potrzebna do redukcji wpływu luminancji na kolor.
 
-    %todo trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
+    %trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
     Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Właśnie ta
     biblioteka była jednym z niezbędnym elementów programu przy wykrywaniu wieku z tekstury twarzy.
     W związku z powyższym w wykrywaniu twarzy zastosowano algorytm Haar Cascade.
@@ -669,7 +669,7 @@ Karolina Nurzyńska}
     %    opisac jak dokladnie zaimplementowano to u nas
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
     \subsection{Konwersja do skali szarości oraz przestrzenie barw}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
-    %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
+    %https://sci-hub.tw/10.1007/s10462-018-9650-2
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
     Najczęściej są to 3 lub 4 wartości~\cite{przestrzenieKolorow}.
     Pierwszą przestrzenią barw była CIEXYZ. Została ona stworzona w 1931 przez
@@ -696,12 +696,12 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Na Rysunku~\ref{fig.CIEXYZ} przedstawiono diagram chromatyczności reprezentujący przestrzeń barw CIEXYZ.
+    Na rysunku~\ref{fig.CIEXYZ} przedstawiono diagram chromatyczności reprezentujący przestrzeń barw CIEXYZ.
 
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/CIEXYZ.jpg}
-        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy.~\cite{diagramCIEXYZ}}
+        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy~\cite{diagramCIEXYZ}.}
         \label{fig.CIEXYZ}
     \end{figure}
 
@@ -736,7 +736,7 @@ Karolina Nurzyńska}
     wartość ,,0''
     danego kanału oznacza brak jasności, natomiast ,,255'' maksymalną jasność.
     Poprzez mieszanie jasności tych trzech kanałów
-    można uzyskać szerokie spektrum barw (Rysunek~\ref{fig.mieszanieKolorow}).
+    można uzyskać szerokie spektrum barw (rysunek~\ref{fig.mieszanieKolorow}).
 
     \begin{figure}
         \centering
@@ -745,7 +745,7 @@ Karolina Nurzyńska}
         \label{fig.mieszanieKolorow}
     \end{figure}
 
-    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na Rysunku~\ref{fig.mieszanieKolorowBlekitny}
+    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na rysunku~\ref{fig.mieszanieKolorowBlekitny}
 
     \begin{figure}
         \centering
@@ -754,7 +754,7 @@ Karolina Nurzyńska}
         \label{fig.mieszanieKolorowBlekitny}
     \end{figure}
 
-    Kolor (Rysunek~\ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym \#99D9EA.
+    Kolor (rysunek~\ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym \#99D9EA.
     Każda
     wartość heksadecymalna odpowiada kolejno kanałowi R, G, B.
 
@@ -768,7 +768,7 @@ Karolina Nurzyńska}
         \item średnia
         \item luminancji
     \end{itemize}
-    Metoda największej jasności konwertuje na skalę szarości wg wzoru\ref{wzor.najwiekszaJasnosc}.
+    Metoda największej jasności konwertuje na skalę szarości wg wzoru~\ref{wzor.najwiekszaJasnosc}.
 
     \large
     \begin{equation}
@@ -806,7 +806,7 @@ Karolina Nurzyńska}
 
     Ekstrakcja cech w algorytmie Violi i Jonesa jest realizowana przez filtry Haara.
     Są to prostokątne okienka
-    nakładane na obraz, które analizują jasność pikseli (Rysunek~\ref{fig.haarRectangles}).
+    nakładane na obraz, które analizują jasność pikseli (rysunek~\ref{fig.haarRectangles}).
     \begin{figure}
         \centering
         \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
@@ -822,7 +822,7 @@ Karolina Nurzyńska}
     następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
     Opisywany algorytm ma zastosowanie w wykrywaniu krawędzi.
     Na granicy krawędzi istnieje różnica w jasności pikseli
-    (Rysunek~\ref{fig.haarEmmaWatson}).
+    (rysunek~\ref{fig.haarEmmaWatson}).
 
     \begin{figure}
         \centering
@@ -849,7 +849,7 @@ Karolina Nurzyńska}
     gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), natomiast i(x,y) oznacza jasność piksela o
     współrzędnych x,y na obrazie.
 
-    Na Rysunku~\ref{fig.przedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed
+    Na rysunku~\ref{fig.przedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed
     zastosowaniem całkowania obrazu.
     \begin{figure}
         \centering
@@ -858,7 +858,7 @@ Karolina Nurzyńska}
         \label{fig.przedCalkowaniem}
     \end{figure}
 
-    Po całkowaniu otrzymujemy tabelę podobną do przedstawionej na Rysunku~\ref{fig.poCalkowaniu}.
+    Po całkowaniu otrzymujemy tabelę podobną do przedstawionej na rysunku~\ref{fig.poCalkowaniu}.
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/poCalkowaniu.jpg}
@@ -866,8 +866,7 @@ Karolina Nurzyńska}
         \label{fig.poCalkowaniu}
     \end{figure}
 
-    Sumowanie przykładowego okna (Rysunek~\ref{fig.sumowanieOkna}) wymaga czterech operacji (Wzór~\ref{wzor
-    .windowsSum}).
+    Sumowanie przykładowego okna (rysunek~\ref{fig.sumowanieOkna}) wymaga czterech operacji (wzór~\ref{wzor.windowsSum}).
     \begin{figure}
         \centering
         \includegraphics[width=6cm]{Obrazy/sumowanieOkna.jpg}
@@ -884,8 +883,8 @@ Karolina Nurzyńska}
     \normalsize
     gdzie lewa część równania oznacza sumę jasności pikseli
     zaznaczonego okna tj.
-    na Rysunku~\ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
-    (analogicznie I(B), I(C), I(D)) - (Rysunek~\ref{fig.sumowanieOkna}).
+    na rysunku~\ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
+    (analogicznie I(B), I(C), I(D)) - (rysunek~\ref{fig.sumowanieOkna}).
 
     W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum, zatem konieczne jest wykonanie
     ośmiu operacji.
@@ -909,7 +908,7 @@ Karolina Nurzyńska}
     \normalsize
 
     oznacza, że obraz jest odpowiednio negatywny lub pozytywny.
-    Następnym krokiem jest inicjalizacja wag (Wzór~\ref{wzor.wagi}).
+    Następnym krokiem jest inicjalizacja wag (wzór~\ref{wzor.wagi}).
 
     \large
     \begin{equation}
@@ -922,7 +921,7 @@ Karolina Nurzyńska}
     Następnie
     Dla t = 1, \ldots, T:
 
-    1. Normalizowane są wagi (Wzór~\ref{wzor.adaboost1}):
+    1. Normalizowane są wagi (wzór~\ref{wzor.adaboost1}):
     \large
     \begin{equation}
         w_{t,i} = \frac{w_{t,i}}{\sum_{j=1}^{n}w_{t,j}}
@@ -932,7 +931,7 @@ Karolina Nurzyńska}
     $w_{t}$ jest rozkładem prawdopodobieństwa
 
     2. Dla każdej cechy j, trenowany jest klasyfikator $h_{j}$, który używa tylko jednej cechy wyliczonej z filtru Haara.
-    Błąd jest liczony następująco (Wzór~\ref{wzor.adaboost2}):
+    Błąd jest liczony następująco (wzór~\ref{wzor.adaboost2}):
     \large
     \begin{equation}
         w_{t}, \epsilon_{j} = \sum_{i}^{}w_{i} \abs{h_{j}(x_{i}) - y_{i}}
@@ -942,7 +941,7 @@ Karolina Nurzyńska}
 
     3. Wybierany jest klasyfikator $h_{t}$ z najmniejszym błędem \epsilon_{t}.
 
-    4. Następuje aktualizacja wag (Wzór~\ref{wzor.adaboost3}):
+    4. Następuje aktualizacja wag (wzór~\ref{wzor.adaboost3}):
     \large
     \begin{equation}
         w_{t+1,i} = w_{t,i}\beta_{t}^{1-e_{i}}
@@ -975,7 +974,7 @@ Karolina Nurzyńska}
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/kaskadaHaar.jpg}
-        \caption{Kaskada klasyfikatorów.~\cite{kaskadaHaarObraz}}
+        \caption{Kaskada klasyfikatorów~\cite{kaskadaHaarObraz}.}
         \label{fig.kaskadaHaar}
     \end{figure}
     Okna są oznaczone jako P1, P2, \ldots, Pn.
@@ -983,7 +982,7 @@ Karolina Nurzyńska}
     W przeciwnym wypadku algorytm przerywa działanie i na danym obrazie nie zostaje zidentyfikowany obiekt.
     Okna są poustawiane tak, aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
     prawdopodobieństwem błędu.
-    Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (Rysunek~\ref{fig.ConfusionMatrix}).
+    Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (rysunek~\ref{fig.ConfusionMatrix}).
 
     \begin{figure}
         \centering
@@ -1001,7 +1000,7 @@ Karolina Nurzyńska}
         \item FN (false negative) - błędna klasyfikacja jako nie - obiekt
     \end{itemize}
 
-    Prawdopodobieństwo błędu wyliczane jest ze współczynnika FPR (false positive rate) (Wzór~\ref{wzor.fpr}).
+    Prawdopodobieństwo błędu wyliczane jest ze współczynnika FPR (false positive rate) (wzór~\ref{wzor.fpr}).
 
     \large
     \begin{equation}
@@ -1011,7 +1010,7 @@ Karolina Nurzyńska}
     \normalsize
 
     Natomiast prawdopodobieństwo wykrycia obiektu wyliczane jest ze współczynnika TPR (true positive ratio)
-    (Wzór~\ref{wzor.tpr})
+    (wzór~\ref{wzor.tpr})
     \large
     \begin{equation}
         TPR= \frac{TP}{TP+FN}
@@ -1052,7 +1051,7 @@ Karolina Nurzyńska}
     \section{Wyznaczanie stref}\label{sec:wyznaczanieStref}
     %Wzory na wyznaczenie stref z "okienek"
     Przed wyznaczeniem stref zmarszczkowych należy zidentyfikować na twarzy oczy oraz nos
-    (Rysunek~\ref{fig.wykrywanieOczuNosa}).
+    (rysunek~\ref{fig.wykrywanieOczuNosa}).
     \begin{figure}
         \centering
         \includegraphics[width=8cm]{Obrazy/wykrywanieOczuNosa.jpg}
@@ -1064,7 +1063,7 @@ Karolina Nurzyńska}
     Należy podkreślić, że algorytm przerywa działanie jeśli nie zostanie wykryta twarz, oczy lub nos.
 
     Gdy zostanie wykryty obszar twarzy, oczu oraz nosa wyznaczone zostaje sześć stref zmarszczkowych
-    (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
+    (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
 
     \begin{figure}
         \centering
@@ -1080,7 +1079,7 @@ Karolina Nurzyńska}
 
     Po detekcji oczu należy zmierzyć odległość pomiędzy środkiem lewego oka ($x_{l},y_{l}$),
     a prawego ($x_{p},y_{p}$)
-    (Wzór~\ref{wzor.odlegloscPomiedzyOczami}).
+    (wzór~\ref{wzor.odlegloscPomiedzyOczami}).
     \large
     \begin{equation}
         d= \sqrt{\left ( x_{r} - x_{l} \right )^{2}+\left (y_{r} - y_{l}  \right )^{2}}
@@ -1088,7 +1087,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Odległość d służy do wyznaczanie strefy znajdującej się na czole (Rysunek~\ref{fig.wyznaczenieCzola}).
+    Odległość d służy do wyznaczanie strefy znajdującej się na czole (rysunek~\ref{fig.wyznaczenieCzola}).
 
 
     \begin{figure}
@@ -1101,7 +1100,7 @@ Karolina Nurzyńska}
     Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczu do linii brwi wynosi $0,4 * d$,
     natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
 
-    Na Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
+    Na rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
     stref zmarszczkowych.
 
     \begin{figure}
@@ -1112,7 +1111,7 @@ Karolina Nurzyńska}
     \end{figure}
 
     Strefa 2 została wyznaczona dzięki znajomości położenia prawego oka, dystansu między oczami oraz strefy ,,1''.
-    Każda strefa może być wyznaczona przez jeden punkt (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowychPunkty})
+    Każda strefa może być wyznaczona przez jeden punkt (rysunek~\ref{fig.wykrywanieStrefZmarszczkowychPunkty})
     oraz jej wymiary.
 
     \begin{figure}
@@ -1130,10 +1129,10 @@ Karolina Nurzyńska}
         \label{wzor.punktXA}
     \end{equation}
     \normalsize
-    , gdzie $x_{6}$ to współrzędna z Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
-    Natomiast $d$ jest odległością pomiędzy oczami (Wzór~\ref{wzor.odlegloscPomiedzyOczami}).
+    , gdzie $x_{6}$ to współrzędna z rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
+    Natomiast $d$ jest odległością pomiędzy oczami (wzór~\ref{wzor.odlegloscPomiedzyOczami}).
 
-    Współrzędna y punktu A - Wzór~\ref{wzor.punktYA}:
+    Współrzędna y punktu A - wzór~\ref{wzor.punktYA}:
 
     \large
     \begin{equation}
@@ -1141,10 +1140,10 @@ Karolina Nurzyńska}
         \label{wzor.punktYA}
     \end{equation}
     \normalsize
-    Współrzędna $y_{7}$ analogicznie jak $x_{6}$ znajduje się na Rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
+    Współrzędna $y_{7}$ analogicznie jak $x_{6}$ znajduje się na rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
 
     Zakładając, że prawe oko ma współrzędne $x_{o}$ oraz  $y_{o}$ wysokość strefy 2 wyznaczana jest w poniższy sposób
-    (Wzór~\ref{wzor.punktHA}).
+    (wzór~\ref{wzor.punktHA}).
     \large
     \begin{equation}
         h_{A}=y_{o}-y_{7}
@@ -1152,7 +1151,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Natomiast szerokość strefy 2 oblicza się następująco: (Wzór~\ref{wzor.punktWA}):
+    Natomiast szerokość strefy 2 oblicza się następująco: (wzór~\ref{wzor.punktWA}):
     \large
     \begin{equation}
         w_{A}=0,25 * d
@@ -1161,7 +1160,7 @@ Karolina Nurzyńska}
     \normalsize
     Wartość 0,25 ze wzoru~\ref{wzor.punktWA} została dobrana empirycznie.
 
-    Współrzędne punktu C (strefa 4) zostają wyznaczone ze Wzoru~\ref{wzor.punktXC} oraz~\ref{wzor.punktYC}.
+    Współrzędne punktu C (strefa 4) zostają wyznaczone ze wzoru~\ref{wzor.punktXC} oraz~\ref{wzor.punktYC}.
     \large
     \begin{equation}
         x_{C}=x_{3}
@@ -1176,7 +1175,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Wysokość oraz szerokość strefy 4 (Wzór~\ref{wzor.punktHC} oraz~\ref{wzor.punktWC})
+    Wysokość oraz szerokość strefy 4 (wzór~\ref{wzor.punktHC} oraz~\ref{wzor.punktWC})
 
     \large
     \begin{equation}
@@ -1192,7 +1191,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Strefa 5 zawiera punkt D - Wzór~\ref{wzor.punktXD} oraz~\ref{wzor.punktYD}.
+    Strefa 5 zawiera punkt D - wzór~\ref{wzor.punktXD} oraz~\ref{wzor.punktYD}.
 
     \large
     \begin{equation}
@@ -1208,7 +1207,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Dla strefy 5 wyznacza sie wysokość (Wzór~\ref{wzor.punktHD}) oraz szerokość na podstawie wzoru (Wzór~\ref{wzor.punktWD}).
+    Dla strefy 5 wyznacza sie wysokość (wzór~\ref{wzor.punktHD}) oraz szerokość na podstawie wzoru~\ref{wzor.punktWD}.
 
     \large
     \begin{equation}
@@ -1224,7 +1223,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Strefa 3 zawiera punkt B wyznaczany ze Wzorów~\ref{wzor.punktXB} i~\ref{wzor.punktYB}
+    Strefa 3 zawiera punkt B wyznaczany ze wzorów~\ref{wzor.punktXB} i~\ref{wzor.punktYB}
 
     \large
     \begin{equation}
@@ -1240,7 +1239,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Wysokość (Wzór~\ref{wzor.punktHB}) oraz szerokość (Wzór~\ref{wzor.punktWB}) strefy 3.
+    Wysokość (wzór~\ref{wzor.punktHB}) oraz szerokość (wzór~\ref{wzor.punktWB}) strefy 3.
 
     \large
     \begin{equation}
@@ -1257,7 +1256,7 @@ Karolina Nurzyńska}
     \normalsize
 
     Na samym końcu zostaje wyznaczona strefa 6.
-    Wyznaczona zostaje współrzędna E - Wzór~\ref{wzor.punktXE} i~\ref{wzor.punktYE}.
+    Wyznaczona zostaje współrzędna E - wzór~\ref{wzor.punktXE} i~\ref{wzor.punktYE}.
     \large
     \begin{equation}
         x_{E}=x_{2}
@@ -1291,7 +1290,7 @@ Karolina Nurzyńska}
     stref 4 i 5.
     Wartość ,,0,4'' została dobrana empirycznie.
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanie-zmarszczek---detektor-canny}
-    %todo opis detektora z wiki angielskiej
+    %opis detektora z wiki angielskiej
     %moze troche opisu configu Cannego od Anielskiej
     Następnym krokiem algorytmu po wyznaczeniu stref zmarszczkowych jest wyodrębnienie zmarszczek.
     W celu identyfikacji zmarszczek zastosowano detektor Canny.
@@ -1333,12 +1332,12 @@ Karolina Nurzyńska}
     \subsection{Redukcja szumów na obrazie filtrem Gaussa}\label{subsec:redukcja-szumów-na-obrazie-filtrem-gaussa}
     Szum na obrazie to piksele o losowym kolorze, jasności oraz umiejscowieniu (współrzędnych na obrazie).
     Takie piksele są nadmiarowymi informacjami o obrazie oraz stanowią efekt uboczny przetwarzania obrazu
-    przez matrycę cyfrową (Rysunek~\ref{fig.lenkaSzumy}).
+    przez matrycę cyfrową (rysunek~\ref{fig.lenkaSzumy}).
 
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/lenkaSzumy.jpg}
-        \caption{a) Obraz z nieznaczną ilością szumów b) Obraz ze znaczną ilością szumów.~\cite{lenkaSzumy}}
+        \caption{a) Obraz z nieznaczną ilością szumów b) Obraz ze znaczną ilością szumów~\cite{lenkaSzumy}.}
         \label{fig.lenkaSzumy}
     \end{figure}
 
@@ -1374,7 +1373,7 @@ Karolina Nurzyńska}
     Kierunek gradientu jest zaokrąglony do jednego z filtrów kierunku: poziomego ($\Theta = 0^{\circ}$),
     pionowego($\Theta = 90^{\circ}$) lub ukośnego ($\Theta = 45^{\circ}$
     lub $\Theta = 135^{\circ}$ stopni).
-    Każdy piksel obrazu otrzymuje wartość gradientu (Wzór~\ref{wzor.gradientJasnosci})
+    Każdy piksel obrazu otrzymuje wartość gradientu (wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
     W wyniku tego działania zostaje otrzymany obraz gradientowy~\cite{Canny}.
     \subsection{Zastosowanie techniki zmniejszania grubości
@@ -1422,7 +1421,7 @@ Karolina Nurzyńska}
     wygenerowany zostaje obraz binarny z wyodrębnionymi krawędziami.
     Obraz binarny zawiera piksele o dwóch wartościach jasności pikseli.
     Piksel może być albo biały albo czarny.
-    Krawędzie można rozpoznać jako białe piksele, natomiast czarne piksele oznaczają brak krawędzi (Rysunek~\ref{fig.mojaTwarzGray}).
+    Krawędzie można rozpoznać jako białe piksele, natomiast czarne piksele oznaczają brak krawędzi (rysunek~\ref{fig.mojaTwarzGray}).
 
     \begin{figure}
         \centering
@@ -1431,15 +1430,15 @@ Karolina Nurzyńska}
         \label{fig.mojaTwarzGray}
     \end{figure}
 
-    Na Rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
+    Na rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
     Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
-    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (Sekcja~\ref{sec:wyznaczanieStref}),
+    Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (sekcja~\ref{sec:wyznaczanieStref}),
     które identyfikują zmarszczki.
     Ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek na twarzy danej
     osoby.
 
     Z każdej strefy zmarszczkowej obliczany jest stosunek ilości białych pikseli do wszystkich
-    pikseli (Wzór ~\ref{wzor.wspolczynnikZmarszczek}).
+    pikseli (wzór~\ref{wzor.wspolczynnikZmarszczek}).
     \large
     \begin{equation}
         W_{s1} = \frac{PB_{s1}}{PW_{s1}}
@@ -1449,7 +1448,7 @@ Karolina Nurzyńska}
     , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1,
     $PB_{s1}$ - suma białych pikseli w strefie 1, $PW_{s1}$ - suma wszystkich pikseli w strefie 1.
     Analogicznie obliczane są stosunki pikseli dla pozostałych stref.
-    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (Wzór~\ref{wzor.wrinkleFeature}).
+    Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (wzór~\ref{wzor.wrinkleFeature}).
     \large
     \begin{equation}
         WF = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
@@ -1485,7 +1484,7 @@ Karolina Nurzyńska}
     %    https://sci-hub.tw/10.1109/ICCSA.2019.000-1
     %    https://www.researchgate.net/publication/329424581_Data_clustering
     %    Podac rozne przyklady algorytmow - hierarchiczne, niehierarchiczne
-    %todo mozna dopisac o roznych odleglosciach stosowanych do przydzielania do klastrow
+    %mozna dopisac o roznych odleglosciach stosowanych do przydzielania do klastrow
     Grupowanie danych, zwane również klasteryzacją, jest szeroko stosowane w uczeniu maszynowym, rozpoznawaniu wzorców,
     analizie obrazu, bioinformatyce, kompresji danych czy w grafice komputerowej.
     Polega na podzieleniu dużego zbioru danych na grupy.
@@ -1516,13 +1515,13 @@ Karolina Nurzyńska}
     Autorzy algorytmu szacowania wieku opisywanego w niniejszej pracy zastosowali grupowanie metodą Fuzzy C-means.
     Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
 
-    %todo - dokladny opis jak to dziala
+    %- dokladny opis jak to dziala
     %    https://sci-hub.tw/10.1007/s12046-019-1166-1
     %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
     Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Została opisana ona w książce
     ,,A Fuzzy Relative of the ISODATA Process and Its Use in Detecting Compact Well-Separated Clusters''.
 
-    Klasteryzacja Fuzzy C-means dzieli zbiór X (Wzór~\ref{wzor.zbiorX}):
+    Klasteryzacja Fuzzy C-means dzieli zbiór X (wzór~\ref{wzor.zbiorX}):
     \large
     \begin{equation}
         X:=\{x_{1},x_{2},x_{3},\ldots,x_{n}\}\subset \mathbb{R}
@@ -1532,7 +1531,7 @@ Karolina Nurzyńska}
     W parametrze algorytmu zostaje ustalona liczba grup c.
     Każda grupa posiada charakterystyczną wartość nazywana centroidem $p_{j}\subset \mathbb{R}$.
     Jak zostało wspomniane na początku tego rozdziału, w algorytmie C-means zastosowana jest miękka klasteryzacja.
-    Każdy element danych ma przypisywany wektor $U_{i}$ przynależności do grupy (Wzór~\ref{wzor.wektorPrzynaleznosci}).
+    Każdy element danych ma przypisywany wektor $U_{i}$ przynależności do grupy (wzór~\ref{wzor.wektorPrzynaleznosci}).
     \large
     \begin{equation}
         U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
@@ -1542,14 +1541,15 @@ Karolina Nurzyńska}
     , gdzie $u_{i1}$ oznacza stopień przynależności elementu $x_{i}$ do grupy 1.
     Analogicznie $u_{i2}$ oznacza stopień przynależności elementu $x_{i}$ do grupy 2.
 
-    W pierwszym kroku zbiór centroidów P jest inicjalizowany losowo (Wzór~\ref{wzor.zbiorCentroidow}).
+    W pierwszym kroku zbiór centroidów P jest inicjalizowany losowo (wzór~\ref{wzor.zbiorCentroidow}).
     \large
     \begin{equation}
         P^{0}=(p_{1}^{0}, p_{2}^{0}, p_{3}^{0}, \ldots, p_{c}^{0})
         \label{wzor.zbiorCentroidow}
     \end{equation}
     \normalsize
-    W k-tym kroku algorytmu wyliczona jest macierz funkcji przynależności $U^{k} = {u_{ij}^{k}}$ (Wzór~\ref{wzor.funkcjaPrzynaleznosci}).
+    W k-tym kroku algorytmu wyliczona jest macierz funkcji przynależności $U^{k} = {u_{ij}^{k}}$ (wzór~\ref{wzor
+    .funkcjaPrzynaleznosci}).
     \large
     \begin{equation}
         u_{ij}^{k} = \frac{1}{\sum_{k=1}^{c}\left ( \frac{\left \| x_{i} - p_{j}^{k} \right \|}{\left \|x_{i} - p_{k}^{k}  \right \|} \right )^{\frac{2}{m-1}}}
@@ -1560,14 +1560,14 @@ Karolina Nurzyńska}
     centroidem $p_{j}$. Parametr ,,m'' jest nazywany współczynnikiem rozmycia. Współczynnik ten może być w zakresie
     od 1 do nieskończoności, jednak w większości przypadków jest równy 2.
 
-    W kroku $(k+1)^{th}$ centroid $p_{j}^{(k+1)}$ jest uaktualniany według Wzoru~\ref{wzor.kaPLusJeden}.
+    W kroku $(k+1)^{th}$ centroid $p_{j}^{(k+1)}$ jest uaktualniany według wzoru~\ref{wzor.kaPLusJeden}.
     \large
     \begin{equation}
         p_{j}^{(k+1)}=\frac{\sum_{i=1}^{n}u_{ij}^{(k+1)m}x_{j}}{\sum_{i=1}^{n}u_{ij}^{(k+1)m}}
         \label{wzor.kaPLusJeden}
     \end{equation}
     \normalsize
-    Algorytm w kolejnych iteracjach minimalizuje kryterium $J(U,P)$ podane Wzorem~\ref{wzor.kryteriumFCM}:
+    Algorytm w kolejnych iteracjach minimalizuje kryterium $J(U,P)$ podane wzorem~\ref{wzor.kryteriumFCM}:
 
     \large
     \begin{equation}
@@ -1575,7 +1575,7 @@ Karolina Nurzyńska}
         \label{wzor.kryteriumFCM}
     \end{equation}
     \normalsize
-    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany Wzorem~\ref{wzor.koniecIteracjiWarunek}
+    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany wzorem~\ref{wzor.koniecIteracjiWarunek}
     \large
     \begin{equation}
         \left \| J^{(k+1)}(U,P) - J^{(k)}(U,P)) \right \| < \epsilon
@@ -1584,13 +1584,13 @@ Karolina Nurzyńska}
     \normalsize
     , gdzie $\epsilon > 0$. Parametr $\epsilon$ jest parametrem ustawianym przed uruchomieniem klasteryzacji.
     W niektórych implementacjach istnieje możliwość zakończenia działania algorytmu po określonej liczbę iteracji,
-    jeśli wcześniej nie zostanie osiągnięte kryterium ze Wzoru~\ref{wzor.koniecIteracjiWarunek}.
+    jeśli wcześniej nie zostanie osiągnięte kryterium ze wzoru~\ref{wzor.koniecIteracjiWarunek}.
 
     Po zakończeniu działania wyżej opisanego algorytmu zostaje wyliczony wektor przynależności $U$
-    (Wzór~\ref{wzor.wektorPrzynaleznosci}).
+    (wzór~\ref{wzor.wektorPrzynaleznosci}).
     %    U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
     Zakładając, że suma wektora przynależności $U_{i}$, dla elementu $x_{i}$ jest opisana
-    Wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
+    wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
     \large
     \begin{equation}
         \sum_{j=0}^{j=c} u_{ij}=1
@@ -1610,7 +1610,7 @@ Karolina Nurzyńska}
 
     Każdy klaster ma określony centroid j, który posiada parametr $P_{fj}$  oraz dodatkowy parametr - średnią
     wartość wieku $P_{aj}$. $P_{fj}$ oznacza wartość wrinkle feature dla danego centroida.
-    $P_{aj}$ jest wyznaczany ze Wzoru~\ref{wzor.avgJ}.
+    $P_{aj}$ jest wyznaczany ze wzoru~\ref{wzor.avgJ}.
     \large
     \begin{equation}
         P_{aj}=\frac{\sum_{}^{}A_{c}}{N_{j}}
@@ -1632,11 +1632,11 @@ Karolina Nurzyńska}
     a następnie zostaje wyliczony parametr wrinkle feature $F_{i}$.
 
     Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
-    według Wzoru~\ref{wzor.wektorPrzynaleznosci}.
-    Przy założeniu dla wektoru przynależności zgodnym ze Wzorem~\ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek
+    według wzoru~\ref{wzor.wektorPrzynaleznosci}.
+    Przy założeniu dla wektoru przynależności zgodnym ze wzorem~\ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek
     $PA$
     wynosi
-    (Wzór~\ref{wzor.szacowanyWiek}).
+    (wzór~\ref{wzor.szacowanyWiek}).
     \large
     \begin{equation}
         PA=\sum_{j=1}^{c}(u_{ij}*P_{aj})
@@ -1656,7 +1656,7 @@ Karolina Nurzyńska}
     w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
 
     Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
-    który został określony we Wzorze~\ref{wzor.mae}.
+    który został określony we wzorze~\ref{wzor.mae}.
     \large
     \begin{equation}
         MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
@@ -1669,23 +1669,24 @@ Karolina Nurzyńska}
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
     Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
     wykrywa także włosy. Podczas przeglądania wielu zdjęć zauważono, że w obrębie
-    strefy zmarszczek nr 2 (Obraz~\ref{fig.wykrywanieStrefZmarszczkowych}) wykrywane są części brwi oprócz samych
+    strefy zmarszczek nr 2 (obraz~\ref{fig.wykrywanieStrefZmarszczkowych}) wykrywane są części brwi oprócz samych
     zmarszczek. Generuje to błąd, dlatego wyżej wymienionej strefy nie uwzględniono w obliczeniach.
-    W Sekcji~\ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed opisaną wyżej
+    W sekcji~\ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed opisaną wyżej
     modyfikacją i po niej.
 
     \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
-    Przed modyfikacją metody bazowej parametr wrinkle feature był obliczany według Wzoru~\ref{wzor.wrinkleFeature},
-    który jest umieszczony w Sekcji~\ref{sec:wyliczanieWrinkleFeature}.
+    Przed modyfikacją metody bazowej parametr wrinkle feature był obliczany według wzoru~\ref{wzor.wrinkleFeature},
+    który jest umieszczony w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
 
-    Po modyfikacji parametr wrinkle feature oblicza się według Wzoru~\ref{wzor.wrinkleFeature2}.
+    Po modyfikacji parametr wrinkle feature oblicza się według wzoru~\ref{wzor.wrinkleFeature2}.
     \large
     \begin{equation}
         WF = W_{s1} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
         \label{wzor.wrinkleFeature2}
     \end{equation}
     \normalsize
-    Kolejną modyfikacją było zastosowanie metody HOG - Histograms of Oriented Gradients, która została opisana w Sekcji~\ref{sec:zastosowanie-metody-hog}.
+    Kolejną modyfikacją było zastosowanie metody HOG - Histograms of Oriented Gradients, która została opisana w
+    sekcji~\ref{sec:zastosowanie-metody-hog}.
 
     \section{Zastosowanie metody HOG}\label{sec:zastosowanie-metody-hog}
     %https://sci-hub.tw/10.2139/ssrn.3268935
@@ -1695,7 +1696,7 @@ Karolina Nurzyńska}
     Metoda HOG (Histogram of Oriented Gradients) jest deskryptorem cech z obrazu.
     Deskryptor cech wyodrębnia z obrazu pewne cechy, do których należą między innymi kształty, kolory czy tekstury.
     W metodzie bazowej rolę deskryptora tego rodzaju spełnia detektor
-    krawędzi Canny (Sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny}), który wykrywa krawędzie,
+    krawędzi Canny (sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny}), który wykrywa krawędzie,
     identyfikowane jako zmarszczki.
     Z kolei Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
     Liczenie jest dokonywane tylko w pewnych obszarach obrazów.
@@ -1711,12 +1712,12 @@ Karolina Nurzyńska}
 
     Metoda Histogram of Oriented Gradients opiera się na założeniu, że wygląd i kształt obiektów na obrazie może zostać
     opisany przez gradient jasności oraz jego kierunek. Jest to dobrze widoczne na
-    Rysunku~\ref{fig.gradientJasnosciNaGlowie}
+    rysunku~\ref{fig.gradientJasnosciNaGlowie}
 
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/gradientJasnosciNaGlowie.jpg}
-        \caption{Gradient jasności identyfikujący granicę pomiędzy głową a tłem.~\cite{hogOpenCv}}
+        \caption{Gradient jasności identyfikujący granicę pomiędzy głową a tłem~\cite{hogOpenCv}.}
         \label{fig.gradientJasnosciNaGlowie}
     \end{figure}
     Na granicy pomiędzy tłem, a głową sportowca widoczne są duże wartości gradientu jasności.
@@ -1729,26 +1730,26 @@ Karolina Nurzyńska}
     Realizowane jest to przez pomiar jasności obszaru zwanego blokiem, który
     składa się z kilku komórek. Normalizacja zapewnia zmniejszenia niepożądanego efektu generowanego przez
     różnice w oświetleniu różnych obszarów zdjęcia. Wspomniana sytuacja występuje na przykład, gdy zdjęcie wykonywane
-    jest w nieprawidłowych warunkach oświetleniowych (Rysunek~\ref{fig.oswietlenieTwarzy}).
+    jest w nieprawidłowych warunkach oświetleniowych (rysunek~\ref{fig.oswietlenieTwarzy}).
 
     W poniższym akapicie zostanie przedstawiony dokładny opis metody Histogram of Oriented Gradients.
     W pierwszej fazie obraz powinien zostać przeskalowany, tak aby jego wymiary były podzielne przez rozmiar
     pojedynczej komórki.
-    (Rysunek~\ref{fig.komorkiHoga}).
+    (rysunek~\ref{fig.komorkiHoga}).
 
     \begin{figure}
         \centering
         \includegraphics[width=4cm]{Obrazy/komorkiHoga.jpg}
-        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu.~\cite{hogOpenCv}}
+        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu~\cite{hogOpenCv}.}
         \label{fig.komorkiHoga}
     \end{figure}
     Warto wspomnieć, że w wielu metodach generujących deskryptory pierwszą fazą jest korekcja luminacji.
     Jednak ten krok może zostać pominięty, gdyż w późniejszym kroku stosowana jest normalizacja,
     która dokonuje korekcji luminacji cieni oraz świateł.
     W kolejnej fazie muszą zostać wyznaczone gradienty jasności.
-    Wyznaczenie gradientów jasności zostało szczegółowo opisane w Sekcji~\ref{subsec:szukanie-gradientów-jasności}.
+    Wyznaczenie gradientów jasności zostało szczegółowo opisane w sekcji~\ref{subsec:szukanie-gradientów-jasności}.
     W kolejnej fazie zostają wyznaczone histogramy gradientów dla każdej komórki.
-    Na Rysunku~\ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania tego kroku.
+    Na rysunku~\ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania tego kroku.
     Zostają wygenerowane dwie macierze. Pierwsza zawiera informację o gradiencie jasności każdego piksela komórki,
     natomiast druga - informację o kierunku każdego gradientu.
     Wartości kierunku gradientu wyrażone są w stopniach. W metodzie Histogram of Oriented Gradients
@@ -1762,11 +1763,11 @@ Karolina Nurzyńska}
     Najczęściej stosuje się 9 komórek. Każda komórka histogramu odpowiada pewnemu zakresowi kąta kierunku gradientu.
     Przykładowo dla histogramu o szerokości 9 komórek każda komórka odpowiada następującym kątom:
     $0^{\circ}$, $20^{\circ}$, $40^{\circ}$, \ldots, $160^{\circ}$ .
-    Na Rysunku~\ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do komórek histogramu.
+    Na rysunku~\ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do komórek histogramu.
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/hogTworzenieHistogramu.jpg}
-        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu.~\cite{hogOpenCv}}
+        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu~\cite{hogOpenCv}.}
         \label{fig.hogTworzenieHistogramu}
     \end{figure}
     Piksel zaznaczony na niebiesko posiada gradient o wartości 2 oraz kierunek o kącie $80^{\circ}$
@@ -1778,7 +1779,7 @@ Karolina Nurzyńska}
     Tak jak w powyższym przypadku, jeśli wartość kąta wynosi $10^{\circ}$, wartości gradientu są przydzielane do
     komórek reprezentujące dwa kąty (w tym przypadku przedziały reprezentujące kąt od $0^{\circ}$ do
     $20^{\circ}$). W związku z tym, że powyższy kąt wynosi $10^{\circ}$, wartości dla komórek histogramu są obliczane
-    według Wzoru~\ref{wzor.komorkaHistogramu1} oraz Wzoru~\ref{wzor.komorkaHistogramu2}:
+    według wzoru~\ref{wzor.komorkaHistogramu1} oraz wzoru~\ref{wzor.komorkaHistogramu2}:
 
     \large
     \begin{equation}
@@ -1799,10 +1800,10 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $X_{b}$ oznacza wartość przydzieloną dla kąta o większej wartości (tak jak $20^{\circ}$
-    dla powyższego przykładu). Reszta zmiennych odpowiada zmiennym we Wzorze~\ref{wzor.komorkaHistogramu1}.
+    dla powyższego przykładu). Reszta zmiennych odpowiada zmiennym we wzorze~\ref{wzor.komorkaHistogramu1}.
     W przypadku, gdy kąt kierunku gradientu jest większy od $160^{\circ}$ to wartość danego gradientu jest
     przydzielana proporcjonalnie do komórki $160^{\circ}$ oraz $0^{\circ}$ zgodnie ze
-    Wzorem~\ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
+    wzorem~\ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
     a wyliczona wartość zostaje przydzielona do komórki reprezentującej kąt $0^{\circ}$.
     Powyższa procedura jest powtarzana, a kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
     w komórkach histogramu. Końcowy efekt tej fazy dostarcza histogram reprezentujący komórkę. Wartości histogramu
@@ -1820,7 +1821,7 @@ Karolina Nurzyńska}
     wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
     Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, więc wektor $v$ będzie
     miał długość $9x4$, czyli 36.
-    L2-norm dla wektora $v$ jest obliczane według Wzoru~\ref{wzor.l2norm}
+    L2-norm dla wektora $v$ jest obliczane według wzoru~\ref{wzor.l2norm}
     \large
     \begin{equation}
         \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
@@ -1836,7 +1837,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm dla wektora $v$. Działanie zgodne ze
-    Wzorem~\ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
+    wzorem~\ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
     $\left \|v  \right\|_{2}$.
     Powyższy proces powtarza się dla wszystkich bloków.
     W wyniku działania algorytmu Histograms of Oriented Gradients wygenerowany zostaje deskryptor, czyli wektor
@@ -1851,17 +1852,17 @@ Karolina Nurzyńska}
     Z uwagi na powyższe zalety ta metoda nadaje się do detekcji ludzi na obrazach.
 
     W niniejszej pracy opisywana metoda posłużyła do wykrywania krawędzi, które informują o zmarszczkach. Dokładny sposób jej
-    zaimplementowania w pracy opisuje Sekcja~\ref{subsec:zastosowanie-w-projekcie2}
+    zaimplementowania w pracy opisuje sekcja~\ref{subsec:zastosowanie-w-projekcie2}
 
     \subsection{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
-    W poprzedniej Sekcji~\ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG, w wyniku którego
+    W poprzedniej sekcji~\ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG, w wyniku którego
     generowany jest deskryptor dla danego obrazu.
 
     Omówiony wyżej deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
-    Sekcji~\ref{sec:zastosowanie-metody-hog} metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
+    sekcji~\ref{sec:zastosowanie-metody-hog} metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
     obszarze jest dużo krawędzi, to w wektorze deskryptora będzie pewna ilość elementów tego wektora o znacznej wartości.
     Wyżej opisywane, charakterystyczne elementy wektora będą identyfikowały krawędzie w obrazie. Jak wiadomo z
-    Sekcji~\ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
+    sekcji~\ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
     W związku z powyższym zmodyfikowano sposób obliczenia wrinkle feature dla obrazu twarzy opierając się o
     deskryptor wygenerowany przez algorytm HOG.
 
@@ -1878,10 +1879,10 @@ Karolina Nurzyńska}
     W celu oszacowania ilości zmarszczek dla danego zdjęcia posłużono się następującym algorytmem.
 
     W pierwszej fazie zostały wyznaczone strefy zmarszczkowe nr 1,3,4,5,6.
-    (Rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
+    (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
     Następnie dla każdej wyżej wymienionej strefy został wyznaczony deskryptor. Dla strefy 1 deskryptor jest opisany
     zmienną $v_{1}$, dla strefy 3 zmienną $v_{3}$ i tak dalej.
-    Wrinkle feature jest obliczany ze Wzoru~\ref{wzor.hogWrinkleFeature}:
+    Wrinkle feature jest obliczany ze wzoru~\ref{wzor.hogWrinkleFeature}:
     \large
     \begin{equation}
         WF_{HOG} = \left \|v_{1}  \right \|_{1}+\left \|v_{3}  \right \|_{1}+\left \|v_{4}  \right \|_{1}+\left
@@ -1892,7 +1893,7 @@ Karolina Nurzyńska}
     , gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1-norm dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
     \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
 
-    Parametr L1-norm dla danego wektora $v$ jest wyznaczany ze Wzoru~\ref{wzor.l1norm}:
+    Parametr L1-norm dla danego wektora $v$ jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
     \large
     \begin{equation}
         \left \|v  \right \|_{1} = \sum_{i=1}^{n}\left |v(i)  \right |
@@ -1902,11 +1903,11 @@ Karolina Nurzyńska}
     , gdzie $v(i)$ jest i-tym elementem wektora.
 
     Dla każdego zdjęcia ze zbioru podobnie jak w metodzie bazowej~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
-    wyznaczana jest para danych $WF_{HOG}$ (Wzór~\ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
-    zbiór danych jest trenowany za pomocą Fuzzy C-means (Sekcja~\ref{sec:grupowanieDanych}) - tak samo jak w metodzie
+    wyznaczana jest para danych $WF_{HOG}$ (wzór~\ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
+    zbiór danych jest trenowany za pomocą Fuzzy C-means (sekcja~\ref{sec:grupowanieDanych}) - tak samo jak w metodzie
     bazowej.
     Wiek szacowany jest dokładnie tak samo jak w metodzie bazowej.
-    Kolejna modyfikacja metody bazowej została opisana w Sekcji~\ref{sec:metoda-hog-oraz-grupowanie-knn}
+    Kolejna modyfikacja metody bazowej została opisana w sekcji~\ref{sec:metoda-hog-oraz-algorytm-knn}
     \section{Metoda HOG oraz algorytm KNN}\label{sec:metoda-hog-oraz-algorytm-knn}
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %http://zsi.tech.us.edu.pl/~nowak/si/w4.pdf
@@ -1919,11 +1920,11 @@ Karolina Nurzyńska}
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
     % wybor parametru - k jak wplywa
     Kolejna modyfikacja polegała na zmianie sposobu wyznaczania wrinkle feature.
-    W Sekcji~\ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wrinkle feature,
-    który polegał na sumowaniu deskryptorów z poszczególnych stref (Wzór~\ref{wzor.hogWrinkleFeature}).
+    W sekcji~\ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wrinkle feature,
+    który polegał na sumowaniu deskryptorów z poszczególnych stref (wzór~\ref{wzor.hogWrinkleFeature}).
     W celu poprawy wyników uwzględniono deskryptory ze wszystkich stref.
     Dla każdego zdjęcia ze zbioru wyznaczana jest para danych - wiek oraz wektor.
-    $\overrightarrow{v_{KNN}}$ składający się z elementów według Wzoru~\ref{wzor.hogKnn}
+    $\overrightarrow{v_{KNN}}$ składający się z elementów według wzoru~\ref{wzor.hogKnn}
     \large
     \begin{equation}
         \overrightarrow{v_{KNN}} = (\left \|v_{1}  \right \|_{1},\left \|v_{3}  \right \|_{1},\left \|v_{4}  \right
@@ -1933,7 +1934,7 @@ Karolina Nurzyńska}
     \normalsize
     W wyniku treningu zbioru zdjęć zostaje wygenerowany zbiór zawierający wyżej wymienioną parę danych.
     Następnie w celu oszacowania wieku zostaje wykorzystany algorytm KNN, który został opisany w
-    Sekcji~\ref{subsec:grupowanie-knn}.
+    sekcji~\ref{subsec:grupowanie-knn}.
     \subsection{Grupowanie KNN}\label{subsec:grupowanie-knn}
     Algorytm KNN (ang. k-Nearest Neighbor) to algorytm regresji
     nieparametrycznej używany w statystyce do
@@ -1943,7 +1944,7 @@ Karolina Nurzyńska}
     %    W wyniku działania algorytmu KNN do klasyfikacji obiekt zostaje sklasyfikowany do jednej z klas.
     %    Natomiast w regresji
     Algorytm KNN na wejściu otrzymuje zbiór danych nazywany zbiorem uczącym.
-    Zbiór uczący zawiera dane zwane obserwacjami. Wspomniane obserwacje są parą danych (Wzór~\ref{wzor.obserwacjaKnn}).
+    Zbiór uczący zawiera dane zwane obserwacjami. Wspomniane obserwacje są parą danych (wzór~\ref{wzor.obserwacjaKnn}).
     \large
     \begin{equation}
         O_{i} = (K_{i}, V_{i})
@@ -1970,7 +1971,7 @@ Karolina Nurzyńska}
         \item miara Czebyszewa
         \item miara Minkowskiego
     \end{itemize}
-    Odległość pomiędzy dwoma wektorami w mierze Euklidesowej jest opisana Wzorem~\ref{wzor.euklides}
+    Odległość pomiędzy dwoma wektorami w mierze Euklidesowej jest opisana wzorem~\ref{wzor.euklides}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\sum_{i=1}^{c}(n(i)-m(i))^{2}
@@ -1981,7 +1982,7 @@ Karolina Nurzyńska}
     Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
     $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
 
-    Odległość pomiędzy dwoma wektorami w mierze Manhattan jest opisana Wzorem~\ref{wzor.manhattan}
+    Odległość pomiędzy dwoma wektorami w mierze Manhattan jest opisana wzorem~\ref{wzor.manhattan}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\sum_{i=1}^{c}\left |n(i)-m(i)\right |
@@ -1992,7 +1993,7 @@ Karolina Nurzyńska}
     Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
     $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
 
-    Odległość pomiędzy dwoma wektorami w mierze Czebyszewa jest opisana Wzorem~\ref{wzor.manhattan}
+    Odległość pomiędzy dwoma wektorami w mierze Czebyszewa jest opisana wzorem~\ref{wzor.manhattan}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\max_{i=1:n}( \left |n(i)-m(i) \right |)
@@ -2003,14 +2004,14 @@ Karolina Nurzyńska}
     Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
     $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
 
-    Odległość pomiędzy dwoma wektorami w mierze Minkowskiego jest opisana Wzorem~\ref{wzor.minkowski}
+    Odległość pomiędzy dwoma wektorami w mierze Minkowskiego jest opisana wzorem~\ref{wzor.minkowski}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=(\sum_{i=1}^{c} \left |n(i)-m(i) \right |^{p})^{\frac{1}{p}}
         \label{wzor.minkowski}
     \end{equation}
     \normalsize
-    Zmienne są dokładnie takie same jak we Wzorze~\ref{wzor.euklides}.
+    Zmienne są dokładnie takie same jak we wzorze~\ref{wzor.euklides}.
     , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
     Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
     $\overrightarrow{m}$, $c$ jest długością wektora $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
@@ -2025,7 +2026,7 @@ Karolina Nurzyńska}
     to dominującą wartością w tym zbiorze byłaby np. wartość 100 metrów.
 
     Standaryzacja ma na celu obliczenie nowych wartości elementów wektorów ze zbioru uczącego.
-    Standaryzacja jest zrealizowana poprzez Wzór~\ref{wzor.standaryzacja}:
+    Standaryzacja jest zrealizowana poprzez wzór~\ref{wzor.standaryzacja}:
     \large
     \begin{equation}
     {v}
@@ -2038,7 +2039,7 @@ Karolina Nurzyńska}
     ${v}_{u}$. Natomiast $\sigma({v}_{u})$ jest odchyleniem standardowym elementów wektora ${v}_{u}$.
 
     Normalizacja generuje wartości elementów wektorów ze zbioru uczącego, tak aby powyższe wartości były z przedziału
-    od 0 do 1 (Wzór~\ref{wzor.normalizacja}).
+    od 0 do 1 (wzór~\ref{wzor.normalizacja}).
     \large
     \begin{equation}
     {v}
@@ -2057,7 +2058,7 @@ Karolina Nurzyńska}
     W celu wywnioskowania, do której klasy należy obserwacja testowa zawierająca wektor $V_{i}$, szukanych jest $k$
     najbliższych wektorów (wektorów sąsiadów) ze zbioru uczącego (według kryterium odległości). Obserwacja testowa
     zostaje przydzielona do klasy, która najczęściej występowała wśród $k$ sąsiednich obserwacji.
-    Problem klasyfikacji algorytmem KNN jest pokazany na Rysunku~\ref{fig.klasyfikacjaKNN}
+    Problem klasyfikacji algorytmem KNN jest pokazany na rysunku~\ref{fig.klasyfikacjaKNN}
     \begin{figure}
         \centering
         \includegraphics[width=10cm]{Obrazy/klasyfikacjaKNN.jpg}
@@ -2065,8 +2066,8 @@ Karolina Nurzyńska}
         \label{fig.klasyfikacjaKNN}
     \end{figure}
 
-    Na Rysunku~\ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy ,,A'' oraz klasy
-    ,,B''. Ponadto na środku Rysunku~\ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
+    Na rysunku~\ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy ,,A'' oraz klasy
+    ,,B''. Ponadto na środku rysunku~\ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
     sklasyfikowany do jednej z wyżej wymienionych klas.
     Dla parametru ,,k'' równego 3 wektor testowy zostanie przypisany do klasy ,,B'', gdyż z 3 najbliższych wektorów 2
     należą do klasy ,,B''. W przypadku, gdy parametr ,,k'' będzie równy 7 wektor testowy zostanie przypisany do klasy
@@ -2076,23 +2077,24 @@ Karolina Nurzyńska}
     klasyfikacji ma szum, który określa błędne dane w zbiorze uczącym. Istnieją metody dobierające optymalną wartość $k$ dla
     danego zbioru uczącego. Do jednej z nich należy optymalizacja hiperparametryczna.
 
-    Na końcu Sekcji~\ref{subsec:zastosowanie-w-projekcie} został przedstawiony sposób, w jaki generowany jest zbiór
+    Na końcu sekcji~\ref{subsec:zastosowanie-w-projekcie} został przedstawiony sposób, w jaki generowany jest zbiór
     uczący.
     Szacowanie wieku metodą KNN w pierwszym kroku polega na stworzeniu wektoru, który został opisany
-    Wzorem~\ref{wzor.hogKnn}.
+    wzorem~\ref{wzor.hogKnn}.
     Następnym krokiem jest przydzielenie danego wektoru do klasy (wieku).
 
-    W Sekcji~\ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
+    W sekcji~\ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
 
     \chapter{Badania}\label{ch:badania}
     W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz ich modyfikacji.
     Sekcja ~\ref{sec:środowisko-pracy} prezentuje środowisko pracy, a dokładniej mówiąc wszystkie
     niezbędne narzędzia i akcesoria, które pozwoliły skutecznie przeprowadzić badania.
-    W Sekcji~\ref{sec:rozmiar-obrazu} przedstawiono wpływ rozmiaru danego obrazu na wyniki badań.
+    W sekcji~\ref{sec:rozmiar-obrazu} przedstawiono wpływ rozmiaru danego obrazu na wyniki badań.
     Sekcja~\ref{sec:wykrywanie-krawędzi-przez-detektor-canny} ukazuje efekty wykrywania zmarszczek przez detektor
-    Canny. W kolejnej Sekcji~\ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
+    Canny. W kolejnej sekcji~\ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
     części algorytmów, zarówno trenujących, jak i szacujących wiek.
-    Sekcja~\ref{sec:skuteczność-poszczególnych-metod-szacowania-wieku} zawiera porównanie metody bazowej oraz jej modyfikacji
+    Sekcja~\ref{sec:skuteczność-poszczególnych-metod-szacowania-wieku} zawiera porównanie metody bazowej oraz jej
+    modyfikacji
     pod kątem skuteczności szacowania wieku.
 
     \section{Środowisko badań}\label{sec:środowisko-pracy}
@@ -2103,7 +2105,7 @@ Karolina Nurzyńska}
     istnieją jej modyfikacje, które zostały napisane w innych językach. Najczęściej spotykane są modyfikacje
     stworzone w języku Java oraz Python. Ponadto w Javie generowano dane dla metody bazowej oraz wszystkich
     jej modyfikacji. Dodatkowo to w tym języku zrealizowano szacowanie wieku we wszystkich metodach, z
-    pominięciem metody, która stosuje algorytm KNN (Sekcja~\ref{sec:metoda-hog-oraz-algorytm-knn}).
+    pominięciem metody, która stosuje algorytm KNN (sekcja~\ref{sec:metoda-hog-oraz-algorytm-knn}).
 
     Grupowanie danych algorytmem Fuzzy C-means zostało zrealizowane za pomocą programu Matlab.
     Również szacowanie wieku dla metody stosującej algorytm KNN przeprowadzono za pomocą wyżej wymienionego
@@ -2174,7 +2176,7 @@ Karolina Nurzyńska}
     obliczeniach stwierdzono, że jedna strefa 3 lub 6 zajmuje od 8\% do 15\% na szerokość obszaru twarzy oraz od 15\% do 25\%
     na długość obszaru twarzy.
     W związku z powyższym minimalna szerokość bloku wyniosła 8\% szerokości obszaru twarzy, natomiast minimalna długość wyniosła 15\%.
-    Njamniejsza możliwa szerokość obszaru twarzy w pikselach względem szerokości bloku jest opisana Wzorem~\ref{wzor.stosunekSzerokoscBloku}.
+    Najmniejsza możliwa szerokość obszaru twarzy w pikselach względem szerokości bloku jest opisana wzorem~\ref{wzor.stosunekSzerokoscBloku}.
 
     \large
     \begin{equation}
@@ -2186,7 +2188,7 @@ Karolina Nurzyńska}
     szerokość bloku w pikselach, natomiast $T_{w}$ oznacza minimalną szerokość obszaru twarzy.
 
     Analogicznie minimalna długość obszaru twarzy względem długości bloku jest opisana
-    Wzorem~\ref{wzor.stosunekDlugosciBloku}.
+    wzorem~\ref{wzor.stosunekDlugosciBloku}.
 
     \large
     \begin{equation}
@@ -2198,9 +2200,9 @@ Karolina Nurzyńska}
     $B_{h}$ oznacza
     długość bloku w pikselach, a $T_{hmin}$ określa minimalną długość obszaru twarzy.
 
-    Jak wynika z powyższego Wzoru~\ref{wzor.stosunekSzerokoscBloku}, minimalna szerokość obszaru twarzy powinna
+    Jak wynika z powyższego wzoru~\ref{wzor.stosunekSzerokoscBloku}, minimalna szerokość obszaru twarzy powinna
     być co najmniej 12,5 razy większa od szerokości bloku.
-    Natomiast według Wzoru~\ref{wzor.stosunekDlugosciBloku} długość obszaru zawierającego twarz powinna
+    Natomiast według wzoru~\ref{wzor.stosunekDlugosciBloku} długość obszaru zawierającego twarz powinna
     być co najmniej 6,7 razy większa od długości bloku.
 
     W drugim kroku należało odnaleźć obszar, jaki zajmuje twarz w stosunku do wymiarów obrazu.
@@ -2223,7 +2225,7 @@ Karolina Nurzyńska}
     W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
 
-    Krawędzie związane tylko ze zmarszczkami są widoczne na Obrazie~\ref{fig.dobryRyjek}
+    Krawędzie związane tylko ze zmarszczkami są widoczne na obrazie~\ref{fig.dobryRyjek}
     \begin{figure}[hp]
         \centering
         \includegraphics[width=11cm]{Obrazy/dobryRyjekWszystkieStrefyGray.jpg}
@@ -2234,7 +2236,7 @@ Karolina Nurzyńska}
     \end{figure}
     Obraz~\ref{fig.dobryRyjek} będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
 
-    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (Obraz~\ref{fig.zlyRyjek}) dla osoby w wieku 17
+    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (obraz~\ref{fig.zlyRyjek}) dla osoby w wieku 17
     lat.
 
     \begin{figure}
@@ -2247,11 +2249,11 @@ Karolina Nurzyńska}
     \end{figure}
 
 
-    Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (Obraz (\ref{fig.wykrywanieStrefZmarszczkowych})
+    Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (obraz (\ref{fig.wykrywanieStrefZmarszczkowych})
     jest duża i nie identyfikują one zmarszczek.
 
     Porównano średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej
-    samej strefy na Obrazie~\ref{fig.zlyRyjek}.
+    samej strefy na obrazie~\ref{fig.zlyRyjek}.
     Takie porównanie ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
     \clearpage
     Średni współczynnik zmarszczek w strefie 2 dla osób w wieku 17 lat wyniósł:
@@ -2261,7 +2263,7 @@ Karolina Nurzyńska}
         \item Dla Canny 0,2636
     \end{itemize}
 
-    Natomiast dla Obrazu~\ref{fig.zlyRyjek} zawierającego nieprawidłowo wykryte krawędzie ilość zmarszczek wyniosła
+    Natomiast dla obrazu~\ref{fig.zlyRyjek} zawierającego nieprawidłowo wykryte krawędzie ilość zmarszczek wyniosła
     \begin{itemize}
         \item Dla HOG-a 2,97876
         \item Dla Canny 0,3542
@@ -2275,7 +2277,7 @@ Karolina Nurzyńska}
     \end{itemize}
 
     Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.
-    Na Obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
+    Na obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
     które identyfikują włosy.
 
     \begin{figure}[hb]
@@ -2296,14 +2298,15 @@ Karolina Nurzyńska}
         \item Dla Canny: 0,3267
     \end{itemize}
 
-    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (Obraz~\ref{fig.grzywka}) ilość zmarszczek wyniosła
+    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (obraz~\ref{fig.grzywka}) ilość zmarszczek
+    wyniosła
     \begin{itemize}
         \item Dla HOG-a: 2,95635
         \item Dla Canny: 0,3953
     \end{itemize}
 
     Różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku równego 51 lat
-    , a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz~\ref{fig.grzywka}):
+    , a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (obraz~\ref{fig.grzywka}):
     \begin{itemize}
         \item Dla HOG-a: $2,95635-2,67452$, czyli 0,28183
         \item Dla Canny $0,3953-0,3267$, czyli 0,0686
@@ -2391,7 +2394,7 @@ Karolina Nurzyńska}
     Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
     w zbiorze danych.\cite{schematTreningu}
 
-    Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE Wzór~\ref{wzor.mae}.
+    Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE wzór~\ref{wzor.mae}.
     Dla każdej metody dokonano porównania stu zdjęć.
     Natomiast każda metoda miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
     podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
@@ -2407,10 +2410,10 @@ Karolina Nurzyńska}
         \item m - współczynnik rozmycia
         \item n - liczba iteracji
         \item g - ilość grup
-        \item $\epsilon$ - kryterium (Wzór~\ref{wzor.koniecIteracjiWarunek})
+        \item $\epsilon$ - kryterium (wzór~\ref{wzor.koniecIteracjiWarunek})
     \end{itemize}
 
-    Przykładowy wynik testowania metody został przedstawiony w Tabeli~\ref{tab.przykladoweWyniki}
+    Przykładowy wynik testowania metody został przedstawiony w tabeli~\ref{tab.przykladoweWyniki}
 
     \begin{table}[h]
         \centering
@@ -2463,14 +2466,15 @@ Karolina Nurzyńska}
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
     W kolejnym kroku została przetestowana metoda, które nie uwzględnia zmarszczek ze strefy 2.
-    Podobnie jak w Sekcji \ref{subsec:metoda-bazowa} wykonywano testy dla takich samych parametrów algorytmu Fuzzy
+    Podobnie jak w sekcji~\ref{subsec:metoda-bazowa} wykonywano testy dla takich samych parametrów algorytmu Fuzzy
     C-means.
     Wyznaczono błąd MAE dla parametrów m = 2,0, n = 100 oraz g = 10, n = 100 oraz $\epsilon$ = 1e-5.
     Powyższy błąd wyniósł 13,66 roku.
     Następnie zmieniono parametr m na wartość 3,0. Parametr MAE dla tej wartości wyniósł 13,74 roku.
     Ostatnia wartość m wyniosła 5,0. W tym przypadku otrzymano MAE wielkości 14,41 roku.
 
-    Następnie analizowano wpływ parametru $\epsilon$. Tak jak w testach z Sekcji \ref{subsec:metoda-bazowa} na potrzeby analizy należało
+    Następnie analizowano wpływ parametru $\epsilon$. Tak jak w testach z sekcji~\ref{subsec:metoda-bazowa} na
+    potrzeby analizy należało
     zmienić parametr n do 1000.
     Najpierw przetestowano MAE dla wartości
     $\epsilon$ = 1e-6.
@@ -2486,7 +2490,7 @@ Karolina Nurzyńska}
 
     \subsection{Metoda HOG}\label{subsec:metoda-hog}
     Kolejną przetestowaną modyfikacją była ta w której użyto algorytmu HOG.
-    Podobnie jak w Sekcjach \ref{subsec:odjęcie-strefy-2} oraz \ref{subsec:metoda-bazowa} modyfikowano parametry
+    Podobnie jak w sekcjach~\ref{subsec:odjęcie-strefy-2} oraz~\ref{subsec:metoda-bazowa} modyfikowano parametry
     algorytmu Fuzzy C-means, jednak dodatkowo dokonano zmiany parametru HOG, Parametrem poddanym modyfikacji był rozmiar komórki.
     Najpierw ustalono wymiary komórki 3x3 pikseli. Rozmiar okna wyniósł 6x6 pikseli, natomiast liczba komórek
     histogramu była stała i wynosiła 9 dla wszystkich pomiarów. Dla komórki 6x6 pikseli rozmiar okna wynosił 12x12
@@ -2524,7 +2528,7 @@ Karolina Nurzyńska}
     Ostatnią testowaną metodą była ta, która zawiera algorytm HOG, a do klasyfikacji i szacowania używa algorytmu KNN.
     Zmieniano parametr n dla algorytmu KNN, natomiast dla algorytmu HOG - rozmiary komórki.
     Parametr n był równy 1, 3 oraz 5. Rozmiary komórki miały wartość 5x5 pikseli, 7x7 pikseli oraz 9x9 pikseli.
-    Liczna komórek histogramu była stała i wynosiła 9. Podobnie jak w Sekcji \ref{subsec:metoda-hog} zmieniano
+    Liczna komórek histogramu była stała i wynosiła 9. Podobnie jak w sekcji~\ref{subsec:metoda-hog} zmieniano
     rozmiary bloku. Dla rozmiaru komórki 5x5 pikseli, blok miał rozmiar 10x10 pikseli. Blok o wymiarach 14x14 pikseli
     był testowany wraz z wartością komórki 7x7 pikseli. Ostatni rozmiar komórki 9x9 pikseli był ustawiany wraz z
     rozmiarem bloku 18x18 pikseli.
@@ -2570,7 +2574,7 @@ Karolina Nurzyńska}
     osiągnięto dla parametru n = 5.
 
     Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
-    to wartość zadawalająca, gdyż w literaturze powyższy wskaźnik osiągał wartości około 5 lat. \cite{khryashchevGanin}
+    to wartość zadawalająca, gdyż w literaturze powyższy wskaźnik osiągał wartości około 5 lat~\cite{khryashchevGanin}.
     Udało się polepszyć algorytm bazowy. Modyfikacja zawierająca algorytm HOG oraz KNN polepszyła MAE z 10,66 lat do
     9,97 lat. W celu poprawy wyników należałoby zwiększyć bazę treningową. Z ponad 20000 obrazów z bazy tylko 2574
     brało udział w treningu. Wiele zdjęć było odrzuconych z powodu braku detekcji przez detektor oczu oraz nosa. W
@@ -2598,15 +2602,17 @@ Karolina Nurzyńska}
 
 
         \chapter*{Dokumentacja techniczna}
-
+        %todo na sam koniec
         \chapter*{Spis skrótów i symboli}
 
         \begin{itemize}
-            \item[FCM] \ang{Fuzzy C-means} - metoda klasteryzacji miękkiej (rozmytego).
-            \item[HOG] \ang{Histograms of Oriented Gradients} - metoda generacji deskryptora obrazu
-            \item[KNN] \ang{ k-nearest neighbors} - algorytm regresji lub klasyfikacji.
-            \item[MAE] \ang{Mean Absolute Error} - średni błąd bezwzględny
-            \item[BIF] \ang{biologically inspired features}
+            \item[FCM] - \ang{Fuzzy C-means} - metoda klasteryzacji miękkiej (rozmytego).
+            \item[HOG] - \ang{Histograms of Oriented Gradients} - metoda generacji deskryptora obrazu
+            \item[KNN] - \ang{k-Nearest Neighbors} - algorytm regresji lub klasyfikacji.
+            \item[MAE] - \ang{Mean Absolute Error} - średni błąd bezwzględny
+            \item[BIF] - \ang{Biologically Inspired Features} - detektor cech o charakterze biologicznym
+            \item[LBP] - \ang {Local Binary Patterns} - detektor cech (lokalnych wzorców binarnych)
+            \item[FPR] - \ang{False Positive Rate} - współczynnik fałszywych klasyfikacji, jako obiekt.
             %todo
         \end{itemize}
 
