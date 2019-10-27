@@ -435,7 +435,7 @@ Karolina Nurzyńska}
     Powyższe badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
 
     M.M. Dehshibi oraz A. Bastanfard w swojej pracy ,,A new algorithm for age recognition
-    from facial images'' analizują proporcję twarzy oraz ilość zmarszczek przy szacowaniu wieku~\cite{dehshibiBastard}.
+    from facial images'' analizują proporcje twarzy oraz ilość zmarszczek przy szacowaniu wieku.~\cite{dehshibiBastard} przy szacowaniu wieku
 
     Praca ,,Age Estimation from Face Images: Challenging
     Problem for Audience Measurement Systems'' autorstwa
@@ -579,7 +579,7 @@ Karolina Nurzyńska}
     \begin{figure}[h!]
         \centering
         \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
-        \caption{Przykład twarzy oświetlonej silnym (twarz po lewej) oraz miękkim światłem~\cite{oswietlenieTwarzy}.}
+        \caption{Przykład twarzy oświetlonej ostrym (twarz po lewej) oraz miękkim światłem~\cite{oswietlenieTwarzy}.}
         \label{fig.oswietlenieTwarzy}
     \end{figure}
     W tym przypadku ryzyko utraty szczegółów oświetlanej twarzy jest większe.
@@ -673,7 +673,7 @@ Karolina Nurzyńska}
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
     Najczęściej są to 3 lub 4 wartości~\cite{przestrzenieKolorow}.
     Pierwszą przestrzenią barw była CIEXYZ. Została ona stworzona w 1931 przez
-    Międzynarodowa Komisja ds. Oświetlenia (International Commission on Illumination).
+    Międzynarodową Komisję ds. Oświetlenia (International Commission on Illumination).
     Przestrzeń barw CIEXYZ została specjalnie stworzona, by odtworzyć sposób postrzegania barw przez ludzkie oko.
     Barwa jest opisywana w trzech współrzędnych trójchromatycznych X,Y,Z.
     Powyższe współrzędne są zależne od składowych - sprawności wizualnych czopków.
@@ -698,14 +698,14 @@ Karolina Nurzyńska}
 
     Na rysunku~\ref{fig.CIEXYZ} przedstawiono diagram chromatyczności reprezentujący przestrzeń barw CIEXYZ.
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=6cm]{Obrazy/CIEXYZ.jpg}
         \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy~\cite{diagramCIEXYZ}.}
         \label{fig.CIEXYZ}
     \end{figure}
 
-    Kolory mogą byc także odwzorowane przez przestrzeń barw CMYK.
+    Kolory mogą być także odwzorowane przez przestrzeń barw CMYK.
     Skrót CMYK oznacza odpowiednio:
     \begin{itemize}
         \item Cyan - odcień niebieskiego
@@ -714,8 +714,8 @@ Karolina Nurzyńska}
         \item K - key colour - kolor czarny
     \end{itemize}
     Barwa wynikowa powstaje poprzez mieszanie trzech kolorów - niebieskiego, karmazynowego oraz żółtego.
-    Mieszanie zachodzi według zasady syntezy subtraktywnej~\cite{przestrzenieKolorow}.
-    Synteza subtraktywna polega na mieszaniu kolorów przez odejmowanie promieniowań widzialnych różnych długości.
+    Mieszanie zachodzi według zasady syntezy subtraktywnej~\cite{przestrzenieKolorow},
+    która polega na mieszaniu kolorów przez odejmowanie promieniowań widzialnych różnych długości.
     Przykładem syntezy subtraktywnej jest np. mieszanie farb o różnych kolorach.
 
     Najczęściej barwy są reprezentowane przez przestrzeń barw RGB~\cite{przestrzenieKolorow}.
@@ -727,9 +727,9 @@ Karolina Nurzyńska}
         \item B - niebieskiego (z angielskiego Blue)
     \end{itemize}
     Barwy mieszane są poprzez syntezę addytywną .
-    W przeciwieństwie do syntezy subtraktywnej barwa wynikowa powstaje poprzez sumowanie wiązek światła widzialnego o
+    W przeciwieństwie do syntezy subtraktywnej, barwa wynikowa powstaje tu poprzez sumowanie wiązek światła widzialnego o
     różnych długościach~\cite{przestrzenieKolorow}.
-    Każdy piksel opisany za pomocą przestrzenie barw RGB ma trzy 8-bitowe wartości reprezentujący każdy kanał.
+    Każdy piksel opisany za pomocą przestrzeni barw RGB ma trzy 8-bitowe wartości reprezentujące każdy kanał.
     Spotykane
     są 12- lub 16-bitowe reprezentacje kanałów, jednak 8-bitowa jest najpopularniejsza.
     Dla 8-bitowych kanałów
@@ -738,7 +738,7 @@ Karolina Nurzyńska}
     Poprzez mieszanie jasności tych trzech kanałów
     można uzyskać szerokie spektrum barw (rysunek~\ref{fig.mieszanieKolorow}).
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=7cm]{Obrazy/mieszanieKolorow.jpg}
         \caption{Mieszanie kanałów RGB~\cite{colorMixing}.}
@@ -758,8 +758,8 @@ Karolina Nurzyńska}
     Każda
     wartość heksadecymalna odpowiada kolejno kanałowi R, G, B.
 
-    Obraz może też być przedstawiony stosując odcienie jednej barwy.
-    Taka obraz nazywa się obrazem monochromatycznym.
+    Obraz może też być przedstawiony za pomocą odcieni jednej barwy.
+    Taki obraz nazywa się obrazem monochromatycznym.
     Najczęściej stosowaną barwą w takich obrazach jest szarość~\cite{przestrzenieKolorow}.
 
     Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny~\cite{colorMixing}.
@@ -796,7 +796,7 @@ Karolina Nurzyńska}
     \subsection{Algorytm Haar Cascade}\label{subsec:algorytm-haar-cascade}
 
     Haar Cascade jest algorytmem służącym do wykrywania obiektów na obrazach.
-    Został stworzony przez Paula Viola oraz Michaela Jonesa w 2001 roku~\cite{violaJones}.
+    Został stworzony przez Paula Violę oraz Michaela Jonesa w 2001 roku~\cite{violaJones}.
 
     Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć.
     Zdjęcia są dzielone na
@@ -886,7 +886,7 @@ Karolina Nurzyńska}
     na rysunku~\ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
     (analogicznie I(B), I(C), I(D)) - (rysunek~\ref{fig.sumowanieOkna}).
 
-    W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum, zatem konieczne jest wykonanie
+    W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum, zatem do uzyskania wyniku konieczne jest wykonanie
     ośmiu operacji.
     Reprezentacja obrazu za pomocą obrazu scałkowanego znacznie zwiększa efektywność obliczania wartości w filtrze
     Haara.
@@ -984,18 +984,18 @@ Karolina Nurzyńska}
     prawdopodobieństwem błędu.
     Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (rysunek~\ref{fig.ConfusionMatrix}).
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
-        \includegraphics[width=11cm]{Obrazy/ConfusionMatrix.jpg}
+        \includegraphics[width=7cm]{Obrazy/ConfusionMatrix.jpg}
         \caption{Macierz pomyłek.}
         \label{fig.ConfusionMatrix}
     \end{figure}
 
-    Z macierzy\ref{fig.ConfusionMatrix} można odczytać czy klasyfikator poprawnie sklasyfikował dane testowe.
-    W macierzy użyto 4 pojęcia:
+    Z macierzy\ref{fig.ConfusionMatrix} można odczytać, czy klasyfikator poprawnie sklasyfikował dane testowe.
+    W macierzy zostały użyte cztery pojęcia:
     \begin{itemize}
-        \item TP (true positive) - poprawna klasyfikacja, jako obiekt
-        \item TN (true negative) - poprawna klasyfikacja, jako nie - obiekt
+        \item TP (true positive) - poprawna klasyfikacja jako obiekt
+        \item TN (true negative) - poprawna klasyfikacja jako nie - obiekt
         \item FP (false positive) - błędna klasyfikacja jako obiekt
         \item FN (false negative) - błędna klasyfikacja jako nie - obiekt
     \end{itemize}
@@ -1018,7 +1018,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Pierwsze okna posiadają klasyfikatory o słabszym TPR oraz FPR niż kolejne okna.
+    Pierwsze okna posiadają klasyfikatory o słabszym TPR oraz FPR niż kolejne.
     Oznacza to, że prawdopodobieństwo TPR w oknie $P_{x-1}$ jest mniejsze od tego w $P_{x}$.
     Natomiast prawdopodobieństwo FPR w oknie $P_{x-1}$ jest większe od tego w $P_{x}$.
     Ostatnie okna mają największy współczynnik TPR oraz najmniejszy FRP ze wszystkich.
@@ -1072,7 +1072,7 @@ Karolina Nurzyńska}
         \label{fig.wykrywanieStrefZmarszczkowych}
     \end{figure}
 
-    Strefy zmarszczkowe są na czole (Strefa ,,1''), w górnej części nosa (Strefa ,,2''), górnej części policzków
+    Strefy zmarszczkowe są umiejscowione na czole (Strefa ,,1''), w górnej części nosa (Strefa ,,2''), górnej części policzków
     (Strefa ,,4'' i ,,5'') oraz w okolicach powiek (Strefa ,,3'' i ,,6'').
     To właśnie te miejsca zostały uznane przez autorów książki ,,Age Estimation from Face Image using Wrinkle
     Features''~\cite{wrinkleFeatures} za najbardziej znaczące w detekcji wieku.
@@ -1100,7 +1100,7 @@ Karolina Nurzyńska}
     Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczu do linii brwi wynosi $0,4 * d$,
     natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
 
-    Na rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawione są współrzędne, które są pomocne w wyznaczaniu
+    Na rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawiono współrzędne, które są pomocne w wyznaczaniu
     stref zmarszczkowych.
 
     \begin{figure}
@@ -1207,7 +1207,8 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    Dla strefy 5 wyznacza sie wysokość (wzór~\ref{wzor.punktHD}) oraz szerokość na podstawie wzoru~\ref{wzor.punktWD}.
+    Dla strefy 5 wyznacza się wysokość (wzór~\ref{wzor.punktHD}) oraz
+    szerokość na podstawie wzoru (Wzór~\ref{wzor.punktWD}).
 
     \large
     \begin{equation}
@@ -1293,7 +1294,7 @@ Karolina Nurzyńska}
     %opis detektora z wiki angielskiej
     %moze troche opisu configu Cannego od Anielskiej
     Następnym krokiem algorytmu po wyznaczeniu stref zmarszczkowych jest wyodrębnienie zmarszczek.
-    W celu identyfikacji zmarszczek zastosowano detektor Canny.
+    W celu ich identyfikacji zastosowano detektor Canny.
     Detekcja krawędzi pozwala na wyodrębnienie wielu użytecznych cech z obrazu,
     ponadto znacznie zmniejsza ilość informacji do przetworzenia przez algorytm,
     który wyodrębnia cechy z obrazu.
@@ -1303,7 +1304,7 @@ Karolina Nurzyńska}
     Oprócz samej implementacji algorytmu jego twórca zaprezentował teorię obliczeniową,
     która wyjaśnia działanie tej metody. Ponadto Canny zauważył,
     że wymagania dotyczące implementacji detekcji krawędzi są podobne do siebie w wielu systemach wizyjnych.
-    W związku z powyższym jego algorytm może zostać skutecznie zastosowany w różnych systemach wizyjnych.
+    W związku z powyższym jego algorytm może zostać skutecznie zastosowany w różnych systemach tego typu.
     Poniżej przedstawiono najważniejsze zasady,
     które są niezbędne do dobrej detekcji krawędzi w opisywanym algorytmie:
     \begin{itemize}
@@ -1334,7 +1335,7 @@ Karolina Nurzyńska}
     Takie piksele są nadmiarowymi informacjami o obrazie oraz stanowią efekt uboczny przetwarzania obrazu
     przez matrycę cyfrową (rysunek~\ref{fig.lenkaSzumy}).
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=11cm]{Obrazy/lenkaSzumy.jpg}
         \caption{a) Obraz z nieznaczną ilością szumów b) Obraz ze znaczną ilością szumów~\cite{lenkaSzumy}.}
@@ -1346,7 +1347,7 @@ Karolina Nurzyńska}
     Redukcję szumów można uzyskać stosując filtr Gaussa.
     Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szumów.
     Filtr Gaussa może mieć różne wymiary, natomiast
-    Najczęściej stosowanym jest 5x5.
+    najczęściej stosowanym jest 5x5.
     Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu~\cite{Canny}.
     \subsection{Szukanie gradientów jasności}\label{subsec:szukanie-gradientów-jasności}
     Istotnym parametrem w wykrywaniu krawędzi jest gradient jasności.
@@ -1375,7 +1376,7 @@ Karolina Nurzyńska}
     lub $\Theta = 135^{\circ}$ stopni).
     Każdy piksel obrazu otrzymuje wartość gradientu (wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
-    W wyniku tego działania zostaje otrzymany obraz gradientowy~\cite{Canny}.
+    W wyniku tego działania otrzymuje się obraz gradientowy~\cite{Canny}.
     \subsection{Zastosowanie techniki zmniejszania grubości
     krawędzi}\label{subsec:zastosowanie-zmniejszania-grubości-krawędzi}
     Zmniejszanie grubości krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
@@ -1389,7 +1390,7 @@ Karolina Nurzyńska}
     Odczytana zostaje wartość gradientu oraz jego kierunek dla danego piksela.
     Następnie wartość gradientu porównuje się z wartościami gradientu dla
     dwóch sąsiednich pikseli.
-    Pierwszy sąsiedni piksel jest wyznaczony przed aktualny kierunek gradientu, a drugi przez kierunek przeciwny.
+    Pierwszy sąsiedni piksel jest wyznaczony przez aktualny kierunek gradientu, a drugi przez kierunek przeciwny.
     Jeśli wartość danego piksela jest największa spośród pikseli wzdłuż wyżej wymienionych linii,
     to dany piksel należy do najostrzejszej krawędzi~\cite{Canny}.
 
@@ -1474,7 +1475,7 @@ Karolina Nurzyńska}
     sprawdzenia zależności pomiędzy współczynnikiem zmarszczek, a wiekiem. Wyżej wymieniony proces nazywany jest
     także trenowaniem zbioru danych.
 
-    Autorzy algorytmu w celu analizy wyżej wygenerowanego zbioru danych wykorzystali algorytm grupowania -
+    Autorzy algorytmu w celu analizy uprzednio wygenerowanego zbioru danych wykorzystali algorytm grupowania -
     Fuzzy C-Means.
     W wyniku działania tego algorytmu otrzymuje się dane, dzięki którym na podstawie współczynnika zmarszczek można
     oszacować wiek~\cite{wrinkleFeatures}.
@@ -1494,7 +1495,7 @@ Karolina Nurzyńska}
     Jest również iteracyjnym procesem odkrywania danych w celu odnalezieniu relacji pomiędzy nimi.
 
     Odpowiedni algorytm grupowania i ustawienia parametrów (w tym parametrów
-    takie jak funkcja odległości lub liczba oczekiwanych grup)
+    takich jak funkcja odległości lub liczba oczekiwanych grup)
     zależą od zestawu danych i sposobu wykorzystania wyników.
     Dane nieraz muszą zostać przefiltrowane lub potrzebna jest zmiana parametrów grupowania w celu osiągnięcia
     zamierzonego efektu~\cite{clusterWstep}.
@@ -1518,7 +1519,7 @@ Karolina Nurzyńska}
     %- dokladny opis jak to dziala
     %    https://sci-hub.tw/10.1007/s12046-019-1166-1
     %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
-    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Została opisana ona w książce
+    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w książce
     ,,A Fuzzy Relative of the ISODATA Process and Its Use in Detecting Compact Well-Separated Clusters''.
 
     Klasteryzacja Fuzzy C-means dzieli zbiór X (wzór~\ref{wzor.zbiorX}):
@@ -1529,7 +1530,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     W parametrze algorytmu zostaje ustalona liczba grup c.
-    Każda grupa posiada charakterystyczną wartość nazywana centroidem $p_{j}\subset \mathbb{R}$.
+    Każda grupa posiada charakterystyczną wartość nazywaną centroidem $p_{j}\subset \mathbb{R}$.
     Jak zostało wspomniane na początku tego rozdziału, w algorytmie C-means zastosowana jest miękka klasteryzacja.
     Każdy element danych ma przypisywany wektor $U_{i}$ przynależności do grupy (wzór~\ref{wzor.wektorPrzynaleznosci}).
     \large
@@ -1548,8 +1549,7 @@ Karolina Nurzyńska}
         \label{wzor.zbiorCentroidow}
     \end{equation}
     \normalsize
-    W k-tym kroku algorytmu wyliczona jest macierz funkcji przynależności $U^{k} = {u_{ij}^{k}}$ (wzór~\ref{wzor
-    .funkcjaPrzynaleznosci}).
+    W k-tym kroku algorytmu wyliczona jest macierz funkcji przynależności $U^{k} = {u_{ij}^{k}}$ (wzór~\ref{wzor.funkcjaPrzynaleznosci}).
     \large
     \begin{equation}
         u_{ij}^{k} = \frac{1}{\sum_{k=1}^{c}\left ( \frac{\left \| x_{i} - p_{j}^{k} \right \|}{\left \|x_{i} - p_{k}^{k}  \right \|} \right )^{\frac{2}{m-1}}}
@@ -1589,8 +1589,8 @@ Karolina Nurzyńska}
     Po zakończeniu działania wyżej opisanego algorytmu zostaje wyliczony wektor przynależności $U$
     (wzór~\ref{wzor.wektorPrzynaleznosci}).
     %    U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
-    Zakładając, że suma wektora przynależności $U_{i}$, dla elementu $x_{i}$ jest opisana
-    wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
+    Suma wektora przynależności $U_{i}$, dla elementu $x_{i}$ jest opisana
+    Wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
     \large
     \begin{equation}
         \sum_{j=0}^{j=c} u_{ij}=1
@@ -1598,7 +1598,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie c oznacza liczbę klastrów.
-    Element $x_{i}$ będzie należał do klastru k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
+    Element $x_{i}$ będzie należał do klastra k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
 
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
     Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wrinkle feature
@@ -1620,7 +1620,7 @@ Karolina Nurzyńska}
     , gdzie $A_{c}$ to rzeczywisty wiek osoby z obrazu c, który należy do klastru j.
     Natomiast $N_{j}$ to liczba zdjęć zaklasyfikowanych do klastru j.
 
-    W powyższym akapicie został opisany algorytm trenowania, który generuje n centroidów, które reprezentują każdą
+    W powyższym akapicie został opisany algorytm trenowania, który generuje n centroidów, reprezentujących każdą
     grupę. Natomiast osobnym etapem jest szacowanie wieku. Należy podkreślić, że zdjęcia do testowania algorytmu szacowania wieku
     pochodzą z innej bazy obrazów niż obrazy wykorzystane w treningu. Ma to na celu eliminację błędów w testowaniu algorytmu.
     %    Każdy centroid posiada parametr
@@ -1643,8 +1643,8 @@ Karolina Nurzyńska}
         \label{wzor.szacowanyWiek}
     \end{equation}
     \normalsize
-    , gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów.
-    Natomiast $P_{aj}$ jest średnim wiekiem dla j-tego centroida.
+    , gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów,
+    natomiast $P_{aj}$ jest średnim wiekiem dla j-tego centroida.
     %    Zbiór zdjęć użytych do treningu wynosi około 22000.
     % opisac wraz z przykladem moze jakis rysuneczek.
 
@@ -1701,11 +1701,11 @@ Karolina Nurzyńska}
     Z kolei Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
     Liczenie jest dokonywane tylko w pewnych obszarach obrazów.
     Metoda HOG została wymyślona i opisana w 1982 przez Roberta K. McConella.
-    Robert K. McConell pracował w ówczesnych czasach dla firmy Wayland Research Inc.,
+    McConell pracował w tamtym czasie dla firmy Wayland Research Inc.,
     a opis jego metody został zawarty w patencie ,,Method of and apparatus for pattern recognition''~\cite{patentHOG}.
     Jednak jego metoda została po raz pierwszy zaimplementowana dopiero w 2005 roku przez Navneeta Dalala i Billa Triggsa~\cite{hogZabojady}
     z francuskiego instytutu zajmującego się badaniami w zakresie informatyki i automatyki
-    (INRIA - Institut national de recherche en informatique et en automatique).
+    (INRIA - Institut National de Recherche en Informatique et en Automatique).
     Metoda McConella została wtedy zastosowana do detekcji pieszych na zdjęciach.
     Później metoda została rozszerzona o wykrywanie ludzi w filmach wideo,
     ponadto później stosowano ją także do wykrywania zwierząt oraz pojazdów na zdjęciach.
@@ -1743,9 +1743,9 @@ Karolina Nurzyńska}
         \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu~\cite{hogOpenCv}.}
         \label{fig.komorkiHoga}
     \end{figure}
-    Warto wspomnieć, że w wielu metodach generujących deskryptory pierwszą fazą jest korekcja luminacji.
+    Warto wspomnieć, że w wielu metodach generujących deskryptory pierwszą fazą jest korekcja luminancji.
     Jednak ten krok może zostać pominięty, gdyż w późniejszym kroku stosowana jest normalizacja,
-    która dokonuje korekcji luminacji cieni oraz świateł.
+    która dokonuje korekcji luminancji cieni oraz świateł.
     W kolejnej fazie muszą zostać wyznaczone gradienty jasności.
     Wyznaczenie gradientów jasności zostało szczegółowo opisane w sekcji~\ref{subsec:szukanie-gradientów-jasności}.
     W kolejnej fazie zostają wyznaczone histogramy gradientów dla każdej komórki.
@@ -1791,7 +1791,7 @@ Karolina Nurzyńska}
     dla powyższego przykładu), $A_{x}$ oznacza wartość kąta gradientu dla danego piksela (tak jak $10^{\circ}$
     dla powyższego przykładu), $A_{a}$ oznacza kąt dla komórki reprezentującej mniejszy kąt (tak jak $0^{\circ}$
     dla powyższego przykładu), $A_{b}$ oznacza kąt dla komórki reprezentującej większy kąt (tak jak $20^{\circ}$
-    dla powyższego przykładu), $G_{x}$ oznacza wartość gradientu dla danego piksela (tak jak 4 dla powyższego
+    dla powyższego przykładu), a $G_{x}$ oznacza wartość gradientu dla danego piksela (tak jak 4 dla powyższego
     przykładu).
     \large
     \begin{equation}
@@ -1819,7 +1819,7 @@ Karolina Nurzyńska}
     przedstawionego wyżej opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
     Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
     wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
-    Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, więc wektor $v$ będzie
+    Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, zatem wektor $v$ będzie
     miał długość $9x4$, czyli 36.
     L2-norm dla wektora $v$ jest obliczane według wzoru~\ref{wzor.l2norm}
     \large
@@ -1847,7 +1847,7 @@ Karolina Nurzyńska}
     Jest nią odporność metody Histogram of Oriented Gradients na działanie przekształceń geometrycznych
     dzięki temu, że dokonuje działań na komórkach lokalnych.
     Przekształcenia geometryczne to działania, które przekształcają figury z jednej przestrzeni geometrycznej w drugą.
-    Przykładem przestrzeni geometrycznej jest przestrzeń euklidesowa czy przestrzeń rzutowa.
+    Przykładem przestrzeni geometrycznej są przestrzeń euklidesowa czy przestrzeń rzutowa.
     Ponadto działania na komórkach lokalnych pozwalają zmniejszyć efekt powstający przy ruchu pieszego.
     Z uwagi na powyższe zalety ta metoda nadaje się do detekcji ludzi na obrazach.
 
@@ -1939,7 +1939,7 @@ Karolina Nurzyńska}
     Algorytm KNN (ang. k-Nearest Neighbor) to algorytm regresji
     nieparametrycznej używany w statystyce do
     prognozowania wartości pewnej zmiennej losowej. Został stworzony w roku 1970.
-    KNN tłumaczone jest na język polski, jako algorytm k- najbliższych sąsiadów.
+    KNN tłumaczone jest na język polski jako algorytm k- najbliższych sąsiadów.
     %    Powyższy algorytm jest używany w regresji oraz klasyfikacji.
     %    W wyniku działania algorytmu KNN do klasyfikacji obiekt zostaje sklasyfikowany do jednej z klas.
     %    Natomiast w regresji
@@ -1955,13 +1955,13 @@ Karolina Nurzyńska}
     Przykładowo taką jedną obserwację może tworzyć klasa określająca wiek danej osoby, a wektorem może być ilość
     zmarszczek.
 
-    Natomiast zbiór uczący będzie posiadał n powyższych obserwacji na podstawie których można wywnioskować, do jakiej
+    Natomiast zbiór uczący będzie posiadał n powyższych obserwacji, na podstawie których można wywnioskować, do jakiej
     klasy będzie zaliczana obserwacja testowa. Obserwacja testowa to obserwacja, która posiada wektor zmiennych
     objaśniających i może zostać zaliczona do danej klasy za pomocą algorytmu KNN.
     Wracając do powyższego przykładu, obserwacja testowa będzie zawierała tylko wektor określający ilość zmarszczek.
-    Natomiast algorytm KNN przypisze powyższą obserwację do klasy (wieku).
+    Natomiast algorytm KNN przypisze tę obserwację do klasy (wieku).
     Przypisywanie do danej klasy jest realizowane przez ocenę podobieństwa obserwacji testowej do zbioru uczącego.
-    Ocena podobieństwa jest zrealizowana poprzez obliczanie odległości pomiędzy wektorami zmiennych
+    Ocena podobieństwa jest realizowana poprzez obliczanie odległości pomiędzy wektorami zmiennych
     objaśniających~\cite{knnOpis}.
 
     Przykładowymi miarami odległości są:
@@ -1982,7 +1982,7 @@ Karolina Nurzyńska}
     Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
     $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
 
-    Odległość pomiędzy dwoma wektorami w mierze Manhattan jest opisana wzorem~\ref{wzor.manhattan}
+    W mierze Manhattan odległość pomiędzy dwoma wektorami jest opisana Wzorem~\ref{wzor.manhattan}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\sum_{i=1}^{c}\left |n(i)-m(i)\right |
@@ -1990,10 +1990,10 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
-    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
+    Z kolei $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
     $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
 
-    Odległość pomiędzy dwoma wektorami w mierze Czebyszewa jest opisana wzorem~\ref{wzor.manhattan}
+    Miara Czebyszewa opisuje odległość pomiędzy dwoma wektorami zgodnie z Wzorem~\ref{wzor.manhattan}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\max_{i=1:n}( \left |n(i)-m(i) \right |)
@@ -2001,8 +2001,8 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
-    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
-    $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
+    $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
+    $\overrightarrow{m}$, natomiast $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
 
     Odległość pomiędzy dwoma wektorami w mierze Minkowskiego jest opisana wzorem~\ref{wzor.minkowski}
     \large
@@ -2018,10 +2018,10 @@ Karolina Nurzyńska}
     Parametr $p$ nazywany jest dystansem Minkowskiego.
     %normalizacja i standaryzacja
 
-    W celu zmniejszenia błędów klasyfikacji w algorytmie KNN może być zastosowana standaryzacja lub normalizacja danych.
+    W celu zmniejszenia błędów klasyfikacji w algorytmie KNN może zostać zastosowana standaryzacja lub normalizacja danych.
     Zastosowanie wyżej wymienionych technik pozwala na zmniejszenie dominacji wartości wektorów, których wartość jest
     znacznie większa lub mniejsza od ogólnej średniej. Przykładowo, przy założeniu, że
-    wartością objaśniającą byłaby długość wyrażona w metrach i średnia powyższej wartości w całym zbiorze uczącym
+    wartością objaśniającą byłaby długość wyrażona w metrach i średnia tej wartości w całym zbiorze uczącym
     wyniosłaby 1 m,
     to dominującą wartością w tym zbiorze byłaby np. wartość 100 metrów.
 
@@ -2038,8 +2038,8 @@ Karolina Nurzyńska}
     objaśniającej, $i$ jest elementem wektora ${v}_{u}$, $m({v}_{u})$ jest średnią elementów wektora
     ${v}_{u}$. Natomiast $\sigma({v}_{u})$ jest odchyleniem standardowym elementów wektora ${v}_{u}$.
 
-    Normalizacja generuje wartości elementów wektorów ze zbioru uczącego, tak aby powyższe wartości były z przedziału
-    od 0 do 1 (wzór~\ref{wzor.normalizacja}).
+    Normalizacja generuje wartości elementów wektorów ze zbioru uczącego, tak aby powyższe wartości mieściły się w przedziale
+    od 0 do 1 (Wzór~\ref{wzor.normalizacja}).
     \large
     \begin{equation}
     {v}
@@ -2052,7 +2052,7 @@ Karolina Nurzyńska}
     wektora ${v}_{u}$. Natomiast $\min({v}_{u})$ minimalną wartość spośród elementów
     wektora ${v}_{u}$.
 
-    Powyżej zostały objaśnione terminy i idea algorytmu KNN. W tym akapicie zostanie przedstawiony sam algorytm.
+    Powyżej zostały objaśnione terminy i idea algorytmu KNN. W kolejnym akapicie zostanie przedstawiony sam algorytm.
     Tak jak zostało opisane wyżej - algorytm otrzymuję zbiór uczący zawierający obserwację. Następnie zbiór uczący
     może być standaryzowany lub normalizowany. Ponadto algorytm otrzymuje parametr $k$.
     W celu wywnioskowania, do której klasy należy obserwacja testowa zawierająca wektor $V_{i}$, szukanych jest $k$
@@ -2069,7 +2069,7 @@ Karolina Nurzyńska}
     Na rysunku~\ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy ,,A'' oraz klasy
     ,,B''. Ponadto na środku rysunku~\ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
     sklasyfikowany do jednej z wyżej wymienionych klas.
-    Dla parametru ,,k'' równego 3 wektor testowy zostanie przypisany do klasy ,,B'', gdyż z 3 najbliższych wektorów 2
+    Dla parametru ,,k'' równego 3 wektor testowy zostanie przypisany do klasy ,,B'', gdyż z trzech najbliższych wektorów dwa
     należą do klasy ,,B''. W przypadku, gdy parametr ,,k'' będzie równy 7 wektor testowy zostanie przypisany do klasy
     ,,A''. Spośród siedmiu najbliższych sąsiadów, cztery wektory należą do klasy ,,A'', natomiast trzy - do klasy ,,B''.
 
@@ -2086,7 +2086,7 @@ Karolina Nurzyńska}
     W sekcji~\ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
 
     \chapter{Badania}\label{ch:badania}
-    W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz ich modyfikacji.
+    W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz jej modyfikacji.
     Sekcja ~\ref{sec:środowisko-pracy} prezentuje środowisko pracy, a dokładniej mówiąc wszystkie
     niezbędne narzędzia i akcesoria, które pozwoliły skutecznie przeprowadzić badania.
     W sekcji~\ref{sec:rozmiar-obrazu} przedstawiono wpływ rozmiaru danego obrazu na wyniki badań.
@@ -2122,7 +2122,7 @@ Karolina Nurzyńska}
     Wymiary obrazów z bazy UTKface mieszczą się w zakresie od 186 pikseli do 1300. Natomiast obszar wykrytej
     twarzy miał rozmiar od 165 do 450 pikseli.
     Sprawdzono wskaźnik zmarszczek wygenerowany za pomocą detektora Canny oraz HOG dla jednego zdjęcia ze zbioru
-    treningowego oraz kilku rozmiarów.
+    treningowego w kilku rozmiarach.
     Dla detektora Canny zmieniano wartość powiększenia zdjęcia od 0,8 do 1,20. Wartość parametru wrinkle feature nie uległa
     zmianie. Natomiast ponad i poniżej powyższego zakresu powiększenia detektor nie mógł wykryć i prawidłowo zlokalizować
     oczu.
@@ -2206,7 +2206,7 @@ Karolina Nurzyńska}
     być co najmniej 6,7 razy większa od długości bloku.
 
     W drugim kroku należało odnaleźć obszar, jaki zajmuje twarz w stosunku do wymiarów obrazu.
-    W tym celu porównano zdjęcia z bazy treningowej pod kątem wyżej wymienionych obszarów. Podobnie jak wyżej, przeprowadzono porównanie dla
+    W tym celu porównano zdjęcia z bazy treningowej pod kątem wyżej wymienionych obszarów. Podobnie jak w pierwszym kroku, przeprowadzono porównanie dla
     kilkudziesięciu zdjęć.
     Okazało się, że minimalny obszar zajęty przez twarz wyniósł 75 \% na szerokość całego obrazu oraz 80 \% na jego długość.
     W świetle powyższych danych należy stwierdzić, że obszar twarzy jest 1,33 razy węższy oraz 1,25 razy krótszy od obszaru całego obrazu.
@@ -2289,7 +2289,7 @@ Karolina Nurzyńska}
         \label{fig.grzywka}
     \end{figure}
 
-    Obraz~\ref{fig.grzywka} należy do 51-letniej osoby. Podobnie jak powyżej, przeprowadzono porównanie,
+    Obraz~\ref{fig.grzywka} przedstawia 51-letnią osobę. Podobnie jak powyżej, przeprowadzono porównanie,
     które ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
     Do wspomnianego celu obliczono średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 51 lat, który wyniósł:
 
@@ -2306,7 +2306,7 @@ Karolina Nurzyńska}
     \end{itemize}
 
     Różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku równego 51 lat
-    , a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (obraz~\ref{fig.grzywka}):
+    a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz~\ref{fig.grzywka}):
     \begin{itemize}
         \item Dla HOG-a: $2,95635-2,67452$, czyli 0,28183
         \item Dla Canny $0,3953-0,3267$, czyli 0,0686
@@ -2336,15 +2336,15 @@ Karolina Nurzyńska}
     Maksymalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,723 sekundy dla metody bazowej. Dla
     metody, w której została
     odjęta strefa druga było to 0,716 sekundy, dla metody HOG 0,954 sekundy,
-    natomiast dla metody HOG wraz z klasyfikacją KNN 0,956 sekundy.
+    natomiast dla metody HOG wraz z klasyfikacją KNN - 0,956 sekundy.
 
     Minimalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,286 sekundy dla metody bazowej.
     Dla metody, w której została odjęta strefa druga - 0,274 sekundy,
-    dla metody HOG 0,315 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN generacja trwała 0,342 sekundy.
+    dla metody HOG było to 0,315 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN generacja trwała 0,342 sekundy.
 
     Powyższe dane wykazują, że najszybciej generował wrinkle feature algorytm metody po odjęciu jednej strefy.
 
-    Warto porównać szybkość szacowania wieku na podstawie danego wrinkle feature.
+    Warto porównać również szybkość szacowania wieku na podstawie danego wrinkle feature.
 
     Średni czas szacowania wieku dla danego obrazu wyniósł 0,585 sekundy dla metody bazowej.
     Dla metody, w której została
@@ -2377,7 +2377,7 @@ Karolina Nurzyńska}
     %wykrywanie twarzy, oczu itd. tutaj beda zdjecia, jakie byly bledy
     %logi z dzialania
     \section{Skuteczność poszczególnych metod szacowania wieku}\label{sec:skuteczność-poszczególnych-metod-szacowania-wieku}
-    Do oceny skuteczności szacowania wieku poszczególnych metod potrzebna jest baza treningowa oraz testowa.
+    Do oceny skuteczności szacowania wieku za pomocą poszczególnych metod potrzebna jest baza treningowa oraz testowa.
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
     treningową oraz testową.
     Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
@@ -2395,8 +2395,8 @@ Karolina Nurzyńska}
     w zbiorze danych.\cite{schematTreningu}
 
     Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE wzór~\ref{wzor.mae}.
-    Dla każdej metody dokonano porównania stu zdjęć.
-    Natomiast każda metoda miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
+    Dla każdej metody dokonano porównania stu zdjęć,
+    natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
     podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
 
     %Skad wzielismy dane testowe
@@ -2445,14 +2445,14 @@ Karolina Nurzyńska}
     Dla parametrów m = 2,0, n = 100 , g = 10 oraz $\epsilon$=1e-5 błąd MAE wyniósł 12,75 roku.
     Następnie zmieniono m do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 roku
     i wyniosła 11,3.
-    Ostatnia testowana wartość parametru m wyniosła 5. W wyniku testu MAE wyniosło 11,67 roku.
+    Ostatnia testowana wartość parametru m wyniosła 5. W wyniku testu MAE wyniósł 11,67 roku.
 
     W kolejnym kroku przetestowano wpływ parametru $\epsilon$ dla metody oryginalnej.
     Dla parametrów: m = 2,0, n = 100,  $\epsilon$ = 1e-6 oraz g = 10, błąd MAE wyniósł 11,19 roku.
-    Zmiana parametru $\epsilon$ do 1e-7 spowodowała, że parametr MAE wyniósł 11,24 roku.
+    Zmiana parametru $\epsilon$ do 1e-7 spowodowała, że parametr MAE wzrósł do 11,24 roku.
     Dla wartości 1e-8 parametru $\epsilon$ błąd MAE okazał się mieć identyczną wartość 11,24 roku.
     Należy podkreślić, że liczba iteracji została zmieniona do 1000, ponieważ początkowa wartość
-    ograniczała osiągnięcie zadanej wartości $\epsilon$ zarówno
+    ograniczała osiągnięcie żądanej wartości $\epsilon$ zarówno
     dla wartości $\epsilon$ 1e-7, jak i dla 1e-8.
 
     Następnie testowano wpływ liczby grup. Dla m = 2,0, n = 100 , g = 20 oraz $\epsilon$=1e-5 błąd MAE wyniósł 10,97 roku.
@@ -2478,12 +2478,12 @@ Karolina Nurzyńska}
     zmienić parametr n do 1000.
     Najpierw przetestowano MAE dla wartości
     $\epsilon$ = 1e-6.
-    Wyniosła ona 13,65. Dla wartości $\epsilon$ = 1e-7 parametr MAE był równy 13,77. MAE wyniosło 12,31 roku dla
+    Wyniosła ona 13,65. Dla wartości $\epsilon$ = 1e-7 parametr MAE był równy 13,77. MAE wyniósł 12,31 roku dla
     $\epsilon$ = 1e-8.
 
     Na samym końcu przeanalizowano wpływ liczby klastrów na MAE. Najpierw zbadano wartość MAE dla 20 grup. MAE
-    wyniosło 13,62. Następnie podwyższono wartość do g = 50. Dla powyższej wartości MAE wyniosło 13,61 roku.
-    Ostatnią wartością było g = 100 lat. MAE wyniosło 13,74 roku.
+    wyniósł 13,62. Następnie podwyższono wartość do g = 50. Dla powyższej wartości uzyskano MAE 13,61 roku.
+    Ostatnią wartością było g = 100 lat. MAE wyniósł 13,74 roku.
 
     Minimalna wartość MAE dla opisywanej modyfikacji wyniosła 12,31 roku.
     Została ona osiągnięta dla m = 2,0, g = 10, $\epsilon$ = 1e-8, n = 1000
@@ -2492,32 +2492,32 @@ Karolina Nurzyńska}
     Kolejną przetestowaną modyfikacją była ta w której użyto algorytmu HOG.
     Podobnie jak w sekcjach~\ref{subsec:odjęcie-strefy-2} oraz~\ref{subsec:metoda-bazowa} modyfikowano parametry
     algorytmu Fuzzy C-means, jednak dodatkowo dokonano zmiany parametru HOG, Parametrem poddanym modyfikacji był rozmiar komórki.
-    Najpierw ustalono wymiary komórki 3x3 pikseli. Rozmiar okna wyniósł 6x6 pikseli, natomiast liczba komórek
+    Najpierw ustalono wymiary komórki na 3x3 pikseli. Rozmiar okna wyniósł 6x6 pikseli, natomiast liczba komórek
     histogramu była stała i wynosiła 9 dla wszystkich pomiarów. Dla komórki 6x6 pikseli rozmiar okna wynosił 12x12
-    pikseli, natomiast rozmiar okna wynosił 18x18 pikseli dla komórki równej 9x9 pikseli.
+    pikseli, natomiast przyjęto rozmiar okna 18x18 pikseli dla komórki równej 9x9 pikseli.
 
     W pierwszym teście ustalono następujące parametry Fuzzy C-means: m = 2,0, n = 100 oraz g = 10, n = 100 oraz $\epsilon$ = 1e-5.
-    W tym przypadku wartość MAE wyniosła 16,57. Dla wartości komórki równej 6x6 pikseli błąd MAE osiągnął wartość 16,44. Natomiast dla
+    W tym przypadku wartość MAE wyniosła 16,57 roku. Dla wartości komórki równej 6x6 pikseli błąd MAE osiągnął wartość 16,44. Natomiast dla
     wymiarów komórki równych 9x9 pikseli wartość MAE wyniosła 11,3. Należy podkreślić, że powyższa wartość MAE nie
     zmieniała się przy modyfikacji parametrów Fuzzy-C means.
 
     Przy zmianie parametru m do 3,0 wartość MAE wyniosła 16,82 roku dla komórki 3x3 pikseli, natomiast 16,73 roku dla
     komórki 6x6 pikseli. Dla komórki 3x3 pikseli zmiana parametru m do
     5,0 zmniejszyła MAE do 16,79 roku, natomiast w przypadku komórki 6x6 pikseli błąd MAE wzrósł do 16,89 roku.
-    Dla parametrów m = 2,0 n = 1000, $\epsilon$ 1e-6, g = 10 oraz komórki 3x3 pikseli MAE wyniosło 16,69 roku,
-    z kolei przy zmianie rozmiarów komórki do 6x6 pikseli MAE wyniosło 16,44 roku.
-    Dla zmiany parametru $\epsilon$ do 1e-7, MAE wyniosło 16,76 roku przy komórce o wymiarach 6x6 pikseli, a dla komórki
-    3x3 pikseli MAE wyniosło 16,49 roku.
-    Dla wartości $\epsilon$ = 1e-8 MAE osiągnęło 16,44 roku przy rozmiarach 6x6 pikseli, natomiast dla wymiarów 3x3
+    Dla parametrów m = 2,0 n = 1000, $\epsilon$ 1e-6, g = 10 oraz komórki 3x3 pikseli MAE wyniósł 16,69 roku,
+    z kolei przy zmianie rozmiarów komórki do 6x6 pikseli wielkość MAE wyniosła 16,44 roku.
+    Dla zmiany parametru $\epsilon$ do 1e-7, MAE wyniósł 16,76 roku przy komórce o wymiarach 6x6 pikseli, a dla komórki
+    3x3 pikseli uzyskano MAE 16,49 roku.
+    Dla wartości $\epsilon$ = 1e-8 MAE osiągnął 16,44 roku przy rozmiarach komórki 6x6 pikseli, natomiast dla wymiarów 3x3
     pikseli wartość MAE wyniosła 16,7 roku.
 
     Dla parametrów m = 2,0, n = 100 oraz g = 20, n = 100, $\epsilon$ = 1e-5 oraz rozmiaru komórki równej 3x3 pikseli
-    MAE było równe 16,49 roku, natomiast dla komórki rozmiarów 6x6 pikseli MAE wyniosło 16,77 roku.
-    Przy zmianie g do 50 MAE zmieniło wartość do 16,16 roku dla komórki 6x6 pikseli, podczas gdy przy zmianie rozmiaru komórki do
-    3x3 pikseli MAE było równe 15,89 roku. Dla
+    uzyskano MAE równy 16,49 roku, natomiast dla komórki rozmiarów 6x6 pikseli MAE wyniósł 16,77 roku.
+    Przy zmianie g do 50 MAE zmienił wartość do 16,16 roku dla komórki 6x6 pikseli, podczas gdy przy zmianie rozmiaru komórki do
+    3x3 pikseli MAE był równy 15,89 roku. Dla
     parametru g =
     100 oraz komórki 6x6 pikseli MAE
-    wyniosło 16,5 roku, tymczasem dla komórki o wymiarach 3x3 pikseli MAE było równe 15,45 roku.
+    wyniósł 16,5 roku, tymczasem dla komórki o wymiarach 3x3 pikseli uzyskano MAE 15,45 roku.
 
     Minimalna wartość MAE dla tej metody wyniosła 11,3 roku. Jak wyżej wspomniano, wartość ta nie była zależna od
     parametrów algorytmu Fuzzy C-means.
@@ -2528,20 +2528,20 @@ Karolina Nurzyńska}
     Ostatnią testowaną metodą była ta, która zawiera algorytm HOG, a do klasyfikacji i szacowania używa algorytmu KNN.
     Zmieniano parametr n dla algorytmu KNN, natomiast dla algorytmu HOG - rozmiary komórki.
     Parametr n był równy 1, 3 oraz 5. Rozmiary komórki miały wartość 5x5 pikseli, 7x7 pikseli oraz 9x9 pikseli.
-    Liczna komórek histogramu była stała i wynosiła 9. Podobnie jak w sekcji~\ref{subsec:metoda-hog} zmieniano
-    rozmiary bloku. Dla rozmiaru komórki 5x5 pikseli, blok miał rozmiar 10x10 pikseli. Blok o wymiarach 14x14 pikseli
+    Liczba komórek histogramu była stała i wynosiła 9. Podobnie jak w Sekcji \ref{subsec:metoda-hog} zmieniano
+    rozmiary bloku. Dla rozmiaru komórki 5x5 pikseli blok miał wymiary 10x10 pikseli. Blok o rozmiarze 14x14 pikseli
     był testowany wraz z wartością komórki 7x7 pikseli. Ostatni rozmiar komórki 9x9 pikseli był ustawiany wraz z
     rozmiarem bloku 18x18 pikseli.
 
-    Przy parametrze n = 1 oraz wymiarach komórki 5x5 MAE wyniosło 11,75 roku. Przy zmianie parametru do n = 3 MAE
-    zmniejszyło się do 11,65 roku. Dla ostatniej wartości KNN = 5 MAE było najmniejsze i osiągnęło wartość 11,38 roku.
+    Przy parametrze n = 1 oraz wymiarach komórki 5x5 MAE wyniósł 11,75 roku. Przy zmianie parametru do n = 3 MAE
+    zmniejszył się do 11,65 roku. Dla ostatniej wartości KNN = 5 MAE był najmniejszy i osiągnął wartość 11,38 roku.
 
     Następnym krokiem było badanie jakości szacowania wieku dla wartości komórki 7x7 pikseli.
-    MAE wyniosło 10,77 roku dla n = 1, 10,34 roku dla n = 3 oraz 10,56 roku dla n = 5.
+    MAE wyniósł 10,77 roku dla n = 1, 10,34 roku dla n = 3 oraz 10,56 roku dla n = 5.
 
-    Jako ostatnie badano komórki o wymiarach i 9x9 pikseli, a analiza przyniosła następujące rezultaty:
-    Dla n = 1 MAE wyniosło 10,15 roku. Zmiana parametru n do 3 zmieniła MAE do wartości 10,07 roku.
-    Dla ostatniej wartości n równej 5 MAE osiągnęło najmniejszą wartość w całym procesie testowania - 9,97 roku.
+    Jako ostatnie badano komórki o wymiarach 9x9 pikseli, a analiza przyniosła następujące rezultaty:
+    Dla n = 1 MAE wyniósł 10,15 roku. Zmiana parametru n do 3 zmieniła MAE do wartości 10,07 roku.
+    Dla ostatniej wartości n równej 5 MAE osiągnął najmniejszą wartość w całym procesie testowania - 9,97 roku.
 
     % za maly zbior danych testowych byc moze dlatego takie slabe wyniki?
     %troche logow z aplikacji
@@ -2550,35 +2550,35 @@ Karolina Nurzyńska}
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
     Dla metody bazowej zmiany poszczególnych parametrów algorytmu FCM przynosiły nieznaczne zmiany MAE, z wyjątkiem
-    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniosło 12,75 lat. Dla reszty
-    parametrów zmiany MAE były w zakresie od 10,66 lat do 11,67 lat. Największe polepszenie wskaźnika MAE uzyskano
+    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniósł 12,75 roku. Dla reszty
+    parametrów zmiany MAE mieściły się w zakresie od 10,66 do 11,67 roku. Największe polepszenie wskaźnika MAE uzyskano
     przy zmianie parametru g na 20 i więcej. Przy powyższej zmianie wartość MAE spadła poniżej 11 lat.
 
-    Dla modyfikacji, która polegała na odjęciu strefy nr 2 wyniki znacznie sie pogorszyły. Modyfikacja parametru m
-    pogarszała wskaźnik MAE od wartości 13,66 do 14,41 lat. Minimalna wartość MAE została osiągnięta dla parametrów
-    m = 2.0, n = 1000 $\epsilon$ = 1e-8 oraz g = 10. Warto zaznaczyć, że modyfikację liczbą klastrów nie polepszyła
+    Dla modyfikacji, która polegała na odjęciu strefy nr 2 wyniki znacznie się pogorszyły. Modyfikacja parametru m
+    pogarszała wskaźnik MAE do wartości od 13,66 do 14,41 roku. Minimalna wartość MAE została osiągnięta dla parametrów
+    m = 2.0, n = 1000 $\epsilon$ = 1e-8 oraz g = 10. Warto zaznaczyć, że modyfikacja liczby klastrów nie polepszyła
     MAE tak jak w przypadku testowania metody bazowej.
 
-    W metodzie zawierającą modyfikację z algorytmem HOG przetestowano 27 kombinacji parametrów - 3 razy więcej niż przy
+    W metodzie zawierającej modyfikację z algorytmem HOG przetestowano 27 kombinacji parametrów - 3 razy więcej niż przy
     testowaniu metody bazowej. W porównaniu do metody z odjętą strefą MAE uległo znacznemu pogorszeniu. Dla komórki o
-    rozmiarach 3x3 piksela parametry Fuzzy C-means nie dawały znacznej
-    poprawy rezultatów MAE. Wskaźnik MAE osiągał wartości od 15,45 do 16,82 lat. Podobne wartości były osiągane dla
-    komórki o rozmiarach 6x6 piksela. W tym przypadku MAE było w zakresie od 16,16 do 16,89 lat.
+    rozmiarach 3x3 pikseli parametry Fuzzy C-means nie dawały znacznej
+    poprawy rezultatów MAE. Wskaźnik MAE osiągał wartości od 15,45 do 16,82 roku. Podobne wartości były osiągane dla
+    komórki o rozmiarach 6x6 pikseli. W tym przypadku MAE mieściło się w zakresie od 16,16 do 16,89 roku.
 
     Ostatnia modyfikacja przyniosła poprawę w porównaniu do metody bazowej.
-    Dla rozmiaru komórki 5x5 piksela oraz dla zmiennego parametru n algorytmu KNN, MAE osiągało wartości od 11,38 do
-    11,75 lat. Warto zauważyć, że poprawa wskaźnika MAE następowała wraz ze wzrostem parametru n. Zmiana rozmiaru
-    komórki na 7x7 polepszyła wskaźnik MAE. Osiągał on wartości od 10,34 do 10,77 lat. W tym przypadku najlepszą
-    wartość MAE osiągnięto dla wartości n = 3, czyli wartości pośredniej, z pośród wszystkich przetestowanych.
-    Najlepsze wartości osiągnięto dla komórki o rozmiarach 9x9. Minimalną i zarazem najlepszą dla wszystkich testów
+    Dla rozmiaru komórki 5x5 pikseli oraz dla zmiennego parametru n algorytmu KNN błąd MAE osiągał wartości od 11,38 do
+    11,75 roku. Warto zauważyć, że poprawa wskaźnika MAE następowała wraz ze wzrostem parametru n. Zmiana rozmiaru
+    komórki na 7x7 polepszyła wskaźnik MAE. Osiągał on wartości od 10,34 do 10,77 roku. W tym przypadku najlepszą
+    wartość MAE spośród wszystkich przetestowanych osiągnięto dla wartości n = 3, czyli wartości pośredniej.
+    Najlepsze wartości osiągnięto dla komórki o rozmiarach 9x9 pikseli. Minimalną i zarazem najlepszą dla wszystkich testów wartość
     osiągnięto dla parametru n = 5.
 
     Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
-    to wartość zadawalająca, gdyż w literaturze powyższy wskaźnik osiągał wartości około 5 lat~\cite{khryashchevGanin}.
-    Udało się polepszyć algorytm bazowy. Modyfikacja zawierająca algorytm HOG oraz KNN polepszyła MAE z 10,66 lat do
-    9,97 lat. W celu poprawy wyników należałoby zwiększyć bazę treningową. Z ponad 20000 obrazów z bazy tylko 2574
-    brało udział w treningu. Wiele zdjęć było odrzuconych z powodu braku detekcji przez detektor oczu oraz nosa. W
-    związku z powyższym należałoby użyć lepszych, wyżej wymienionych detektorów lub znaleźć bazę, która zawiera
+    to wartość zadowalająca, gdyż w literaturze ten wskaźnik osiągał wartości około 5 lat. \cite{khryashchevGanin}
+    Natomiast udało się polepszyć algorytm bazowy. Modyfikacja zawierająca algorytm HOG oraz KNN poprawiła MAE z 10,66 do
+    9,97 roku. W celu poprawy wyników należałoby zwiększyć bazę treningową. Z ponad 20000 obrazów zamieszczonych w bazie tylko 2574
+    brało udział w treningu. Wiele zdjęć zostało odrzuconych z powodu braku rozpoznania przez detektor oczu oraz nosa. W
+    związku z powyższym należałoby użyć lepszych detektorów lub znaleźć bazę, która zawiera
     zdjęcia twarzy o lepszej jakości.
 
     %todo poprawic bibliografie
@@ -2602,7 +2602,188 @@ Karolina Nurzyńska}
 
 
         \chapter*{Dokumentacja techniczna}
-        %todo na sam koniec
+        Program został zrealizowany zarówno w programie Java oraz Matlab.
+
+        \section*{Funkcje Java}
+
+        [$dane\_trenigowe$] = generateDataFromImagesAuto()
+
+        \bigskip
+        Funkcja generuje dane treningowe według jednego z algorytmów
+
+        \bigskip
+        Dane wejściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                propertiesLoader & PropertiesLoader
+                & Klasa PropertiesLoader zawierająca ścieżkę do obrazów
+                treningowych oraz konfigurację algorytmów generujących wskaźnik zmarszczek \\ \hline
+            \end{tabular}
+        \end{table}
+
+        Dane wyjściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                $dane\_trenigowe$ & File & Plik zawierający dane wygenerowanych wskaźników zmarszczek\\ \hline
+            \end{tabular}
+        \end{table}
+
+        \clearpage
+        [$wiek$] = recognizeAge()
+
+        \bigskip
+        Funkcja szacująca wiek na podstawie danych wygenerowanych z algorytmu FCM oraz danego obrazu.
+        \bigskip
+
+        Dane wejściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                \multicolumn{1}{|p{4cm}|}{path} & \multicolumn{1}{p{4cm}|}{String} & \multicolumn{1}{p{4cm}|}{Ścieżka do obrazu, z którego szacowany jest wiek} \\ \hline
+                age2centers & String & Ścieżka do centroidów wygenerowanych z
+                algorytmu FCM                      \\ \hline
+            \end{tabular}
+        \end{table}
+
+
+        Dane wyjściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                $wiek$ & int & Szacowany wiek
+                treningowych oraz
+                konfigurację algorytmów treningowych \\ \hline
+            \end{tabular}
+        \end{table}
+
+        \section*{Funkcje Matlaba}
+
+        [$age2centers$] = clusterToFuzzyCMeans()
+
+        \bigskip
+        Funkcja generujące centroidy z wykorzystaniem algorytmu Fuzzy C-means na
+        podstawie danych z treningu (wygenerowane za pomocą funkcji generateDataFromImagesAuto())
+        \bigskip
+
+        Dane wejściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                $dane\_treningowe$ & File & Dane z treningu
+                wygenerowane za pomocą funkcji generateDataFromImagesAuto() \\ \hline
+            \end{tabular}
+        \end{table}
+
+
+        Dane wyjściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                $age2centers$ & File &
+                Centroidy niezbędne do szacowania wieku w funkcji recognizeAge() \\ \hline
+            \end{tabular}
+        \end{table}
+
+        [$wiek\_szacowany$] = knnHog59()
+
+        \bigskip
+        Funkcja trenująca i szacująca wiek dla metody HOG + KNN.
+
+        \bigskip
+
+        Dane wejściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                \multicolumn{1}{|p{4cm}|}{KnnHog59} & \multicolumn{1}{p{4cm}|}{File} & \multicolumn{1}{p{4cm}|}
+                {Plik z danymi treningowymi. Dane wygenerowane za pomocą algorytmu HOG, w którym komórka miała rozmiary
+                5x5 piksela} \\ \hline
+                TrainKnnHog59 & File & Plik z danymi testowymi \\ \hline
+            \end{tabular}
+        \end{table}
+
+
+        Dane wyjściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                $wiek\_szacowany$ & File &
+                Plik zawierający wiek szacowany dla danych testowych
+                dla parametrów k=1,3,5 algorytmu KNN   \\ \hline
+            \end{tabular}
+        \end{table}
+        \clearpage
+        [$wiek\_szacowany$] = knnHog79()
+
+        \bigskip
+        Funkcja trenująca i szacująca wiek dla metody HOG + KNN.
+
+        \bigskip
+
+        Dane wejściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                \multicolumn{1}{|p{4cm}|}{KnnHog79} & \multicolumn{1}{p{4cm}|}{File} & \multicolumn{1}{p{4cm}|}
+                {Plik z danymi treningowymi. Dane wygenerowane za pomocą algorytmu HOG, w którym komórka miała rozmiary
+                7x7 piksela} \\ \hline
+                TrainKnnHog79 & File & Plik z danymi testowymi \\ \hline
+            \end{tabular}
+        \end{table}
+
+
+        Dane wyjściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                $wiek\_szacowany$ & File &
+                Plik zawierający wiek szacowany dla danych testowych
+                dla parametrów k=1,3,5 algorytmu KNN   \\ \hline
+            \end{tabular}
+        \end{table}
+        \clearpage
+        [$wiek\_szacowany$] = knnHog99()
+
+        \bigskip
+        Funkcja trenująca i szacująca wiek dla metody HOG + KNN.
+
+        \bigskip
+
+        Dane wejściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                \multicolumn{1}{|p{4cm}|}{KnnHog79} & \multicolumn{1}{p{4cm}|}{File} & \multicolumn{1}{p{4cm}|}
+                {Plik z danymi treningowymi. Dane wygenerowane za pomocą algorytmu HOG, w którym komórka miała rozmiary
+                9x9 piksela} \\ \hline
+                TrainKnnHog99 & File & Plik z danymi testowymi \\ \hline
+            \end{tabular}
+        \end{table}
+
+
+        Dane wyjściowe:
+        \begin{table}[h!]
+            \centering
+            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+                \hline
+                $wiek\_szacowany$ & File &
+                Plik zawierający wiek szacowany dla danych testowych
+                dla parametrów k=1,3,5 algorytmu KNN   \\ \hline
+            \end{tabular}
+        \end{table}
         \chapter*{Spis skrótów i symboli}
 
         \begin{itemize}
@@ -2613,10 +2794,11 @@ Karolina Nurzyńska}
             \item[BIF] - \ang{Biologically Inspired Features} - detektor cech o charakterze biologicznym
             \item[LBP] - \ang {Local Binary Patterns} - detektor cech (lokalnych wzorców binarnych)
             \item[FPR] - \ang{False Positive Rate} - współczynnik fałszywych klasyfikacji, jako obiekt.
-            %todo
+            \item[TP] - \ang{True Positive} - poprawna klasyfikacja, jako obiekt
+            \item[TN] - \ang{True Negative} - poprawna klasyfikacja, jako nie - obiekt
+            \item[FP] - \ang{False Positive} - błędna klasyfikacja jako obiekt
+            \item[FN] - \ang{False Negative} - błędna klasyfikacja jako nie - obiekt
         \end{itemize}
-
-
 
 
         \chapter*{Zawartość dołączonej płyty}
@@ -2624,8 +2806,13 @@ Karolina Nurzyńska}
         Do pracy dołączona jest płyta CD z~następującą zawartością:
         \begin{itemize}
             \item praca w~formacie \texttt{pdf},
-            \item źródła programu,
-            \item zbiory danych użyte w~eksperymentach.
+            \item źródła programów .m i główna klasa generująca wrinkle feature w formacie .java
+            \item wersja elektroniczna pracy:
+            \begin{itemize}
+                \item wersja kompletna
+                \item wersja bez spisu treści, bibliografii, tabel, załączników oraz rysunków
+            \end{itemize}
+            \item wyniki działania programów
         \end{itemize}
 
         \listoffigures
