@@ -354,9 +354,9 @@ Karolina Nurzyńska}
     Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie
     rozpoznawania wieku z obrazu.
     Istnieją algorytmy przetwarzania obrazu, które oprócz wieku wyznaczają z pewnym prawdopodobieństwem płeć danej osoby.
-    Oprócz płci mogą one także wyznaczyć mine oraz czy dana osoba nosi okulary.
+    Oprócz płci mogą one także wyznaczyć minę oraz czy dana osoba nosi okulary.
 
-    Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc, tj.
+    Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc, takich jak
     klub nocny.
     Większość osób
     musi okazać ważny dowód osobisty,
@@ -394,58 +394,55 @@ Karolina Nurzyńska}
     Odtworzono pracę ,,Age Estimation from Face Image using Wrinkle Features'' \cite{wrinkleFeatures}
     , a następnie zaimplementowano kilka modyfikacji powyższego algorytmu w celu polepszenia wyników.
 
-    Zakres pracy jest następujący:
+    Zakres pracy obejmuje następujące zagadnienia:
     \begin{itemize}
         \item Implementacja oryginalnej metody
         \item Zaproponowanie kilku modyfikacji powyższej metody
         \item Opis algorytmów oraz zmian w stosunku do oryginalnej metody
-        \item Przeprowadzenie badań w celu roztrzygnięcia, który algorytm jest najlepszy
+        \item Przeprowadzenie badań w celu rozstrzygnięcia, który algorytm jest najskuteczniejszy w działaniu
         \item Wyciągnięcie wniosków z przeprowadzonych badań
     \end{itemize}
     \chapter{Metoda bazowa - wrinkle feature}\label{ch:metoda-bazowa---wrinkle-feature}
 
     Istnieje wiele metod wyznaczania wieku z obrazu twarzy.
-    W literaturze spotkano rozwiązania, w których wyznaczany
-    jest konkretny
-    wiek osoby przez algorytm lub przedział wiekowy.
+    W literaturze spotkano rozwiązania, w których wiek konkretnej osoby lub przedział wiekowy jest wyznaczany przez
+    algorytm.
     Jedna z pierwszych metod szacowania wieku opierała się na wyznaczaniu proporcji twarzy, a następnie na detekcji i
     interpretacji zmarszczek.
-    Była ona w stanie ze stu procentową poprawnością wyznaczyć czy dana osoba jest osobą
-    dorosłą lub
+    Była ona w stanie ze stuprocentową poprawnością wyznaczyć, czy dana osoba jest osobą
+    dorosłą, czy
     dzieckiem~\cite{kwonLobo}.
 
     W kolejnych latach algorytmy i techniki szacowania wieku były udoskonalane.
     Badano wpływ starzenia się osób na
     wygląd skóry.
-    Oprócz naturalnych zmian skóry pod wpływem starzenia się skóry należało uwzględnić także inne
-    czynniki.
-    Takimi czynnikami są min.
-    płeć, poziom stresu, ekspozycja na działanie środowiska zewnętrznego.
-    Powyższe metody zastosowano w pracy ,,Toward automatic simulation
+    Oprócz naturalnych zmian skóry pod wpływem jej starzenia się skóry należało uwzględnić także inne
+    czynniki, do których należą min.
+    płeć, poziom stresu, czy ekspozycja na działanie środowiska zewnętrznego.
+    Badania tego rodzaju opisano w pracy ,,Toward automatic simulation
     of aging effects on face images'' autorstwa A. Lanitis, Ch. J. Taylor oraz T. F. Cootes~\cite{lanitisTaylor}.
     Należy dodać, że w powyższej pracy stosowano trenowanie zbioru zdjęć.
     Trenowanie polega na wykryciu relacji pewnych cech twarzy do wieku osób.
 
-    W kolejnych latach pojawiło się podejście porównywania cech twarzy tej samej osoby w różnym wieku.
+    W kolejnych latach zaczęto przeprowadzać porównywania cech twarzy tej samej osoby w różnym wieku.
     Różnice w powyższych cechach posłużyły do zbudowania statystyki zmian cech twarzy wraz ze starzeniem się.
-    Powyższe podejście zostało zaprezentowane w pracy ,,Face verification across age progression''
+    Taka analiza została zaprezentowana w pracy ,,Face verification across age progression''
     autorstwa N. Ramanathan oraz R. Chellappa~\cite{ramanthanChelappa}.
 
     Rozwinięciem tego pomysłu była praca ,,Automatic age estimation based
-    on facial aging patterns'' autorstwa X. Geng, Z. Zhou i K. Smith-Miles~\cite{gengZhou}.
-    W tej pracy porównywano sekwencje wielu zdjęć twarzy jednej osoby.
+    on facial aging patterns'' X. Geng, Z. Zhou i K. Smith-Miles~\cite{gengZhou}.
+    W tym artykule porównywano sekwencje wielu zdjęć twarzy jednej osoby.
     Zdjęcia przestawiały twarz w różnym wieku.
     Powyższe badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
 
-    Praca ,,A new algorithm for age recognition
-    from facial images'' autorstwa M.M. \ Dehshibi oraz A. Bastanfard~\cite{dehshibiBastard} przy szacowaniu wieku
-    analizuje proporcje twarzy oraz ilość zmarszczek.
+    M.M. Dehshibi oraz A. Bastanfard w swojej pracy ,,A new algorithm for age recognition
+    from facial images'' analizują proporcję twarzy oraz ilość zmarszczek przy szacowaniu wieku.~\cite{dehshibiBastard} przy szacowaniu wieku
 
     Praca ,,Age Estimation from Face Images: Challenging
     Problem for Audience Measurement Systems'' autorstwa
     Vladimira Khryashcheva, Alexandra Ganina, Olgi Stepanovej oraz
-    Antona Lebedeva podsumowała techniki szacowania wieku~\cite{khryashchevGanin}.
-    Z podsumowania wynikło, że najczęściej stosuje się do wyodrębniania cech z twarzy BIF,
+    Antona Lebedeva zawiera podsumowanie technik szacowania wieku~\cite{khryashchevGanin}.
+    Wynika z niego, że do wyodrębniania cech z twarzy stosuje się BIF,
     czyli biologically inspired features.
     Powyższa metoda została zaprezentowana w książce ,,Human Age Estimation Using Bio-inspired Features''
     autorstwa Guodong Guo i in.
@@ -555,7 +552,7 @@ Karolina Nurzyńska}
     %    Każda z nich wyodrębnia z obrazu pewne cechy, które
     %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
 
-    Jednym z problemów jest nieodpowiednia poza.
+    Jednym z nich jest nieodpowiednia poza.
     Wiąże się to z różnymi ustawieniami twarzy wobec aparatu fotograficznego lub kamery.
     Twarz może być nachylona, przechylona lub odchylona.
     Inaczej mówiąc może mieć różne położenie w trzech wymiarach, a
@@ -607,8 +604,8 @@ Karolina Nurzyńska}
     %    Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
     %    zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
 
-    Jak widać metod wykrywania twarzy jest sporo.
-    Omówienie każdej z nich zajęłoby dużo czasu.
+    Jak widać metod wykrywania twarzy jest sporo,
+    a szczegółowe omówienie każdej z nich zajęłoby dużo czasu.
     Poniżej zostaną przytoczone dwie metody wykrywania twarzy.
     Dodatkowo zostanie omówiona metoda, która posłużyła do wykrywania twarzy w niniejszej pracy.
 
@@ -630,7 +627,7 @@ Karolina Nurzyńska}
     czy na każdym wybranym obszarze istnieją rysy twarzy.
     Rysy określa się przez ewaluację rzeźby topograficznej - wystających i wklęsłych elementów
     różnych regionów obszaru twarzy, poddanego uprzednio normalizacji.
-    Algorytm jest w stanie wykryć także obszar twarzy, gdy głowa jest przechylona
+    Algorytm jest w stanie wykryć także obszar twarzy także, gdy głowa jest przechylona
 
     %todo Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
     %todo https://sci-hub.tw/10.1007/s10462-018-9650-2
@@ -642,7 +639,7 @@ Karolina Nurzyńska}
     opisywaną metodą.
     Każda metoda wykrywania twarzy posiada wady.
     Jedną z tych wad jest problem wykrywalności twarzy przy nierównomiernym oświetleniu.
-    Problem pojawia się także, gdy na obrazie widoczny jest obszar skóry z poza twarzy np. z rąk.
+    Problem pojawia się także, gdy na obrazie widoczny jest obszar skóry spoza twarzy, np. z rąk.
     Warto zaznaczyć, że kolor twarzy na obrazie jest zależny od względnego kierunku oświetlenia.
     Obszar twarzy w omawianym algorytmie jest wykrywany poprzez normalizacje histogramu kolorów.
     Normalizacja jest potrzebna do redukcji wpływu luminancji na kolor.
@@ -2609,6 +2606,8 @@ Karolina Nurzyńska}
             \item[HOG] \ang{Histograms of Oriented Gradients} - metoda generacji deskryptora obrazu
             \item[KNN] \ang{ k-nearest neighbors} - algorytm regresji lub klasyfikacji.
             \item[MAE] \ang{Mean Absolute Error} - średni błąd bezwzględny
+            \item[BIF] \ang{biologically inspired features}
+            %todo
         \end{itemize}
 
 
