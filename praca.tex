@@ -515,7 +515,8 @@ Karolina Nurzyńska}
     Metoda oparta na nauce kieruje się wiedzą na temat wyglądu twarzy, a
     bardziej precyzyjnie chodzi o charakterystyczne cechy,
     dzięki którym na zdjęciu można wyodrębnić obszar twarzy.
-    Mowa tutaj o cechach takich jak kształt twarzy, kolor, miejsca o różnej jasności czy specyficzne krawędzie tworzone np przez
+    Mowa tutaj o cechach takich jak kształt twarzy, kolor, miejsca o różnej jasności czy specyficzne krawędzie
+    tworzone np. przez
     usta.
 
     W metodzie niezmienności cech wyszukuje się takie strukturalne cechy twarzy, które są widoczne w każdych warunkach
@@ -832,7 +833,7 @@ Karolina Nurzyńska}
     \end{figure}
 
     W celu poprawy efektywności sumowania pikseli stosowane są
-    rozwiązanie zwane w języku angielskim Summed-area table~\cite{violaJonesRealTimeOb}.Summed-area table jest również
+    rozwiązanie zwane w języku angielskim Summed-area table~\cite{computerVision}.Summed-area table jest również
     nazywana w literaturze Integral Image, czyli obrazem scałkowanym.
     Ideą obrazu scałkowanego jest,
     aby każdy obraz
@@ -992,7 +993,7 @@ Karolina Nurzyńska}
     \end{figure}
 
     Z macierzy\ref{fig.ConfusionMatrix} można odczytać, czy klasyfikator poprawnie sklasyfikował dane testowe.
-    W macierzy zostały użyte cztery pojęcia:
+    W macierzy zostały użyte cztery pojęcia~\cite{dataMiningAlgorithms}:
     \begin{itemize}
         \item TP (true positive) - poprawna klasyfikacja jako obiekt
         \item TN (true negative) - poprawna klasyfikacja jako nie - obiekt
@@ -1629,7 +1630,7 @@ Karolina Nurzyńska}
     do~\ref{sec:wyliczanieWrinkleFeature}:
     Algorytm szacowania wieku w pierwszej kolejności dokonuje detekcji twarzy, oczu, ust na danym obrazie $O_{i}$.
     Jeśli powyższe elementy zostały zidentyfikowane, wyznaczane są strefy zmarszczkowe,
-    a następnie zostaje wyliczony parametr wrinkle feature $F_{i}$.
+    a następnie zostaje wyliczony parametr wrinkle feature $F_{i}$~\cite{wrinkleFeatures}.
 
     Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
     według wzoru~\ref{wzor.wektorPrzynaleznosci}.
@@ -1800,7 +1801,9 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie $X_{b}$ oznacza wartość przydzieloną dla kąta o większej wartości (tak jak $20^{\circ}$
-    dla powyższego przykładu). Reszta zmiennych odpowiada zmiennym we wzorze~\ref{wzor.komorkaHistogramu1}.
+    dla powyższego przykładu).
+
+    Reszta zmiennych odpowiada zmiennym we wzorze~\ref{wzor.komorkaHistogramu1}.
     W przypadku, gdy kąt kierunku gradientu jest większy od $160^{\circ}$ to wartość danego gradientu jest
     przydzielana proporcjonalnie do komórki $160^{\circ}$ oraz $0^{\circ}$ zgodnie ze
     wzorem~\ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
@@ -1808,7 +1811,7 @@ Karolina Nurzyńska}
     Powyższa procedura jest powtarzana, a kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
     w komórkach histogramu. Końcowy efekt tej fazy dostarcza histogram reprezentujący komórkę. Wartości histogramu
     dla danej komórki reprezentują część wektoru deskryptora. Deskryptor składa się z n histogramów, gdzie n oznacza
-    liczbę komórek w danym obrazie.
+    liczbę komórek w danym obrazie~\cite{hogZabojady}.
 
     Kolejnym krokiem jest normalizacja bloków. Blok składa się z komórek i zazwyczaj ma wymiary 2x2 komórki.
     Gradienty jasności są czułe na zmiany oświetlenia na obrazie. Celem tej fazy algorytmu jest normalizacja oświetlania,
@@ -1822,6 +1825,7 @@ Karolina Nurzyńska}
     Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, zatem wektor $v$ będzie
     miał długość $9x4$, czyli 36.
     L2-norm dla wektora $v$ jest obliczane według wzoru~\ref{wzor.l2norm}
+
     \large
     \begin{equation}
         \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
@@ -2057,7 +2061,7 @@ Karolina Nurzyńska}
     może być standaryzowany lub normalizowany. Ponadto algorytm otrzymuje parametr $k$.
     W celu wywnioskowania, do której klasy należy obserwacja testowa zawierająca wektor $V_{i}$, szukanych jest $k$
     najbliższych wektorów (wektorów sąsiadów) ze zbioru uczącego (według kryterium odległości). Obserwacja testowa
-    zostaje przydzielona do klasy, która najczęściej występowała wśród $k$ sąsiednich obserwacji.
+    zostaje przydzielona do klasy, która najczęściej występowała wśród $k$ sąsiednich obserwacji~\cite{knnOpis}.
     Problem klasyfikacji algorytmem KNN jest pokazany na rysunku~\ref{fig.klasyfikacjaKNN}
     \begin{figure}
         \centering
@@ -2581,8 +2585,6 @@ Karolina Nurzyńska}
     związku z powyższym należałoby użyć lepszych detektorów lub znaleźć bazę, która zawiera
     zdjęcia twarzy o lepszej jakości.
 
-    %todo poprawic bibliografie
-
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \backmatter
@@ -2656,9 +2658,7 @@ Karolina Nurzyńska}
             \centering
             \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
                 \hline
-                $wiek$ & int & Szacowany wiek
-                treningowych oraz
-                konfigurację algorytmów treningowych \\ \hline
+                $wiek$ & int & Szacowany wiek z danego obrazu\\ \hline
             \end{tabular}
         \end{table}
 
@@ -2681,7 +2681,7 @@ Karolina Nurzyńska}
             \end{tabular}
         \end{table}
 
-
+        \clearpage
         Dane wyjściowe:
         \begin{table}[h!]
             \centering
@@ -2799,8 +2799,7 @@ Karolina Nurzyńska}
             \item[FP] - \ang{False Positive} - błędna klasyfikacja jako obiekt
             \item[FN] - \ang{False Negative} - błędna klasyfikacja jako nie - obiekt
             \item[INRIA] - \ang{Institut National de Recherche en Informatique et en Automatique} - francuski
-            instytut zajmujący się badaniami w za-
-            kresie informatyki i automatyki
+            instytut zajmujący się badaniami w zakresie informatyki i automatyki
         \end{itemize}
 
 
