@@ -1,0 +1,40 @@
+Dzień dobry!
+
+W załączniku przesyłam Pana pracę wraz z uwagami. Jest w tej pracy sporo chaosu, dlatego nim Pan zacznie wprowadzać poprawki proszę przejrzeć wszystkie uwagi. W związku z powtórzeniami w dalszej części pracy mogę odwołać wcześniejsze sugestie.
+
+Poniżej doatkowy komentarz:
+
+1. Brakuje Panu przecinków.
+
+2. Przegląd literatury:
+Super, że poszukał Pan jakie są podejścia do tego zagadnienia. Proponowałabym jednak, nie pisać o każdym rozwiązaniu osobnego akapitu. Tymbardziej, że przyjęło się, że akapit ma kilka zdań, a u Pana czasami jest tylko jedno zdanie. Może da się kilka prac związać jakąś myślą przewodnią w pojedynczy akapit? To pokazuje, że przemyślał Pan sprawę rozwoju w dziedzinie. Ale jak nie ma Pan na to pomysłu, to tak jak jest też jest dobre. Jedyne co bym sugerowałą, to dodać w pierwszym zdaniu referencję do wszystkich prac.
+
+3. Znajdowanie twarzy:
+Znowu świetny przegląd zagadnienia. Gorzej z jego opisem. Mam wrażenie, że opisuje Pan rzeczy, których Pan nie rozumie. A ta część ma pokazać, że Pan się zna na zagadnieniu. Dlatego sugerowałabym dokładnie opisać metody, z których Pan korzysta. Natomiast resztę metod proszę pozostawić tak jak jest, tylko proszę uważać na błędy rzeczowe. Bo to, że Panu wydaje się, że coś się tak nazywa, nie znaczy, że tak jest ;( Ja staram się wyłapywać takie diabełki, ale też mogą mi umknąć, bo sporo tego.
+
+I tutaj poza przeglądem dałabym opis metody - nie w odzielnym podpunkcie o angielskiej nazwie.
+
+4. Przestrzenie barw:
+Czy korzysta Pan z przestrzeni barw w swoich badaniach? Jak nie to pozbyłabym się tego opisu. Poza tym, jeżeli chce Pan o tym pisać wypadałoby dać podobny opis dla każdej z przestrzeni, a tak w CIEXYZ podaje Pan jakieś przeliczanie na Y, x, y nie wiadomo po co. W RGB pisze Pan o bitach. Tak się składa, że w pozostałych przestrzeniach też jest ten sam problem liczby bitów, a nie wspomina Pan o nim. Ogólnie panuje tutaj chaos i nic nie wnosi opis przez Pana zaproponowany.
+
+Proponuję dać wstęp do przestrzeni RGB i potem skupić sią na metodach przejścia na szarości. Tak swoją drogą dlaczego wybrał Pan metodę średnią? No i proszę adekwatnie zmienić tytuł podrozdziału.
+
+5. Proszę unikać stosowania nazw anglojęzycznych.
+
+6. Pana praca ma potencjał. Tylko nie umiem go z niej wydobyć. Sposób opisywania metod przez Pana jest bardzo zawiły i nie jasny. Ma Pan jakąś życzliwą duszę, która przeczytałaby Pana pracę. Zazwyczaj sprawdzają się mamy, babcie, rodzeństwo, itp. Chodzi o to, żeby przeczytał to ktoś i powiedział czy rozumie co Pan robił. Taka osoba nie musi znać się na informatyce, ale ma rozumieć co czyta, to zazwyczaj wystarczy, żeby uznać pracę za przyzwoitą.
+
+7. Proszę przejrzeć symbole we wzorach i zapewnić, że nie używa Pan w całej pracy tego samego symbolu do oznaczenia różnych rzeczy. Teraz x i i oznaczają wszystko.
+
+8. Proponuję pozbyć się zwrotów "W poniższym akapicie", "w powyższym wzorze" bo to się nie trzyma z opisaną przez Pana treścią w wielu miejscach.
+
+9. Nie rozumiem idei punktu 4.2, 4.3. Punkt 4.4 jest do usunięcia. Punkt 4.5 idzie jako pierwszy i po nim można coś wspomnieć o problemach, które opisał Pan w 4.2 i 4.3. Na początku tego rozdziału dodałabym sekcję, która opisze wszystkie szczegóły dotyczące bazy danych. Potem proszę umieścić sekcje o metodologii prowadzenia doświadczeń. Potem to co jest w 4.5. Tylko tam większość bieżącego opisu należy podać w formie tabelarycznej. Tak jak jest teraz jest nieczytelnie i dopisać wnioski - one są najważniejsze. W chwili obecnej nie wiem, która metoda jest najlepsze. Dlaczego Pan tak sądzi itp.
+
+10. W przykładowych rysunkach proszę ROI zaznaczyć kolorowych prostokątem. Biały prostokąt wśród krawędzi ginie i nie wiadomo o co chodzi.
+
+11. W podsumowaniu należy napisać najpierw co było celem pracy. Potem, że cel został osiągnięty w taki i taki sposób a następnie podsumować wnioski płynące z doświadczeń podkreślajac najlepsze wyniki. Należy też napisać co było Pana pomysłem na uzyskanie lepszych rezultató i czy to rzeczywiście pomogło. I to ma być napisane w kolejności podanej powyżej.
+
+12. Bibliografia
+- proponuje strony internetowe zastąpić odwołaniami do literatury książkowej
+- w przypadku odwołań do artykułów proszę uzupełnić dane bibliometryczne. Powinni być autorzy, tytył, żurnal, strony, wolumen, rok.
+
+Podsumowując, proszę przyłożyć się do opisu wyników i ich analizy. To jest najważniejsza część Pana pracy, a została potraktowana po macoszemu. Albo mało Pan zrobił doświadczeń albo opisał je niedostatecznie dokładnie. Nad tym trzeba popracować, bo to ma pokazać, że umie Pan rozwiązać stawiane przez Panem zadanie baawcze. Należy też dobrze opisać zadanie badawcze we wstępie. Następnie w przeglądzie należy zrezygnować z wątków pobocznych - przestrzenie barw, one nic nie wnoszą, a tylko zaciemniają opis. Proszę również mieć na uwadze, że praca jest techniczna, więc powinna ją charakteryzować precyzja wypowiedzi a nie bajkopisarstwo. No i niestety, w naukach technicznych każde słowo ma swoje znaczenie, proszę stosować je poprawnie.

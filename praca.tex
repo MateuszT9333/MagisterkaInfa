@@ -337,8 +337,7 @@ Karolina Nurzyńska}
 
     Istnieje wiele sposobów wyznaczania wieku.
     Większość metod skupia się na analizie tekstury twarzy.
-    Idąc dalej - z obrazu danej osoby lub jego części, np tułowia,
-    musi zostać wykryta twarz.
+    Idąc dalej - z obrazu danej osoby musi zostać wykryta twarz.
     Wykrycie twarzy na teksturze jest możliwe dzięki algorytmom rozpoznawaniu obrazu.
     Rozpoznawanie obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
     Mogą
@@ -354,7 +353,7 @@ Karolina Nurzyńska}
     Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie
     rozpoznawania wieku z obrazu.
     Istnieją algorytmy przetwarzania obrazu, które oprócz wieku wyznaczają z pewnym prawdopodobieństwem płeć danej osoby.
-    Oprócz płci mogą one także wyznaczyć minę oraz czy dana osoba nosi okulary.
+    Oprócz płci mogą one także wyznaczyć emocję oraz czy dana osoba nosi okulary.
 
     Z weryfikacją wieku danej osoby można się spotkać przed wejściem do niektórych miejsc, takich jak
     klub nocny.
@@ -375,7 +374,7 @@ Karolina Nurzyńska}
     Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
     opiera się w głównej mierze na sztucznej inteligencji~\cite{computerVision}.
     %275 wyrazow
-    \section{Cel i zakres pracy}\label{sec:cel-i-zakres-pracy}
+    \section{Cel i zakres pracy*}\label{sec:cel-i-zakres-pracy}
     %    Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
     %
     %    Zakres pracy obejmuje:
@@ -390,21 +389,23 @@ Karolina Nurzyńska}
     %    \section{Metoda a}
     %    \section{Metoda b}
     %    \section{Metoda wrinkle feature}
-    Celem niniejszej pracy jest zbadanie pewnego algorytmu szacowania wieku.
+    Celem niniejszej pracy jest zbadanie konkretnego algorytmu szacowania wieku.
     Odtworzono pracę ,,Age Estimation from Face Image using Wrinkle Features''~\cite{wrinkleFeatures}, a następnie zaimplementowano kilka modyfikacji powyższego algorytmu w celu polepszenia wyników.
 
     Zakres pracy obejmuje następujące zagadnienia:
     \begin{itemize}
-        \item Implementacja oryginalnej metody
-        \item Zaproponowanie kilku modyfikacji powyższej metody
-        \item Opis algorytmów oraz zmian w stosunku do oryginalnej metody
-        \item Przeprowadzenie badań w celu rozstrzygnięcia, który algorytm jest najskuteczniejszy w działaniu
-        \item Wyciągnięcie wniosków z przeprowadzonych badań
+        \item Implementacja oryginalnej metody.
+        \item Zaproponowanie kilku modyfikacji powyższej metody.
+        \item Opis algorytmów oraz zmian w stosunku do oryginalnej metody.
+        \item Przeprowadzenie badań w celu rozstrzygnięcia, który algorytm jest najskuteczniejszy w działaniu.
+        \item Wyciągnięcie wniosków z przeprowadzonych badań.
     \end{itemize}
-    \chapter{Metoda bazowa - wrinkle feature}\label{ch:metoda-bazowa---wrinkle-feature}
+    %todo co zawieraja kolejne rozdzialy
+
+    \chapter{Metoda bazowa - wskaźnik zmarszczek}\label{ch:metoda-bazowa---wrinkle-feature}
 
     Istnieje wiele metod wyznaczania wieku z obrazu twarzy.
-    W literaturze spotkano rozwiązania, w których wiek konkretnej osoby lub przedział wiekowy jest wyznaczany przez
+    W literaturze spotkano rozwiązania, w których wiek konkretnej osoby lub przedział wiekowy są wyznaczane przez
     algorytm.
     Jedna z pierwszych metod szacowania wieku opierała się na wyznaczaniu proporcji twarzy, a następnie na detekcji i
     interpretacji zmarszczek.
@@ -415,8 +416,8 @@ Karolina Nurzyńska}
     W kolejnych latach algorytmy i techniki szacowania wieku były udoskonalane.
     Badano wpływ starzenia się osób na
     wygląd skóry.
-    Oprócz naturalnych zmian skóry pod wpływem jej starzenia się skóry należało uwzględnić także inne
-    czynniki, do których należą min.
+    Oprócz naturalnych zmian skóry pod wpływem starzenia się skóry należało uwzględnić także inne
+    czynniki, do których należą między innymi
     płeć, poziom stresu, czy ekspozycja na działanie środowiska zewnętrznego.
     Badania tego rodzaju opisano w pracy ,,Toward automatic simulation
     of aging effects on face images'' autorstwa A. Lanitis, Ch. J. Taylor oraz T. F. Cootes~\cite{lanitisTaylor}.
@@ -441,8 +442,7 @@ Karolina Nurzyńska}
     Problem for Audience Measurement Systems'' autorstwa
     Vladimira Khryashcheva, Alexandra Ganina, Olgi Stepanovej oraz
     Antona Lebedeva zawiera podsumowanie technik szacowania wieku~\cite{khryashchevGanin}.
-    Wynika z niego, że do wyodrębniania cech z twarzy stosuje się BIF,
-    czyli biologically inspired features.
+    Wynika z niego, że do wyodrębniania cech z twarzy stosuje się BIF(ang. biologically inspired features).
     Powyższa metoda została zaprezentowana w książce ,,Human Age Estimation Using Bio-inspired Features''
     autorstwa Guodong Guo i in.
     Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP- local binary patterns.
@@ -461,11 +461,11 @@ Karolina Nurzyńska}
     Sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny} przedstawia technikę
     wykrywania zmarszczek znajdujących się w strefach.
     Wykryte zmarszczki
-    pozwalają na obliczenie wrinkle feature dla danej twarzy, zgodnie z opisem w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
-    W tym miejscu kończy się faza wyznaczania wrinkle feature dla danej osoby (rysunek~\ref{fig.faza1Algorytmu}).
+    pozwalają na obliczenie wskaźnika zmarszczek dla danej twarzy, zgodnie z opisem w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
+    W tym miejscu kończy się faza wyznaczania wskaźnika zmarszczek dla danej osoby (rysunek~\ref{fig.faza1Algorytmu}).
     Kolejna faza
     jest potrzebna do
-    znalezienia relacji pomiędzy wrinkle feature a wiekiem.
+    znalezienia relacji pomiędzy wskaźnikiem zmarszczek a wiekiem.
     Do tego celu należy zastosować algorytm trenujący, który
     został opisany w sekcji~\ref{sec:algorytmTrenowania}.
     Wynikiem algorytmu trenującego jest zbiór danych, który
@@ -1453,11 +1453,11 @@ Karolina Nurzyńska}
     Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (wzór~\ref{wzor.wrinkleFeature}).
     \large
     \begin{equation}
-        WF = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
+        WZ = W_{s1} + W_{s2} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
         \label{wzor.wrinkleFeature}
     \end{equation}
     \normalsize
-    , gdzie WF to wrinkle feature - parametr określający ilość zmarszczek dla danej osoby.
+    , gdzie WZ to wskaźnik zmarszczek - parametr określający ilość zmarszczek dla danej osoby.
 
     \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
     W celu skonstruowania programu wyznaczającego wiek na podstawie tekstury należy wcześniej zbadać zależność ilości
@@ -1602,9 +1602,9 @@ Karolina Nurzyńska}
     Element $x_{i}$ będzie należał do klastra k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
 
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
-    Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wrinkle feature
+    Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wskaźnika zmarszczek
     $F_{i}$.
-    W algorytmie Fuzzy C-means są grupowane dane zawierające wartości wrinkle feature $F_{i}$.
+    W algorytmie Fuzzy C-means są grupowane dane zawierające wartości wskaźnik zmarszczek $F_{i}$.
     Jak wiadomo z powyższego opisu algorytmu Fuzzy C-means, każdy element (w tym przypadku $F_{i}$) ma określony stopień
     przynależności do każdego klastra. Dany element $F_{i}$ będzie należał do klastra o największym stopniu
     przynależności. Każde zdjęcie jest grupowane według wyżej opisanego algorytmu.
@@ -1630,7 +1630,7 @@ Karolina Nurzyńska}
     do~\ref{sec:wyliczanieWrinkleFeature}:
     Algorytm szacowania wieku w pierwszej kolejności dokonuje detekcji twarzy, oczu, ust na danym obrazie $O_{i}$.
     Jeśli powyższe elementy zostały zidentyfikowane, wyznaczane są strefy zmarszczkowe,
-    a następnie zostaje wyliczony parametr wrinkle feature $F_{i}$~\cite{wrinkleFeatures}.
+    a następnie zostaje wyliczony parametr wskaźnik zmarszczek $F_{i}$~\cite{wrinkleFeatures}.
 
     Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
     według wzoru~\ref{wzor.wektorPrzynaleznosci}.
@@ -1676,13 +1676,13 @@ Karolina Nurzyńska}
     modyfikacją i po niej.
 
     \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
-    Przed modyfikacją metody bazowej parametr wrinkle feature był obliczany według wzoru~\ref{wzor.wrinkleFeature},
+    Przed modyfikacją metody bazowej parametr wskaźnika zmarszczek był obliczany według wzoru~\ref{wzor.wrinkleFeature},
     który jest umieszczony w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
 
-    Po modyfikacji parametr wrinkle feature oblicza się według wzoru~\ref{wzor.wrinkleFeature2}.
+    Po modyfikacji wskaźnik zmarszczek oblicza się według wzoru~\ref{wzor.wrinkleFeature2}.
     \large
     \begin{equation}
-        WF = W_{s1} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
+        WZ = W_{s1} + W_{s3} + W_{s4} + W_{s5} + W_{s6}
         \label{wzor.wrinkleFeature2}
     \end{equation}
     \normalsize
@@ -1886,7 +1886,7 @@ Karolina Nurzyńska}
     (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
     Następnie dla każdej wyżej wymienionej strefy został wyznaczony deskryptor. Dla strefy 1 deskryptor jest opisany
     zmienną $v_{1}$, dla strefy 3 zmienną $v_{3}$ i tak dalej.
-    Wrinkle feature jest obliczany ze wzoru~\ref{wzor.hogWrinkleFeature}:
+    Wskaźnik zmarszczek jest obliczany ze wzoru~\ref{wzor.hogWrinkleFeature}:
     \large
     \begin{equation}
         WF_{HOG} = \left \|v_{1}  \right \|_{1}+\left \|v_{3}  \right \|_{1}+\left \|v_{4}  \right \|_{1}+\left
@@ -1923,8 +1923,8 @@ Karolina Nurzyńska}
     %jak wyglada trenowanie danych, przeprowadzenie normalizacji itp (ze jest opcjonalne) wzory itp:
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
     % wybor parametru - k jak wplywa
-    Kolejna modyfikacja polegała na zmianie sposobu wyznaczania wrinkle feature.
-    W sekcji~\ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wrinkle feature,
+    Kolejna modyfikacja polegała na zmianie sposobu wyznaczania wskaźnika zmarszczek.
+    W sekcji~\ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wskaźnika zmarszczek,
     który polegał na sumowaniu deskryptorów z poszczególnych stref (wzór~\ref{wzor.hogWrinkleFeature}).
     W celu poprawy wyników uwzględniono deskryptory ze wszystkich stref.
     Dla każdego zdjęcia ze zbioru wyznaczana jest para danych - wiek oraz wektor.
@@ -2131,7 +2131,7 @@ Karolina Nurzyńska}
     zmianie. Natomiast ponad i poniżej powyższego zakresu powiększenia detektor nie mógł wykryć i prawidłowo zlokalizować
     oczu.
 
-    Dla detektora opartego na algorytmie HOG wrinkle feature był następujący:
+    Dla detektora opartego na algorytmie HOG wskaźnik zmarszczek był następujący:
     \begin{itemize}
         \item powiększenie 0,8: 11.944
         \item powiększenie 0,9: 11.813538
@@ -2140,7 +2140,7 @@ Karolina Nurzyńska}
         \item powiększenie 1,2: 11.125154
     \end{itemize}
 
-    Dla detektora opartego na algorytmie HOG wraz z klasyfikatorem KNN wrinkle feature przyjął poniższe wartości
+    Dla detektora opartego na algorytmie HOG wraz z klasyfikatorem KNN wskaźnik zmarszczek przyjął poniższe wartości
 
     \begin{itemize}
         \item powiększenie 0,8: [2.455685, 2.4238224, 2.3258488, 2.5089853, 2.22999]
@@ -2223,7 +2223,7 @@ Karolina Nurzyńska}
     Obszar twarzy powinien być 6,7 razy dłuższy od długości bloku, a jednocześnie 1,25 razy krótszy od długości obrazu.
     W związku z powyższym długość obrazu powinna być $6,7*1,25$, czyli w przybliżeniu 8,4 razy większa od długości bloku.
 
-    W celu obliczenia parametru wrinkle feature dla strefy 3 i 6 obrazy, które miały zbyt mały rozmiar zostały powiększone.
+    W celu obliczenia parametru wskaźnika zmarszczek dla strefy 3 i 6 obrazy, które miały zbyt mały rozmiar zostały powiększone.
 
     \section{Wykrywanie zmarszczek przez detektor Canny oraz Histogram of Oriented Gradients}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
     W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
@@ -2337,16 +2337,16 @@ Karolina Nurzyńska}
     Dla metody, w której została odjęta strefa druga, generacja trwała 0,465 sekund,
     dla metody HOG 0,543 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN - 0,543 sekundy.
 
-    Maksymalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,723 sekundy dla metody bazowej. Dla
+    Maksymalny czas generacji wskaźnika zmarszczek obrazu po wykryciu twarzy wyniósł 0,723 sekundy dla metody bazowej. Dla
     metody, w której została
     odjęta strefa druga było to 0,716 sekundy, dla metody HOG 0,954 sekundy,
     natomiast dla metody HOG wraz z klasyfikacją KNN - 0,956 sekundy.
 
-    Minimalny czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,286 sekundy dla metody bazowej.
+    Minimalny czas generacji wskaźnika zmarszczek obrazu po wykryciu twarzy wyniósł 0,286 sekundy dla metody bazowej.
     Dla metody, w której została odjęta strefa druga - 0,274 sekundy,
     dla metody HOG było to 0,315 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN generacja trwała 0,342 sekundy.
 
-    Powyższe dane wykazują, że najszybciej generował wrinkle feature algorytm metody po odjęciu jednej strefy.
+    Powyższe dane wykazują, że najszybciej wskaźnik zmarszczek był generowany przez algorytm metody po odjęciu jednej strefy.
 
     Warto porównać również szybkość szacowania wieku na podstawie danego wrinkle feature.
 
@@ -2808,7 +2808,7 @@ Karolina Nurzyńska}
         Do pracy dołączona jest płyta CD z~następującą zawartością:
         \begin{itemize}
             \item praca w~formacie \texttt{pdf},
-            \item źródła programów .m i główna klasa generująca wrinkle feature w formacie .java
+            \item źródła programów .m i główna klasa generująca wskaźnik zmarszczek w formacie .java
             \item wersja elektroniczna pracy:
             \begin{itemize}
                 \item wersja kompletna
