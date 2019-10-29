@@ -338,15 +338,14 @@ Karolina Nurzyńska}
     Istnieje wiele sposobów wyznaczania wieku.
     Większość metod skupia się na analizie tekstury twarzy.
     Idąc dalej - z obrazu danej osoby musi zostać wykryta twarz.
-    Wykrycie twarzy na teksturze jest możliwe dzięki algorytmom rozpoznawaniu obrazu.
-    Rozpoznawanie obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
-    Mogą
-    to być osoby, pojazdy, przedmioty itp. (rys.~\ref{fig.rozpoznawanieObiektow})
+    Wykrycie twarzy na obrazie jest możliwe dzięki algorytmom rozpoznawaniu obrazu.
+    Segmentacja obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
+    Mogą to być na przykład osoby, pojazdy, przedmioty itp. (rys.~\ref{fig.rozpoznawanieObiektow})
 
     \begin{figure}
         \centering
-        \includegraphics[width=11cm]{Obrazy/rozpoznawanieObiektow.jpeg}
-        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy~\cite{rozpoznawanieObiektow}.}
+        \includegraphics[width=11cm]{Obrazy/person-detection.png}
+        \caption{Przykład rozpoznawania osób na obrazie~\cite{rozpoznawanieObiektow}.}
         \label{fig.rozpoznawanieObiektow}
     \end{figure}
 
@@ -374,7 +373,7 @@ Karolina Nurzyńska}
     Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
     opiera się w głównej mierze na sztucznej inteligencji~\cite{computerVision}.
     %275 wyrazow
-    \section{Cel i zakres pracy*}\label{sec:cel-i-zakres-pracy}
+    \section*{Cel i zakres pracy}\label{sec:cel-i-zakres-pracy}
     %    Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
     %
     %    Zakres pracy obejmuje:
@@ -416,41 +415,36 @@ Karolina Nurzyńska}
     W kolejnych latach algorytmy i techniki szacowania wieku były udoskonalane.
     Badano wpływ starzenia się osób na
     wygląd skóry.
-    Oprócz naturalnych zmian skóry pod wpływem starzenia się skóry należało uwzględnić także inne
+    Oprócz naturalnych
+    zmian skóry pod wpływem jej starzenia sie należało uwzględnić także inne
     czynniki, do których należą między innymi
     płeć, poziom stresu, czy ekspozycja na działanie środowiska zewnętrznego.
-    Badania tego rodzaju opisano w pracy ,,Toward automatic simulation
-    of aging effects on face images'' autorstwa A. Lanitis, Ch. J. Taylor oraz T. F. Cootes~\cite{lanitisTaylor}.
+    Badania tego rodzaju opisano w pracy~\cite{lanitisTaylor} A. Lanitis, Ch. J. Taylor oraz T. F. Cootes.
     Należy dodać, że w powyższej pracy stosowano trenowanie zbioru zdjęć.
     Trenowanie polega na wykryciu relacji pewnych cech twarzy do wieku osób.
 
     W kolejnych latach zaczęto przeprowadzać porównywania cech twarzy tej samej osoby w różnym wieku.
     Różnice w powyższych cechach posłużyły do zbudowania statystyki zmian cech twarzy wraz ze starzeniem się.
-    Taka analiza została zaprezentowana w pracy ,,Face verification across age progression''
-    autorstwa N. Ramanathan oraz R. Chellappa~\cite{ramanthanChelappa}.
+    Taka analiza została zaprezentowana w pracy~\cite{ramanthanChelappa} N. Ramanathan oraz R. Chellappa.
 
-    Rozwinięciem tego pomysłu była praca ,,Automatic age estimation based
-    on facial aging patterns'' X. Geng, Z. Zhou i K. Smith-Miles~\cite{gengZhou}.
+    Rozwinięciem tego pomysłu była praca~\cite{gengZhou} X. Geng, Z. Zhou i K. Smith-Miles.
     W tym artykule porównywano sekwencje wielu zdjęć twarzy jednej osoby.
     Zdjęcia przestawiały twarz w różnym wieku.
     Powyższe badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
 
-    M.M. Dehshibi oraz A. Bastanfard w swojej pracy ,,A new algorithm for age recognition
-    from facial images'' analizują proporcje twarzy oraz ilość zmarszczek przy szacowaniu wieku.~\cite{dehshibiBastard} przy szacowaniu wieku
+    M.M. Dehshibi oraz A. Bastanfard w swojej pracy~\cite{dehshibiBastard} analizują proporcje twarzy oraz ilość
+    zmarszczek przy szacowaniu wieku.
 
-    Praca ,,Age Estimation from Face Images: Challenging
-    Problem for Audience Measurement Systems'' autorstwa
+    Praca~\cite{khryashchevGanin} autorstwa
     Vladimira Khryashcheva, Alexandra Ganina, Olgi Stepanovej oraz
-    Antona Lebedeva zawiera podsumowanie technik szacowania wieku~\cite{khryashchevGanin}.
+    Antona Lebedeva zawiera podsumowanie technik szacowania wieku.
     Wynika z niego, że do wyodrębniania cech z twarzy stosuje się BIF(ang. biologically inspired features).
-    Powyższa metoda została zaprezentowana w książce ,,Human Age Estimation Using Bio-inspired Features''
-    autorstwa Guodong Guo i in.
-    Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP- local binary patterns.
+    Powyższa metoda została zaprezentowana w książce~\cite{bif} Guodong Guo i in.
+    Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP (ang.local binary patterns)~\cite{lbp}.
 
 
-    Metoda bazowa została opisana w artykule ,,Age Estimation from Face Image using Wrinkle Features''
-    ~\cite{wrinkleFeatures}.
-    Wykrywanie wieku dzieli się na kilka faz.
+    W metodzie bazowej, która została opisana w artykule~\cite{wrinkleFeatures}, wykrywanie wieku dzieli się na kilka
+    faz.
     Na początku należy wykryć twarz.
     Zastosowany algorytm wykrywania został
     opisany w sekcji~\ref{sec:metodaWykrywaniaTwarzy}.
@@ -565,7 +559,8 @@ Karolina Nurzyńska}
     Różnorodność tych cech także wpływa na efektywność wykrywania twarzy.
 
     Ilość zmarszczeń na twarzy jest zmienna, w zależności od wyrazu mimicznego.
-    Przy różnych minach zmienia się kształt ust, a czasem pojawiają się ostre krawędzie wynikające z pracy mięśni twarzowych.
+    Przy różnych minach zmienia się kształt ust, a czasem w wyniku pracy mięśni uwydatniają się na twarzy ostre
+    krawędzie.
     Widoczne mogą być różne pofałdowania skóry.
 
     Zdarza się, że twarz zostaje częściowo przysłonięta przez jakiś inny obiekt.
@@ -606,7 +601,7 @@ Karolina Nurzyńska}
     %    zostaną później użyte w wykrywaniu obiektu lub obiektów na obrazie.
 
     Jak widać metod wykrywania twarzy jest sporo,
-    a szczegółowe omówienie każdej z nich zajęłoby dużo czasu.
+    a szczegółowe omówienie każdej z nich nie byłoby merytorycznie uzasadnione.
     Poniżej zostaną przytoczone dwie metody wykrywania twarzy.
     Dodatkowo zostanie omówiona metoda, która posłużyła do wykrywania twarzy w niniejszej pracy.
 
@@ -646,17 +641,18 @@ Karolina Nurzyńska}
     Normalizacja jest potrzebna do redukcji wpływu luminancji na kolor.
 
     %trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
-    Algorytm Haar Cascade jest najpopularniejszym algorytmem do wykrywania twarzy w bibliotece OpenCV. Właśnie ta
-    biblioteka była jednym z niezbędnym elementów programu przy wykrywaniu wieku z tekstury twarzy.
-    W związku z powyższym w wykrywaniu twarzy zastosowano algorytm Haar Cascade.
-    Omawiany algorytm został zaprezentowany w książce ,,Rapid Object Detection using a Boosted Cascade of Simple
-    Features'' w 2001 i składa się z trzech faz~\cite{violaJones}.
-    W pierwszej obraz wejściowy przekształcany jest na obraz scałkowany.
-    Następnie wykorzystywany jest algorytm do boostingu, który zmniejsza ilość klasyfikatorów tylko do tych
-    najbardziej istotnych.
-    W ostatniej fazie klasyfikatory łączone są w kaskady w celu przyspieszenia procesu wykrywania twarzy.
-    Znaczna większość metod wykrywania obiektów na obrazie (w tym twarzy) wymaga wstępnego przekształcenia obrazu do
-    skali szarości.
+    Algorytm Haar Cascade jest jedynym algorytmem do wykrywania twarzy zaimplementowanym w bibliotece OpenCV,
+    dlatego został wykorzystany w procesie badawczym.
+    Algorytm został bliżej przedstawiony w książce~\cite{violaJones} w 2001 i składa się z trzech podstawowych faz,
+    których dokładny opis znajduje sie w sekcji %todo.
+    %todo odwolanie do Haara
+    %    W pierwszej obraz wejściowy przekształcany jest na obraz scałkowany.
+    %    Następnie wykorzystywany jest algorytm do boostingu, który zmniejsza ilość klasyfikatorów tylko do tych
+    %    najbardziej istotnych.
+    %    W ostatniej fazie klasyfikatory łączone są w kaskady w celu przyspieszenia procesu wykrywania twarzy.
+    %    Znaczna większość metod wykrywania obiektów na obrazie (w tym twarzy) wymaga wstępnego przekształcenia obrazu do
+    %    skali szarości.
+    %    % todo --------------------------------------------------
 
     %    https://towardsdatascience.com/face-recognition-with-opencv-haar-cascade-a289b6ff042a
     %    przez kogo został zaproponowany...
@@ -669,59 +665,20 @@ Karolina Nurzyńska}
 
     %    opisac jak dokladnie zaimplementowano to u nas
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
-    \subsection{Konwersja do skali szarości oraz przestrzenie barw}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
+    \subsection{Przestrzenie barw oraz skala szarości}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
     %https://sci-hub.tw/10.1007/s10462-018-9650-2
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
     Najczęściej są to 3 lub 4 wartości~\cite{przestrzenieKolorow}.
-    Pierwszą przestrzenią barw była CIEXYZ. Została ona stworzona w 1931 przez
-    Międzynarodową Komisję ds. Oświetlenia (International Commission on Illumination).
-    Przestrzeń barw CIEXYZ została specjalnie stworzona, by odtworzyć sposób postrzegania barw przez ludzkie oko.
-    Barwa jest opisywana w trzech współrzędnych trójchromatycznych X,Y,Z.
-    Powyższe współrzędne są zależne od składowych - sprawności wizualnych czopków.
-    Czopki to światłoczułe receptory siatkówki ludzkiego oka~\cite{przestrzenieKolorow}.
-    Współrzędne X,Y,Z wyliczane są na podstawie trzech podstawowych barw R (czerwonej),
-    G (zielonej) i B (niebieskiej).
-    Współrzędne XYZ są często reprezentowane przez luminancję Y oraz współrzędne x, y chromatyczności.
-    Wyliczanie współrzędnych x, y przedstawiono na wzorach~\ref{wzor.chromX} oraz~\ref{wzor.chromY}.
-    \large
-    \begin{equation}
-        x = \frac{X}{X+Y+Z}
-        \label{wzor.chromX}
-    \end{equation}
-    \normalsize
-
-    \large
-    \begin{equation}
-        y = \frac{Y}{X+Y+Z}
-        \label{wzor.chromY}
-    \end{equation}
-    \normalsize
-
-    Na rysunku~\ref{fig.CIEXYZ} przedstawiono diagram chromatyczności reprezentujący przestrzeń barw CIEXYZ.
-
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=6cm]{Obrazy/CIEXYZ.jpg}
-        \caption{Przykład rozpoznawania obiektów na zdjęciu ulicy~\cite{diagramCIEXYZ}.}
-        \label{fig.CIEXYZ}
-    \end{figure}
-
-    Kolory mogą być także odwzorowane przez przestrzeń barw CMYK.
-    Skrót CMYK oznacza odpowiednio:
+    Do przestrzeni barw zaliczają się:
     \begin{itemize}
-        \item Cyan - odcień niebieskiego
-        \item Magenta - kolor karmazynowy
-        \item Yellow - kolor żółty
-        \item K - key colour - kolor czarny
+        \item CIEXYZ
+        \item CMYK
+        \item RGB
     \end{itemize}
-    Barwa wynikowa powstaje poprzez mieszanie trzech kolorów - niebieskiego, karmazynowego oraz żółtego.
-    Mieszanie zachodzi według zasady syntezy subtraktywnej~\cite{przestrzenieKolorow},
-    która polega na mieszaniu kolorów przez odejmowanie promieniowań widzialnych różnych długości.
-    Przykładem syntezy subtraktywnej jest np. mieszanie farb o różnych kolorach.
 
-    Najczęściej barwy są reprezentowane przez przestrzeń barw RGB~\cite{przestrzenieKolorow}.
+    W dziedzinie rozpoznawania obrazów najczęściej barwy są reprezentowane przez przestrzeń barw
+    RGB~\cite{przestrzenieKolorow}.
     Przestrzeń kolorów RGB składa się z trzech kanałów~\cite{kolory}:
-
     \begin{itemize}
         \item R - czerwonego (z angielskiego Red)
         \item G - zielonego (z angielskiego Green)
@@ -794,11 +751,10 @@ Karolina Nurzyńska}
     \normalsize
 
     W niniejszej pracy zastosowano konwersję za pomocą metody średniej.
-    \subsection{Algorytm Haar Cascade}\label{subsec:algorytm-haar-cascade}
+    \subsection{Metoda detekcji twarzy}\label{subsec:algorytm-haar-cascade}
 
     Haar Cascade jest algorytmem służącym do wykrywania obiektów na obrazach.
     Został stworzony przez Paula Violę oraz Michaela Jonesa w 2001 roku~\cite{violaJones}.
-
     Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć.
     Zdjęcia są dzielone na
     dwie kategorie - pozytywne oraz negatywne.
@@ -818,7 +774,7 @@ Karolina Nurzyńska}
     Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości
     W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny, co opisano w sekcji~\ref{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}.
 
-    Każde okienko zawiera białe oraz czarne prostokąty.
+    Filtry mają postać białych i czarnych prostokątów pogrupowanych w okna. %todo
     Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
     następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
     Opisywany algorytm ma zastosowanie w wykrywaniu krawędzi.
@@ -833,8 +789,8 @@ Karolina Nurzyńska}
     \end{figure}
 
     W celu poprawy efektywności sumowania pikseli stosowane są
-    rozwiązanie zwane w języku angielskim Summed-area table~\cite{computerVision}.Summed-area table jest również
-    nazywana w literaturze Integral Image, czyli obrazem scałkowanym.
+    rozwiązanie zwane w języku angielskim summed-area table~\cite{computerVision}. Summed-area table jest również
+    nazywana w literaturze integral image, czyli obrazem scałkowanym.
     Ideą obrazu scałkowanego jest,
     aby każdy obraz
     został
@@ -1133,7 +1089,7 @@ Karolina Nurzyńska}
     , gdzie $x_{6}$ to współrzędna z rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
     Natomiast $d$ jest odległością pomiędzy oczami (wzór~\ref{wzor.odlegloscPomiedzyOczami}).
 
-    Współrzędna y punktu A - wzór~\ref{wzor.punktYA}:
+    Współrzędną $y$ punktu A opisuje wzór~\ref{wzor.punktYA}:
 
     \large
     \begin{equation}
@@ -1294,14 +1250,11 @@ Karolina Nurzyńska}
     \section{Wykrywanie zmarszczek - detektor Canny}\label{sec:wykrywanie-zmarszczek---detektor-canny}
     %opis detektora z wiki angielskiej
     %moze troche opisu configu Cannego od Anielskiej
-    Następnym krokiem algorytmu po wyznaczeniu stref zmarszczkowych jest wyodrębnienie zmarszczek.
-    W celu ich identyfikacji zastosowano detektor Canny.
-    Detekcja krawędzi pozwala na wyodrębnienie wielu użytecznych cech z obrazu,
-    ponadto znacznie zmniejsza ilość informacji do przetworzenia przez algorytm,
-    który wyodrębnia cechy z obrazu.
-    Istnieje wiele detektorów krawędzi,
-    jednak detektor Canny jest jednym z najbardziej dokładnych i niezawodnych.
-    Metoda detekcji została opracowana przez Johna F. Canny w 1986 roku.
+    Następnym krokiem algorytmu po wyznaczeniu stref zmarszczkowych jest wyodrębnienie zmarszczek poprzez detekcję
+    krawędzi.
+    Istnieje wiele metod do tego celu,
+    jednak detektor Canny jest jedną z najbardziej dokładnych i niezawodnych, dlatego został zastosowany w toku badań.
+    Metoda ta została opracowana przez Johna F. Canny w 1986 roku.
     Oprócz samej implementacji algorytmu jego twórca zaprezentował teorię obliczeniową,
     która wyjaśnia działanie tej metody. Ponadto Canny zauważył,
     że wymagania dotyczące implementacji detekcji krawędzi są podobne do siebie w wielu systemach wizyjnych.
@@ -1316,6 +1269,7 @@ Karolina Nurzyńska}
         \item Brak redundantnych detekcji:
         Krawędź powinna być zlokalizowana jednokrotnie,
         a szum na obrazie nie powinien generować dodatkowych krawędzi.
+        %todo
     \end{itemize}
     W algorytmie detekcji Canny używa rachunku wariacyjnego.
     Rachunek wariacyjny to dziedzina analizy matematycznej, która
@@ -1381,10 +1335,10 @@ Karolina Nurzyńska}
     \subsection{Zastosowanie techniki zmniejszania grubości
     krawędzi}\label{subsec:zastosowanie-zmniejszania-grubości-krawędzi}
     Zmniejszanie grubości krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
-    Krawędzie wykryte za pomocą gradientu są rozmyte (nieostre).
-    Dzięki technice zmniejszania grubości krawędzi można odszukać na małym obszarze gradienty o największej wartości.
+    Krawędzie wykryte za pomocą gradientu są rozmyte.
+    Dzięki technice zmniejszania grubości można odszukać na małym obszarze gradienty o największej wartości
+    , które identyfikują najostrzejsze krawędzie.
     Wszystkie inne, o mniejszej wartości, są ignorowane.
-    Dzięki temu pozostawia się gradienty o największej wartości, które identyfikują najostrzejsze krawędzie.
     Algorytm operuje na obrazie gradientowym powstałym jako wynik działania algorytmu opisanego w sekcji~\ref{subsec:szukanie-gradientów-jasności}
     Działa on następująco:
 
@@ -1425,19 +1379,19 @@ Karolina Nurzyńska}
     Piksel może być albo biały albo czarny.
     Krawędzie można rozpoznać jako białe piksele, natomiast czarne piksele oznaczają brak krawędzi (rysunek~\ref{fig.mojaTwarzGray}).
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=11cm]{Obrazy/mojaTwarzGray.jpg}
-        \caption{a) Oryginalny obraz b) Obraz z wykrytymi krawędziami.}
+        \caption{a) Oryginalny obraz b) Obraz z wykrytymi krawędziami.} %todo musi byc nizej
         \label{fig.mojaTwarzGray}
     \end{figure}
 
-    Na rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które wyróżniają tło od twarzy.
+    Na rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które identyfikują owal twarzy.
     Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
     Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (sekcja~\ref{sec:wyznaczanieStref}),
     które identyfikują zmarszczki.
-    Ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek na twarzy danej
-    osoby.
+    W metodzie bazowej ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek
+    na twarzy danej osoby.
 
     Z każdej strefy zmarszczkowej obliczany jest stosunek ilości białych pikseli do wszystkich
     pikseli (wzór~\ref{wzor.wspolczynnikZmarszczek}).
@@ -1469,7 +1423,9 @@ Karolina Nurzyńska}
     zawierają dziesiątki tysięcy zdjęć.
     Zdjęcia są różnej jakości i nie każda baza zdjęć nadaje się do konkretnych badań~\cite{khryashchevGanin}.
     Przy realizacji tej pracy wykorzystana została baza UTKFace,
-    ponieważ w jej przypadku ścieżka pliku każdego obrazu zawiera informacje na temat rzeczywistego wieku.
+    ponieważ wszystkie zgrupowane w niej obrazy przedstawiają twarze w pozycji frontalnej. Dodatkowo
+    ścieżka pliku każdego obrazu zawiera informacje na temat rzeczywistego wieku, co pozwala w łatwy sposób
+    zweryfikować poprawność algorytmu.
     W związku z powyższym z każdego zdjęcia z tej bazy otrzymywano dwie informacje - rzeczywisty wiek danej osoby oraz
     współczynnik zmarszczek.
     Następnie dla całej bazy wygenerowano zbiór danych, który w dalszej kolejności był odpowiednio analizowany w celu
@@ -2226,7 +2182,8 @@ Karolina Nurzyńska}
     W celu obliczenia parametru wskaźnika zmarszczek dla strefy 3 i 6 obrazy, które miały zbyt mały rozmiar zostały powiększone.
 
     \section{Wykrywanie zmarszczek przez detektor Canny oraz Histogram of Oriented Gradients}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
-    W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji metodą Canny oraz Histogram of Oriented Gradients.
+    W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji zmarszczek metodą Canny oraz Histogram
+    of Oriented Gradients.
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
 
     Krawędzie związane tylko ze zmarszczkami są widoczne na obrazie~\ref{fig.dobryRyjek}
