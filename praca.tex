@@ -338,11 +338,11 @@ Karolina Nurzyńska}
     Istnieje wiele sposobów wyznaczania wieku.
     Większość metod skupia się na analizie tekstury twarzy.
     Idąc dalej - z obrazu danej osoby musi zostać wykryta twarz.
-    Wykrycie twarzy na obrazie jest możliwe dzięki algorytmom rozpoznawaniu obrazu.
+    Wykrycie twarzy na obrazie jest możliwe dzięki algorytmom segmentacji obrazu.
     Segmentacja obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
     Mogą to być na przykład osoby, pojazdy, przedmioty itp. (rys.~\ref{fig.rozpoznawanieObiektow})
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=11cm]{Obrazy/person-detection.png}
         \caption{Przykład rozpoznawania osób na obrazie~\cite{rozpoznawanieObiektow}.}
@@ -389,23 +389,39 @@ Karolina Nurzyńska}
     %    \section{Metoda b}
     %    \section{Metoda wrinkle feature}
     Celem niniejszej pracy jest zbadanie konkretnego algorytmu szacowania wieku.
-    Odtworzono pracę ,,Age Estimation from Face Image using Wrinkle Features''~\cite{wrinkleFeatures}, a następnie zaimplementowano kilka modyfikacji powyższego algorytmu w celu polepszenia wyników.
+    Odtworzono pracę ,,Age Estimation from Face Image using Wrinkle Features''~\cite{wrinkleFeatures}, a następnie poddano ją kilku
+    modyfikacjom.
 
     Zakres pracy obejmuje następujące zagadnienia:
     \begin{itemize}
-        \item Implementacja oryginalnej metody.
-        \item Zaproponowanie kilku modyfikacji powyższej metody.
+        \item Implementacja algorytmu z pracy~\cite{wrinkleFeatures}, w dalszej częsci pracy nazywany oryginalną metodą.
+        \item Zaproponowanie kilku modyfikacji oryginalnej metody.
         \item Opis algorytmów oraz zmian w stosunku do oryginalnej metody.
         \item Przeprowadzenie badań w celu rozstrzygnięcia, który algorytm jest najskuteczniejszy w działaniu.
         \item Wyciągnięcie wniosków z przeprowadzonych badań.
     \end{itemize}
-    %todo co zawieraja kolejne rozdzialy
+    %todo zweryfikowac czy to ma sens
+    W rozdziale~\ref{ch:metoda-bazowa---wrinkle-feature} zaprezentowano algorytm szacowania wieku oparty na oryginalnej metodzie.
+    W pierwszej sekcji~\ref{sec:metodaWykrywaniaTwarzy} skupiono się na metodach wykrywania twarzy wraz z opisem metody wykrywania w niniejszym
+    algorytmie.
+    Następnie w sekcji~\ref{sec:wyznaczanieStref} zaprezentowano sposób wyznaczania stref zmarszczkowych z oryginalnej metody.
+    W kolejnej sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny} przedstawiono sposób detekcji zmarszczek na twarzy implementowany
+    w oryginalnej metodzie.
+    W przedostatniej sekcji~\ref{sec:algorytmTrenowania} niniejszego rozdziału zaprezentowano sposób analizy % w pracy
+    zależności pomiędzy wskaźnikiem zmarszczek, a wiekiem
+    danej osoby.
+    W ostatniej sekcji~\ref{sec:grupowanieDanych} tego rozdziału przedstawiono algorytm grupowania danych niezbędny do oszacowania wieku.
+
+    W kolejnym rozdziale~\ref{ch:modyfikacje-metody-bazowej} opisuje 3 modyfikację oryginalnej metody.
+    Oprócz sposobu implementacji danych modyfikacji czytelnik zostaje zapoznany z teoretycznymi podstawami wykrywania zmarszczek za
+    pomocą metody HOG (ang. Histogram of Oriented Gradients) oraz szacowania wieku dzięki algorytmowi KNN (ang.  k-nearest neighbors).
+
+    W przedostatnim rozdziale~\ref{ch:badania} przedstawiono sposób relizacji badań oraz ich wyniki.
+    W ostatnim rozdziale~\ref{ch:podsumowanie} podsumowano niniejsza pracą.
 
     \chapter{Metoda bazowa - wskaźnik zmarszczek}\label{ch:metoda-bazowa---wrinkle-feature}
 
     Istnieje wiele metod wyznaczania wieku z obrazu twarzy.
-    W literaturze spotkano rozwiązania, w których wiek konkretnej osoby lub przedział wiekowy są wyznaczane przez
-    algorytm.
     Jedna z pierwszych metod szacowania wieku opierała się na wyznaczaniu proporcji twarzy, a następnie na detekcji i
     interpretacji zmarszczek.
     Była ona w stanie ze stuprocentową poprawnością wyznaczyć, czy dana osoba jest osobą
@@ -420,13 +436,11 @@ Karolina Nurzyńska}
     czynniki, do których należą między innymi
     płeć, poziom stresu, czy ekspozycja na działanie środowiska zewnętrznego.
     Badania tego rodzaju opisano w pracy~\cite{lanitisTaylor} A. Lanitis, Ch. J. Taylor oraz T. F. Cootes.
-    Należy dodać, że w powyższej pracy stosowano trenowanie zbioru zdjęć.
-    Trenowanie polega na wykryciu relacji pewnych cech twarzy do wieku osób.
+    Ponadto w tej pracy zaprezentowano algorytm rozpoznawania płci, emocji, osób na podstawie obrazu twarzy.
 
     W kolejnych latach zaczęto przeprowadzać porównywania cech twarzy tej samej osoby w różnym wieku.
     Różnice w powyższych cechach posłużyły do zbudowania statystyki zmian cech twarzy wraz ze starzeniem się.
     Taka analiza została zaprezentowana w pracy~\cite{ramanthanChelappa} N. Ramanathan oraz R. Chellappa.
-
     Rozwinięciem tego pomysłu była praca~\cite{gengZhou} X. Geng, Z. Zhou i K. Smith-Miles.
     W tym artykule porównywano sekwencje wielu zdjęć twarzy jednej osoby.
     Zdjęcia przestawiały twarz w różnym wieku.
