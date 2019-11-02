@@ -681,23 +681,24 @@ Karolina Nurzyńska}
     \subsection{Przestrzenie barw oraz skala szarości}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
     %https://sci-hub.tw/10.1007/s10462-018-9650-2
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
-    Najczęściej są to 3 lub 4 wartości~\cite{przestrzenieKolorow}.
+    Najczęściej są to trzy lub cztery
+    wartości~\cite{przestrzenieKolorow}.
     Do przestrzeni barw zaliczają się:
     \begin{itemize}
-        \item CIEXYZ
-        \item CMYK
-        \item RGB
+        \item CIEXYZ,
+        \item CMYK,
+        \item RGB.
     \end{itemize}
 
     W dziedzinie rozpoznawania obrazów najczęściej barwy są reprezentowane przez przestrzeń barw
     RGB~\cite{przestrzenieKolorow}.
     Przestrzeń kolorów RGB składa się z trzech kanałów~\cite{kolory}:
     \begin{itemize}
-        \item R - czerwonego (z angielskiego Red)
-        \item G - zielonego (z angielskiego Green)
-        \item B - niebieskiego (z angielskiego Blue)
+        \item R - czerwonego (z ang. Red),
+        \item G - zielonego (z ang. Green),
+        \item B - niebieskiego (z ang. Blue).
     \end{itemize}
-    Barwy mieszane są poprzez syntezę addytywną .
+    Barwy mieszane są poprzez syntezę addytywną.
     W przeciwieństwie do syntezy subtraktywnej, barwa wynikowa powstaje tu poprzez sumowanie wiązek światła widzialnego o
     różnych długościach~\cite{przestrzenieKolorow}.
     Każdy piksel opisany za pomocą przestrzeni barw RGB ma trzy 8-bitowe wartości reprezentujące każdy kanał.
@@ -716,7 +717,7 @@ Karolina Nurzyńska}
         \label{fig.mieszanieKolorow}
     \end{figure}
 
-    Przykładowo kolor o reprezentacji R=153 G=217 B=234 przedstawiono na rysunku~\ref{fig.mieszanieKolorowBlekitny}
+    Przykładowo kolor o reprezentacji R=153, G=217, B=234 przedstawiono na rysunku~\ref{fig.mieszanieKolorowBlekitny}
 
     \begin{figure}
         \centering
@@ -733,11 +734,11 @@ Karolina Nurzyńska}
     Taki obraz nazywa się obrazem monochromatycznym.
     Najczęściej stosowaną barwą w takich obrazach jest szarość~\cite{przestrzenieKolorow}.
 
-    Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny~\cite{colorMixing}.
+    Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny~\cite{colorMixing}:
     \begin{itemize}
-        \item największej jasności
-        \item średnia
-        \item luminancji
+        \item największej jasności,
+        \item średnia,
+        \item luminancji.
     \end{itemize}
     Metoda największej jasności konwertuje na skalę szarości wg wzoru~\ref{wzor.najwiekszaJasnosc}.
 
@@ -763,35 +764,39 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    W niniejszej pracy zastosowano konwersję za pomocą metody średniej.
+    W pracy zastosowano konwersję z przestrzeni RGB na skale szarości wg wzoru~\ref{wzor.rgb2grayopencv}
+    zaimplementowanego w bibliotece OpenCV, który jest modyfikacją metody luminancji.
+
+    \large
+    \begin{equation}
+        0,299 R + 0,587 G + 0,114 B
+        \label{wzor.rgb2grayopencv}
+    \end{equation}
+    \normalsize
+
     \subsection{Metoda detekcji twarzy}\label{subsec:algorytm-haar-cascade}
 
     Haar Cascade jest algorytmem służącym do wykrywania obiektów na obrazach.
     Został stworzony przez Paula Violę oraz Michaela Jonesa w 2001 roku~\cite{violaJones}.
-    Opiera się na zbudowaniu kaskadowej funkcji za pomocą trenowania wielu zdjęć.
-    Zdjęcia są dzielone na
+    Opiera się na zbudowaniu kaskadowej funkcji za pomocą analizy wielu zdjęć twarzy.
+    Obrazy są dzielone na
     dwie kategorie - pozytywne oraz negatywne.
     Na zdjęciach klasyfikowanych jako pozytywne istnieje obiekt, który ma zostać wykryty, natomiast
     na zdjęciach negatywnych nie ma tego obiektu.
-
     Ekstrakcja cech w algorytmie Violi i Jonesa jest realizowana przez filtry Haara.
-    Są to prostokątne okienka
-    nakładane na obraz, które analizują jasność pikseli (rysunek~\ref{fig.haarRectangles}).
+    %    Są to prostokątne okienka
+    %    nakładane na obraz, które analizują jasność pikseli (rysunek~\ref{fig.haarRectangles}).
+    Przed zastosowaniem filtru obraz musi zostać przekształcony do skali szarości.
+    Filtry mają postać białych i czarnych prostokątów pogrupowanych w okna (rysunek~\ref{fig.haarRectangles}).
     \begin{figure}
         \centering
         \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
         \caption{Filtr Haara a) krawędziowy b) liniowy c) szachownica~\cite{haar}}
         \label{fig.haarRectangles}
     \end{figure}
-
-    Przed zastosowaniem filtru Haara obraz musi zostać przekształcony do skali szarości
-    W niniejszej pracy należało przekształcić każdy obraz z trybu kolorowego na monochromatyczny, co opisano w sekcji~\ref{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}.
-
-    Filtry mają postać białych i czarnych prostokątów pogrupowanych w okna. %todo
     Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
     następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
-    Opisywany algorytm ma zastosowanie w wykrywaniu krawędzi.
-    Na granicy krawędzi istnieje różnica w jasności pikseli
+    Na krawędzi istnieje różnica w jasności pikseli, dlatego opisywany algorytm ma zastosowanie w ich wykrywaniu.
     (rysunek~\ref{fig.haarEmmaWatson}).
 
     \begin{figure}
@@ -802,13 +807,11 @@ Karolina Nurzyńska}
     \end{figure}
 
     W celu poprawy efektywności sumowania pikseli stosowane są
-    rozwiązanie zwane w języku angielskim summed-area table~\cite{computerVision}. Summed-area table jest również
-    nazywana w literaturze integral image, czyli obrazem scałkowanym.
-    Ideą obrazu scałkowanego jest,
-    aby każdy obraz
-    został
-    przekształcony w
-    tabelę, w której każdy element x,y tej tabeli odpowiada sumie jasności wszystkich pikseli według wzoru~\ref{wzor.summedAreaTable}.
+    rozwiązania zwane w literaturze obrazem scałkowanym (ang. Integral image lub summed-area table)
+    ~\cite{computerVision}.
+    Jego ideą jest, aby każdy obraz został przekształcony w
+    tabelę, w której każdy element x, y tej tabeli odpowiada sumie jasności wszystkich pikseli według
+    wzoru~\ref{wzor.summedAreaTable}.
 
     \large
     \begin{equation}
@@ -818,22 +821,14 @@ Karolina Nurzyńska}
     \normalsize
     gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), natomiast i(x,y) oznacza jasność piksela o
     współrzędnych x,y na obrazie.
-
-    Na rysunku~\ref{fig.przedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed
-    zastosowaniem całkowania obrazu.
+    Na rysunku~\ref{fig.poiprzedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed i po
+    zastosowaniu całkowania obrazu.
     \begin{figure}
         \centering
-        \includegraphics[width=6cm]{Obrazy/przedCalkowaniem.jpg}
-        \caption{Tabela jasności poszczególnych pikseli przed zastosowaniem całkowania~\cite{integralImages}}
-        \label{fig.przedCalkowaniem}
-    \end{figure}
-
-    Po całkowaniu otrzymujemy tabelę podobną do przedstawionej na rysunku~\ref{fig.poCalkowaniu}.
-    \begin{figure}
-        \centering
-        \includegraphics[width=6cm]{Obrazy/poCalkowaniu.jpg}
-        \caption{Filtr Haara nałożony na krawędź twarzy~\cite{integralImages}}
-        \label{fig.poCalkowaniu}
+        \includegraphics[width=12cm]{Obrazy/poiprzedCalkowaniem.jpg}
+        \caption{Tabela jasności poszczególnych pikseli: a) przed zastosowaniem całkowania b) po
+        zastosowaniu całkowania~\cite{integralImages}}
+        \label{fig.poiprzedCalkowaniem}
     \end{figure}
 
     Sumowanie przykładowego okna (rysunek~\ref{fig.sumowanieOkna}) wymaga czterech operacji (wzór~\ref{wzor.windowsSum}).
@@ -856,11 +851,10 @@ Karolina Nurzyńska}
     na rysunku~\ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
     (analogicznie I(B), I(C), I(D)) - (rysunek~\ref{fig.sumowanieOkna}).
 
-    W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum, zatem do uzyskania wyniku konieczne jest wykonanie
-    ośmiu operacji.
+    W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum,
+    zatem do uzyskania wyniku konieczne jest wykonanie ośmiu operacji.
     Reprezentacja obrazu za pomocą obrazu scałkowanego znacznie zwiększa efektywność obliczania wartości w filtrze
     Haara.
-
 
     Liczba cech wykrywanych w danym zdjęciu za
     pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie~\cite{violaJones}.
@@ -872,12 +866,14 @@ Karolina Nurzyńska}
     Zbiór n obrazów do trenowania można oznaczyć tak jak we wzorze~\ref{wzor.zbiorTrenujacy}:
     \large
     \begin{equation}
-        (x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)
+        (O_{x_1}, O_{y_1}), (O_{x_2}, O_{y_2}), \ldots, (O_{x_n}, O_{y_n})
         \label{wzor.zbiorTrenujacy}
     \end{equation}
     \normalsize
+    $O_{x_1}$ oznacza obraz z bazy treningowej o indeksie $1$, natomiast $O_{y_1}$ określa, czy dany obraz
+    przedstawia twarz ($O_{y_1} = 1$), czy nie ($O_{y_1} = 0$). Obraz przestawiający twarz nazywany jest obrazem
+    pozytywnym, natomiast obraz negatywny nie przedstawia twarzy.
 
-    oznacza, że obraz jest odpowiednio negatywny lub pozytywny.
     Następnym krokiem jest inicjalizacja wag (wzór~\ref{wzor.wagi}).
 
     \large
@@ -886,10 +882,17 @@ Karolina Nurzyńska}
         \label{wzor.wagi}
     \end{equation}
     \normalsize
-    odpowiednio dla $y_i = 0, 1$
-    , gdzie m, l oznacza odpowiednio liczbę negatywnych oraz pozytywnych zdjęć.
-    Następnie
-    Dla t = 1, \ldots, T:
+
+    Parametr $\frac{1}{2m}$ jest wagą dla zdjęć pozytywnych, a $\frac{1}{2l}$ oznacza wagę dla obrazów negatywnych.
+    Parametry m, l oznaczają odpowiednio liczbę negatywnych oraz pozytywnych zdjęć.
+
+    %    dla t = 1, \ldots, T,
+    %    gdzie T oznacza
+    %    liczbę cech.
+    %    D:
+    Następnie inicjalizowany jest parametr t oznaczający cechę, natomiast T oznacza liczbę wszystkich cech na obrazie.
+    Dla każdej
+    cechy t = 1, \ldots, T, przeprowadzany jest poniższy proces:
 
     1. Normalizowane są wagi (wzór~\ref{wzor.adaboost1}):
     \large
@@ -951,42 +954,7 @@ Karolina Nurzyńska}
     Gdy dane okno wykryje obiekt, przechodzi do kolejnego okna w kaskadzie.
     W przeciwnym wypadku algorytm przerywa działanie i na danym obrazie nie zostaje zidentyfikowany obiekt.
     Okna są poustawiane tak, aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
-    prawdopodobieństwem błędu.
-    Składnikami wyżej wymienionego prawdopodobieństwa jest macierz pomyłek (rysunek~\ref{fig.ConfusionMatrix}).
-
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=7cm]{Obrazy/ConfusionMatrix.jpg}
-        \caption{Macierz pomyłek.}
-        \label{fig.ConfusionMatrix}
-    \end{figure}
-
-    Z macierzy\ref{fig.ConfusionMatrix} można odczytać, czy klasyfikator poprawnie sklasyfikował dane testowe.
-    W macierzy zostały użyte cztery pojęcia~\cite{dataMiningAlgorithms}:
-    \begin{itemize}
-        \item TP (true positive) - poprawna klasyfikacja jako obiekt
-        \item TN (true negative) - poprawna klasyfikacja jako nie - obiekt
-        \item FP (false positive) - błędna klasyfikacja jako obiekt
-        \item FN (false negative) - błędna klasyfikacja jako nie - obiekt
-    \end{itemize}
-
-    Prawdopodobieństwo błędu wyliczane jest ze współczynnika FPR (false positive rate) (wzór~\ref{wzor.fpr}).
-
-    \large
-    \begin{equation}
-        FPR= \frac{FP}{FP+TN}
-        \label{wzor.fpr}
-    \end{equation}
-    \normalsize
-
-    Natomiast prawdopodobieństwo wykrycia obiektu wyliczane jest ze współczynnika TPR (true positive ratio)
-    (wzór~\ref{wzor.tpr})
-    \large
-    \begin{equation}
-        TPR= \frac{TP}{TP+FN}
-        \label{wzor.tpr}
-    \end{equation}
-    \normalsize
+    prawdopodobieństwem błędu. %todo opis adaboost kurwa jego mac
 
     Pierwsze okna posiadają klasyfikatory o słabszym TPR oraz FPR niż kolejne.
     Oznacza to, że prawdopodobieństwo TPR w oknie $P_{x-1}$ jest mniejsze od tego w $P_{x}$.
@@ -1014,7 +982,7 @@ Karolina Nurzyńska}
     Biblioteka OpenCV zawiera wytrenowane klasyfikatory, które zostały użyte w tej pracy magisterskiej.
     Wykorzystano
     je do wykrycia twarzy, ust oraz oczu.
-    Klasyfikatory mają postać plików xml, które można znaleźć na oryginalnym
+    Modele stworzone w wyniku treningu klasyfikatora mają postać plików xml, które można znaleźć na oryginalnym
     repozytorium projektu OpenCv.
 
     %1600 wyrazow
@@ -1028,10 +996,7 @@ Karolina Nurzyńska}
         \caption{Wykryty nos oraz oczy.}
         \label{fig.wykrywanieOczuNosa}
     \end{figure}
-
-
     Należy podkreślić, że algorytm przerywa działanie jeśli nie zostanie wykryta twarz, oczy lub nos.
-
     Gdy zostanie wykryty obszar twarzy, oczu oraz nosa wyznaczone zostaje sześć stref zmarszczkowych
     (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
 
@@ -1044,8 +1009,8 @@ Karolina Nurzyńska}
 
     Strefy zmarszczkowe są umiejscowione na czole (Strefa ,,1''), w górnej części nosa (Strefa ,,2''), górnej części policzków
     (Strefa ,,4'' i ,,5'') oraz w okolicach powiek (Strefa ,,3'' i ,,6'').
-    To właśnie te miejsca zostały uznane przez autorów książki ,,Age Estimation from Face Image using Wrinkle
-    Features''~\cite{wrinkleFeatures} za najbardziej znaczące w detekcji wieku.
+    To właśnie te miejsca zostały uznane przez autorów książki~\cite{wrinkleFeatures} za
+    najbardziej znaczące w detekcji wieku.
 
     Po detekcji oczu należy zmierzyć odległość pomiędzy środkiem lewego oka ($x_{l},y_{l}$),
     a prawego ($x_{p},y_{p}$)
@@ -1067,9 +1032,8 @@ Karolina Nurzyńska}
         \label{fig.wyznaczenieCzola}
     \end{figure}
 
-    Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczu do linii brwi wynosi $0,4 * d$,
+    Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczu do linii brwi wynosi $0,4 \cdot d$,
     natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
-
     Na rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawiono współrzędne, które są pomocne w wyznaczaniu
     stref zmarszczkowych.
 
@@ -1124,7 +1088,7 @@ Karolina Nurzyńska}
     Natomiast szerokość strefy 2 oblicza się następująco: (wzór~\ref{wzor.punktWA}):
     \large
     \begin{equation}
-        w_{A}=0,25 * d
+        w_{A}=0,25 \cdot d
         \label{wzor.punktWA}
     \end{equation}
     \normalsize
@@ -1240,6 +1204,7 @@ Karolina Nurzyńska}
         y_{E}= y_{B}
         \label{wzor.punktYE}
     \end{equation}
+    \normalsize
 
     Szerokość oraz wysokość strefy 6.
 
@@ -1252,7 +1217,7 @@ Karolina Nurzyńska}
 
     \large
     \begin{equation}
-        w_{E}= w_{D} * 0,4
+        w_{E}= w_{D} \cdot 0,4
         \label{wzor.punktWE}
     \end{equation}
     \normalsize
@@ -1278,11 +1243,10 @@ Karolina Nurzyńska}
         \item Detekcja krawędzi z niskim prawdopodobieństwem błędu:
         Oznacza to, że algorytm powinien wykryć jak najwięcej krawędzi, które rzeczywiście istnieją.
         Natomiast ilość krawędzi wykrytych błędnie powinna być jak najmniejsza.
-        \item Precyzja detekcji: Algorytm powinien precyzyjnie zlokalizować krawędź.
+        \item Precyzja detekcji: Algorytm powinien precyzyjnie zlokalizować krawędź dokładnie w jej środku.
         \item Brak redundantnych detekcji:
         Krawędź powinna być zlokalizowana jednokrotnie,
         a szum na obrazie nie powinien generować dodatkowych krawędzi.
-        %todo
     \end{itemize}
     W algorytmie detekcji Canny używa rachunku wariacyjnego.
     Rachunek wariacyjny to dziedzina analizy matematycznej, która
@@ -1298,7 +1262,7 @@ Karolina Nurzyńska}
         \item Likwidacja krawędzi o małym gradiencie jasności.
         \item Filtracja poprzez histerezę.
     \end{itemize}
-    \subsection{Redukcja szumów na obrazie filtrem Gaussa}\label{subsec:redukcja-szumów-na-obrazie-filtrem-gaussa}
+    \subsection*{Redukcja szumów na obrazie filtrem Gaussa}\label{subsec:redukcja-szumów-na-obrazie-filtrem-gaussa}
     Szum na obrazie to piksele o losowym kolorze, jasności oraz umiejscowieniu (współrzędnych na obrazie).
     Takie piksele są nadmiarowymi informacjami o obrazie oraz stanowią efekt uboczny przetwarzania obrazu
     przez matrycę cyfrową (rysunek~\ref{fig.lenkaSzumy}).
@@ -1314,10 +1278,9 @@ Karolina Nurzyńska}
     W fotografii cyfrowej szum wzrasta na skutek zwiększania czułości matrycy lub przez wzrost jej temperatury.
     Redukcję szumów można uzyskać stosując filtr Gaussa.
     Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szumów.
-    Filtr Gaussa może mieć różne wymiary, natomiast
-    najczęściej stosowanym jest 5x5.
+    Filtr Gaussa może mieć różne wymiary.
     Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu~\cite{Canny}.
-    \subsection{Szukanie gradientów jasności}\label{subsec:szukanie-gradientów-jasności}
+    \subsection*{Szukanie gradientów jasności}\label{subsec:szukanie-gradientów-jasności}
     Istotnym parametrem w wykrywaniu krawędzi jest gradient jasności.
     Określa on jak bardzo zmienia się jasność danego piksela względem sąsiadujących pikseli.
     Gradient jasności otrzymany zostaje ze wzoru~\ref{wzor.gradientJasnosci}:
@@ -1327,7 +1290,7 @@ Karolina Nurzyńska}
         \label{wzor.gradientJasnosci}
     \end{equation}
     \normalsize
-    gdzie Gx jest zmianą jasności danego piksela w kierunku poziomym, a Gy w kierunku pionowym.
+    gdzie $G_{x}$ jest zmianą jasności danego piksela w kierunku poziomym, a $G_{y}$ w kierunku pionowym.
     Kierunek gradientu opisuje wzór~\ref{wzor.kierunekGradientu}
     \large
     \begin{equation}
@@ -1340,7 +1303,7 @@ Karolina Nurzyńska}
     Opisywany detektor używa czterech filtrów w celu wykrycia pionowych, poziomych oraz ukośnych krawędzi.
 
     Kierunek gradientu jest zaokrąglony do jednego z filtrów kierunku: poziomego ($\Theta = 0^{\circ}$),
-    pionowego($\Theta = 90^{\circ}$) lub ukośnego ($\Theta = 45^{\circ}$
+    pionowego ($\Theta = 90^{\circ}$) lub ukośnego ($\Theta = 45^{\circ}$
     lub $\Theta = 135^{\circ}$ stopni).
     Każdy piksel obrazu otrzymuje wartość gradientu (wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
@@ -1358,11 +1321,12 @@ Karolina Nurzyńska}
     Odczytana zostaje wartość gradientu oraz jego kierunek dla danego piksela.
     Następnie wartość gradientu porównuje się z wartościami gradientu dla
     dwóch sąsiednich pikseli.
-    Pierwszy sąsiedni piksel jest wyznaczony przez aktualny kierunek gradientu, a drugi przez kierunek przeciwny.
+    Sąsiednie piksele leżą na jednej linii wyznaczonej przez kierunek gradientu.
     Jeśli wartość danego piksela jest największa spośród pikseli wzdłuż wyżej wymienionych linii,
     to dany piksel należy do najostrzejszej krawędzi~\cite{Canny}.
 
-    \subsection{Filtracja krawędzi o małym gradiencie jasności}\label{subsec:filtracja-krawędzi-o-małym-gradiencie-jasności}
+    \subsection*{Filtracja krawędzi o małym gradiencie
+    jasności}\label{subsec:filtracja-krawędzi-o-małym-gradiencie-jasności}
     Zastosowanie techniki zmniejszania grubości krawędzi pozostawia na obrazie wiele krawędzi, które są wygenerowane przez szum i zmiany
     kolorów.
     Kolejnym krokiem jest filtracja powyższych krawędzi, gdyż są one nadmiarowe.
@@ -1373,7 +1337,7 @@ Karolina Nurzyńska}
     zostaje oznaczona jako słaba.
     Krawędź oznacza się jako mocną, gdy wartość gradientu dla niej jest większa od wartości progu dużego~\cite{Canny}.
 
-    \subsection{Filtracja poprzez histerezę}\label{subsec:filtracja-poprzez-histerezę}
+    \subsection*{Filtracja poprzez histerezę}\label{subsec:filtracja-poprzez-histerezę}
     W wyniku działania algorytmu do tej pory zostały uzyskane słabe oraz mocne krawędzie.
     Mocne krawędzie zostaną oznaczone jako prawdziwe krawędzie znajdujące się na obrazie.
     Słabe krawędzie mogą być częścią mocnych krawędzi, ale
@@ -1385,7 +1349,7 @@ Karolina Nurzyńska}
     Jeśli zostaje zidentyfikowane powiązanie pomiędzy mocną, a słabą krawędzią, to słabą krawędź pozostawia się w obrazie.
     W przypadku, gdy słaba krawędź nie jest powiązana z żadną mocną krawędzią - zostaje usunięta~\cite{Canny}.
 
-    \section{Wyliczanie wrinkle feature}\label{sec:wyliczanieWrinkleFeature}
+    \section{Wyliczanie współczynnika zmarszczek}\label{sec:wyliczanieWrinkleFeature}
     W wyniku działania detektora Cannego, który został opisany w sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
     wygenerowany zostaje obraz binarny z wyodrębnionymi krawędziami.
     Obraz binarny zawiera piksele o dwóch wartościach jasności pikseli.
@@ -1442,12 +1406,11 @@ Karolina Nurzyńska}
     W związku z powyższym z każdego zdjęcia z tej bazy otrzymywano dwie informacje - rzeczywisty wiek danej osoby oraz
     współczynnik zmarszczek.
     Następnie dla całej bazy wygenerowano zbiór danych, który w dalszej kolejności był odpowiednio analizowany w celu
-    sprawdzenia zależności pomiędzy współczynnikiem zmarszczek, a wiekiem. Wyżej wymieniony proces nazywany jest
-    także trenowaniem zbioru danych.
-
+    sprawdzenia zależności pomiędzy współczynnikiem zmarszczek, a wiekiem.
     Autorzy algorytmu w celu analizy uprzednio wygenerowanego zbioru danych wykorzystali algorytm grupowania -
     Fuzzy C-Means.
-    W wyniku działania tego algorytmu otrzymuje się dane, dzięki którym na podstawie współczynnika zmarszczek można
+    W wyniku działania tego algorytmu otrzymuje się informacje, dzięki którym na podstawie współczynnika zmarszczek
+    można
     oszacować wiek~\cite{wrinkleFeatures}.
     \section{Grupowanie danych - Fuzzy C-Means oraz wyznaczanie wieku}\label{sec:grupowanieDanych}
     %    https://pl.wikipedia.org/wiki/Analiza_skupień
@@ -1461,7 +1424,7 @@ Karolina Nurzyńska}
     Polega na podzieleniu dużego zbioru danych na grupy.
     Powyższe grupy zawierają dane, które są podobne do siebie~\cite{clusterWstep}.
 
-    Klasteryzacja nie jest algorytmem, lecz zadaniem, które może zostać wykonane na wiele sposobów.
+    Klasteryzacja jest zadaniem, które może zostać wykonane na wiele sposobów.
     Jest również iteracyjnym procesem odkrywania danych w celu odnalezieniu relacji pomiędzy nimi.
 
     Odpowiedni algorytm grupowania i ustawienia parametrów (w tym parametrów
@@ -1470,7 +1433,6 @@ Karolina Nurzyńska}
     Dane nieraz muszą zostać przefiltrowane lub potrzebna jest zmiana parametrów grupowania w celu osiągnięcia
     zamierzonego efektu~\cite{clusterWstep}.
 
-    Algorytmy różnią się pod względem implementacji grupowania czy wydajności.
     Najczęściej grupa jest definiowana przez jak najmniejszą odległość pomiędzy jej członkami.
     Zarazem odległość pomiędzy członkami grupy jest głównym parametrem klasteryzacji hierarchicznej.
     Istnieje również wiele innych modeli grupowania.
@@ -1483,19 +1445,20 @@ Karolina Nurzyńska}
     Klasteryzacja może być twarda lub miękka.
     Twarda klasteryzacja oznacza, że każdy element danych może należeć tylko do jednej grupy.
     Natomiast w przypadku miękkiej klasteryzacji każdy element danych może w pewnym stopniu należeć do każdej z grup.
-    Autorzy algorytmu szacowania wieku opisywanego w niniejszej pracy zastosowali grupowanie metodą Fuzzy C-means.
+    Autorzy algorytmu szacowania wieku będącego podstawą przeprowadzonych badań zastosowali grupowanie metodą Fuzzy
+    C-means.
     Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
 
     %- dokladny opis jak to dziala
     %    https://sci-hub.tw/10.1007/s12046-019-1166-1
     %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
-    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w książce
-    ,,A Fuzzy Relative of the ISODATA Process and Its Use in Detecting Compact Well-Separated Clusters''.
+    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w
+    książce~\cite{ISODATA}.
 
-    Klasteryzacja Fuzzy C-means dzieli zbiór X (wzór~\ref{wzor.zbiorX}):
+    Klasteryzacja Fuzzy C-means dzieli zbiór $F$ na podzbiory $f_{i}$ zgodnie ze wzorem~\ref{wzor.zbiorX}):
     \large
     \begin{equation}
-        X:=\{x_{1},x_{2},x_{3},\ldots,x_{n}\}\subset \mathbb{R}
+        F:=\{f_{1},f_{2},f_{3},\ldots,f_{n}\}\subset \mathbb{R} %todo zamienic na f wszystkie xi
         \label{wzor.zbiorX}
     \end{equation}
     \normalsize
@@ -1537,7 +1500,7 @@ Karolina Nurzyńska}
         \label{wzor.kaPLusJeden}
     \end{equation}
     \normalsize
-    Algorytm w kolejnych iteracjach minimalizuje kryterium $J(U,P)$ podane wzorem~\ref{wzor.kryteriumFCM}:
+    Algorytm w kolejnych iteracjach minimalizuje funkcję przynależności $J(U,P)$ podaną wzorem~\ref{wzor.kryteriumFCM}:
 
     \large
     \begin{equation}
@@ -1545,19 +1508,21 @@ Karolina Nurzyńska}
         \label{wzor.kryteriumFCM}
     \end{equation}
     \normalsize
-    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany wzorem~\ref{wzor.koniecIteracjiWarunek}
+    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany wzorem~\ref{wzor.koniecIteracjiWarunek},
+    %    todo pozbyc sie przecinkow wyszacych za wzorami
     \large
     \begin{equation}
         \left \| J^{(k+1)}(U,P) - J^{(k)}(U,P)) \right \| < \epsilon
         \label{wzor.koniecIteracjiWarunek}
     \end{equation}
     \normalsize
-    , gdzie $\epsilon > 0$. Parametr $\epsilon$ jest parametrem ustawianym przed uruchomieniem klasteryzacji.
+    gdzie $\epsilon > 0$. Parametr $\epsilon$ jest parametrem ustawianym przed uruchomieniem klasteryzacji.
     W niektórych implementacjach istnieje możliwość zakończenia działania algorytmu po określonej liczbę iteracji,
     jeśli wcześniej nie zostanie osiągnięte kryterium ze wzoru~\ref{wzor.koniecIteracjiWarunek}.
 
     Po zakończeniu działania wyżej opisanego algorytmu zostaje wyliczony wektor przynależności $U$
-    (wzór~\ref{wzor.wektorPrzynaleznosci}).
+    (wzór~\ref{wzor.wektorPrzynaleznosci}). Wektor ten opisuje stopień przynależności elementu $f_{i}$ do
+    poszczególnych klastrów.
     %    U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
     Suma wektora przynależności $U_{i}$, dla elementu $x_{i}$ jest opisana
     Wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
@@ -1568,15 +1533,16 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     , gdzie c oznacza liczbę klastrów.
-    Element $x_{i}$ będzie należał do klastra k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
+    Element $f_{i}$ będzie należał do klastra k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
 
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
-    Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wskaźnika zmarszczek
-    $F_{i}$.
-    W algorytmie Fuzzy C-means są grupowane dane zawierające wartości wskaźnik zmarszczek $F_{i}$.
+    Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wskaźnika
+    zmarszczek
+    $F_{i}$. %todo zmienic nazwe
+    W algorytmie Fuzzy C-means są grupowane zbiory danych zawierające wartości wskaźnika zmarszczek $F_{i}$.
     Jak wiadomo z powyższego opisu algorytmu Fuzzy C-means, każdy element (w tym przypadku $F_{i}$) ma określony stopień
     przynależności do każdego klastra. Dany element $F_{i}$ będzie należał do klastra o największym stopniu
-    przynależności. Każde zdjęcie jest grupowane według wyżej opisanego algorytmu.
+    przynależności. Każde zdjęcie jest grupowane według algorytmu FCM.
 
     Każdy klaster ma określony centroid j, który posiada parametr $P_{fj}$  oraz dodatkowy parametr - średnią
     wartość wieku $P_{aj}$. $P_{fj}$ oznacza wartość wrinkle feature dla danego centroida.
@@ -1590,16 +1556,19 @@ Karolina Nurzyńska}
     , gdzie $A_{c}$ to rzeczywisty wiek osoby z obrazu c, który należy do klastru j.
     Natomiast $N_{j}$ to liczba zdjęć zaklasyfikowanych do klastru j.
 
-    W powyższym akapicie został opisany algorytm trenowania, który generuje n centroidów, reprezentujących każdą
-    grupę. Natomiast osobnym etapem jest szacowanie wieku. Należy podkreślić, że zdjęcia do testowania algorytmu szacowania wieku
-    pochodzą z innej bazy obrazów niż obrazy wykorzystane w treningu. Ma to na celu eliminację błędów w testowaniu algorytmu.
-    %    Każdy centroid posiada parametr
-    %    W wyniku działania algorytmu wygenerowanych zostaje n grup. Każda grupa posiada centroid wraz ze średnim wiekiem.
+    W powyższym akapicie został opisany algorytm klasteryzacji, który generuje n centroidów, reprezentujących każdą
+    grupę. Natomiast osobnym etapem jest szacowanie wieku.
     W pierwszej fazie działanie algorytmu jest dokładnie takie same jak w sekcjach od~\ref{sec:metodaWykrywaniaTwarzy}
     do~\ref{sec:wyliczanieWrinkleFeature}:
     Algorytm szacowania wieku w pierwszej kolejności dokonuje detekcji twarzy, oczu, ust na danym obrazie $O_{i}$.
     Jeśli powyższe elementy zostały zidentyfikowane, wyznaczane są strefy zmarszczkowe,
     a następnie zostaje wyliczony parametr wskaźnik zmarszczek $F_{i}$~\cite{wrinkleFeatures}.
+
+    %    Należy podkreślić, że zdjęcia do testowania algorytmu szacowania wieku
+    %    pochodzą z innej bazy obrazów niż obrazy wykorzystane w treningu. Ma to na celu eliminację błędów w testowaniu algorytmu.
+    %    Każdy centroid posiada parametr
+    %    W wyniku działania algorytmu wygenerowanych zostaje n grup. Każda grupa posiada centroid wraz ze średnim wiekiem.
+
 
     Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
     według wzoru~\ref{wzor.wektorPrzynaleznosci}.
@@ -1609,32 +1578,34 @@ Karolina Nurzyńska}
     (wzór~\ref{wzor.szacowanyWiek}).
     \large
     \begin{equation}
-        PA=\sum_{j=1}^{c}(u_{ij}*P_{aj})
+        PA=\sum_{j=1}^{c}(u_{ij} \cdot P_{aj})
         \label{wzor.szacowanyWiek}
     \end{equation}
     \normalsize
-    , gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów,
+    , gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów, podaną jako
+    parametr wejściowy algorytmu FCM,
     natomiast $P_{aj}$ jest średnim wiekiem dla j-tego centroida.
     %    Zbiór zdjęć użytych do treningu wynosi około 22000.
     % opisac wraz z przykladem moze jakis rysuneczek.
 
     %Tutaj powinno byc 5000 slow
     \chapter{Modyfikacje metody bazowej}\label{ch:modyfikacje-metody-bazowej}
-    W pracy została odtworzona oryginalna praca autorów, która
-    będzie dalej nazywana metodą bazową.
-    W celu poprawienia wyników metody bazowej wprowadzono kilka modyfikacji, a
-    w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
-
-    Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
-    który został określony we wzorze~\ref{wzor.mae}.
-    \large
-    \begin{equation}
-        MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
-        \label{wzor.mae}
-    \end{equation}
-    \normalsize
-    , gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
-    Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
+    %    W pracy została odtworzona oryginalna praca autorów, która todo to dac na poczatku badan
+    %    będzie dalej nazywana metodą bazową.
+    %    W celu poprawienia wyników metody bazowej wprowadzono kilka modyfikacji, a
+    %    w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
+    %
+    %    Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
+    %    który został określony we wzorze~\ref{wzor.mae}.
+    %    \large
+    %    \begin{equation}
+    %        MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
+    %        \label{wzor.mae}
+    %    \end{equation}
+    %    \normalsize
+    %    , gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
+    %    Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
+    %todo wstep co bedzie dalej
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
     Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
@@ -1655,30 +1626,25 @@ Karolina Nurzyńska}
         \label{wzor.wrinkleFeature2}
     \end{equation}
     \normalsize
-    Kolejną modyfikacją było zastosowanie metody HOG - Histograms of Oriented Gradients, która została opisana w
+    Kolejną modyfikacją było zastosowanie metody HOG (ang. Histogram of Oriented Gradients), która została opisana w
     sekcji~\ref{sec:zastosowanie-metody-hog}.
 
-    \section{Zastosowanie metody HOG}\label{sec:zastosowanie-metody-hog}
+    \section{Opis metody HOG}\label{sec:zastosowanie-metody-hog}
     %https://sci-hub.tw/10.2139/ssrn.3268935
     %https://www.learnopencv.com/histogram-of-oriented-gradients/
     %    https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients
     %    https://hal.inria.fr/inria-00548512/document
-    Metoda HOG (Histogram of Oriented Gradients) jest deskryptorem cech z obrazu.
-    Deskryptor cech wyodrębnia z obrazu pewne cechy, do których należą między innymi kształty, kolory czy tekstury.
+    Metoda HOG jest deskryptorem cech z obrazu.
+    Deskryptor cech wyodrębnia z obrazu pewne cechy, do których należą między innymi kolory czy tekstury.
     W metodzie bazowej rolę deskryptora tego rodzaju spełnia detektor
     krawędzi Canny (sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny}), który wykrywa krawędzie,
     identyfikowane jako zmarszczki.
     Z kolei Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
-    Liczenie jest dokonywane tylko w pewnych obszarach obrazów.
-    Metoda HOG została wymyślona i opisana w 1982 przez Roberta K. McConella.
-    McConell pracował w tamtym czasie dla firmy Wayland Research Inc.,
-    a opis jego metody został zawarty w patencie ,,Method of and apparatus for pattern recognition''~\cite{patentHOG}.
-    Jednak jego metoda została po raz pierwszy zaimplementowana dopiero w 2005 roku przez Navneeta Dalala i Billa Triggsa~\cite{hogZabojady}
-    z francuskiego instytutu zajmującego się badaniami w zakresie informatyki i automatyki
-    (INRIA - Institut National de Recherche en Informatique et en Automatique).
-    Metoda McConella została wtedy zastosowana do detekcji pieszych na zdjęciach.
-    Później metoda została rozszerzona o wykrywanie ludzi w filmach wideo,
-    ponadto później stosowano ją także do wykrywania zwierząt oraz pojazdów na zdjęciach.
+    Metoda HOG została zaimplementowana w 2005 roku przez Navneeta Dalala i Billa
+    Triggsa~\cite{hogZabojady}.
+    Została wtedy zastosowana do detekcji pieszych na zdjęciach.
+    Później jej zastosowanie rozszerzono o wykrywanie ludzi w filmach wideo,
+    ponadto stosowano ją także do wykrywania zwierząt oraz pojazdów na zdjęciach.
 
     Metoda Histogram of Oriented Gradients opiera się na założeniu, że wygląd i kształt obiektów na obrazie może zostać
     opisany przez gradient jasności oraz jego kierunek. Jest to dobrze widoczne na
@@ -1693,20 +1659,21 @@ Karolina Nurzyńska}
     Na granicy pomiędzy tłem, a głową sportowca widoczne są duże wartości gradientu jasności.
     W ten sposób zostaje zidentyfikowana krawędź głowy.
 
-    Działanie algorytmu można pokrótce opisać w następujący sposób. Obraz jest dzielony na małe obszary zwane komórkami, które zwykle mają wymiar kilka na kilka pikseli.
-    Dla każdego piksela w komórce tworzony jest histogram kierunków gradientu.
+    Działanie algorytmu można pokrótce opisać w następujący sposób. Obraz jest dzielony na małe obszary zwane komórkami,
+    które zwykle mają wymiar kilka na kilka pikseli. Komórki są grupowane w bloki, mogące składać się z różnej ilości
+    komórek.
+    Dla wszystkich pikseli w komórce tworzony jest histogram kierunków gradientu.
     Następnie histogramy są łączone w jeden wspólny deskryptor.
     Dla zwiększenia dokładności lokalne histogramy normalizowane są pod względem kontrastu.
-    Realizowane jest to przez pomiar jasności obszaru zwanego blokiem, który
-    składa się z kilku komórek. Normalizacja zapewnia zmniejszenia niepożądanego efektu generowanego przez
+    Realizowane jest to przez pomiar jasności w bloku. Normalizacja zapewnia zmniejszenia niepożądanego efektu
+    generowanego przez
     różnice w oświetleniu różnych obszarów zdjęcia. Wspomniana sytuacja występuje na przykład, gdy zdjęcie wykonywane
     jest w nieprawidłowych warunkach oświetleniowych (rysunek~\ref{fig.oswietlenieTwarzy}).
 
-    W poniższym akapicie zostanie przedstawiony dokładny opis metody Histogram of Oriented Gradients.
-    W pierwszej fazie obraz powinien zostać przeskalowany, tak aby jego wymiary były podzielne przez rozmiar
+    W pierwszej fazie algorytmu HOG obraz powinien zostać przeskalowany, tak aby jego wymiary były podzielne przez
+    rozmiar
     pojedynczej komórki.
     (rysunek~\ref{fig.komorkiHoga}).
-
     \begin{figure}
         \centering
         \includegraphics[width=4cm]{Obrazy/komorkiHoga.jpg}
@@ -1723,49 +1690,49 @@ Karolina Nurzyńska}
     Zostają wygenerowane dwie macierze. Pierwsza zawiera informację o gradiencie jasności każdego piksela komórki,
     natomiast druga - informację o kierunku każdego gradientu.
     Wartości kierunku gradientu wyrażone są w stopniach. W metodzie Histogram of Oriented Gradients
-    zastosowano kierunki gradientu bez znaku. Oznacza to, że zakres kierunków mieści się w granicach od $0^{\circ}$ do $180^{\circ}$.
-    Kierunek gradientu ze znakiem posiadałby zakres od $0^{\circ}$ do $180^{\circ}$ oraz jego ujemny odpowiednik
-    (od $-179^{\circ}$ do $-1^{\circ}$). Użycie kierunku gradientu bez znaku jest uzasadnione tym,
+    zastosowano kierunki gradientu bez znaku. Oznacza to, że zakres kierunków mieści się w granicach
+    od $0^{\circ}$ do $180^{\circ}$.
+    Użycie kierunku gradientu bez znaku jest uzasadnione tym,
     że wartość kierunku o takiej samej wartości, lecz różnych znakach reprezentuje gradient o tym samym kierunku, lecz
     różnych zwrotach. Dla detekcji kształtów krawędzi czy kształtów istotny jest kierunek, a nie zwrot.
     Na podstawie kierunku gradientu oraz wartości gradientu jasności zostaje wygenerowany histogram gradientów.
-    W parametrze wejściowym algorytmu HOG ustawiana jest ilość komórek histogramu.
-    Najczęściej stosuje się 9 komórek. Każda komórka histogramu odpowiada pewnemu zakresowi kąta kierunku gradientu.
-    Przykładowo dla histogramu o szerokości 9 komórek każda komórka odpowiada następującym kątom:
-    $0^{\circ}$, $20^{\circ}$, $40^{\circ}$, \ldots, $160^{\circ}$ .
-    Na rysunku~\ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do komórek histogramu.
+    W parametrze wejściowym algorytmu HOG ustawiana jest ilość kubełków histogramu.
+    Najczęściej stosuje się 9 kubełków. Każdy kubełek histogramu odpowiada pewnemu zakresowi kąta kierunku gradientu.
+    Przykładowo dla histogramu o szerokości 9 kubełków każdy kubełek odpowiada przedziałom $20^{\circ}$ wycentrowanym
+    dla podanych wartości:
+    $0^{\circ}$, $20^{\circ}$, $40^{\circ}$, \ldots, $160^{\circ}$.
+    Na rysunku~\ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do kubełków histogramu.
     \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/hogTworzenieHistogramu.jpg}
         \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu~\cite{hogOpenCv}.}
         \label{fig.hogTworzenieHistogramu}
     \end{figure}
-    Piksel zaznaczony na niebiesko posiada gradient o wartości 2 oraz kierunek o kącie $80^{\circ}$
-    Wartość gradientu zostaje dodana do komórki histogramu reprezentującego kąt $80^{\circ}$.
+    Piksel zaznaczony na niebiesko posiada gradient o wartości 2 oraz kierunek o kącie $80^{\circ}$.
+    Wartość gradientu zostaje dodana do aktualnej wartości kubełka histogramu reprezentującego kąt $80^{\circ}$.
     Piksel zaznaczony na czerwono posiada gradient o wartości 4 oraz kierunek o kącie $10^{\circ}$.
     Wartość gradientu równa 4 zostaje rozdzielona na dwie proporcjonalne wartości: 2 oraz 2, które są dodawane do
-    komórek reprezentujących kąt $0^{\circ}$ oraz $20^{\circ}$.
-    Proporcje zależą od kąta gradientu i od kątów w komórkach histogramu.
-    Tak jak w powyższym przypadku, jeśli wartość kąta wynosi $10^{\circ}$, wartości gradientu są przydzielane do
-    komórek reprezentujące dwa kąty (w tym przypadku przedziały reprezentujące kąt od $0^{\circ}$ do
-    $20^{\circ}$). W związku z tym, że powyższy kąt wynosi $10^{\circ}$, wartości dla komórek histogramu są obliczane
+    kubełków reprezentujących kąt $0^{\circ}$ oraz $20^{\circ}$.
+    Jeśli wartość kąta wynosi $10^{\circ}$, wartości gradientu są przydzielane do
+    kubełków reprezentujące dwa kąty (w tym przypadku przedziały reprezentujące kąt od $0^{\circ}$ do
+    $20^{\circ}$). W związku z tym, że powyższy kąt wynosi $10^{\circ}$, wartości dla kubełków histogramu są obliczane
     według wzoru~\ref{wzor.komorkaHistogramu1} oraz wzoru~\ref{wzor.komorkaHistogramu2}:
 
     \large
     \begin{equation}
-        X_{a} = \frac{A_{x}-A_{a}}{A_{b}-A_{a}}*G_{x}
+        X_{a} = \frac{A_{x}-A_{a}}{A_{b}-A_{a}} \cdot G_{x}
         \label{wzor.komorkaHistogramu1}
     \end{equation}
     \normalsize
-    , gdzie $X_{a}$ oznacza wartość przydzielaną do komórki reprezentującej mniejszy kąt (tak jak $0^{\circ}$
+    , gdzie $X_{a}$ oznacza wartość przydzielaną do kubełka reprezentującego mniejszy kąt (tak jak $0^{\circ}$
     dla powyższego przykładu), $A_{x}$ oznacza wartość kąta gradientu dla danego piksela (tak jak $10^{\circ}$
-    dla powyższego przykładu), $A_{a}$ oznacza kąt dla komórki reprezentującej mniejszy kąt (tak jak $0^{\circ}$
-    dla powyższego przykładu), $A_{b}$ oznacza kąt dla komórki reprezentującej większy kąt (tak jak $20^{\circ}$
+    dla powyższego przykładu), $A_{a}$ oznacza kąt dla kubełka reprezentującego mniejszy kąt (tak jak $0^{\circ}$
+    dla powyższego przykładu), $A_{b}$ oznacza kąt dla kubełka reprezentującego większy kąt (tak jak $20^{\circ}$
     dla powyższego przykładu), a $G_{x}$ oznacza wartość gradientu dla danego piksela (tak jak 4 dla powyższego
     przykładu).
     \large
     \begin{equation}
-        X_{b} = \frac{A_{b}-A_{x}}{A_{b}-A_{a}}*G_{x}
+        X_{b} = \frac{A_{b}-A_{x}}{A_{b}-A_{a}} \cdot G_{x}
         \label{wzor.komorkaHistogramu2}
     \end{equation}
     \normalsize
@@ -1779,30 +1746,30 @@ Karolina Nurzyńska}
     a wyliczona wartość zostaje przydzielona do komórki reprezentującej kąt $0^{\circ}$.
     Powyższa procedura jest powtarzana, a kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
     w komórkach histogramu. Końcowy efekt tej fazy dostarcza histogram reprezentujący komórkę. Wartości histogramu
-    dla danej komórki reprezentują część wektoru deskryptora. Deskryptor składa się z n histogramów, gdzie n oznacza
-    liczbę komórek w danym obrazie~\cite{hogZabojady}.
+    dla danej komórki reprezentują część wektoru deskryptora.
 
-    Kolejnym krokiem jest normalizacja bloków. Blok składa się z komórek i zazwyczaj ma wymiary 2x2 komórki.
+    Kolejnym krokiem jest normalizacja bloków. Blok składa się z komórek i jego wymiar określany jest w parametrze
+    wejściowym HOG-a.
     Gradienty jasności są czułe na zmiany oświetlenia na obrazie. Celem tej fazy algorytmu jest normalizacja oświetlania,
     aby uodpornić deskryptor na zmiany oświetlania.
-    Istnieje wiele sposobów normalizacji. Zostanie tutaj opisana normalizacja za pomocą parametru L2-norm.
-    Najpierw zostaje wyliczona wartość L2-norm. L2 jest wartością normalizującą wektor $v$, który reprezentuje wartości
-    deskryptora dla danego bloku. Wspomniany wektor składa się z wartości zawartych w komórkach histogramu. Jak wiadomo z
-    przedstawionego wyżej opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
-    Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
-    wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
-    Blok ma 2x2 komórki, więc zawiera w sobie 4 komórki. Każda komórka ma 9 wartości histogramu, zatem wektor $v$ będzie
-    miał długość $9x4$, czyli 36.
-    L2-norm dla wektora $v$ jest obliczane według wzoru~\ref{wzor.l2norm}
-
+    Zostanie tutaj opisana normalizacja za pomocą parametru L2.
+    Najpierw zostaje wyliczona wartość L2 według wzoru\ref{wzor.l2norm}.
     \large
     \begin{equation}
-        \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
+        \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}},
         \label{wzor.l2norm}
     \end{equation}
     \normalsize
-    , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm, natomiast $v(i)$ jest i-tym elementem wektora $v$.
-    Normalizacja jest realizowana przy zastosowaniu Wzoru
+    gdzie $\left \|v  \right \|_{2}$ jest wartością L2, natomiast $v(i)$ jest i-tym elementem wektora $v$.
+    L2 jest wartością normalizującą wektor $v$, który reprezentuje
+    wartości
+    deskryptora dla danego bloku. Wspomniany wektor składa się z wartości zawartych w kubełkach histogramu. Jak
+    wiadomo z
+    przedstawionego wyżej opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
+    Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
+    wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
+
+    Normalizacja jest realizowana przy zastosowaniu Wzoru~\ref{wzor.l2norm2}
     \large
     \begin{equation}
         v = \frac{v}{\left \|v  \right \|_{2}}
@@ -1816,27 +1783,24 @@ Karolina Nurzyńska}
     W wyniku działania algorytmu Histograms of Oriented Gradients wygenerowany zostaje deskryptor, czyli wektor
     reprezentujący wartości histogramów wszystkich komórek w obrazie.
 
-    Deskryptor HOG posiada kluczową zaletę w stosunku do innych metod ekstrakcji cech.
-    Jest nią odporność metody Histogram of Oriented Gradients na działanie przekształceń geometrycznych
-    dzięki temu, że dokonuje działań na komórkach lokalnych.
-    Przekształcenia geometryczne to działania, które przekształcają figury z jednej przestrzeni geometrycznej w drugą.
-    Przykładem przestrzeni geometrycznej są przestrzeń euklidesowa czy przestrzeń rzutowa.
-    Ponadto działania na komórkach lokalnych pozwalają zmniejszyć efekt powstający przy ruchu pieszego.
-    Z uwagi na powyższe zalety ta metoda nadaje się do detekcji ludzi na obrazach.
-
-    W niniejszej pracy opisywana metoda posłużyła do wykrywania krawędzi, które informują o zmarszczkach. Dokładny sposób jej
+    Deskryptor HOG posiada kluczową zaletę w stosunku do innych metod ekstrakcji cech:
+    działania na komórkach lokalnych pozwalają zmniejszyć efekt powstający przy ruchu pieszego.
+    Z tego względu ta metoda nadaje się do detekcji ludzi na obrazach.
+    W niniejszej pracy opisywana metoda posłużyła do wykrywania krawędzi, które informują o zmarszczkach.
+    Dokładny sposób jej
     zaimplementowania w pracy opisuje sekcja~\ref{subsec:zastosowanie-w-projekcie2}
 
     \subsection{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
-    W poprzedniej sekcji~\ref{sec:zastosowanie-metody-hog} został dokładnie opisany algorytm HOG, w wyniku którego
-    generowany jest deskryptor dla danego obrazu.
+    W sekcji~\ref{sec:zastosowanie-metody-hog} został opisany algorytm HOG, w wyniku którego
+    generowany jest deskryptor dla obrazu.
 
     Omówiony wyżej deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
     sekcji~\ref{sec:zastosowanie-metody-hog} metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
-    obszarze jest dużo krawędzi, to w wektorze deskryptora będzie pewna ilość elementów tego wektora o znacznej wartości.
+    obszarze jest dużo krawędzi, to w wektorze deskryptora będzie znaczna ilość elementów tego wektora o dużej
+    wartości.%todo charakterystyczne deskryptory
     Wyżej opisywane, charakterystyczne elementy wektora będą identyfikowały krawędzie w obrazie. Jak wiadomo z
     sekcji~\ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
-    W związku z powyższym zmodyfikowano sposób obliczenia wrinkle feature dla obrazu twarzy opierając się o
+    W związku z powyższym zmodyfikowano sposób obliczenia współczynnika zmarszczek dla obrazu twarzy opierając się o
     deskryptor wygenerowany przez algorytm HOG.
 
     W bibliotece OpenCv zaimplementowany jest algorytm HOG, który na podstawie całego
@@ -1849,11 +1813,11 @@ Karolina Nurzyńska}
         \item rozmiar okna - wielkość analizowanego obrazu w pikselach
     \end{itemize}
 
-    W celu oszacowania ilości zmarszczek dla danego zdjęcia posłużono się następującym algorytmem.
+    W celu oszacowania ilości zmarszczek dla danego zdjęcia posłużono się następującym algorytmem:
 
     W pierwszej fazie zostały wyznaczone strefy zmarszczkowe nr 1,3,4,5,6.
     (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
-    Następnie dla każdej wyżej wymienionej strefy został wyznaczony deskryptor. Dla strefy 1 deskryptor jest opisany
+    Następnie dla każdej wyżej wymienionej strefy została wyznaczona cecha. Dla strefy 1 deskryptor jest opisany
     zmienną $v_{1}$, dla strefy 3 zmienną $v_{3}$ i tak dalej.
     Wskaźnik zmarszczek jest obliczany ze wzoru~\ref{wzor.hogWrinkleFeature}:
     \large
@@ -1862,11 +1826,12 @@ Karolina Nurzyńska}
         \|v_{5}  \right \|_{1}+\left \|v_{6}  \right \|_{1}
         \label{wzor.hogWrinkleFeature}
     \end{equation}
+    %todo po co L1
     \normalsize
-    , gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1-norm dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
+    , gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1 dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
     \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
 
-    Parametr L1-norm dla danego wektora $v$ jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
+    Parametr L1 dla danego wektora $v$ jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
     \large
     \begin{equation}
         \left \|v  \right \|_{1} = \sum_{i=1}^{n}\left |v(i)  \right |
@@ -1877,11 +1842,13 @@ Karolina Nurzyńska}
 
     Dla każdego zdjęcia ze zbioru podobnie jak w metodzie bazowej~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
     wyznaczana jest para danych $WF_{HOG}$ (wzór~\ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
-    zbiór danych jest trenowany za pomocą Fuzzy C-means (sekcja~\ref{sec:grupowanieDanych}) - tak samo jak w metodzie
+    zbiór danych jest klasteryzowany za pomocą Fuzzy C-means (sekcja~\ref{sec:grupowanieDanych}) - tak samo jak w
+    metodzie
     bazowej.
     Wiek szacowany jest dokładnie tak samo jak w metodzie bazowej.
     Kolejna modyfikacja metody bazowej została opisana w sekcji~\ref{sec:metoda-hog-oraz-algorytm-knn}
     \section{Metoda HOG oraz algorytm KNN}\label{sec:metoda-hog-oraz-algorytm-knn}
+    %todo intro
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %http://zsi.tech.us.edu.pl/~nowak/si/w4.pdf
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
@@ -1895,7 +1862,7 @@ Karolina Nurzyńska}
     Kolejna modyfikacja polegała na zmianie sposobu wyznaczania wskaźnika zmarszczek.
     W sekcji~\ref{subsec:zastosowanie-w-projekcie2} przedstawiono sposób wyznaczania wskaźnika zmarszczek,
     który polegał na sumowaniu deskryptorów z poszczególnych stref (wzór~\ref{wzor.hogWrinkleFeature}).
-    W celu poprawy wyników uwzględniono deskryptory ze wszystkich stref.
+    W celu poprawy wyników uwzględniono deskryptory ze wszystkich stref z pominięciem strefy 2.
     Dla każdego zdjęcia ze zbioru wyznaczana jest para danych - wiek oraz wektor.
     $\overrightarrow{v_{KNN}}$ składający się z elementów według wzoru~\ref{wzor.hogKnn}
     \large
@@ -1905,11 +1872,11 @@ Karolina Nurzyńska}
         \label{wzor.hogKnn}
     \end{equation}
     \normalsize
-    W wyniku treningu zbioru zdjęć zostaje wygenerowany zbiór zawierający wyżej wymienioną parę danych.
-    Następnie w celu oszacowania wieku zostaje wykorzystany algorytm KNN, który został opisany w
-    sekcji~\ref{subsec:grupowanie-knn}.
+    W wyniku analizy zbioru zdjęć treningowych zostaje wygenerowany zbiór zawierający wyżej wymienioną parę danych.
+    Następnie w celu oszacowania wieku zostaje wykorzystany algorytm KNN (ang. k-Nearest Neighbor),
+    który został opisany w sekcji~\ref{subsec:grupowanie-knn}.
     \subsection{Grupowanie KNN}\label{subsec:grupowanie-knn}
-    Algorytm KNN (ang. k-Nearest Neighbor) to algorytm regresji
+    Algorytm KNN to algorytm regresji
     nieparametrycznej używany w statystyce do
     prognozowania wartości pewnej zmiennej losowej. Został stworzony w roku 1970.
     KNN tłumaczone jest na język polski jako algorytm k- najbliższych sąsiadów.
@@ -1928,10 +1895,11 @@ Karolina Nurzyńska}
     Przykładowo taką jedną obserwację może tworzyć klasa określająca wiek danej osoby, a wektorem może być ilość
     zmarszczek.
 
-    Natomiast zbiór uczący będzie posiadał n powyższych obserwacji, na podstawie których można wywnioskować, do jakiej
+    Z kolei zbiór uczący będzie posiadał n powyższych obserwacji, na podstawie których można wywnioskować, do jakiej
     klasy będzie zaliczana obserwacja testowa. Obserwacja testowa to obserwacja, która posiada wektor zmiennych
     objaśniających i może zostać zaliczona do danej klasy za pomocą algorytmu KNN.
-    Wracając do powyższego przykładu, obserwacja testowa będzie zawierała tylko wektor określający ilość zmarszczek.
+    Wracając do powyższego przykładu, obserwacja testowa będzie zawierała tylko wektor gradientów określający ilość
+    zmarszczek.
     Natomiast algorytm KNN przypisze tę obserwację do klasy (wieku).
     Przypisywanie do danej klasy jest realizowane przez ocenę podobieństwa obserwacji testowej do zbioru uczącego.
     Ocena podobieństwa jest realizowana poprzez obliczanie odległości pomiędzy wektorami zmiennych
@@ -1944,50 +1912,40 @@ Karolina Nurzyńska}
         \item miara Czebyszewa
         \item miara Minkowskiego
     \end{itemize}
-    Odległość pomiędzy dwoma wektorami w mierze Euklidesowej jest opisana wzorem~\ref{wzor.euklides}
+    Odległość $D(\overrightarrow{n},\overrightarrow{m})$ pomiędzy dwoma wektorami w mierze Euklidesowej jest opisana
+    wzorem~\ref{wzor.euklides}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\sum_{i=1}^{c}(n(i)-m(i))^{2}
         \label{wzor.euklides}
     \end{equation}
     \normalsize
-    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
-    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
+    Parametr $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
     $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
 
-    W mierze Manhattan odległość pomiędzy dwoma wektorami jest opisana Wzorem~\ref{wzor.manhattan}
+    W mierze Manhattan parametr $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami,
+    która jest opisana Wzorem~\ref{wzor.manhattan}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\sum_{i=1}^{c}\left |n(i)-m(i)\right |
         \label{wzor.manhattan}
     \end{equation}
     \normalsize
-    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
-    Z kolei $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
-    $\overrightarrow{m}$, a $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
-
-    Miara Czebyszewa opisuje odległość pomiędzy dwoma wektorami zgodnie z Wzorem~\ref{wzor.manhattan}
+    Miara Czebyszewa opisuje odległość $D(\overrightarrow{n},\overrightarrow{m})$ pomiędzy dwoma wektorami zgodnie z Wzorem~\ref{wzor.manhattan}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=\max_{i=1:n}( \left |n(i)-m(i) \right |)
         \label{wzor.czebyszew}
     \end{equation}
     \normalsize
-    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
-    $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
-    $\overrightarrow{m}$, natomiast $c$ jest długością wektora  $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
-
-    Odległość pomiędzy dwoma wektorami w mierze Minkowskiego jest opisana wzorem~\ref{wzor.minkowski}
+    Odległość $D(\overrightarrow{n},\overrightarrow{m})$ pomiędzy dwoma wektorami w mierze Minkowskiego jest opisana
+    wzorem~\ref{wzor.minkowski}
     \large
     \begin{equation}
         D(\overrightarrow{n},\overrightarrow{m})=(\sum_{i=1}^{c} \left |n(i)-m(i) \right |^{p})^{\frac{1}{p}}
         \label{wzor.minkowski}
     \end{equation}
     \normalsize
-    Zmienne są dokładnie takie same jak we wzorze~\ref{wzor.euklides}.
-    , gdzie $D(\overrightarrow{n},\overrightarrow{m})$ oznacza odległość pomiędzy dwoma wektorami w mierze Euklidesowej.
-    Natomiast $n(i)$ oznacza i-ty element wektora $\overrightarrow{n}$,  $m(i)$ - i-ty element wektora
-    $\overrightarrow{m}$, $c$ jest długością wektora $\overrightarrow{n}$ oraz $\overrightarrow{m}$.
     Parametr $p$ nazywany jest dystansem Minkowskiego.
     %normalizacja i standaryzacja
 
@@ -1997,6 +1955,8 @@ Karolina Nurzyńska}
     wartością objaśniającą byłaby długość wyrażona w metrach i średnia tej wartości w całym zbiorze uczącym
     wyniosłaby 1 m,
     to dominującą wartością w tym zbiorze byłaby np. wartość 100 metrów.
+    W przypadku badań w niniejszej pracy taka operacja nie była konieczna, ponieważ rozrzut wartości danych nie był
+    duży.
 
     Standaryzacja ma na celu obliczenie nowych wartości elementów wektorów ze zbioru uczącego.
     Standaryzacja jest zrealizowana poprzez wzór~\ref{wzor.standaryzacja}:
@@ -2055,8 +2015,6 @@ Karolina Nurzyńska}
     Szacowanie wieku metodą KNN w pierwszym kroku polega na stworzeniu wektoru, który został opisany
     wzorem~\ref{wzor.hogKnn}.
     Następnym krokiem jest przydzielenie danego wektoru do klasy (wieku).
-
-    W sekcji~\ref{ch:badania} zostaną przybliżone metody przeprowadzanie badań oraz ich wyniki.
 
     \chapter{Badania}\label{ch:badania}
     W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz jej modyfikacji.
