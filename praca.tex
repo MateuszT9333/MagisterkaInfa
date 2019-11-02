@@ -921,7 +921,7 @@ Karolina Nurzyńska}
         \label{wzor.adaboost3}
     \end{equation}
     \normalsize
-    , gdzie $e_{i} = 0$. Jeśli $x_{i}$ jest sklasyfikowane prawidłowo, wtedy $e_{i}=1$,
+    gdzie $e_{i} = 0$. Jeśli $x_{i}$ jest sklasyfikowane prawidłowo, wtedy $e_{i}=1$,
     w innym wypadku $\beta_{t} = \frac{\epsilon_{t}}{1 - \epsilon_{t}}$.
 
     Silny klasyfikator $h(x)$ jest opisany równaniem:
@@ -934,7 +934,7 @@ Karolina Nurzyńska}
         \label{wzor.adaboost4}
     \end{equation}
     \normalsize
-    , gdzie $\alpha_{t} = \lg \frac{1}{\beta_{t}}$
+    gdzie $\alpha_{t} = \lg \frac{1}{\beta_{t}}$
 
     Algorytm Adaboost zmniejsza ilość cech Haara z ponad stu tysięcy do kilkuset - do tych najistotniejszych cech.
 
@@ -1063,7 +1063,7 @@ Karolina Nurzyńska}
         \label{wzor.punktXA}
     \end{equation}
     \normalsize
-    , gdzie $x_{6}$ to współrzędna z rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
+    gdzie $x_{6}$ to współrzędna z rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref}.
     Natomiast $d$ jest odległością pomiędzy oczami (wzór~\ref{wzor.odlegloscPomiedzyOczami}).
 
     Współrzędną $y$ punktu A opisuje wzór~\ref{wzor.punktYA}:
@@ -1378,7 +1378,7 @@ Karolina Nurzyńska}
         \label{wzor.wspolczynnikZmarszczek}
     \end{equation}
     \normalsize
-    , gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1,
+    gdzie $W_{s1}$ jest stosunkiem białych pikseli do wszystkich w strefie 1,
     $PB_{s1}$ - suma białych pikseli w strefie 1, $PW_{s1}$ - suma wszystkich pikseli w strefie 1.
     Analogicznie obliczane są stosunki pikseli dla pozostałych stref.
     Ostatnim etapem jest sumowanie wszystkich stosunków pikseli (wzór~\ref{wzor.wrinkleFeature}).
@@ -1388,7 +1388,7 @@ Karolina Nurzyńska}
         \label{wzor.wrinkleFeature}
     \end{equation}
     \normalsize
-    , gdzie WZ to wskaźnik zmarszczek - parametr określający ilość zmarszczek dla danej osoby.
+    gdzie WZ to wskaźnik zmarszczek - parametr określający ilość zmarszczek dla danej osoby.
 
     \section{Algorytm analizy danych ze zbioru trenującego}\label{sec:algorytmTrenowania}
     W celu skonstruowania programu wyznaczającego wiek na podstawie tekstury należy wcześniej zbadać zależność ilości
@@ -1455,24 +1455,25 @@ Karolina Nurzyńska}
     Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w
     książce~\cite{ISODATA}.
 
-    Klasteryzacja Fuzzy C-means dzieli zbiór $F$ na podzbiory $f_{i}$ zgodnie ze wzorem~\ref{wzor.zbiorX}):
+    Klasteryzacja Fuzzy C-means dzieli zbiór $S$ na podzbiory $s_{i}$ zgodnie ze wzorem~\ref{wzor.zbiorX}):
     \large
     \begin{equation}
-        F:=\{f_{1},f_{2},f_{3},\ldots,f_{n}\}\subset \mathbb{R} %todo zamienic na f wszystkie xi
+        S:=\{s_{1},s_{2},s_{3},\ldots,s_{N}\}\subset \mathbb{R}
         \label{wzor.zbiorX}
     \end{equation}
     \normalsize
-    W parametrze algorytmu zostaje ustalona liczba grup c.
+    W parametrze algorytmu zostaje ustalona liczba grup $N$.
     Każda grupa posiada charakterystyczną wartość nazywaną centroidem $p_{j}\subset \mathbb{R}$.
     Jak zostało wspomniane na początku tego rozdziału, w algorytmie C-means zastosowana jest miękka klasteryzacja.
-    Każdy element danych ma przypisywany wektor $U_{i}$ przynależności do grupy (wzór~\ref{wzor.wektorPrzynaleznosci}).
+    Każdy element danych $x_{i}$ ma przypisywany wektor $U_{i}$ przynależności do grupy
+    (wzór~\ref{wzor.wektorPrzynaleznosci}).
     \large
     \begin{equation}
         U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
         \label{wzor.wektorPrzynaleznosci}
     \end{equation}
     \normalsize
-    , gdzie $u_{i1}$ oznacza stopień przynależności elementu $x_{i}$ do grupy 1.
+    gdzie $u_{i1}$ oznacza stopień przynależności elementu $x_{i}$ do grupy 1.
     Analogicznie $u_{i2}$ oznacza stopień przynależności elementu $x_{i}$ do grupy 2.
 
     W pierwszym kroku zbiór centroidów P jest inicjalizowany losowo (wzór~\ref{wzor.zbiorCentroidow}).
@@ -1508,8 +1509,7 @@ Karolina Nurzyńska}
         \label{wzor.kryteriumFCM}
     \end{equation}
     \normalsize
-    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany wzorem~\ref{wzor.koniecIteracjiWarunek},
-    %    todo pozbyc sie przecinkow wyszacych za wzorami
+    Iteracje kończą się, gdy zostanie osiągnięty warunek opisany wzorem~\ref{wzor.koniecIteracjiWarunek}
     \large
     \begin{equation}
         \left \| J^{(k+1)}(U,P) - J^{(k)}(U,P)) \right \| < \epsilon
@@ -1525,14 +1525,14 @@ Karolina Nurzyńska}
     poszczególnych klastrów.
     %    U_{i}=(u_{i1}, u_{i2}, u_{i3}, \ldots, u_{ic})
     Suma wektora przynależności $U_{i}$, dla elementu $x_{i}$ jest opisana
-    Wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
+    wzorem~\ref{wzor.sumaWektorPrzynaleznosci}
     \large
     \begin{equation}
         \sum_{j=0}^{j=c} u_{ij}=1
         \label{wzor.sumaWektorPrzynaleznosci}
     \end{equation}
     \normalsize
-    , gdzie c oznacza liczbę klastrów.
+    gdzie c oznacza liczbę klastrów.
     Element $f_{i}$ będzie należał do klastra k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
 
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
@@ -1545,18 +1545,18 @@ Karolina Nurzyńska}
     przynależności. Każde zdjęcie jest grupowane według algorytmu FCM.
 
     Każdy klaster ma określony centroid j, który posiada parametr $P_{fj}$  oraz dodatkowy parametr - średnią
-    wartość wieku $P_{aj}$. $P_{fj}$ oznacza wartość wrinkle feature dla danego centroida.
+    wartość wieku $P_{aj}$. $P_{fj}$ oznacza wartość wskaźnika zmarszczek dla danego centroida.
     $P_{aj}$ jest wyznaczany ze wzoru~\ref{wzor.avgJ}.
     \large
     \begin{equation}
-        P_{aj}=\frac{\sum_{}^{}A_{c}}{N_{j}}
+        P_{aj}=\frac{\sum_{}^{}A_{i}}{N_{j}}
         \label{wzor.avgJ}
     \end{equation}
     \normalsize
-    , gdzie $A_{c}$ to rzeczywisty wiek osoby z obrazu c, który należy do klastru j.
-    Natomiast $N_{j}$ to liczba zdjęć zaklasyfikowanych do klastru j.
+    gdzie $A_{c}$ to rzeczywisty wiek osoby z obrazu $i$, który należy do klastru $j$.
+    Natomiast $N_{j}$ to liczba zdjęć zaklasyfikowanych do klastru $j$.
 
-    W powyższym akapicie został opisany algorytm klasteryzacji, który generuje n centroidów, reprezentujących każdą
+    W powyższym akapicie został opisany algorytm klasteryzacji, który generuje $n$ centroidów, reprezentujących każdą
     grupę. Natomiast osobnym etapem jest szacowanie wieku.
     W pierwszej fazie działanie algorytmu jest dokładnie takie same jak w sekcjach od~\ref{sec:metodaWykrywaniaTwarzy}
     do~\ref{sec:wyliczanieWrinkleFeature}:
@@ -1582,7 +1582,7 @@ Karolina Nurzyńska}
         \label{wzor.szacowanyWiek}
     \end{equation}
     \normalsize
-    , gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów, podaną jako
+    gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów, podaną jako
     parametr wejściowy algorytmu FCM,
     natomiast $P_{aj}$ jest średnim wiekiem dla j-tego centroida.
     %    Zbiór zdjęć użytych do treningu wynosi około 22000.
@@ -1724,7 +1724,7 @@ Karolina Nurzyńska}
         \label{wzor.komorkaHistogramu1}
     \end{equation}
     \normalsize
-    , gdzie $X_{a}$ oznacza wartość przydzielaną do kubełka reprezentującego mniejszy kąt (tak jak $0^{\circ}$
+    gdzie $X_{a}$ oznacza wartość przydzielaną do kubełka reprezentującego mniejszy kąt (tak jak $0^{\circ}$
     dla powyższego przykładu), $A_{x}$ oznacza wartość kąta gradientu dla danego piksela (tak jak $10^{\circ}$
     dla powyższego przykładu), $A_{a}$ oznacza kąt dla kubełka reprezentującego mniejszy kąt (tak jak $0^{\circ}$
     dla powyższego przykładu), $A_{b}$ oznacza kąt dla kubełka reprezentującego większy kąt (tak jak $20^{\circ}$
@@ -1736,7 +1736,7 @@ Karolina Nurzyńska}
         \label{wzor.komorkaHistogramu2}
     \end{equation}
     \normalsize
-    , gdzie $X_{b}$ oznacza wartość przydzieloną dla kąta o większej wartości (tak jak $20^{\circ}$
+    gdzie $X_{b}$ oznacza wartość przydzieloną dla kąta o większej wartości (tak jak $20^{\circ}$
     dla powyższego przykładu).
 
     Reszta zmiennych odpowiada zmiennym we wzorze~\ref{wzor.komorkaHistogramu1}.
@@ -1756,7 +1756,7 @@ Karolina Nurzyńska}
     Najpierw zostaje wyliczona wartość L2 według wzoru\ref{wzor.l2norm}.
     \large
     \begin{equation}
-        \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}},
+        \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
         \label{wzor.l2norm}
     \end{equation}
     \normalsize
@@ -1776,7 +1776,7 @@ Karolina Nurzyńska}
         \label{wzor.l2norm2}
     \end{equation}
     \normalsize
-    , gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm dla wektora $v$. Działanie zgodne ze
+    gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm dla wektora $v$. Działanie zgodne ze
     wzorem~\ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
     $\left \|v  \right\|_{2}$.
     Powyższy proces powtarza się dla wszystkich bloków.
@@ -1828,7 +1828,7 @@ Karolina Nurzyńska}
     \end{equation}
     %todo po co L1
     \normalsize
-    , gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1 dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
+    gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1 dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
     \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
 
     Parametr L1 dla danego wektora $v$ jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
@@ -1838,7 +1838,7 @@ Karolina Nurzyńska}
         \label{wzor.l1norm}
     \end{equation}
     \normalsize
-    , gdzie $v(i)$ jest i-tym elementem wektora.
+    gdzie $v(i)$ jest i-tym elementem wektora.
 
     Dla każdego zdjęcia ze zbioru podobnie jak w metodzie bazowej~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
     wyznaczana jest para danych $WF_{HOG}$ (wzór~\ref{wzor.hogWrinkleFeature}) oraz wiek. Następnie wygenerowany
@@ -1891,7 +1891,7 @@ Karolina Nurzyńska}
         \label{wzor.obserwacjaKnn}
     \end{equation}
     \normalsize
-    , gdzie $O_{i}$ jest daną obserwacją, $K_{i}$ - klasą, natomiast $V_{i}$ - wektorem zmiennych objaśniających.
+    gdzie $O_{i}$ jest daną obserwacją, $K_{i}$ - klasą, natomiast $V_{i}$ - wektorem zmiennych objaśniających.
     Przykładowo taką jedną obserwację może tworzyć klasa określająca wiek danej osoby, a wektorem może być ilość
     zmarszczek.
 
@@ -1967,7 +1967,7 @@ Karolina Nurzyńska}
         \label{wzor.standaryzacja}
     \end{equation}
     \normalsize
-    , gdzie ${v}_{u}$ jest wektorem zmiennej objaśniającej ze zbioru uczącego, $u$ - indeksem wektora zmiennej
+    gdzie ${v}_{u}$ jest wektorem zmiennej objaśniającej ze zbioru uczącego, $u$ - indeksem wektora zmiennej
     objaśniającej, $i$ jest elementem wektora ${v}_{u}$, $m({v}_{u})$ jest średnią elementów wektora
     ${v}_{u}$. Natomiast $\sigma({v}_{u})$ jest odchyleniem standardowym elementów wektora ${v}_{u}$.
 
@@ -1980,7 +1980,7 @@ Karolina Nurzyńska}
         \label{wzor.normalizacja}
     \end{equation}
     \normalsize
-    , gdzie ${v}_{u}$ jest wektorem zmiennej objaśniającej ze zbioru uczącego, $u$ - indeksem wektora zmiennej
+    gdzie ${v}_{u}$ jest wektorem zmiennej objaśniającej ze zbioru uczącego, $u$ - indeksem wektora zmiennej
     objaśniającej, $i$ jest elementem wektora ${v}_{u}$, $\max({v}_{u})$ oznacza maksymalną wartość spośród elementów
     wektora ${v}_{u}$. Natomiast $\min({v}_{u})$ minimalną wartość spośród elementów
     wektora ${v}_{u}$.
@@ -2115,7 +2115,7 @@ Karolina Nurzyńska}
     \label{wzor.stosunekSzerokoscBloku}
     \end{equation}
     \normalsize
-    , gdzie $B_{wrmin}$ oznacza minimalną szerokość bloku w stosunku do szerokości obszaru twarzy (w %) $B_{w}$ oznacza
+    gdzie $B_{wrmin}$ oznacza minimalną szerokość bloku w stosunku do szerokości obszaru twarzy (w %) $B_{w}$ oznacza
     szerokość bloku w pikselach, natomiast $T_{w}$ oznacza minimalną szerokość obszaru twarzy.
 
     Analogicznie minimalna długość obszaru twarzy względem długości bloku jest opisana
@@ -2127,7 +2127,7 @@ Karolina Nurzyńska}
     \label{wzor.stosunekDlugosciBloku}
     \end{equation}
     \normalsize
-    , gdzie $B_{hrmin}$ oznacza minimalną długość bloku w stosunku do długości obszaru twarzy (w \%), natomiast
+    gdzie $B_{hrmin}$ oznacza minimalną długość bloku w stosunku do długości obszaru twarzy (w \%), natomiast
     $B_{h}$ oznacza
     długość bloku w pikselach, a $T_{hmin}$ określa minimalną długość obszaru twarzy.
 
