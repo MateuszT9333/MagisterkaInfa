@@ -339,7 +339,7 @@ Karolina Nurzyńska}
     Większość metod skupia się na analizie tekstury twarzy.
     Idąc dalej - z obrazu danej osoby musi zostać wykryta twarz.
     Wykrycie twarzy na obrazie jest możliwe dzięki algorytmom segmentacji obrazu.
-    Segmentacja obrazu jest stosowane w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
+    Segmentacja obrazu jest stosowana w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
     Mogą to być na przykład osoby, pojazdy, przedmioty itp. (rys.~\ref{fig.rozpoznawanieObiektow})
 
     \begin{figure}[h!]
@@ -388,26 +388,27 @@ Karolina Nurzyńska}
     %    \section{Metoda a}
     %    \section{Metoda b}
     %    \section{Metoda wrinkle feature}
-    Celem niniejszej pracy jest zbadanie konkretnego algorytmu szacowania wieku.
-    Odtworzono pracę ,,Age Estimation from Face Image using Wrinkle Features''~\cite{wrinkleFeatures},
-    a następnie poddano ją kilku modyfikacjom.
+    Celem niniejszej pracy jest stworzenie algorytmu do szacowania wieku.
+    Bazą dla przeprowadzonych badań było odtworzenie pracy ,,Age Estimation from Face Image using Wrinkle
+    Features''~\cite{wrinkleFeatures}. Metodę w niej zawartą poddano następnie kilku modyfikacjom.
 
     Zakres pracy obejmuje następujące zagadnienia:
     \begin{itemize}
-        \item Implementacja algorytmu z pracy~\cite{wrinkleFeatures}, w dalszej części pracy nazywany oryginalną metodą.
-        \item Zaproponowanie kilku modyfikacji oryginalnej metody.
-        \item Opis algorytmów oraz zmian w stosunku do oryginalnej metody.
-        \item Przeprowadzenie badań w celu rozstrzygnięcia, który algorytm jest najskuteczniejszy w działaniu.
+        \item Implementacja algorytmu z pracy~\cite{wrinkleFeatures}, w dalszej części pracy określanego jako metoda
+        oryginalna lub metoda bazowa;
+        \item Zaproponowanie kilku modyfikacji oryginalnej metody;
+        \item Opis algorytmów oraz zmian w stosunku do oryginalnej metody;
+        \item Przeprowadzenie badań w celu rozstrzygnięcia, który algorytm jest najskuteczniejszy w działaniu;
         \item Wyciągnięcie wniosków z przeprowadzonych badań.
     \end{itemize}
     %todo zweryfikowac czy to ma sens
     W rozdziale~\ref{ch:metoda-bazowa---wrinkle-feature} zaprezentowano algorytm szacowania wieku oparty na oryginalnej metodzie.
-    W pierwszej sekcji~\ref{sec:metodaWykrywaniaTwarzy} skupiono się na metodach wykrywania twarzy wraz z opisem metody wykrywania w niniejszym
-    algorytmie.
+    W pierwszej sekcji~\ref{sec:metodaWykrywaniaTwarzy} skupiono się na metodach wykrywania twarzy wraz z opisem
+    metody wykrywania w bazowym algorytmie.
     Następnie w sekcji~\ref{sec:wyznaczanieStref} zaprezentowano sposób wyznaczania stref zmarszczkowych z oryginalnej metody.
     W kolejnej sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny} przedstawiono sposób detekcji zmarszczek na twarzy implementowany
-    w oryginalnej metodzie.
-    W przedostatniej sekcji~\ref{sec:algorytmTrenowania} niniejszego rozdziału zaprezentowano sposób analizy % w pracy
+    w metodzie bazowej.
+    Przedostatnia sekcja rozdziału drugiego~\ref{sec:algorytmTrenowania}  prezentuje sposób analizy % w pracy
     zależności pomiędzy wskaźnikiem zmarszczek, a wiekiem
     danej osoby.
     W ostatniej sekcji~\ref{sec:grupowanieDanych} tego rozdziału przedstawiono algorytm grupowania danych niezbędny do oszacowania wieku.
@@ -416,7 +417,7 @@ Karolina Nurzyńska}
     Oprócz sposobu implementacji danych modyfikacji czytelnik zostaje zapoznany z teoretycznymi podstawami wykrywania zmarszczek za
     pomocą metody HOG (ang. Histogram of Oriented Gradients) oraz szacowania wieku dzięki algorytmowi KNN (ang.  k-nearest neighbors).
 
-    W przedostatnim rozdziale~\ref{ch:badania} przedstawiono sposób relizacji badań oraz ich wyniki.
+    W przedostatnim rozdziale~\ref{ch:badania} przedstawiono sposób realizacji badań oraz ich wyniki.
     W ostatnim rozdziale~\ref{ch:podsumowanie} podsumowano niniejsza pracą.
 
     \chapter{Metoda bazowa - wskaźnik zmarszczek}\label{ch:metoda-bazowa---wrinkle-feature}
@@ -436,25 +437,23 @@ Karolina Nurzyńska}
     czynniki, do których należą między innymi
     płeć, poziom stresu, czy ekspozycja na działanie środowiska zewnętrznego.
     Badania tego rodzaju opisano w pracy~\cite{lanitisTaylor} A. Lanitis, Ch. J. Taylor oraz T. F. Cootes.
-    Ponadto w tej pracy zaprezentowano algorytm rozpoznawania płci, emocji, osób na podstawie obrazu twarzy.
+    Ponadto w tej pracy zaprezentowano algorytm rozpoznawania płci, emocji czy osób na podstawie obrazu twarzy.
 
-    W kolejnych latach zaczęto przeprowadzać porównywania cech twarzy tej samej osoby w różnym wieku.
+    W kolejnych latach zaczęto przeprowadzać porównania cech twarzy tej samej osoby w różnym wieku.
     Różnice w powyższych cechach posłużyły do zbudowania statystyki zmian cech twarzy wraz ze starzeniem się.
     Taka analiza została zaprezentowana w pracy~\cite{ramanthanChelappa} N. Ramanathan oraz R. Chellappa.
     Rozwinięciem tego pomysłu była praca~\cite{gengZhou} X. Geng, Z. Zhou i K. Smith-Miles.
     W tym artykule porównywano sekwencje wielu zdjęć twarzy jednej osoby.
     Zdjęcia przestawiały twarz w różnym wieku.
-    Powyższe badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
-
-    M.M. Dehshibi oraz A. Bastanfard w swojej pracy~\cite{dehshibiBastard} analizują proporcje twarzy oraz ilość
+    Te badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
+    Z kolei M.M. Dehshibi oraz A. Bastanfard w swojej pracy~\cite{dehshibiBastard} analizują proporcje twarzy oraz ilość
     zmarszczek przy szacowaniu wieku.
-
     Praca~\cite{khryashchevGanin} autorstwa
     Vladimira Khryashcheva, Alexandra Ganina, Olgi Stepanovej oraz
     Antona Lebedeva zawiera podsumowanie technik szacowania wieku.
     Wynika z niego, że do wyodrębniania cech z twarzy stosuje się BIF(ang. biologically inspired features).
     Powyższa metoda została zaprezentowana w książce~\cite{bif} Guodong Guo i in.
-    Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP (ang.local binary patterns)~\cite{lbp}.
+    Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP (ang. local binary patterns)~\cite{lbp}.
 
 
     W metodzie bazowej, która została opisana w artykule~\cite{wrinkleFeatures}, wykrywanie wieku dzieli się na kilka
@@ -479,22 +478,24 @@ Karolina Nurzyńska}
     Wynikiem algorytmu trenującego jest zbiór danych, który
     należy pogrupować, tak jak to opisano w sekcji~\ref{sec:grupowanieDanych}.
     Ostatnią fazą algorytmu jest wykrywanie wieku
-    na podstawie wyników działania FCM - sekcja~\ref{sec:grupowanieDanych} (rysunek~\ref{fig.faza2Algorytmu}).
+    na podstawie wyników działania FCM (ang. Fuzzy C-Means) - sekcja~\ref{sec:grupowanieDanych}
+    (rysunek~\ref{fig .faza2Algorytmu}).
 
     \begin{figure}[ht!]
         \centering
-        \includegraphics[width=8cm]{Obrazy/Faza1.jpg}
+        \includegraphics[width=12cm]{Obrazy/Faza1.jpg}
         \caption{Faza 1 algorytmu}
         \label{fig.faza1Algorytmu}
     \end{figure}
 
     \begin{figure}[ht!]
         \centering
-        \includegraphics[width=8cm]{Obrazy/Faza2.jpg}
+        \includegraphics[width=12cm]{Obrazy/Faza2.jpg}
         \caption{Faza 2 algorytmu}
         \label{fig.faza2Algorytmu}
     \end{figure}
 
+    \clearpage
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy.
     Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie~\cite{mehdiRizvi}:
@@ -515,33 +516,32 @@ Karolina Nurzyńska}
     %    for detection. These methods are designed mainly for face detection.
 
     \begin{itemize}
-        \item metoda oparta na nauce
-        \item metoda niezmienności cech
-        \item metoda dopasowania szablonu twarzy
-        \item metoda bazująca na wyglądzie
+        \item metoda oparta na nauce (ang. knowledge - based method):
+
+        Metoda oparta na nauce kieruje się wiedzą na temat wyglądu twarzy, a
+        bardziej precyzyjnie chodzi o charakterystyczne cechy,
+        dzięki którym na zdjęciu można wyodrębnić obszar twarzy.
+        Mowa tutaj o cechach takich jak kształt twarzy, kolor, miejsca o różnej jasności czy specyficzne krawędzie
+        tworzone np. przez
+        usta.
+        \item metoda niezmienności cech (ang. features invariant method):
+
+        W metodzie niezmienności cech wyszukuje się strukturalne cechy twarzy, które są widoczne w każdych warunkach
+        oświetleniowych.
+        Ponadto te cechy są widoczne bez względu na punkt widzenia, nawet jeśli twarz jest przedstawiona
+        z profilu czy przechylona pod kątem.
+        \item metoda dopasowania szablonu twarzy (ang. template matching method):
+
+        Metoda dopasowania szablonu twarzy wykorzystuje kilka standardowych wzorów opisujących twarz.
+        Na wejściu algorytmu obraz jest porównywany z tymi wzorami, a
+        na wyjściu dostajemy informację, w jakim stopniu obraz jest dopasowany do ogólnego szablonu twarzy.
+        \item metoda bazująca na wyglądzie (ang. appearance - based method):
+
+        Ideą metody bazującej na wyglądzie jest analiza dużego zbioru obrazów twarzy, tak aby wychwycić zmienność
+        ich cech.
+        Tak wytrenowany model jest później wykorzystywany do wykrywania twarzy.
     \end{itemize}
-    Metoda oparta na nauce kieruje się wiedzą na temat wyglądu twarzy, a
-    bardziej precyzyjnie chodzi o charakterystyczne cechy,
-    dzięki którym na zdjęciu można wyodrębnić obszar twarzy.
-    Mowa tutaj o cechach takich jak kształt twarzy, kolor, miejsca o różnej jasności czy specyficzne krawędzie
-    tworzone np. przez
-    usta.
 
-    W metodzie niezmienności cech wyszukuje się takie strukturalne cechy twarzy, które są widoczne w każdych warunkach
-    oświetleniowych.
-    Ponadto te cechy są widoczne bez względu na punkt widzenia, nawet jeśli twarz jest widoczna
-    z profilu czy przechylona pod kątem.
-
-    Z kolei metoda dopasowania szablonu twarzy wykorzystuje kilka standardowych wzorów opisujących twarz.
-    Na wejściu algorytmu obraz jest porównywany z tymi wzorami, a
-    na wyjściu dostajemy informację, w jakim stopniu obraz jest dopasowany do szablonu twarzy.
-
-    Ideą metody bazującej na wyglądzie jest trenowanie dużego zbioru obrazów twarzy, tak aby wychwycić zmienność cech
-    twarzy.
-    Tak wytrenowany model jest później wykorzystywany do wykrywania twarzy.
-
-
-    Ponadto w procesie ekstrakcji twarzy z obrazu istnieje wiele problemów~\cite{mehdiRizvi}.
     %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
     %    Pose: The images of a face vary due to the relative camera-face pose (frontal, 45
     %    degree, profile, upside down), and some facial features such as an eye or the nose
@@ -561,27 +561,27 @@ Karolina Nurzyńska}
     %    Każda z nich wyodrębnia z obrazu pewne cechy, które
     %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
 
+    Należy jednak zauważyć, że w procesie ekstrakcji twarzy z obrazu mogą wystąpić liczne problemy.~\cite{mehdiRizvi}.
     Jednym z nich jest nieodpowiednia poza.
     Wiąże się to z różnymi ustawieniami twarzy wobec aparatu fotograficznego lub kamery.
     Twarz może być nachylona, przechylona lub odchylona.
-    Inaczej mówiąc może mieć różne położenie w trzech wymiarach, a
+    Inaczej mówiąc, może mieć różne położenie w trzech wymiarach, a
     niektóre części twarzy lub jej cechy mogą zostać przysłonięte.
     Im mniej cech widocznych na twarzy, tym mniej danych, które algorytm może z niej wyodrębnić, a
     im mniej danych, którymi algorytm operuje, tym mniejsze prawdopodobieństwo prawidłowego wykrycia twarzy.
-
     Niektóre twarze mogą zawierać pewne wyróżniające je cechy takie jak broda, blizny czy okulary.
     Różnorodność tych cech także wpływa na efektywność wykrywania twarzy.
-
-    Ilość zmarszczeń na twarzy jest zmienna, w zależności od wyrazu mimicznego.
-    Przy różnych minach zmienia się kształt ust, a czasem w wyniku pracy mięśni uwydatniają się na twarzy ostre
-    krawędzie.
-    Widoczne mogą być różne pofałdowania skóry.
 
     Zdarza się, że twarz zostaje częściowo przysłonięta przez jakiś inny obiekt.
     Na przykład na zdjęciu,
     które obejmuje grupę wielu osób, część danej twarzy może być przysłonięta przez inną twarz.
     Takie przysłonięcie przez inny obiekt wiąże się z utratą informacji o części twarzy, co zmniejsza prawdopodobieństwo
     prawidłowego jej wykrycia.
+
+    Ilość zmarszczek na twarzy jest zmienna, w zależności od wyrazu mimicznego.
+    Przy różnych minach zmienia się kształt ust, a czasem w wyniku pracy mięśni uwydatniają się na twarzy ostre
+    krawędzie.
+    Widoczne mogą być różne pofałdowania skóry.
 
     Kolejnym istotnym elementem jest oświetlenie twarzy.
     Gdy twarz oświetlona jest tzw. ostrym światłem, występują na
@@ -601,7 +601,6 @@ Karolina Nurzyńska}
     Przy punktowym źródle światła cała twarz jest
     okryta jednolitym cieniem, którego intensywność zależy od rodzaju światła.
     Natomiast przy świetle rozproszonym intensywność cieni jest mniejsza.
-
     Na rys.~\ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
     \begin{figure}
         \centering
@@ -620,15 +619,14 @@ Karolina Nurzyńska}
     Dodatkowo zostanie omówiona metoda, która posłużyła do wykrywania twarzy w niniejszej pracy.
 
     %https://sci-hub.tw/10.1016/S0031-3203(00)00134-5
-    W pracy ,,An efficient algorithm for human face detection and facial
-    feature extraction under different conditions''~\cite{wongLamSiu}
+    W pracy~\cite{wongLamSiu}
     przedstawiono opisaną w skrócie poniżej technikę wykrywania twarzy.
     W pierwszym etapie procesu obszary, gdzie może znajdować się ludzkie oko,
     są wykrywane przez przeprowadzenie testów na zacienionych rejonach obrazu.
     Pary takich obszarów wyodrębnia się na podstawie algorytmu genetycznego,
     aby następnie wyznaczyć możliwy obszar twarzy.
-    Dla każdego obszaru mierzy się wartość dopasowania na podstawie jego projekcji na wektory własne,
-    tzw. eigenfaces.
+    Dla każdego obszaru mierzy się wartość dopasowania na podstawie jego projekcji na wektory własne, obliczone dla
+    obszarów twarzy, tzw. eigenfaces.
     Aby wiarygodność wykrywania była wyższa,
     każdy możliwy obszar twarzy normalizuje się pod kątem oświetlenia.
     Proces ten powtarza się pewną ilość razy,
@@ -637,28 +635,30 @@ Karolina Nurzyńska}
     czy na każdym wybranym obszarze istnieją rysy twarzy.
     Rysy określa się przez ewaluację rzeźby topograficznej - wystających i wklęsłych elementów
     różnych regionów obszaru twarzy, poddanego uprzednio normalizacji.
-    Algorytm jest w stanie wykryć także obszar twarzy także, gdy głowa jest przechylona
+    Algorytm jest w stanie wykryć obszar twarzy także wtedy, gdy głowa jest przechylona.
 
     %Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
     %https://sci-hub.tw/10.1007/s10462-018-9650-2
-    W roku 1997 w pracy pt. ,,Vision for man-machine interaction'' opisano metodę wykrywania twarzy bazującą na
-    wykrywaniu cechy jaką jest kolor skóry~\cite{clowleyCoutaz}.
-    Kolor skóry jest najbardziej widoczną cechą twarzy zarówno dla człowieka jak i dla maszyny.
-    Ponadto kolor jest przetwarzany znacznie szybciej od innych cech.
+    W roku 1997 w pracy~\cite{clowleyCoutaz} opisano metodę wykrywania twarzy bazującą na
+    wykrywaniu cechy, jaką jest kolor skóry.
+    Zarówno dla człowieka, jak i dla maszyny kolor skóry jest
+    najbardziej widoczną cechą twarzy.
+    Ponadto kolor jest przetwarzany znacznie szybciej niż inne cechy.
     Przy dobrych warunkach oświetleniowych ustawienie twarzy nie ma wpływu na skuteczność wykrywalności twarzy
     opisywaną metodą.
-    Każda metoda wykrywania twarzy posiada wady.
-    Jedną z tych wad jest problem wykrywalności twarzy przy nierównomiernym oświetleniu.
+
+    Niezależnie od wybranej metody mogą wystąpić problemy z poprawnym wykryciem twarzy.
+    Jednym z nich jest problem wykrywalności twarzy przy nierównomiernym oświetleniu.
     Problem pojawia się także, gdy na obrazie widoczny jest obszar skóry spoza twarzy, np. z rąk.
     Warto zaznaczyć, że kolor twarzy na obrazie jest zależny od względnego kierunku oświetlenia.
     Obszar twarzy w omawianym algorytmie jest wykrywany poprzez normalizacje histogramu kolorów.
-    Normalizacja jest potrzebna do redukcji wpływu luminancji na kolor.
+    Normalizacja jest potrzebna do redukcji wpływu natężenia oświetlenia na kolor.
 
     %trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
     Algorytm Haar Cascade jest jedynym algorytmem do wykrywania twarzy zaimplementowanym w bibliotece OpenCV,
     dlatego został wykorzystany w procesie badawczym.
-    Algorytm został bliżej przedstawiony w książce~\cite{violaJones} w 2001 i składa się z trzech podstawowych faz,
-    których dokładny opis znajduje sie w sekcji %todo.
+    Algorytm został bliżej przedstawiony w książce~\cite{violaJones} w 2001 roku i składa się z trzech podstawowych faz,
+    których dokładny opis znajduje sie w sekcji~\ref{subsec:algorytm-haar-cascade}.
     %todo odwolanie do Haara
     %    W pierwszej obraz wejściowy przekształcany jest na obraz scałkowany.
     %    Następnie wykorzystywany jest algorytm do boostingu, który zmniejsza ilość klasyfikatorów tylko do tych
@@ -1427,7 +1427,7 @@ Karolina Nurzyńska}
     \normalsize
     , gdzie WZ to wskaźnik zmarszczek - parametr określający ilość zmarszczek dla danej osoby.
 
-    \section{Algorytm trenowania}\label{sec:algorytmTrenowania}
+    \section{Algorytm analizy danych ze zbioru trenującego}\label{sec:algorytmTrenowania}
     W celu skonstruowania programu wyznaczającego wiek na podstawie tekstury należy wcześniej zbadać zależność ilości
     zmarszczek od wieku.
     W tym celu należy posiadać odpowiednią bazę zdjęć, na których można przeprowadzić wyżej wspomniane badania.
