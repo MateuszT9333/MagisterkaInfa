@@ -2356,18 +2356,18 @@ Karolina Nurzyńska}
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
     treningową oraz testową.
     Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
-    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%.\cite{schematTreningu}
+    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%.\cite{dataMiningAlgorithms}
     Drugi ze sposobów to schemat CV-n, zwany również walidacją krzyżową.
     Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
     Następnie wykonuje się n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym, natomiast reszta
     podzbiorów tworzy zbiór treningowy.
     Każda iteracja daje wynik działania klasyfikatora. W wyniku ,,n'' iteracji otrzymuje się uśredniony wynik
-    działania klasyfikatora.\cite{schematTreningu}
+    działania klasyfikatora.\cite{dataMiningAlgorithms}
 
     Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
     Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
     Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
-    w zbiorze danych.\cite{schematTreningu}
+    w zbiorze danych.\cite{dataMiningAlgorithms}
 
     Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE wzór~\ref{wzor.mae}.
     Dla każdej metody dokonano porównania stu zdjęć,
