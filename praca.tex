@@ -1308,7 +1308,7 @@ Karolina Nurzyńska}
     Każdy piksel obrazu otrzymuje wartość gradientu (wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
     W wyniku tego działania otrzymuje się obraz gradientowy~\cite{Canny}.
-    \subsection{Zastosowanie techniki zmniejszania grubości
+    \subsection*{Zastosowanie techniki zmniejszania grubości
     krawędzi}\label{subsec:zastosowanie-zmniejszania-grubości-krawędzi}
     Zmniejszanie grubości krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
     Krawędzie wykryte za pomocą gradientu są rozmyte.
@@ -1330,8 +1330,9 @@ Karolina Nurzyńska}
     Zastosowanie techniki zmniejszania grubości krawędzi pozostawia na obrazie wiele krawędzi, które są wygenerowane przez szum i zmiany
     kolorów.
     Kolejnym krokiem jest filtracja powyższych krawędzi, gdyż są one nadmiarowe.
-    W tym celu ustawiany jest pewien próg, zwany progiem małym.
-    Oprócz progu małego ustawiany jest również próg duży w celu wyodrębnienia krawędzi o wysokim gradiencie jasności.
+    W tym celu ustawiany jest pewien próg, zwany progiem małym $T_{l}$.
+    Oprócz progu małego ustawiany jest również próg duży $T_{h}$ w celu wyodrębnienia krawędzi o wysokim gradiencie
+    jasności.
     Jeśli wartość gradientu dla danej krawędzi jest mniejsza od progu małego, to zostaje ona usunięta.
     W przypadku, gdy wartość jest większa od progu małego, ale mniejsza od progu dużego, dana krawędź
     zostaje oznaczona jako słaba.
@@ -1538,14 +1539,15 @@ Karolina Nurzyńska}
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
     Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wskaźnika
     zmarszczek
-    $F_{i}$. %todo zmienic nazwe
-    W algorytmie Fuzzy C-means są grupowane zbiory danych zawierające wartości wskaźnika zmarszczek $F_{i}$.
-    Jak wiadomo z powyższego opisu algorytmu Fuzzy C-means, każdy element (w tym przypadku $F_{i}$) ma określony stopień
-    przynależności do każdego klastra. Dany element $F_{i}$ będzie należał do klastra o największym stopniu
-    przynależności. Każde zdjęcie jest grupowane według algorytmu FCM.
+    $WF_{i}$. %todo zmienic nazwe
+    W algorytmie Fuzzy C-means są grupowane zbiory danych zawierające wartości wskaźnika zmarszczek $WF_{i}$.
+    Jak wiadomo z powyższego opisu algorytmu Fuzzy C-means, każdy element (w tym przypadku $WF_{i}$) ma określony
+    stopień
+    przynależności do każdego klastra. Dany element $WF_{i}$ będzie należał do klastra o największym stopniu
+    przynależności. Każde zdjęcie jest grupowane według wyżej opisanego algorytmu FCM.
 
-    Każdy klaster ma określony centroid j, który posiada parametr $P_{fj}$  oraz dodatkowy parametr - średnią
-    wartość wieku $P_{aj}$. $P_{fj}$ oznacza wartość wskaźnika zmarszczek dla danego centroida.
+    Każdy klaster ma określony centroid j, który posiada parametr $P_{wfj}$  oraz dodatkowy parametr - średnią
+    wartość wieku $P_{aj}$. $P_{wfj}$ oznacza wartość wskaźnika zmarszczek dla danego centroida.
     $P_{aj}$ jest wyznaczany ze wzoru~\ref{wzor.avgJ}.
     \large
     \begin{equation}
@@ -1553,16 +1555,16 @@ Karolina Nurzyńska}
         \label{wzor.avgJ}
     \end{equation}
     \normalsize
-    gdzie $A_{c}$ to rzeczywisty wiek osoby z obrazu $i$, który należy do klastru $j$.
+    gdzie $A_{i}$ to rzeczywisty wiek osoby z obrazu $i$, który należy do klastru $j$.
     Natomiast $N_{j}$ to liczba zdjęć zaklasyfikowanych do klastru $j$.
 
-    W powyższym akapicie został opisany algorytm klasteryzacji, który generuje $n$ centroidów, reprezentujących każdą
+    W powyższym akapicie został opisany algorytm klasteryzacji, który generuje $N$ centroidów, reprezentujących każdą
     grupę. Natomiast osobnym etapem jest szacowanie wieku.
     W pierwszej fazie działanie algorytmu jest dokładnie takie same jak w sekcjach od~\ref{sec:metodaWykrywaniaTwarzy}
     do~\ref{sec:wyliczanieWrinkleFeature}:
     Algorytm szacowania wieku w pierwszej kolejności dokonuje detekcji twarzy, oczu, ust na danym obrazie $O_{i}$.
     Jeśli powyższe elementy zostały zidentyfikowane, wyznaczane są strefy zmarszczkowe,
-    a następnie zostaje wyliczony parametr wskaźnik zmarszczek $F_{i}$~\cite{wrinkleFeatures}.
+    a następnie zostaje wyliczony parametr wskaźnik zmarszczek $WF_{i}$~\cite{wrinkleFeatures}.
 
     %    Należy podkreślić, że zdjęcia do testowania algorytmu szacowania wieku
     %    pochodzą z innej bazy obrazów niż obrazy wykorzystane w treningu. Ma to na celu eliminację błędów w testowaniu algorytmu.
@@ -1570,7 +1572,7 @@ Karolina Nurzyńska}
     %    W wyniku działania algorytmu wygenerowanych zostaje n grup. Każda grupa posiada centroid wraz ze średnim wiekiem.
 
 
-    Dla parametru $F_{i}$ zostaje wyznaczony wektor przynależności do grupy
+    Dla parametru $WF_{i}$ zostaje wyznaczony wektor przynależności do grupy
     według wzoru~\ref{wzor.wektorPrzynaleznosci}.
     Przy założeniu dla wektoru przynależności zgodnym ze wzorem~\ref{wzor.sumaWektorPrzynaleznosci} szacowany wiek
     $PA$
@@ -1578,11 +1580,11 @@ Karolina Nurzyńska}
     (wzór~\ref{wzor.szacowanyWiek}).
     \large
     \begin{equation}
-        PA=\sum_{j=1}^{c}(u_{ij} \cdot P_{aj})
+        PA=\sum_{j=1}^{N}(u_{ij} \cdot P_{aj})
         \label{wzor.szacowanyWiek}
     \end{equation}
     \normalsize
-    gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $c$ oznacza liczbę klastrów, podaną jako
+    gdzie $u_{ij}$ oznacza przynależność i-tego zdjęcia do j-tego klastra, $N$ oznacza liczbę klastrów, podaną jako
     parametr wejściowy algorytmu FCM,
     natomiast $P_{aj}$ jest średnim wiekiem dla j-tego centroida.
     %    Zbiór zdjęć użytych do treningu wynosi około 22000.
@@ -1590,21 +1592,6 @@ Karolina Nurzyńska}
 
     %Tutaj powinno byc 5000 slow
     \chapter{Modyfikacje metody bazowej}\label{ch:modyfikacje-metody-bazowej}
-    %    W pracy została odtworzona oryginalna praca autorów, która todo to dac na poczatku badan
-    %    będzie dalej nazywana metodą bazową.
-    %    W celu poprawienia wyników metody bazowej wprowadzono kilka modyfikacji, a
-    %    w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
-    %
-    %    Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
-    %    który został określony we wzorze~\ref{wzor.mae}.
-    %    \large
-    %    \begin{equation}
-    %        MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
-    %        \label{wzor.mae}
-    %    \end{equation}
-    %    \normalsize
-    %    , gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
-    %    Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
     %todo wstep co bedzie dalej
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
@@ -2020,7 +2007,6 @@ Karolina Nurzyńska}
     W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz jej modyfikacji.
     Sekcja ~\ref{sec:środowisko-pracy} prezentuje środowisko pracy, a dokładniej mówiąc wszystkie
     niezbędne narzędzia i akcesoria, które pozwoliły skutecznie przeprowadzić badania.
-    W sekcji~\ref{sec:rozmiar-obrazu} przedstawiono wpływ rozmiaru danego obrazu na wyniki badań.
     Sekcja~\ref{sec:wykrywanie-krawędzi-przez-detektor-canny} ukazuje efekty wykrywania zmarszczek przez detektor
     Canny. W kolejnej sekcji~\ref{sec:statystyki-z-działania-programu} przybliżono czas działania poszczególnych
     części algorytmów, zarówno trenujących, jak i szacujących wiek.
@@ -2028,7 +2014,7 @@ Karolina Nurzyńska}
     modyfikacji
     pod kątem skuteczności szacowania wieku.
 
-    \section{Środowisko badań}\label{sec:środowisko-pracy}
+    \section{Środowisko i metodyka badań}\label{sec:środowisko-pracy}
 
     W celu przeprowadzenia badań do niniejszej pracy magisterskiej wymagane było stworzenie programu,
     który wykrywa twarz oraz wyodrębnia cechy z twarzy. Wyżej wymieniony program został napisany w języku Java.
@@ -2047,112 +2033,51 @@ Karolina Nurzyńska}
     Generacja plików JSON była zrealizowana przez bibliotekę GSON z pakietu com.google.code.gson, natomiast
     do generacji plików CSV nie została wykorzystana zewnętrzna biblioteka.
 
-    %jakie biblioteki uzywano z jaka dokladnocia liczono
-    %    jakich technologii uzywano np. log4j do logowania
-    \section{Rozmiar obrazu}\label{sec:rozmiar-obrazu}
-    Wymiary obrazów z bazy UTKface mieszczą się w zakresie od 186 pikseli do 1300. Natomiast obszar wykrytej
-    twarzy miał rozmiar od 165 do 450 pikseli.
-    Sprawdzono wskaźnik zmarszczek wygenerowany za pomocą detektora Canny oraz HOG dla jednego zdjęcia ze zbioru
-    treningowego w kilku rozmiarach.
-    Dla detektora Canny zmieniano wartość powiększenia zdjęcia od 0,8 do 1,20. Wartość parametru wrinkle feature nie uległa
-    zmianie. Natomiast ponad i poniżej powyższego zakresu powiększenia detektor nie mógł wykryć i prawidłowo zlokalizować
-    oczu.
+    W pracy została odtworzona oryginalna praca autorów, która
+    będzie dalej nazywana metodą bazową.
+    W celu poprawienia wyników metody bazowej wprowadzono kilka modyfikacji, a
+    w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
 
-    Dla detektora opartego na algorytmie HOG wskaźnik zmarszczek był następujący:
-    \begin{itemize}
-        \item powiększenie 0,8: 11.944
-        \item powiększenie 0,9: 11.813538
-        \item powiększenie 1,0: 12.01074
-        \item powiększenie 1,1: 11.117805
-        \item powiększenie 1,2: 11.125154
-    \end{itemize}
+    %todo opisac zbior danych, dokladne statystyki ile zdjec takich taki srednia itp...
 
-    Dla detektora opartego na algorytmie HOG wraz z klasyfikatorem KNN wskaźnik zmarszczek przyjął poniższe wartości
+    Do oceny skuteczności szacowania wieku za pomocą poszczególnych metod potrzebna jest baza treningowa oraz testowa.
+    Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
+    treningową oraz testową.
+    Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
+    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%.\cite{dataMiningAlgorithms}
+    Drugi ze sposobów to schemat CV-n, zwany również walidacją krzyżową.
+    Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
+    Następnie wykonuje się n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym, natomiast reszta
+    podzbiorów tworzy zbiór treningowy.
+    Każda iteracja daje wynik działania klasyfikatora. W wyniku ,,n'' iteracji otrzymuje się uśredniony wynik
+    działania klasyfikatora.\cite{dataMiningAlgorithms}
 
-    \begin{itemize}
-        \item powiększenie 0,8: [2.455685, 2.4238224, 2.3258488, 2.5089853, 2.22999]
-        \item powiększenie 0,9: [2.3424015, 2.183178, 2.402356, 2.6400175, 2.245584]
-        \item powiększenie 1,0: [2.4636364, 2.3633847, 2.4149206, 2.171613, 2.5971856]
-        \item powiększenie 1,1: [2.3787472, 2.184542, 2.335689, 1.9784055, 2.2404206]
-        \item powiększenie 1,2: [2.3283577, 2.1853786, 2.3087728, 2.0892627, 2.2133815]
-    \end{itemize}
+    Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
+    Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
+    Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
+    w zbiorze danych.\cite{dataMiningAlgorithms}
 
-    Na podstawie wyników można wywnioskować, że wskaźnik zmarszczek nie zwiększa się przy zmianie
-    powiększenia zdjęcia dla metody opartej na detektorze Canny. Natomiast zmiany były zauważalne zarówno dla metody
-    korzystającej z algorytmu HOG, jak również HOG z klasyfikatorem KNN.
-
-    Okazało się, że w pewnych warunkach detekcja metodą HOG i KNN nie oblicza współczynnika zmarszczek dla strefy 3
-    i 6.
-    Wynikało to z rozmiaru obrazu oraz parametrów HOG.
-    Okazało się również, że gdy szerokość obszaru zmarszczek jest mniejsza od szerokości pojedynczego bloku lub długość tego
-    obszaru jest mniejsza od długości pojedynczego bloku,
-    to długość deskryptora wynosi 0. Zgodnie z powyższym suma deskryptora dla opisywanego obszaru jest równa 0.
-    Tracone są w ten sposób informacje o zmarszczkach.
-
-    Problem został zauważony dla obrazów o wymiarach 165 x 213 pikseli i następujących parametrów HOG:
-    \begin{itemize}
-        \item blok 18 x 18 pikseli
-        \item komorka 9 x 9 pikseli
-    \end{itemize}
-    Analogiczna sytuacja może nastąpić, gdy długość bloku jest większa od długości obszaru zmarszczek.
-
-    Można przyjąć pewne minimalne wymiary obrazu twarzy, zakładając, że maksymalna długość i szerokość bloku wyniesie 18 pikseli.
-    W związku z powyższym szerokość i/lub długość strefy zmarszczkowej nie może być mniejsza od 18 pikseli.
-    Jak już wcześniej zostało wspomniane, najbardziej wrażliwe na brak generacji deskryptora są strefy 3
-    i 6.
-    W pierwszym kroku należało wydedukować, jaki obszar zajmuje w przybliżeniu jedna strefa 3 lub 6 w stosunku do obszaru twarzy.
-    Na podstawie logów aplikacji wygenerowanych w trakcie detekcji stref dla zdjęć z bazy treningowej wyznaczono
-    średni obszar jednej strefy 3 lub 6. Następnie porównano rozmiar obszaru twarzy w pikselach z rozmiarem wyznaczonej strefy 3 lub 6.
-    Porównanie wyżej wymienionych wymiarów przeprowadzono dla kilkudziesięciu zdjęć. Na podstawie uzyskanych danych po prostych
-    obliczeniach stwierdzono, że jedna strefa 3 lub 6 zajmuje od 8\% do 15\% na szerokość obszaru twarzy oraz od 15\% do 25\%
-    na długość obszaru twarzy.
-    W związku z powyższym minimalna szerokość bloku wyniosła 8\% szerokości obszaru twarzy, natomiast minimalna długość wyniosła 15\%.
-    Najmniejsza możliwa szerokość obszaru twarzy w pikselach względem szerokości bloku jest opisana wzorem~\ref{wzor.stosunekSzerokoscBloku}.
-
+    Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
+    który został określony we wzorze~\ref{wzor.mae}.
     \large
     \begin{equation}
-    T_{wmin}=\frac{1}{B_{wrmin}}*B_{w}
-    \label{wzor.stosunekSzerokoscBloku}
+        MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
+        \label{wzor.mae}
     \end{equation}
     \normalsize
-    gdzie $B_{wrmin}$ oznacza minimalną szerokość bloku w stosunku do szerokości obszaru twarzy (w %) $B_{w}$ oznacza
-    szerokość bloku w pikselach, natomiast $T_{w}$ oznacza minimalną szerokość obszaru twarzy.
+    , gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
+    Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
 
-    Analogicznie minimalna długość obszaru twarzy względem długości bloku jest opisana
-    wzorem~\ref{wzor.stosunekDlugosciBloku}.
+    %todo opisac, ze dokonano badan w oparciu o rozdzial 90 - 10 oraz CV-5
+    Dla każdej metody dokonano porównania stu zdjęć,
+    natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
+    podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
 
-    \large
-    \begin{equation}
-    T_{hmin}=\frac{1}{B_{hrmin}}*B_{h}
-    \label{wzor.stosunekDlugosciBloku}
-    \end{equation}
-    \normalsize
-    gdzie $B_{hrmin}$ oznacza minimalną długość bloku w stosunku do długości obszaru twarzy (w \%), natomiast
-    $B_{h}$ oznacza
-    długość bloku w pikselach, a $T_{hmin}$ określa minimalną długość obszaru twarzy.
-
-    Jak wynika z powyższego wzoru~\ref{wzor.stosunekSzerokoscBloku}, minimalna szerokość obszaru twarzy powinna
-    być co najmniej 12,5 razy większa od szerokości bloku.
-    Natomiast według wzoru~\ref{wzor.stosunekDlugosciBloku} długość obszaru zawierającego twarz powinna
-    być co najmniej 6,7 razy większa od długości bloku.
-
-    W drugim kroku należało odnaleźć obszar, jaki zajmuje twarz w stosunku do wymiarów obrazu.
-    W tym celu porównano zdjęcia z bazy treningowej pod kątem wyżej wymienionych obszarów. Podobnie jak w pierwszym kroku, przeprowadzono porównanie dla
-    kilkudziesięciu zdjęć.
-    Okazało się, że minimalny obszar zajęty przez twarz wyniósł 75 \% na szerokość całego obrazu oraz 80 \% na jego długość.
-    W świetle powyższych danych należy stwierdzić, że obszar twarzy jest 1,33 razy węższy oraz 1,25 razy krótszy od obszaru całego obrazu.
-
-    Zgodnie z wynikami pierwszej fazy badań, obszar twarzy powinien być 12,5 razy szerszy od szerokości bloku,
-    a jednocześnie 1,33 razy węższy od samego obrazu,
-    więc szerokość obrazu powinna być $12,5*1,33$, czyli w przybliżeniu 16,7 razy większa od szerokości bloku.
-
-    Obliczenia dla minimalnej długości obrazu są analogiczne do powyższych.
-    Obszar twarzy powinien być 6,7 razy dłuższy od długości bloku, a jednocześnie 1,25 razy krótszy od długości obrazu.
-    W związku z powyższym długość obrazu powinna być $6,7*1,25$, czyli w przybliżeniu 8,4 razy większa od długości bloku.
-
-    W celu obliczenia parametru wskaźnika zmarszczek dla strefy 3 i 6 obrazy, które miały zbyt mały rozmiar zostały powiększone.
-
-    \section{Wykrywanie zmarszczek przez detektor Canny oraz Histogram of Oriented Gradients}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
+    %Skad wzielismy dane testowe
+    %porownanie metod testowych
+    %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
+    %    Wstep jakie metody porownano i co tam zmieniano
+    \section{Wykrywanie zmarszczek}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
     W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji zmarszczek metodą Canny oraz Histogram
     of Oriented Gradients.
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
@@ -2168,8 +2093,18 @@ Karolina Nurzyńska}
     \end{figure}
     Obraz~\ref{fig.dobryRyjek} będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
 
-    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (obraz~\ref{fig.zlyRyjek}) dla osoby w wieku 17
-    lat.
+    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (obraz~\ref{fig.zlyRyjek}) dla osób z przedziału
+    wieku...
+
+    %todo opis, że podzielono na dwie grupy po 30 probek i sprawdzono problem
+    %    Trzeba wziąć więcej obrazów. Zrobić grupę obrazów, gdzie brwi wchodzą w region i drugą grupę
+    %    (o tej samej liczbie obrazów), w której nie ma tego problemu. Dla każdego obrazu policzyć parametry.
+    %    Potem dla każdej grupy policzyć średnią i odchylenie standardowe. I zobaczyć na wykresie czy średnia
+    %    +/- odchylenie z jednej grupy pokrywa wartości dla średnia +/- odchylenie z drugiej grupy.
+    %    Najlepiej byłoby jakby te zakresy nie naszły na siebie. Dobrze byłoby mieć po 30 próbek na grupę
+    %    - to wtedy statystycznie wynik można traktować jako pewny. Jak Pan nie ma tyle danych, to proszę
+    %    we wnioskach najwyżej napisać, że danych jest trochę za mało, ale widoczna jest tendencja
+    %    (o ile ona wyjdzie z obliczeń).
 
     \begin{figure}
         \centering
@@ -2208,7 +2143,7 @@ Karolina Nurzyńska}
         \item Dla Canny: $0,3542 - 0,2636$, czyli 0,0906
     \end{itemize}
 
-    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.
+    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1. %todo tak samo tutaj zdefiniowac problem
     Na obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
     które identyfikują włosy.
 
@@ -2253,28 +2188,13 @@ Karolina Nurzyńska}
     Jednak spośród 14583 obrazów tylko 2574 brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm
     poprawnie wykrył
     obszar nosa oraz oczu, które są niezbędne do dalszych obliczeń.
-    Średnia zajętość RAM-u przez program wyniosła 790 MB.
-    Natomiast maksymalnie program zajmował 1974 MB pamięci RAM.
-
-    Na podstawie logów aplikacji sprawdzono czasy przetwarzania poszczególnych części algorytmów.
-
-    Średni czas wykrywania twarzy trwał 0,125 sekundy. Maksymalny czas wykrywania wynosił 0,456 sekundy, natomiast
-    najszybciej nastąpiło to w czasie 0,056 sekundy.
 
     Średni czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,467 sekundy dla metody bazowej.
     Dla metody, w której została odjęta strefa druga, generacja trwała 0,465 sekund,
     dla metody HOG 0,543 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN - 0,543 sekundy.
 
-    Maksymalny czas generacji wskaźnika zmarszczek obrazu po wykryciu twarzy wyniósł 0,723 sekundy dla metody bazowej. Dla
-    metody, w której została
-    odjęta strefa druga było to 0,716 sekundy, dla metody HOG 0,954 sekundy,
-    natomiast dla metody HOG wraz z klasyfikacją KNN - 0,956 sekundy.
-
-    Minimalny czas generacji wskaźnika zmarszczek obrazu po wykryciu twarzy wyniósł 0,286 sekundy dla metody bazowej.
-    Dla metody, w której została odjęta strefa druga - 0,274 sekundy,
-    dla metody HOG było to 0,315 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN generacja trwała 0,342 sekundy.
-
-    Powyższe dane wykazują, że najszybciej wskaźnik zmarszczek był generowany przez algorytm metody po odjęciu jednej strefy.
+    Powyższe dane wykazują, że najszybciej wskaźnik zmarszczek był generowany przez algorytm metody
+    po odjęciu jednej strefy.
 
     Warto porównać również szybkość szacowania wieku na podstawie danego wrinkle feature.
 
@@ -2283,16 +2203,7 @@ Karolina Nurzyńska}
     odjęta strefa druga ten czas wyniósł 0,583 sekundy, dla metody HOG 0,675 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN 0,678
     sekundy.
 
-    Maksymalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł 0,95 sekundy dla metody bazowej.
-    Dla metody, w której została
-    odjęta strefa druga było to 0,947 sekundy, dla metody HOG 1,152 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN 1,15
-    sekundy.
-
-    Minimalny czas szacowania wieku dla danego obrazu po wykryciu twarzy wyniósł 0,235 sekundy dla metody bazowej. Dla
-    metody, w której została
-    odjęta strefa druga - 0,23 sekundy, dla metody HOG 0,426 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN czas szacowania wyniósł 0,415
-    sekundy.
-
+    %todo opisac jak w matlabie wygladalo szacowanie, ewentualnie jak w pythonie :)
     Najszybciej szacował wiek algorytm zawierający odjętą strefę.
     Warto podkreślić, że szacowanie wieku dla metody HOG wraz z klasyfikacją KNN realizował
     program realizowany przez skrypt w Matlabie.
@@ -2300,41 +2211,8 @@ Karolina Nurzyńska}
     W związku z powyższym porównanie szybkości działania
     algorytmu zaimplementowanego w Matlabie do algorytmu zaimplementowanego w Javie może być niedokładne.
 
-    %opisywac nie tylko wyniki ale tez posrednio co tam lecialo, statystyki, szybkosc dzialania (sredni czas
-    %    przetwarzania), zajetosc pamieci
-    %przykladowe dane generowane przez metode glowna
-
-
-    %dzialanie poszczegolnych czesci algorytmu
-    %wykrywanie twarzy, oczu itd. tutaj beda zdjecia, jakie byly bledy
-    %logi z dzialania
     \section{Skuteczność poszczególnych metod szacowania wieku}\label{sec:skuteczność-poszczególnych-metod-szacowania-wieku}
-    Do oceny skuteczności szacowania wieku za pomocą poszczególnych metod potrzebna jest baza treningowa oraz testowa.
-    Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
-    treningową oraz testową.
-    Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
-    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%.\cite{dataMiningAlgorithms}
-    Drugi ze sposobów to schemat CV-n, zwany również walidacją krzyżową.
-    Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
-    Następnie wykonuje się n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym, natomiast reszta
-    podzbiorów tworzy zbiór treningowy.
-    Każda iteracja daje wynik działania klasyfikatora. W wyniku ,,n'' iteracji otrzymuje się uśredniony wynik
-    działania klasyfikatora.\cite{dataMiningAlgorithms}
-
-    Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
-    Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
-    Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
-    w zbiorze danych.\cite{dataMiningAlgorithms}
-
-    Przy obliczaniu skuteczności klasyfikacji porównywano parametr MAE wzór~\ref{wzor.mae}.
-    Dla każdej metody dokonano porównania stu zdjęć,
-    natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
-    podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
-
-    %Skad wzielismy dane testowe
-    %porownanie metod testowych
-    %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
-    %    Wstep jakie metody porownano i co tam zmieniano
+    %todo jakies intro
     \subsection{Metoda bazowa}\label{subsec:metoda-bazowa}
     Jako pierwsza została przetestowana metoda bazowa.
     Sprawdzono dokładność szacowania wieku zmieniając parametry algorytmu trenującego Fuzzy C-means:
@@ -2344,7 +2222,8 @@ Karolina Nurzyńska}
         \item g - ilość grup
         \item $\epsilon$ - kryterium (wzór~\ref{wzor.koniecIteracjiWarunek})
     \end{itemize}
-
+    Ponadto warto wspomnieć, że detektor Canny używany przy detekcji zmarszczek posiadał niezmienne wartości progu
+    $T_{l} = 10$ oraz $T_{h} = 100$ podczas prowadzenie badań.
     Przykładowy wynik testowania metody został przedstawiony w tabeli~\ref{tab.przykladoweWyniki}
 
     \begin{table}[h]
@@ -2373,7 +2252,7 @@ Karolina Nurzyńska}
         \caption{Przykładowy wynik testowania zawierający 15 ze 100 wyników.}
         \label{tab.przykladoweWyniki}
     \end{table}
-
+    \subsection*{Wyniki z testowania 100 zdjęć}
     Dla parametrów m = 2,0, n = 100 , g = 10 oraz $\epsilon$=1e-5 błąd MAE wyniósł 12,75 roku.
     Następnie zmieniono m do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 roku
     i wyniosła 11,3.
@@ -2393,10 +2272,11 @@ Karolina Nurzyńska}
 
     Minimalna wartość MAE dla metody bazowej wyniosła 10,66 roku.
     Została ona osiągnięta dla m = 2,0, g = 50, $\epsilon$ = 1e-5, n= 100
-
+    \subsection*{Wyniki walidacji krzyżowej CV-5} %todo
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
+    \subsection*{Wyniki z testowania 100 zdjęć}
     W kolejnym kroku została przetestowana metoda, które nie uwzględnia zmarszczek ze strefy 2.
     Podobnie jak w sekcji~\ref{subsec:metoda-bazowa} wykonywano testy dla takich samych parametrów algorytmu Fuzzy
     C-means.
@@ -2419,7 +2299,7 @@ Karolina Nurzyńska}
 
     Minimalna wartość MAE dla opisywanej modyfikacji wyniosła 12,31 roku.
     Została ona osiągnięta dla m = 2,0, g = 10, $\epsilon$ = 1e-8, n = 1000
-
+    \subsection*{Wyniki walidacji krzyżowej CV-5} %todo
     \subsection{Metoda HOG}\label{subsec:metoda-hog}
     Kolejną przetestowaną modyfikacją była ta w której użyto algorytmu HOG.
     Podobnie jak w sekcjach~\ref{subsec:odjęcie-strefy-2} oraz~\ref{subsec:metoda-bazowa} modyfikowano parametry
