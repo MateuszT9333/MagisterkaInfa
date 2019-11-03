@@ -1804,7 +1804,8 @@ Karolina Nurzyńska}
 
     W pierwszej fazie zostały wyznaczone strefy zmarszczkowe nr 1,3,4,5,6.
     (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
-    Następnie dla każdej wyżej wymienionej strefy została wyznaczona cecha. Dla strefy 1 deskryptor jest opisany
+    Następnie dla każdej wyżej wymienionej strefy została wyznaczona cecha. Cecha ta jest reprezentowana przez
+    zsumowany deskryptor HOG-a. Dla strefy 1 deskryptor jest opisany %todo sprawdzic czy ma sens
     zmienną $v_{1}$, dla strefy 3 zmienną $v_{3}$ i tak dalej.
     Wskaźnik zmarszczek jest obliczany ze wzoru~\ref{wzor.hogWrinkleFeature}:
     \large
@@ -1818,7 +1819,7 @@ Karolina Nurzyńska}
     gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1 dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
     \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
 
-    Parametr L1 dla danego wektora $v$ jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
+    Parametr L1 dla danego wektora $v$ reprezentuje sumę jego elementów i jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
     \large
     \begin{equation}
         \left \|v  \right \|_{1} = \sum_{i=1}^{n}\left |v(i)  \right |
