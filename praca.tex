@@ -26,7 +26,9 @@
 \renewcommand{\appendixtocname}{Dodatki}
 \renewcommand{\appendixpagename}{Dodatki}
 \renewcommand{\appendixname}{Dodatek}
-
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \usepackage{setspace}
 \onehalfspacing
 
@@ -2049,21 +2051,14 @@ Karolina Nurzyńska}
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
     treningową oraz testową.
     Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
-    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%.\cite{dataMiningAlgorithms}
+    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%~\cite{dataMiningAlgorithms}.
+
     Drugi ze sposobów to schemat CV-n, zwany również walidacją krzyżową.
     Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
     Następnie wykonuje się n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym, natomiast reszta
     podzbiorów tworzy zbiór treningowy.
-    Każda iteracja daje wynik działania klasyfikatora. W wyniku ,,n'' iteracji otrzymuje się uśredniony wynik
-    działania klasyfikatora.\cite{dataMiningAlgorithms}
-
-    Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
-    Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
-    Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
-    w zbiorze danych.\cite{dataMiningAlgorithms}
-
-    Parametrem określającym jakość metody bazowej oraz metod zmodyfikowanych jest średni błąd bezwzględny,
-    który został określony we wzorze~\ref{wzor.mae}.
+    Każda iteracja daje wynik działania klasyfikatora; w przypadku niniejszej pracy jest to
+    MAE (ang. mean absolute error), który określa średni błąd bezwzględny.
     \large
     \begin{equation}
         MAE = \frac{\sum_{i=1}^{n}\left | R_{i}-P_{i} \right |}{n}
@@ -2072,11 +2067,23 @@ Karolina Nurzyńska}
     \normalsize
     gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
+    W wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora.\cite{dataMiningAlgorithms}.
+    Najczęściej dokonuje się tego przez wyliczenie średniej wartości n rezultatów uzyskanych po przeprowadzeniu
+    n iteracji.
 
-    %todo opisac, ze dokonano badan w oparciu o rozdzial 90 - 10 oraz CV-5
-    Dla każdej metody dokonano porównania 10\% zdjęć ,
-    natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
-    podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
+    Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
+    Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
+    Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
+    w zbiorze danych.\cite{dataMiningAlgorithms}
+
+    Dla każdej metody dokonano porównania 257 zdjęć, co stanowi 10\% ogólnej liczby obrazów biorących udział w
+    badaniach, natomiast pozostałe 90\% obrazów brało udział w analizie danych, jako zbiór treningowy dla każdej metody
+    szacowania wieku.
+    Ponadto sprawdzono jakość klasyfikatora stosując metodę walidacji krzyżowej. Najczęściej w walidacji krzyżowej
+    parametr $n$ wynosi 5.
+
+    %    natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
+    %    podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
 
     \subsection*{Baza zdjęć oraz statystyki z działania programu}
     Baza UTKface zawiera 23708 zdjęć.
@@ -2115,21 +2122,21 @@ Karolina Nurzyńska}
     %http://edu.pjwstk.edu.pl/wyklady/adn/scb/wyklad9/w9.htm
     %    Wstep jakie metody porownano i co tam zmieniano
     \section{Wykrywanie zmarszczek}\label{sec:wykrywanie-krawędzi-przez-detektor-canny}
-    W tej Sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji zmarszczek metodą Canny oraz Histogram
+    W tej sekcji zostaną przedstawione typowe problemy napotkane podczas detekcji zmarszczek metodą Canny oraz Histogram
     of Oriented Gradients.
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
 
     Krawędzie związane tylko ze zmarszczkami są widoczne na obrazie~\ref{fig.dobryRyjek}
-    \begin{figure}[hp]
+    \begin{figure}
         \centering
         \includegraphics[width=11cm]{Obrazy/dobryRyjekWszystkieStrefyGray.jpg}
         \captionsetup{justification=centering}
         \caption{Przykład prawidłowej detekcji zmarszczek. \newline
-        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
+        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek}
         \label{fig.dobryRyjek}
     \end{figure}
     Obraz~\ref{fig.dobryRyjek} będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
-
+    %todo - ogolnie zrobic na sam koniec sprawdzenie czy nie ma rozjazdow z obrazami
     Pierwszym przykładem jest wykrycie krawędzi związanych z brwiami. Na obrazie~\ref{fig.zlyRyjek} można zauważyć,
     że ilość krawędzi w strefie 2 jest duża i nie identyfikują one zmarszczek.
     \begin{figure}
@@ -2140,13 +2147,63 @@ Karolina Nurzyńska}
         a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
         \label{fig.zlyRyjek}
     \end{figure}
-    Z bazy zdjęć wyselekcjonowano 30 obrazów, na których zmarszczki zostały wykryte poprawnie, oraz 30 kolejnych obrazów, gdzie
+    Z bazy zdjęć wyselekcjonowano 20 obrazów, na których zmarszczki zostały wykryte poprawnie, oraz 20 kolejnych
+    obrazów, gdzie
     detekcja zmarszczek została zaburzona przez brwi nachodzące na strefę 2. Aby uzyskać możliwie miarodajne i
     uśrednione wyniki tego eksperymentu, wybrano fotografie osób w wieku od 24 do 38 lat, ponieważ w tym wieku
     zmarszczki na twarzy są zauważalne, ale nie za bardzo głębokie.
     Dla każdego obrazu wyliczono współczynnik zmarszczek ze strefy 2. Następnie dla obu grup wyliczono średnią oraz
-    odchylenie standardowe współczynnika zmarszczek.
-    %todo opis, że podzielono na dwie grupy po 30 probek i sprawdzono problem
+    odchylenie standardowe współczynnika zmarszczek. W tabeli~\ref{tab.brwi} przedstawiono wyniki powyższych badań
+    dla detektora Cannego, natomiast w tabeli~\ref{tab.brwiHog} przedstawiono wyniki badań dla detekcji zmarszczek
+    algorytmem HOG-a.
+    \begin{table}[h!]
+        \centering
+        \caption{Eksperyment 1: wykrywanie zmarszczek w strefie 2 dla detektora Canny.}
+        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
+            \hline
+            & \begin{tabular}[c]{@{}c@{}}
+                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
+            \end{tabular} &
+            \begin{tabular}[c]{@{}c@{}}
+                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
+            \end{tabular} \\ \hline
+            Średnia współczynnika zmarszczek & 0,05 & 0,061                                                                                      \\ \hline
+            Odchylenie standardowe współczynnika zmarszczek & 0,009
+            & 0,011                                                                                      \\ \hline
+        \end{tabular}
+        \label{tab.brwi}
+    \end{table}
+    W wyniku przeprowadzenia eksperymentu 1 dla detektora Canny uzyskano współczynnik zmarszczek równy 0,05 oraz
+    odchylenie standardowe 0,009 dla
+    obrazów ze zmarszczkami
+    wykrytymi prawidłowo, natomiast brwi nachodzące na strefę 2 spowodowały zwiększenie współczynnika zmarszczek do
+    0,061, natomiast odchylenie standardowe wyniosło 0,011.
+    Zauważona różnica nie jest jednak na tyle wysoka, by móc wyraźnie stwierdzić, że będzie miała istotny wpływ na
+    szacowanie wieku.
+    \begin{table}[h!]
+        \centering
+        \caption{Eksperyment 1: wykrywanie zmarszczek w strefie 2 dla detektora HOG-a.}
+        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
+            \hline
+            & \begin{tabular}[c]{@{}c@{}}
+                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
+            \end{tabular} &
+            \begin{tabular}[c]{@{}c@{}}
+                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
+            \end{tabular} \\ \hline
+            Średnia współczynnika zmarszczek & 2,512
+            & 2,562
+            \\ \hline
+            Odchylenie standardowe współczynnika zmarszczek & 0,027
+            & 0,050
+            \\ \hline
+        \end{tabular}
+        \label{tab.brwiHog}
+    \end{table}
+    W przypadku HOG dla prawidłowo wykrytych zmarszczek średnia współczynnika zmarszczek wyniosła 2,512, natomiast
+    odchylenie standardowe 0,027. Dla nieprawidłowo wykrytych zmarszczek średnia współczynnika zmarszczek zwiększyła
+    się do 2,562, natomiast odchylenie standardowe wyniosło 0,050.
+    Podobnie jak w przypadku detektora Cannego nie jest jasne, czy różnice mają wpływ na jakość szacowania wieku.
     %    Trzeba wziąć więcej obrazów. Zrobić grupę obrazów, gdzie brwi wchodzą w region i drugą grupę
     %    (o tej samej liczbie obrazów), w której nie ma tego problemu. Dla każdego obrazu policzyć parametry.
     %    Potem dla każdej grupy policzyć średnią i odchylenie standardowe. I zobaczyć na wykresie czy średnia
@@ -2155,34 +2212,10 @@ Karolina Nurzyńska}
     %    - to wtedy statystycznie wynik można traktować jako pewny. Jak Pan nie ma tyle danych, to proszę
     %    we wnioskach najwyżej napisać, że danych jest trochę za mało, ale widoczna jest tendencja
     %    (o ile ona wyjdzie z obliczeń).
-    Porównano średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej
-    samej strefy na obrazie~\ref{fig.zlyRyjek}.
-    Takie porównanie ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
-    \clearpage
-    Średni współczynnik zmarszczek w strefie 2 dla osób w wieku 17 lat wyniósł:
 
-    \begin{itemize}
-        \item Dla HOG-a 2,43464
-        \item Dla Canny 0,2636
-    \end{itemize}
-
-    Natomiast dla obrazu~\ref{fig.zlyRyjek} zawierającego nieprawidłowo wykryte krawędzie ilość zmarszczek wyniosła
-    \begin{itemize}
-        \item Dla HOG-a 2,97876
-        \item Dla Canny 0,3542
-    \end{itemize}
-
-    W związku z powyższym różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku 17 lat,
-    a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi :
-    \begin{itemize}
-        \item Dla HOG-a: $2,97876 - 2,43464$, czyli 0,54412
-        \item Dla Canny: $0,3542 - 0,2636$, czyli 0,0906
-    \end{itemize}
-
-    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1. %todo tak samo tutaj zdefiniowac problem
+    Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.
     Na obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
     które identyfikują włosy.
-
     \begin{figure}[hb]
         \centering
         \includegraphics[width=11cm]{Obrazy/zlyRyjekZGrzywka.jpg}
@@ -2191,36 +2224,61 @@ Karolina Nurzyńska}
         a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
         \label{fig.grzywka}
     \end{figure}
-
-    Obraz~\ref{fig.grzywka} przedstawia 51-letnią osobę. Podobnie jak powyżej, przeprowadzono porównanie,
+    Podobnie jak powyżej, przeprowadzono porównanie,
     które ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
-    Do wspomnianego celu obliczono średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 51 lat, który wyniósł:
-
-    \begin{itemize}
-        \item Dla HOG-a: 2,67452
-        \item Dla Canny: 0,3267
-    \end{itemize}
-
-    Natomiast dla zdjęcia zawierającego nieprawidłowo wykryte krawędzie (obraz~\ref{fig.grzywka}) ilość zmarszczek
-    wyniosła
-    \begin{itemize}
-        \item Dla HOG-a: 2,95635
-        \item Dla Canny: 0,3953
-    \end{itemize}
-
-    Różnica pomiędzy średnią ilością zmarszczek w strefie 2 dla wieku równego 51 lat
-    a ilością dla obrazu zawierającego nieprawidłowe wykryte krawędzie wynosi (Obraz~\ref{fig.grzywka}):
-    \begin{itemize}
-        \item Dla HOG-a: $2,95635-2,67452$, czyli 0,28183
-        \item Dla Canny $0,3953-0,3267$, czyli 0,0686
-    \end{itemize}
-
-    %Ustalone parametry
-    %    Tutaj mogą być zdjęcia jak to wygladalo, jakie były problemy np, ze wykrywalo wlosy, ze blednie wykrywalo itp
-
-    \section{Statystyki z działania programu}\label{sec:statystyki-z-działania-programu}
-
-
+    Do wspomnianego celu obliczono średni współczynnik zmarszczek oraz odchylenie standardowe ze strefy 1 dla osób w
+    wieku od 24 do 38 lat. W tym eksperymencie wykorzystano 20 obrazów z poprzedniego eksperymentu, na których
+    zmarszczki zostały wykryte poprawnie, oraz 20 kolejnych zdjęć, gdzie grzywka nachodząca na strefę 1
+    spowodowała nieprawidłowe wykrycie zmarszczek. Wyniki detekcji detektorem Cannego zaprezentowano w
+    tabeli~\ref{tab.grzywka}, natomiast wyniki dla algorytmu HOG-a pokazano w tabeli~\ref{tab.grzywkaHog}
+    \begin{table}[h!]
+        \centering
+        \caption{Eksperyment 2: wykrywanie zmarszczek w strefie 1 za pomocą detektora Canny.}
+        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
+            \hline
+            & \begin{tabular}[c]{@{}c@{}}
+                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
+            \end{tabular} &
+            \begin{tabular}[c]{@{}c@{}}
+                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
+            \end{tabular} \\ \hline
+            Średnia współczynnika zmarszczek & 0,056
+            & 0,079                                                                                      \\ \hline
+            Odchylenie standardowe współczynnika zmarszczek & 0,01
+            & 0,014                                                                                      \\ \hline
+        \end{tabular}
+        \label{tab.grzywka}
+    \end{table}
+    Średnia współczynnika zmarszczek dla prawidłowo wykrytych zmarszczek, dla strefy 1 w eksperymencie nr 2 wyniosła
+    0,056, natomiast odchylenie standardowe było równe 0,01. Grzywka nachodząca na strefę 1 zwiększyła
+    średni współczynnik zmarszczek do 0,079 oraz odchylenie standardowe do 0,014.
+    Podobnie, jak we wnioskach po eksperymencie 1, nie można jednoznacznie stwierdzić, czy zwiększony współczynnik o
+    0,023 oraz odchylenie standardowe o 0,004 istotnie wpłynie na oszacowany wiek.
+    \begin{table}[h!]
+        \centering
+        \caption{Eksperyment 2: wykrywanie zmarszczek w strefie 1 za pomocą detektora Canny.}
+        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
+            \hline
+            & \begin{tabular}[c]{@{}c@{}}
+                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
+            \end{tabular} &
+            \begin{tabular}[c]{@{}c@{}}
+                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
+            \end{tabular} \\ \hline
+            Średnia współczynnika zmarszczek & 2,569
+            & 2,617
+            \\ \hline
+            Odchylenie standardowe współczynnika zmarszczek &0,041
+            & 0,056
+            \\ \hline
+        \end{tabular}
+        \label{tab.grzywkaHog}
+    \end{table}
+    W strefie 1 średni współczynnik zmarszczek dla obrazów zawierających prawidłowo wykryte zmarszczki wyniósł 2,569,
+    natomiast odchylenie standardowe 0,041. Dla obrazów, gdzie detekcja dała nieprawidłowy wynik, średnia wartość
+    współczynnika wyniosła 2,617, a odchylenie standardowe było równe 0,056.
+    Podobnie jak w przypadku detekcji metodą Canny, nie jest możliwe jednoznaczne stwierdzenie, czy zauważona
+    tendencja istotnie zafałszuje szacowany wiek.
     \section{Skuteczność poszczególnych metod szacowania wieku}\label{sec:skuteczność-poszczególnych-metod-szacowania-wieku}
     %todo jakies intro
     \subsection{Metoda bazowa}\label{subsec:metoda-bazowa}
@@ -2238,51 +2296,73 @@ Karolina Nurzyńska}
 
     \begin{table}[h]
         \centering
-        \begin{tabular}{|l|l|l|}
+        \caption{Przykładowy wynik testowania zawierający 15 ze 100 wyników.}
+        \label{tab.przykladoweWyniki}
+        \begin{tabular}{|M{2cm}|M{2cm}|M{2cm}|}
             \hline
-            \begin{tabular}[c]{@{}l@{}}
+            \begin{tabular}[c]{@{}c@{}}
                 wiek\\   prawdziwy
             \end{tabular} & wiek wykryty & różnica \\ \hline
             10 & 25 & 15      \\ \hline
-            15 & 56 & 41      \\ \hline
-            16 & 26 & 10      \\ \hline
-            16 & 25 & 9       \\ \hline
-            17 & 29 & 12      \\ \hline
-            19 & 26 & 7       \\ \hline
-            1 & 22 & 21      \\ \hline
-            20 & 25 & 5       \\ \hline
-            20 & 23 & 3       \\ \hline
-            22 & 26 & 4       \\ \hline
-            22 & 26 & 4       \\ \hline
-            25 & 29 & 4       \\ \hline
-            26 & 30 & 4       \\ \hline
-            26 & 34 & 8       \\ \hline
-            26 & 26 & 0       \\ \hline
+            15 & 26 & 11      \\ \hline
+            20 & 31 & 11      \\ \hline
+            25 & 15 & 10      \\ \hline
+            30 & 45 & 15      \\ \hline
+            35 & 48 & 13      \\ \hline
+            40 & 26 & 14      \\ \hline
+            45 & 49 & 4       \\ \hline
+            50 & 58 & 8       \\ \hline
+            55 & 34 & 21      \\ \hline
+            60 & 50 & 10      \\ \hline
+            65 & 80 & 15      \\ \hline
+            70 & 65 & 5       \\ \hline
+            75 & 80 & 5       \\ \hline
+            80 & 67 & 13      \\ \hline
         \end{tabular}
-        \caption{Przykładowy wynik testowania zawierający 15 ze 100 wyników.}
-        \label{tab.przykladoweWyniki}
     \end{table}
-    \subsection*{Wyniki z testowania 100 zdjęć}
-    Dla parametrów m = 2,0, n = 100 , g = 10 oraz $\epsilon$=1e-5 błąd MAE wyniósł 12,75 roku.
-    Następnie zmieniono m do wartości 3.0. Jakość algorytmu szacującego wiek poprawiła się o 1,45 roku
-    i wyniosła 11,3.
-    Ostatnia testowana wartość parametru m wyniosła 5. W wyniku testu MAE wyniósł 11,67 roku.
+    \subsection*{Wyniki z testowania 10\% zdjęć}
+    %todo sprawdzic czy wszedzie ilosc iteracji jest rowna 1000
+    Badania rozpoczęto od przeprowadzenia testu z następującymi parametrami wejściowymi algorytmu FCM:
+    \begin{itemize}
+        \item m = 2,0,
+        \item n = 1000,
+        \item g = 10,
+        \item $\epsilon$=1e-5.
+    \end{itemize}
+    Tabela~\ref{tab.bazowa_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru m.
+    Pozostałe parametry algorytmu nie podlegały zmianom.
+    \begin{table}[h!]
+        \label{tab.bazowa_m}
+        \caption{MAE dla zmiany parametru m w metodzie bazowej.}
+        \centering
+        \begin{tabular}{|M{1cm}|M{1cm}|M{1cm}|M{1cm}|}
+            & m=2,0 & m=3,0 & m=5,0 \\
+            MAE & 12,79 roku & 11,25 roku & 11,68 roku
+        \end{tabular}
+    \end{table}
+    Dla parametru $m=2,0$ MAE wyniosło 12,79 roku. Zmiana powyższego parametru do 3,0 zmniejszyła MAE do 11,25 roku,
+    $m=5,0$ poprawił wynik do 11,68 roku. Najlepszy wynik dla modyfikacji parametru m, osiągnięto dla m=3,0.
 
     W kolejnym kroku przetestowano wpływ parametru $\epsilon$ dla metody oryginalnej.
-    Dla parametrów: m = 2,0, n = 100,  $\epsilon$ = 1e-6 oraz g = 10, błąd MAE wyniósł 11,19 roku.
-    Zmiana parametru $\epsilon$ do 1e-7 spowodowała, że parametr MAE wzrósł do 11,24 roku.
-    Dla wartości 1e-8 parametru $\epsilon$ błąd MAE okazał się mieć identyczną wartość 11,24 roku.
-    Należy podkreślić, że liczba iteracji została zmieniona do 1000, ponieważ początkowa wartość
-    ograniczała osiągnięcie żądanej wartości $\epsilon$ zarówno
-    dla wartości $\epsilon$ 1e-7, jak i dla 1e-8.
+    W tabeli przedstawiono, jak ten parametr wpływał na MAE.
+    %    Dla parametrów: m = 2,0, n = 100,  $\epsilon$ = 1e-6 oraz g = 10, błąd MAE wyniósł 11,19 roku.
+    %    Zmiana parametru $\epsilon$ do 1e-7 spowodowała, że parametr MAE wzrósł do 11,24 roku.
+    %    Dla wartości 1e-8 parametru $\epsilon$ błąd MAE okazał się mieć identyczną wartość 11,24 roku.
+    %    Należy podkreślić, że liczba iteracji została zmieniona do 1000, ponieważ początkowa wartość
+    %    ograniczała osiągnięcie żądanej wartości $\epsilon$ zarówno
+    %    dla wartości $\epsilon$ 1e-7, jak i dla 1e-8.
 
-    Następnie testowano wpływ liczby grup. Dla m = 2,0, n = 100 , g = 20 oraz $\epsilon$=1e-5 błąd MAE wyniósł 10,97 roku.
-    W kolejnym kroku zmieniono liczbę grup do 50. Otrzymano MAE w wysokości 10,66 roku. W ostatnim kroku liczba grup
-    wyniosła 100, natomiast parametr MAE był równy 10,68 roku.
+    Następnie testowano wpływ liczby grup na parametr MAE.
+    Kolejna tabela zawiera wyniki wyżej wymienionego testowania.
+    %    Dla m = 2,0, n = 100 , g = 20 oraz $\epsilon$=1e-5 błąd
+    %    MAE wyniósł 10,97 roku.
+    %    W kolejnym kroku zmieniono liczbę grup do 50. Otrzymano MAE w wysokości 10,66 roku. W ostatnim kroku liczba grup
+    %    wyniosła 100, natomiast parametr MAE był równy 10,68 roku.
 
     Minimalna wartość MAE dla metody bazowej wyniosła 10,66 roku.
     Została ona osiągnięta dla m = 2,0, g = 50, $\epsilon$ = 1e-5, n= 100
-    \subsection*{Wyniki walidacji krzyżowej CV-5} %todo
+    \subsection*{Wyniki z walidacji krzyżowej CV-5} %todo
+    Badania dla walidacji krzyżowej miały taki sam przebieg, jak w przypadku procesu testowania 10\% zdjęć.
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
