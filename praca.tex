@@ -858,9 +858,12 @@ Karolina Nurzyńska}
 
     Liczba cech wykrywanych w danym zdjęciu za
     pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie~\cite{violaJones}.
-    Dla obrazu o wymiarach 384x288 pikseli liczba cech wynosi ponad 180000.
-    Autorzy algorytmu stwierdzili, że dla zwiększenia jego szybkości należy wybrać małą grupę cech,
-    które razem mogą stworzyć jeden efektywny klasyfikator obiektu.
+    Dla obrazu o wymiarach 24x24 pikseli liczba cech wynosi ponad 180000.
+    Autorzy algorytmu stwierdzili, że dla zwiększenia jego szybkości należy wybrać małą grupę istotnych cech,
+    które razem mogą stworzyć jeden efektywny klasyfikator obiektu, zwany również silnym klasyfikatorem. Ten
+    klasyfikator składa się z wielu słabych klasyfikatorów. Każdy z nich na podstawie jednej istotnej cechy dostarcza
+    informacji, czy na obrazie znajduje się twarz, czy nie. Liczba tych
+    istotnych cech została ustalona na 2500.
     W celu wyodrębnienia tych istotnych cech zastosowano algorytm Adaboost, który został opisany poniżej.
 
     Zbiór n obrazów do trenowania można oznaczyć tak jak we wzorze~\ref{wzor.zbiorTrenujacy}:
@@ -890,7 +893,8 @@ Karolina Nurzyńska}
     %    gdzie T oznacza
     %    liczbę cech.
     %    D:
-    Następnie inicjalizowany jest parametr t oznaczający cechę, natomiast T oznacza liczbę wszystkich cech na obrazie.
+    Następnie inicjalizowany jest parametr t oznaczający istotną cechę, natomiast T oznacza liczbę wszystkich takich
+    cech na obrazie.
     Dla każdej
     cechy t = 1, \ldots, T, przeprowadzany jest poniższy proces:
 
@@ -954,7 +958,7 @@ Karolina Nurzyńska}
     Gdy dane okno wykryje obiekt, przechodzi do kolejnego okna w kaskadzie.
     W przeciwnym wypadku algorytm przerywa działanie i na danym obrazie nie zostaje zidentyfikowany obiekt.
     Okna są poustawiane tak, aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
-    prawdopodobieństwem błędu. %todo opis adaboost kurwa jego mac
+    prawdopodobieństwem błędu.
 
     Pierwsze okna posiadają klasyfikatory o słabszym TPR oraz FPR niż kolejne.
     Oznacza to, że prawdopodobieństwo TPR w oknie $P_{x-1}$ jest mniejsze od tego w $P_{x}$.
@@ -1539,7 +1543,7 @@ Karolina Nurzyńska}
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
     Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wskaźnika
     zmarszczek
-    $WF_{i}$. %todo zmienic nazwe
+    $WF_{i}$.
     W algorytmie Fuzzy C-means są grupowane zbiory danych zawierające wartości wskaźnika zmarszczek $WF_{i}$.
     Jak wiadomo z powyższego opisu algorytmu Fuzzy C-means, każdy element (w tym przypadku $WF_{i}$) ma określony
     stopień
@@ -1592,7 +1596,11 @@ Karolina Nurzyńska}
 
     %Tutaj powinno byc 5000 slow
     \chapter{Modyfikacje metody bazowej}\label{ch:modyfikacje-metody-bazowej}
-    %todo wstep co bedzie dalej
+    W sekcji~\ref{sec:odjęcie-wybranej-strefy} zostanie przedstawiona pierwsza modyfikacja algorytmu bazowego.
+    Kolejna sekcja~\ref{sec:zastosowanie-metody-hog} zawiera opis kolejnej modyfikacji algorytmu, w której użyto
+    algorytm HOG-a.
+    W ostatniej sekcji~\ref{sec:metoda-hog-oraz-algorytm-knn} została zaprezentowana ostatnia modyfikacja, która oprócz algorytmu HOG do szacowania
+    wieku wykorzystuje algorytm KNN.
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
     Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
@@ -1602,7 +1610,7 @@ Karolina Nurzyńska}
     W sekcji~\ref{subsec:zmiana-algorytmu-względem-metody-bazowej} porównano różnice w algorytmie przed opisaną wyżej
     modyfikacją i po niej.
 
-    \subsection{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
+    \subsection*{Zmiana algorytmu względem metody bazowej}\label{subsec:zmiana-algorytmu-względem-metody-bazowej}
     Przed modyfikacją metody bazowej parametr wskaźnika zmarszczek był obliczany według wzoru~\ref{wzor.wrinkleFeature},
     który jest umieszczony w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
 
@@ -1777,27 +1785,24 @@ Karolina Nurzyńska}
     Dokładny sposób jej
     zaimplementowania w pracy opisuje sekcja~\ref{subsec:zastosowanie-w-projekcie2}
 
-    \subsection{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
+    \subsection*{HOG - Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie2}
     W sekcji~\ref{sec:zastosowanie-metody-hog} został opisany algorytm HOG, w wyniku którego
     generowany jest deskryptor dla obrazu.
 
     Omówiony wyżej deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
-    sekcji~\ref{sec:zastosowanie-metody-hog} metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
-    obszarze jest dużo krawędzi, to w wektorze deskryptora będzie znaczna ilość elementów tego wektora o dużej
-    wartości.%todo charakterystyczne deskryptory
-    Wyżej opisywane, charakterystyczne elementy wektora będą identyfikowały krawędzie w obrazie. Jak wiadomo z
+    sekcji~\ref{sec:zastosowanie-metody-hog}, metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
+    obszarze jest wiele krawędzi, to w wektorze deskryptora będzie znaczna ilość elementów tego wektora o dużej
+    wartości, które będą identyfikowały krawędzie w obrazie. Jak wiadomo z
     sekcji~\ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
-    W związku z powyższym zmodyfikowano sposób obliczenia współczynnika zmarszczek dla obrazu twarzy opierając się o
+    W związku z powyższym zmodyfikowano sposób obliczenia współczynnika zmarszczek dla obrazu twarzy, opierając się o
     deskryptor wygenerowany przez algorytm HOG.
 
-    W bibliotece OpenCv zaimplementowany jest algorytm HOG, który na podstawie całego
-    obrazu lub jego pewnego obszaru generuje wektor reprezentujący deskryptor. Biblioteka umożliwia ustawienie różnych parametrów HOG-a.
-    Do tych parametrów zalicza się:
+    Wektor reprezentujący deskryptor jest generowany przez HOG-a na podstawie całego obrazu lub jego pewnego obszaru. Algorytm jest zaimplementowany w bibliotece OpenCV, która umożliwia ustawienie jego różnych parametrów. Do tych parametrów zaliczają się:
     \begin{itemize}
-        \item rozmiar komórki w pikselach
-        \item rozmiar bloku w pikselach
-        \item liczba komórek w histogramie
-        \item rozmiar okna - wielkość analizowanego obrazu w pikselach
+        \item rozmiar komórki w pikselach,
+        \item rozmiar bloku w pikselach,
+        \item liczba komórek w histogramie,
+        \item rozmiar okna - wielkość analizowanego obrazu w pikselach.
     \end{itemize}
 
     W celu oszacowania ilości zmarszczek dla danego zdjęcia posłużono się następującym algorytmem:
@@ -1805,7 +1810,7 @@ Karolina Nurzyńska}
     W pierwszej fazie zostały wyznaczone strefy zmarszczkowe nr 1,3,4,5,6.
     (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
     Następnie dla każdej wyżej wymienionej strefy została wyznaczona cecha. Cecha ta jest reprezentowana przez
-    zsumowany deskryptor HOG-a. Dla strefy 1 deskryptor jest opisany %todo sprawdzic czy ma sens
+    zsumowany deskryptor HOG-a. Dla strefy 1 deskryptor jest opisany
     zmienną $v_{1}$, dla strefy 3 zmienną $v_{3}$ i tak dalej.
     Wskaźnik zmarszczek jest obliczany ze wzoru~\ref{wzor.hogWrinkleFeature}:
     \large
@@ -1814,7 +1819,6 @@ Karolina Nurzyńska}
         \|v_{5}  \right \|_{1}+\left \|v_{6}  \right \|_{1}
         \label{wzor.hogWrinkleFeature}
     \end{equation}
-    %todo po co L1
     \normalsize
     gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1 dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
     \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
@@ -1836,7 +1840,9 @@ Karolina Nurzyńska}
     Wiek szacowany jest dokładnie tak samo jak w metodzie bazowej.
     Kolejna modyfikacja metody bazowej została opisana w sekcji~\ref{sec:metoda-hog-oraz-algorytm-knn}
     \section{Metoda HOG oraz algorytm KNN}\label{sec:metoda-hog-oraz-algorytm-knn}
-    %todo intro
+    W pierwszej podsekcji~\ref{subsec:zastosowanie-w-projekcie} opisano sposób zastosowania algorytmu HOG-a oraz KNN
+    w projekcie.
+    W podsekcji~\ref{subsec:grupowanie-knn} scharakteryzowano działanie algorytmu KNN.
     \subsection{Zastosowanie w projekcie}\label{subsec:zastosowanie-w-projekcie}
     %http://zsi.tech.us.edu.pl/~nowak/si/w4.pdf
     %http://www.mblachnik.pl/lib/exe/fetch.php/dydaktyka/zajecia/ai/lab/matlab/algorytm_knn.pdf
