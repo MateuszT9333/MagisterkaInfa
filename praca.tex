@@ -2019,9 +2019,9 @@ Karolina Nurzyńska}
     części algorytmów, zarówno trenujących, jak i szacujących wiek.
     Sekcja~\ref{sec:skuteczność-poszczególnych-metod-szacowania-wieku} zawiera porównanie metody bazowej oraz jej
     modyfikacji
-    pod kątem skuteczności szacowania wieku.
+    pod kątem skuteczności szacowania wieku. %todo zweryfikowac i napisac wstep
 
-    \section{Środowisko i metodyka badań}\label{sec:środowisko-pracy}
+    \section{Środowisko, metodyka badań oraz statystyki z działania algorytmów}\label{sec:środowisko-pracy}
 
     W celu przeprowadzenia badań do niniejszej pracy magisterskiej wymagane było stworzenie programu,
     który wykrywa twarz oraz wyodrębnia cechy z twarzy. Wyżej wymieniony program został napisany w języku Java.
@@ -2044,8 +2044,6 @@ Karolina Nurzyńska}
     będzie dalej nazywana metodą bazową.
     W celu poprawienia wyników metody bazowej wprowadzono kilka modyfikacji, a
     w kolejnym kroku wyniki zostały porównane z pozostałymi metodami.
-
-    %todo opisac zbior danych, dokladne statystyki ile zdjec takich taki srednia itp...
 
     Do oceny skuteczności szacowania wieku za pomocą poszczególnych metod potrzebna jest baza treningowa oraz testowa.
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
@@ -2072,13 +2070,45 @@ Karolina Nurzyńska}
         \label{wzor.mae}
     \end{equation}
     \normalsize
-    , gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
+    gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
 
     %todo opisac, ze dokonano badan w oparciu o rozdzial 90 - 10 oraz CV-5
-    Dla każdej metody dokonano porównania stu zdjęć,
+    Dla każdej metody dokonano porównania 10\% zdjęć ,
     natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
     podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
+
+    \subsection*{Baza zdjęć oraz statystyki z działania programu}
+    Baza UTKface zawiera 23708 zdjęć.
+    Nazwa każdego obrazu zawiera informację odnośnie wieku, płci i rasy fotografowanej osoby, podane w tej kolejności.
+    Fotografie zebrane w bazie przedstawiają osoby w wieku od 1 do 116 lat.
+
+    Detektor twarzy był w stanie wyznaczyć obszar twarzy dla 14583 obrazów.
+    Na pozostałych zdjęciach twarz nie została wykryta z różnych przyczyn. Część z tych zdjęć nie przedstawiała całej
+    twarzy lub twarz była na nich częściowa przysłonięta. W niektórych przypadkach problem stanowiło złe oświetlenie
+    sfotografowanej twarzy lub słaba jakość obrazu.
+    Jednak spośród 14583 obrazów tylko 2574 brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm
+    poprawnie wykrył obszar nosa oraz oczu, które są niezbędne do dalszych obliczeń. Podobnie jak w przypadku braku
+    identyfikacji twarzy, wśród przyczyn można wymienić złe oświetlenie twarzy, słabą jakość obrazu albo złe
+    ustawienie twarzy względem obiektywu.
+
+    Średni czas generacji współczynnika zmarszczek dla obrazu po wykryciu twarzy wyniósł 0,467 sekundy dla metody
+    bazowej.
+    Dla metody, w której została odjęta strefa druga, generacja trwała 0,465 sekund,
+    dla metody HOG 0,543 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN - 0,543 sekundy.
+    %todo wplyw przerwa... jakich przerwan... ja bym to zostawil i jak sie doczepi to doprecyzuje...
+    Powyższe dane wykazują, że najszybciej wskaźnik zmarszczek był generowany przez algorytm metody
+    po odjęciu jednej strefy.
+
+    Warto porównać również szybkość szacowania wieku na podstawie danego współczynnika zmarszczek.
+    Średni czas szacowania wieku dla danego obrazu wyniósł 0,585 sekundy dla metody bazowej.
+    Dla metody, w której została
+    odjęta strefa druga, ten czas wyniósł 0,583 sekundy, a dla metody HOG 0,675 sekundy.
+    Szacowanie wieku dla metody HOG wraz z klasyfikacją KNN przeprowadził
+    program realizowany przez skrypt w Matlabie, więc nie porównano szybkości działania
+    algorytmu zaimplementowanego w Matlabie do algorytmu zaimplementowanego w Javie.
+    Reasumując - najszybciej szacował wiek algorytm zawierający odjętą strefę.
+
 
     %Skad wzielismy dane testowe
     %porownanie metod testowych
@@ -2100,32 +2130,31 @@ Karolina Nurzyńska}
     \end{figure}
     Obraz~\ref{fig.dobryRyjek} będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
 
-    Pierwszym przykładem było wykrycie krawędzi związanych z brwiami (obraz~\ref{fig.zlyRyjek}) dla osób z przedziału
-    wieku...
-
-    %todo opis, że podzielono na dwie grupy po 30 probek i sprawdzono problem
-    %    Trzeba wziąć więcej obrazów. Zrobić grupę obrazów, gdzie brwi wchodzą w region i drugą grupę
-    %    (o tej samej liczbie obrazów), w której nie ma tego problemu. Dla każdego obrazu policzyć parametry.
-    %    Potem dla każdej grupy policzyć średnią i odchylenie standardowe. I zobaczyć na wykresie czy średnia
-    %    +/- odchylenie z jednej grupy pokrywa wartości dla średnia +/- odchylenie z drugiej grupy.
-    %    Najlepiej byłoby jakby te zakresy nie naszły na siebie. Dobrze byłoby mieć po 30 próbek na grupę
-    %    - to wtedy statystycznie wynik można traktować jako pewny. Jak Pan nie ma tyle danych, to proszę
-    %    we wnioskach najwyżej napisać, że danych jest trochę za mało, ale widoczna jest tendencja
-    %    (o ile ona wyjdzie z obliczeń).
-
+    Pierwszym przykładem jest wykrycie krawędzi związanych z brwiami. Na obrazie~\ref{fig.zlyRyjek} można zauważyć,
+    że ilość krawędzi w strefie 2 jest duża i nie identyfikują one zmarszczek.
     \begin{figure}
         \centering
-        \includegraphics[width=11cm]{Obrazy/mojaTwarzGrayWszystieStrefy.jpg}
+        \includegraphics[width=11cm]{Obrazy/brwi.png}
         \captionsetup{justification=centering}
         \caption{Przykład nieprawidłowej detekcji zmarszczek w strefie 2. \newline
         a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
         \label{fig.zlyRyjek}
     \end{figure}
-
-
-    Na obrazie można zauważyć, że ilość krawędzi w strefie 2 (obraz (\ref{fig.wykrywanieStrefZmarszczkowych})
-    jest duża i nie identyfikują one zmarszczek.
-
+    Z bazy zdjęć wyselekcjonowano 30 obrazów, na których zmarszczki zostały wykryte poprawnie, oraz 30 kolejnych obrazów, gdzie
+    detekcja zmarszczek została zaburzona przez brwi nachodzące na strefę 2. Aby uzyskać możliwie miarodajne i
+    uśrednione wyniki tego eksperymentu, wybrano fotografie osób w wieku od 24 do 38 lat, ponieważ w tym wieku
+    zmarszczki na twarzy są zauważalne, ale nie za bardzo głębokie.
+    Dla każdego obrazu wyliczono współczynnik zmarszczek ze strefy 2. Następnie dla obu grup wyliczono średnią oraz
+    odchylenie standardowe współczynnika zmarszczek.
+    %todo opis, że podzielono na dwie grupy po 30 probek i sprawdzono problem
+    %    Trzeba wziąć więcej obrazów. Zrobić grupę obrazów, gdzie brwi wchodzą w region i drugą grupę
+    %    (o tej samej liczbie obrazów), w której nie ma tego problemu. Dla każdego obrazu policzyć parametry.
+    %    Potem dla każdej grupy policzyć średnią i odchylenie standardowe. I zobaczyć na wykresie czy średnia
+    %    +/- odchylenie z jednej grupy pokrywa wartości dla średnia +/- odchylenie z drugiej grupy.
+    %    Najlepiej byłoby jakby te zakresy nie naszły na siebie.
+    %    - to wtedy statystycznie wynik można traktować jako pewny. Jak Pan nie ma tyle danych, to proszę
+    %    we wnioskach najwyżej napisać, że danych jest trochę za mało, ale widoczna jest tendencja
+    %    (o ile ona wyjdzie z obliczeń).
     Porównano średni współczynnik zmarszczek ze strefy 2 dla osób w wieku 17 lat z ilością krawędzi wykrytych z tej
     samej strefy na obrazie~\ref{fig.zlyRyjek}.
     Takie porównanie ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
@@ -2190,33 +2219,7 @@ Karolina Nurzyńska}
     %    Tutaj mogą być zdjęcia jak to wygladalo, jakie były problemy np, ze wykrywalo wlosy, ze blednie wykrywalo itp
 
     \section{Statystyki z działania programu}\label{sec:statystyki-z-działania-programu}
-    W tej sekcji zostaną przedstawione ogólne statystyki z działania programu.
-    Baza UTKface zawiera 23708 zdjęć. Detektor twarzy był w stanie wyznaczyć obszar twarzy dla 14583 obrazów.
-    Jednak spośród 14583 obrazów tylko 2574 brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm
-    poprawnie wykrył
-    obszar nosa oraz oczu, które są niezbędne do dalszych obliczeń.
 
-    Średni czas generacji wrinkle feature obrazu po wykryciu twarzy wyniósł 0,467 sekundy dla metody bazowej.
-    Dla metody, w której została odjęta strefa druga, generacja trwała 0,465 sekund,
-    dla metody HOG 0,543 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN - 0,543 sekundy.
-
-    Powyższe dane wykazują, że najszybciej wskaźnik zmarszczek był generowany przez algorytm metody
-    po odjęciu jednej strefy.
-
-    Warto porównać również szybkość szacowania wieku na podstawie danego wrinkle feature.
-
-    Średni czas szacowania wieku dla danego obrazu wyniósł 0,585 sekundy dla metody bazowej.
-    Dla metody, w której została
-    odjęta strefa druga ten czas wyniósł 0,583 sekundy, dla metody HOG 0,675 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN 0,678
-    sekundy.
-
-    %todo opisac jak w matlabie wygladalo szacowanie, ewentualnie jak w pythonie :)
-    Najszybciej szacował wiek algorytm zawierający odjętą strefę.
-    Warto podkreślić, że szacowanie wieku dla metody HOG wraz z klasyfikacją KNN realizował
-    program realizowany przez skrypt w Matlabie.
-    Pozostałe algorytmy szacowania wieku zostały zrealizowana w programie w języku Java.
-    W związku z powyższym porównanie szybkości działania
-    algorytmu zaimplementowanego w Matlabie do algorytmu zaimplementowanego w Javie może być niedokładne.
 
     \section{Skuteczność poszczególnych metod szacowania wieku}\label{sec:skuteczność-poszczególnych-metod-szacowania-wieku}
     %todo jakies intro
