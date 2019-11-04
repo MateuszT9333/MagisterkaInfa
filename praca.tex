@@ -2214,7 +2214,7 @@ Karolina Nurzyńska}
     Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.
     Na obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
     które identyfikują włosy.
-    \begin{figure}[hb]
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=11cm]{Obrazy/zlyRyjekZGrzywka.jpg}
         \captionsetup{justification=centering}
@@ -2337,7 +2337,7 @@ Karolina Nurzyńska}
     wieku przy modyfikacji parametru g.
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru m na wartość MAE w metodzie bazowej.}
+        \caption{Wpływ parametru m na wartość wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & m=2,0 & m=3,0 & m=5,0 \\ \hline
@@ -2347,7 +2347,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $\epsilon$ na MAE w metodzie bazowej.}
+        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
@@ -2357,7 +2357,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $g$ na wynik MAE w metodzie bazowej.}
+        \caption{Wpływ parametru $g$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $g=20$ & $g=50$ & $g=100$ \\ \hline
@@ -2366,10 +2366,12 @@ Karolina Nurzyńska}
         \label{tab.bazowa_g}
     \end{table}
 
-    Najlepszy wynik MAE dla modyfikacji parametru m, osiągnięto dla m=3,0. Zwiększenie parametru m z 2,0 do 3,0
+    Najlepszy wynik MAE dla modyfikacji parametru m osiągnięto dla m=3,0. Zwiększenie parametru m z 2,0 do 3,0
     znacznie poprawiło jakość szacowania wieku.
-    Zwiększanie parametru $\epsilon$ nie miało znacznego wpływu na jakość szacowania wieku.
-    Zmiana liczby grup z 20 do 50 nieznacznie polepszyła MAE. Ponadto widać, że dalsze zwiększanie liczby grup nie
+    Zwiększanie parametru $\epsilon$ nie miało istotnego wpływu na jakość szacowania wieku.
+    Z kolei zmiana liczby grup z 20 do 50 nieznacznie polepszyła MAE. Ponadto widać, że również dalsze zwiększanie
+    liczby grup
+    nie
     wpływa na wynik MAE.
 
     Metoda oryginalna uzyskała najlepszą jakość szacowania wieku dla następujących parametrów:
@@ -2397,7 +2399,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $\epsilon$ na MAE w metodzie bazowej.}
+        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
@@ -2407,7 +2409,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $g$ na wynik MAE w metodzie bazowej.}
+        \caption{Wpływ parametru $g$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $g=20$ & $g=50$ & $g=100$ \\ \hline
@@ -2415,9 +2417,9 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.bazowa_g_cv}
     \end{table}
-    Zmiana parametru m z wartości 2,0 do 5,0 znacząco pogorszyła MAE. Modyfikacja parametru $\epsilon$ nie wpłynęła
-    na wartość MAE, natomiast zwiększenie jakości szacowania wieku nastąpiło przy zwiększeniu grupy z 10 do 20.
-    Największa jakość szacowania wieku została osiągnięta dla następującej kombinacji parametrów wejściowych:
+    Zmiana parametru m z wartości 2,0 do 5,0 znacząco zwiększyła MAE. Modyfikacja parametru $\epsilon$ nie wpłynęła
+    na wartość MAE, natomiast poprawa jakości szacowania wieku nastąpiło przy zwiększeniu grupy z 10 do 20.
+    Najlepsza jakość szacowania wieku została osiągnięta dla następującej kombinacji parametrów wejściowych:
     \begin{itemize}
         \item m=2,0;
         \item g=20
@@ -2425,24 +2427,23 @@ Karolina Nurzyńska}
         \item $\epsilon=1e-5$
     \end{itemize}
     Dla powyższej kombinacji parametrów FCM, MAE osiągnęło 8,58 roku.
-    Testowanie za pomocą walidacji krzyżowej pokazało, że MAE ma znacznie lepszą wartość, niż w przypadku testów ,,10\%
-    zdjęć''.
+    Testowanie za pomocą walidacji krzyżowej pokazało, że MAE ma znacznie lepszą wartość, niż w przypadku testowania
+    10\% zdjęć.
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
     \subsection*{Wyniki z testowania 10\% zdjęć}
     W kolejnym kroku została przetestowana metoda, które nie uwzględnia zmarszczek ze strefy 2.
-    Podobnie jak w sekcji~\ref{subsec:metoda-bazowa} wykonywano testy dla takich samych parametrów algorytmu Fuzzy
-    C-means.
+    Wykonano testy dla takich samych parametrów algorytmu Fuzzy C-means, jak w sekcji~\ref{subsec:metoda-bazowa}.
     Tabela~\ref{tab.odjeta_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru m.
-    W kolejnej tabeli~\ref{tab.odjeta_e} przedstawiono wyniki przy
+    W kolejnej tabeli~\ref{tab.odjeta_e} zawarto wyniki przy
     zmianie parametru $\epsilon$.
-    W tabeli~\ref{tab.odjeta_g} przedstawiono
+    W tabeli~\ref{tab.odjeta_g} zaprezentowano
     jakość szacowania
     wieku przy modyfikacji parametru g.
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru m na wartość MAE w metodzie po odjęciu strefy 2.}
+        \caption{Wpływ parametru m na wartość wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & m=2,0 & m=3,0 & m=5,0 \\ \hline
@@ -2452,7 +2453,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $\epsilon$ na MAE w metodzie po odjęciu strefy 2.}
+        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
@@ -2462,7 +2463,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $g$ na wynik MAE w metodzie po odjęciu strefy 2.}
+        \caption{Wpływ parametru $g$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $g=20$ & $g=50$ & $g=100$ \\ \hline
@@ -2471,7 +2472,7 @@ Karolina Nurzyńska}
         \label{tab.odjeta_g}
     \end{table}
 
-    Zwiększanie parametru wejściowego m pogarszało wyniki szacowania wieku, natomiast poprawa wyników nastąpiła przy
+    Zwiększanie parametru wejściowego m pogarszało wyniki szacowania wieku, natomiast ich poprawa nastąpiła przy
     zmniejszeniu $\epsilon$ do wartości $1e-8$. Liczba grup nie miała większego wpływu na MAE.
     Dla parametrów FCM:
     \begin{itemize}
@@ -2484,7 +2485,7 @@ Karolina Nurzyńska}
 
     \subsection*{Wyniki walidacji krzyżowej CV-5}
 
-    Podobnie, jak w testowaniu za pomocą 10\% zdjęć zbadano wpływ parametrów:
+    Podobnie jak w testowaniu za pomocą 10\% zdjęć, zbadano wpływ zmiany parametrów na jakość szacowania wyników:
     \begin{itemize}
         \item m (tabela~\ref{tab.odjeta_m_cv})
         \item $\epsilon$ (tabela~\ref{tab.odjeta_e_cv})
@@ -2503,7 +2504,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $\epsilon$ na MAE w metodzie po odjęciu strefy 2.}
+        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
@@ -2513,7 +2514,7 @@ Karolina Nurzyńska}
     \end{table}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $g$ na wynik MAE w metodzie po odjęciu strefy 2.}
+        \caption{Wpływ parametru $g$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             & $g=20$ & $g=50$ & $g=100$ \\ \hline
@@ -2523,7 +2524,7 @@ Karolina Nurzyńska}
     \end{table}
 
     Podobnie jak przy testowaniu 10\% zdjęć, zwiększanie parametru wejściowego m pogarszało wyniki szacowania wieku.
-    Zwiększenie $\epsilon$ z $1e-5$ do $1e-6$ minimalnie pogorszyło wyniki. Dalsze zwiększanie tego parametru
+    Zwiększenie $\epsilon$ z $1e-5$ do $1e-6$ dało minimalnie gorsze rezultaty. Dalsze zwiększanie tego parametru
     pozwoliło uzyskać identyczne MAE równe 10,94 roku.
     Liczba grup nie miała większego wpływu na MAE.
     Dla poniższych parametrów FCM:
@@ -2533,15 +2534,16 @@ Karolina Nurzyńska}
         \item n=1000
         \item $\epsilon=1e-5$
     \end{itemize}
-    osiągnięto najlepszą wartość MAE równą 10,74 roku.
+    osiągnięto najniższą wartość MAE równą 10,74 roku.
 
-    W porównaniu do metody bazowej szacowanie wieku jest znacznie gorsze. Odjęcie jednej strefy powoduje utratę
+    W porównaniu do metody bazowej szacowanie wieku szacowanie wieku w opisany wyżej sposób daje znacznie
+    gorsze wyniki. Odjęcie jednej strefy powoduje utratę
     danych o zmarszczkach i zwiększa błąd szacowania wieku.
 
     \subsection{Metoda HOG}\label{subsec:metoda-hog}
     Kolejną przetestowaną modyfikacją była ta w której użyto algorytmu HOG.
     Podobnie jak w sekcjach~\ref{subsec:odjęcie-strefy-2} oraz~\ref{subsec:metoda-bazowa} modyfikowano parametry
-    algorytmu Fuzzy C-means, jednak dodatkowo dokonano zmiany parametru HOG, Parametrem poddanym modyfikacji był
+    algorytmu Fuzzy C-means, jednak dodatkowo dokonano zmiany parametru HOG. Parametrem poddanym modyfikacji był
     rozmiar komórki. Najpierw ustalono wymiary komórki na 3x3 pikseli, następnie na 6x6 pikseli, a na końcu 9x9
     pikseli.
     Rozmiar bloku dla wszystkich modyfikacji rozmiaru komórek wyniósł
@@ -2552,7 +2554,7 @@ Karolina Nurzyńska}
     Wpływ parametru m oraz rozmiarów komórki na MAE jest przedstawiony w tabeli~\ref{tab.hog}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru m oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru m oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             m=2,0 & m=3,0 & m=5,0 &                     \\ \hline
@@ -2562,14 +2564,14 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.hog}
     \end{table}
-    Rozmiary komórki 3x3 oraz 6x6 pikseli przy zmianach parametru m wprowadzają niewielkie zmiany w jakości
-    szacowania wieku. Zmiana rozmiaru komórki na 9x9 pikseli wprowadza duża zmianę wartości MAE. Wartość ta,
-    zmniejsza się drastycznie do około 11,3 roku.
+    Rozmiary komórki 3x3 oraz 6x6 pikseli przy zmianach parametru m wprowadzają niewielkie zmiany w jakość
+    szacowania wieku. Zmiana rozmiaru komórki na 9x9 pikseli wprowadza duża zmianę wartości MAE. Wartość ta
+    zmniejsza się drastycznie, do około 11,3 roku.
 
     Następnie badano wpływ parametru $\epsilon$ (tabela~\ref{tab.hog1}).
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $\epsilon=1e-6$ &  $\epsilon=1e-7$ &  $\epsilon=1e-8$ &                     \\ \hline
@@ -2580,14 +2582,15 @@ Karolina Nurzyńska}
         \label{tab.hog1}
     \end{table}
 
-    Podobnie jak przy badaniu wpływu parametru m (tabela~\ref{tab.hog}) polepszenie nastąpiło dla komórki o rozmiarze
-    9x9 pikseli.
+    Podobnie jak przy badaniu wpływu parametru m (tabela~\ref{tab.hog}), najlepszy wynik uzyskano dla komórki o
+    rozmiarze 9x9 pikseli.
 
-    Badanie wpływu grup na jakość szacowania wieku daje również podobne rezultaty do powyżej zaprezentowanych
+    Analiza wpływu grup (tabela~\ref{tab.hog2}) na jakość szacowania wieku również daje rezultaty podobne do otrzymanych
+    w wyniku badań wpływu parametru $\epsilon$ na MAE.
     (tabela~\ref{tab.hog2}).
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $g$ oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru $g$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $g=20$ & $g=50$ & $g=100$ &                     \\ \hline
@@ -2598,16 +2601,18 @@ Karolina Nurzyńska}
         \label{tab.hog2}
     \end{table}
 
-    Warto zauważyć, że dla komórki 3x3 nastąpiła znaczna poprawa MAE przy zwiększeniu liczby grup z 20 do 50.
+    Warto zauważyć, że dla komórki o rozmiarach 3x3 nastąpiła znaczna poprawa MAE przy zwiększeniu liczby grup z 20 do
+    50.
 
-    Reasumując wyniki badań dla testowania 10\% zdjęć można powiedzieć, że najlepszy rezultat MAE osiągnięto dla
-    rozmiarów komórki 9x9. Parametry FCM w niewielkim stopniu wpływały na jakość szacowania wieku, która oscylowała
+    Reasumując wyniki badań dla testowania 10\% zdjęć można powiedzieć, że najlepszy rezultat osiągnięto dla
+    rozmiarów komórki 9x9. Zmiana parametrów FCM w niewielkim stopniu wpływały na jakość szacowania wieku, która
+    oscylowała
     od wartości MAE 11,28 do 11,31 roku.
     \subsection*{Wyniki walidacji krzyżowej CV-5}
-    Parametr m oraz rozmiar komórki wpływał na parametr MAE w sposób przedstawiony w tabeli~\ref{tab.hog11}
+    Parametr m oraz rozmiar komórki wpływały na parametr MAE w sposób przedstawiony w tabeli~\ref{tab.hog11}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru m oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru m oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             m=2,0 & m=3,0 & m=5,0 &                     \\ \hline
@@ -2618,14 +2623,16 @@ Karolina Nurzyńska}
         \label{tab.hog11}
     \end{table}
 
-    Badanie wpływu parametru m metodą CV ujawnia niewielki rozrzut wyniku MAE.
-    Wartości tych wyników zmieniają się o około 0,1 roku. Warto podkreślić, że wartość MAE jest znacznie mniejsza niż
+    Badanie wpływu parametru m metodą CV-5 ujawnia niewielki rozrzut wyniku MAE.
+    Wartości tych wyników zmieniają się o około 0,1 roku. Warto podkreślić, że w przypadku tego testu wartość MAE jest
+    znacznie mniejsza
+    niż
     przy testowaniu za pomocą 10\% zbioru.
 
-    Wpływ parametru $\epsilon$ przedstawiono w tabeli~\ref{tab.hog12}.
+    Wpływ zmiany parametru $\epsilon$ przedstawiono w tabeli~\ref{tab.hog12}.
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $\epsilon=1e-6$ &  $\epsilon=1e-7$ &  $\epsilon=1e-8$ &                     \\ \hline
@@ -2636,9 +2643,10 @@ Karolina Nurzyńska}
         \label{tab.hog12}
     \end{table}
 
-    Podobnie jak przy badaniu wpływu parametru m (tabela~\ref{tab.hog}) rozrzut danych jest niewielki. Warto
-    podkreślić, że najlepszy wynik osiągnęła najmniejsza komórka 3x3 piksela. Ponadto zmiana parametru $\epsilon$ dla
-    każdego rozmiaru komórek nie wpływała na wartość MAE.
+    Podobnie jak przy badaniu wpływu parametru m (tabela~\ref{tab.hog}), rozrzut danych jest niewielki. Warto
+    podkreślić, że najlepszy wynik uzyskano dla najmniejszej komórki, o wymiarach 3x3 piksela. Ponadto zmiana
+    parametru $\epsilon$ dla
+    każdego rozmiaru komórek nie miała żadnego wpływu na wartość MAE.
 
     %    Badanie wpływu grup na jakość szacowania wieku daje również podobne rezultaty do powyżej zaprezentowanych
     %    (tabela~\ref{tab.hog21}).
@@ -2646,7 +2654,7 @@ Karolina Nurzyńska}
     Wyniki zaprezentowano w tabeli~\ref{tab.hog21}
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru $g$ oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru $g$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $g=20$ & $g=50$ & $g=100$ &                     \\ \hline
@@ -2660,7 +2668,7 @@ Karolina Nurzyńska}
     Przy testowaniu wpływu ilości grup widoczna jest tendencja pogarszania się wyników dla każdego rozmiaru komórki
     wraz ze wzrostem ilości grup.
 
-    Reasumując wyniki testowania 10\% zdjęć oraz metodą CV najlepszy wynik MAE został osiągnięty dla komórki 3x3
+    Wyniki testowania 10\% zdjęć oraz metodą CV pokazują, że najlepszy wynik MAE został osiągnięty dla komórki 3x3
     piksela oraz dla następujących parametrów FCM:
     \begin{itemize}
         \item m=3,0;
@@ -2669,8 +2677,9 @@ Karolina Nurzyńska}
         \item $\epsilon=1e-5$
     \end{itemize}
 
-    W porównaniu do poprzedniej modyfikacji polegającej na odjęciu strefy 2 następuje znaczna poprawa MAE.
-    Jednak nie osiągnięto tak dobrej jakości szacowania wieku jak w metodzie bazowej.
+    W porównaniu do poprzedniej modyfikacji polegającej na odjęciu strefy 2 następuje znaczna zmniejszenie
+    wartości MAE.
+    Jednak nie osiągnięto tak dobrej jakości szacowania wieku, jak w metodzie bazowej.
 
     \subsection{Metoda HOG + KNN}\label{subsec:metoda-hog-+-knn}
     Ostatnią testowaną metodą była ta, która zawiera algorytm HOG, a do klasyfikacji i szacowania używa algorytmu KNN.
@@ -2684,7 +2693,7 @@ Karolina Nurzyńska}
     rozmiarów komórek.
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru k oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $k=1$ & $k=3$ & $k=5$ &                     \\ \hline
@@ -2694,13 +2703,14 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.hogknn}
     \end{table}
-    Dla komórki o rozmiarach 3x3 oraz 9x9 pikseli zwiększanie parametru k poprawiało nieznacznie wartość MAE.
+    Dla komórek o rozmiarach 3x3 oraz 9x9 pikseli zwiększanie parametru k poprawiało nieznacznie wartość MAE.
     Najlepsza jakość klasyfikacji została osiągnięta dla komórki o rozmiarach 9x9 piksela i parametru k=5.
     \subsection*{Wyniki walidacji krzyżowej CV-5}
-
+    Tabela~\ref{tab.hogknncv} zawiera wartości MAE osiągnięte w procesie walidacji krzyżowej CV-5 dla opisywanych
+    modyfikacji.
     \begin{table}[h!]
         \centering
-        \caption{Wpływ parametru k oraz rozmiarów komórki na MAE.}
+        \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $k=1$ & $k=3$ & $k=5$  &                     \\ \hline
@@ -2711,43 +2721,46 @@ Karolina Nurzyńska}
         \label{tab.hogknncv}
     \end{table}
 
-    Tak, jak w poprzednich testach metodą CV, można wywnioskować, że jakość szacowania wieku jest większa.
-    Najlepsze wartości MAE są osiągane, dla komórki o rozmiarach 9x9 pikseli. Najlepsza wartość MAE wynosi 9,6 i
+    Tak, jak w poprzednich testach metodą CV-5, można wywnioskować, daje ona bardziej miarodajne
+    wyniki szacowania wieku niż analiza 10\% obrazów.
+    Błąd MAE osiąga najmniejsze wartości dla komórki o rozmiarach 9x9 pikseli. Najlepsza uzyskany wynik MAE
+    wynosi 9,6 i
     została osiągnięta dla parametru k = 3.
-    Metoda opierająca się na algorytmie HOG oraz KNN prezentuje najlepsze wyniki MAE spośród wszystkich modyfikacji
-    metody bazowej.
+    Co istotne, metoda opierająca się na połączeniu algorytmów HOG i KNN daje błąd MAE o najmniejszych wartościach
+    spośród wszystkich modyfikacji metody bazowej.
     \chapter{Podsumowanie}\label{ch:podsumowanie}
-    Dla metody bazowej zmiany poszczególnych parametrów algorytmu FCM przynosiły nieznaczne zmiany MAE, z wyjątkiem
-    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniósł 12,75 roku. Dla reszty
-    parametrów zmiany MAE mieściły się w zakresie od 10,66 do 11,67 roku. Największe polepszenie wskaźnika MAE uzyskano
-    przy zmianie parametru g na 20 i więcej. Przy powyższej zmianie wartość MAE spadła poniżej 11 lat.
-
-    Dla modyfikacji, która polegała na odjęciu strefy nr 2 wyniki znacznie się pogorszyły. Modyfikacja parametru m
-    pogarszała wskaźnik MAE do wartości od 13,66 do 14,41 roku. Minimalna wartość MAE została osiągnięta dla parametrów
-    m = 2.0, n = 1000 $\epsilon$ = 1e-8 oraz g = 10. Warto zaznaczyć, że modyfikacja liczby klastrów nie polepszyła
-    MAE tak jak w przypadku testowania metody bazowej.
-
-    W metodzie zawierającej modyfikację z algorytmem HOG przetestowano 27 kombinacji parametrów - 3 razy więcej niż przy
-    testowaniu metody bazowej. W porównaniu do metody z odjętą strefą MAE uległo znacznemu pogorszeniu. Dla komórki o
-    rozmiarach 3x3 pikseli parametry Fuzzy C-means nie dawały znacznej
-    poprawy rezultatów MAE. Wskaźnik MAE osiągał wartości od 15,45 do 16,82 roku. Podobne wartości były osiągane dla
-    komórki o rozmiarach 6x6 pikseli. W tym przypadku MAE mieściło się w zakresie od 16,16 do 16,89 roku.
-
-    Ostatnia modyfikacja przyniosła poprawę w porównaniu do metody bazowej.
-    Dla rozmiaru komórki 5x5 pikseli oraz dla zmiennego parametru n algorytmu KNN błąd MAE osiągał wartości od 11,38 do
-    11,75 roku. Warto zauważyć, że poprawa wskaźnika MAE następowała wraz ze wzrostem parametru n. Zmiana rozmiaru
-    komórki na 7x7 polepszyła wskaźnik MAE. Osiągał on wartości od 10,34 do 10,77 roku. W tym przypadku najlepszą
-    wartość MAE spośród wszystkich przetestowanych osiągnięto dla wartości n = 3, czyli wartości pośredniej.
-    Najlepsze wartości osiągnięto dla komórki o rozmiarach 9x9 pikseli. Minimalną i zarazem najlepszą dla wszystkich testów wartość
-    osiągnięto dla parametru n = 5.
-
-    Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
-    to wartość zadowalająca, gdyż w literaturze ten wskaźnik osiągał wartości około 5 lat. \cite{khryashchevGanin}
-    Natomiast udało się polepszyć algorytm bazowy. Modyfikacja zawierająca algorytm HOG oraz KNN poprawiła MAE z 10,66 do
-    9,97 roku. W celu poprawy wyników należałoby zwiększyć bazę treningową. Z ponad 20000 obrazów zamieszczonych w bazie tylko 2574
-    brało udział w treningu. Wiele zdjęć zostało odrzuconych z powodu braku rozpoznania przez detektor oczu oraz nosa. W
-    związku z powyższym należałoby użyć lepszych detektorów lub znaleźć bazę, która zawiera
-    zdjęcia twarzy o lepszej jakości.
+    TODO
+    %    Dla metody bazowej zmiany poszczególnych parametrów algorytmu FCM przynosiły nieznaczne zmiany MAE, z wyjątkiem
+    %    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniósł 12,75 roku. Dla reszty
+    %    parametrów zmiany MAE mieściły się w zakresie od 10,66 do 11,67 roku. Największe polepszenie wskaźnika MAE uzyskano
+    %    przy zmianie parametru g na 20 i więcej. Przy powyższej zmianie wartość MAE spadła poniżej 11 lat.
+    %
+    %    Dla modyfikacji, która polegała na odjęciu strefy nr 2 wyniki znacznie się pogorszyły. Modyfikacja parametru m
+    %    pogarszała wskaźnik MAE do wartości od 13,66 do 14,41 roku. Minimalna wartość MAE została osiągnięta dla parametrów
+    %    m = 2.0, n = 1000 $\epsilon$ = 1e-8 oraz g = 10. Warto zaznaczyć, że modyfikacja liczby klastrów nie polepszyła
+    %    MAE tak jak w przypadku testowania metody bazowej.
+    %
+    %    W metodzie zawierającej modyfikację z algorytmem HOG przetestowano 27 kombinacji parametrów - 3 razy więcej niż przy
+    %    testowaniu metody bazowej. W porównaniu do metody z odjętą strefą MAE uległo znacznemu pogorszeniu. Dla komórki o
+    %    rozmiarach 3x3 pikseli parametry Fuzzy C-means nie dawały znacznej
+    %    poprawy rezultatów MAE. Wskaźnik MAE osiągał wartości od 15,45 do 16,82 roku. Podobne wartości były osiągane dla
+    %    komórki o rozmiarach 6x6 pikseli. W tym przypadku MAE mieściło się w zakresie od 16,16 do 16,89 roku.
+    %
+    %    Ostatnia modyfikacja przyniosła poprawę w porównaniu do metody bazowej.
+    %    Dla rozmiaru komórki 5x5 pikseli oraz dla zmiennego parametru n algorytmu KNN błąd MAE osiągał wartości od 11,38 do
+    %    11,75 roku. Warto zauważyć, że poprawa wskaźnika MAE następowała wraz ze wzrostem parametru n. Zmiana rozmiaru
+    %    komórki na 7x7 polepszyła wskaźnik MAE. Osiągał on wartości od 10,34 do 10,77 roku. W tym przypadku najlepszą
+    %    wartość MAE spośród wszystkich przetestowanych osiągnięto dla wartości n = 3, czyli wartości pośredniej.
+    %    Najlepsze wartości osiągnięto dla komórki o rozmiarach 9x9 pikseli. Minimalną i zarazem najlepszą dla wszystkich testów wartość
+    %    osiągnięto dla parametru n = 5.
+    %
+    %    Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
+    %    to wartość zadowalająca, gdyż w literaturze ten wskaźnik osiągał wartości około 5 lat. \cite{khryashchevGanin}
+    %    Natomiast udało się polepszyć algorytm bazowy. Modyfikacja zawierająca algorytm HOG oraz KNN poprawiła MAE z 10,66 do
+    %    9,97 roku. W celu poprawy wyników należałoby zwiększyć bazę treningową. Z ponad 20000 obrazów zamieszczonych w bazie tylko 2574
+    %    brało udział w treningu. Wiele zdjęć zostało odrzuconych z powodu braku rozpoznania przez detektor oczu oraz nosa. W
+    %    związku z powyższym należałoby użyć lepszych detektorów lub znaleźć bazę, która zawiera
+    %    zdjęcia twarzy o lepszej jakości.
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
