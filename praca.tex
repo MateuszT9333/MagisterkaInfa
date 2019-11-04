@@ -1472,12 +1472,12 @@ Karolina Nurzyńska}
     Autorzy algorytmu szacowania wieku będącego podstawą przeprowadzonych badań zastosowali grupowanie metodą Fuzzy
     C-means.
     Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
-
+    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w
+    książce~\cite{ISODATA}.
     %- dokladny opis jak to dziala
     %    https://sci-hub.tw/10.1007/s12046-019-1166-1
     %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
-    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w
-    książce~\cite{ISODATA}.
+
 
     Klasteryzacja Fuzzy C-means dzieli zbiór $S$ na podzbiory $s_{i}$ zgodnie ze wzorem~\ref{wzor.zbiorX}):
     \large
@@ -1620,6 +1620,7 @@ Karolina Nurzyńska}
     algorytm HOG-a.
     W ostatniej sekcji~\ref{sec:metoda-hog-oraz-algorytm-knn} została zaprezentowana ostatnia modyfikacja, która oprócz algorytmu HOG do szacowania
     wieku wykorzystuje algorytm KNN.
+    Wszystkie powyższe modyfikacje zostały zrealizowane przez autora niniejszej pracy.
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
     Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
@@ -1662,9 +1663,8 @@ Karolina Nurzyńska}
 
     Metoda Histogram of Oriented Gradients opiera się na założeniu, że wygląd i kształt obiektów na obrazie może zostać
     opisany przez gradient jasności oraz jego kierunek. Jest to dobrze widoczne na
-    rysunku~\ref{fig.gradientJasnosciNaGlowie}
-
-    \begin{figure}
+    rysunku~\ref{fig.gradientJasnosciNaGlowie}.
+    \begin{figure}[b]
         \centering
         \includegraphics[width=11cm]{Obrazy/gradientJasnosciNaGlowie.jpg}
         \caption{Gradient jasności identyfikujący granicę pomiędzy głową a tłem~\cite{hogOpenCv}.}
@@ -1686,7 +1686,7 @@ Karolina Nurzyńska}
 
     W pierwszej fazie algorytmu HOG obraz powinien zostać przeskalowany, tak aby jego wymiary były podzielne przez
     rozmiar
-    pojedynczej komórki.
+    pojedynczej komórki
     (rysunek~\ref{fig.komorkiHoga}).
     \begin{figure}
         \centering
@@ -1767,7 +1767,7 @@ Karolina Nurzyńska}
     Gradienty jasności są czułe na zmiany oświetlenia na obrazie. Celem tej fazy algorytmu jest normalizacja oświetlania,
     aby uodpornić deskryptor na zmiany oświetlania.
     Zostanie tutaj opisana normalizacja za pomocą parametru L2.
-    Najpierw zostaje wyliczona wartość L2 według wzoru\ref{wzor.l2norm}.
+    Najpierw zostaje wyliczona wartość L2 według wzoru~\ref{wzor.l2norm}.
     \large
     \begin{equation}
         \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
@@ -1783,7 +1783,7 @@ Karolina Nurzyńska}
     Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
     wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.  %todo Proszę wyróżnić inną czcionką symbole matematyczne, które są częścią zdania. Można po prostu brać je w dolary, np. $x$.
 
-    Normalizacja jest realizowana przy zastosowaniu Wzoru~\ref{wzor.l2norm2} %todo wzór małymi literami
+    Normalizacja jest realizowana przy zastosowaniu wzoru~\ref{wzor.l2norm2} %todo wzór małymi literami
     \large
     \begin{equation}
         v = \frac{v}{\left \|v  \right \|_{2}}
@@ -1816,7 +1816,9 @@ Karolina Nurzyńska}
     W związku z powyższym zmodyfikowano sposób obliczenia współczynnika zmarszczek dla obrazu twarzy, opierając się o
     deskryptor wygenerowany przez algorytm HOG.
 
-    Wektor reprezentujący deskryptor jest generowany przez HOG-a na podstawie całego obrazu lub jego pewnego obszaru. Algorytm jest zaimplementowany w bibliotece OpenCV, która umożliwia ustawienie jego różnych parametrów. Do tych parametrów zaliczają się:
+    Wektor reprezentujący deskryptor jest generowany przez HOG-a na podstawie całego obrazu lub jego pewnego obszaru.
+    Algorytm jest zaimplementowany w bibliotece OpenCV,
+    która umożliwia ustawienie jego różnych parametrów. Do tych parametrów zaliczają się:
     \begin{itemize}
         \item rozmiar komórki w pikselach,
         \item rozmiar bloku w pikselach,
@@ -2030,8 +2032,9 @@ Karolina Nurzyńska}
     Następnym krokiem jest przydzielenie danego wektoru do klasy (wieku).
 
     \chapter{Badania}\label{ch:badania}
-    W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz jej modyfikacji.
-    Sekcja ~\ref{sec:środowisko-pracy} prezentuje środowisko pracy, a dokładniej mówiąc wszystkie
+    W niniejszym rozdziale zostaną przedstawione badania metody bazowej oraz zaproponowanych przez autora
+    modyfikacji.
+    Sekcja~\ref{sec:środowisko-pracy} prezentuje środowisko pracy, a dokładniej mówiąc wszystkie
     niezbędne narzędzia i akcesoria, które pozwoliły skutecznie przeprowadzić badania. Ponadto zaprezentowana jest
     metodyka badań oraz statystyki z działania programu.
     Sekcja~\ref{sec:wykrywanie-krawędzi-przez-detektor-canny} ukazuje efekty wykrywania zmarszczek przez detektor
@@ -2057,7 +2060,8 @@ Karolina Nurzyńska}
     Dane z treningu były generowane do plików CSV oraz JSON. Ponadto większość kluczowych operacji była logowana do plików. Do
     tego celu posłużyła popularna biblioteka Log4j.
     Generacja plików JSON była zrealizowana przez bibliotekę GSON z pakietu com.google.code.gson, natomiast
-    do generacji plików CSV nie została wykorzystana zewnętrzna biblioteka.
+    do generacji plików CSV nie została wykorzystana zewnętrzna biblioteka. Autor niniejszej pracy sam zaimplementował
+    algorytm generacji tych plików.
 
     W pracy została odtworzona oryginalna praca autorów, która
     będzie dalej nazywana metodą bazową.
@@ -2068,7 +2072,7 @@ Karolina Nurzyńska}
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
     treningową oraz testową.
     Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
-    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%~\cite{dataMiningAlgorithms}.
+    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np. 10\%~\cite{dataMiningAlgorithms}.
 
     Drugi ze sposobów to schemat CV-n (cross validation), zwany również walidacją krzyżową.
     Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
@@ -2084,20 +2088,21 @@ Karolina Nurzyńska}
     \normalsize
     gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych. %todo sprawdzic w itemizach czy sa przecinki
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
-    W wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora.\cite{dataMiningAlgorithms}.
+    W wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora~\cite{dataMiningAlgorithms}.
     Najczęściej dokonuje się tego przez wyliczenie średniej wartości n rezultatów uzyskanych po przeprowadzeniu
     n iteracji.
 
     Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
     Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
     Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
-    w zbiorze danych.\cite{dataMiningAlgorithms}
+    w zbiorze danych~\cite{dataMiningAlgorithms}.
 
-    Dla każdej metody dokonano porównania 257 zdjęć, co stanowi 10\% ogólnej liczby obrazów biorących udział w
+    Dla każdej metody szacowania wieku dokonano porównania 257 zdjęć, co stanowi 10\% ogólnej liczby obrazów biorących
+    udział w
     badaniach, natomiast pozostałe 90\% obrazów brało udział w analizie danych, jako zbiór treningowy dla każdej metody
     szacowania wieku.
     Ponadto sprawdzono jakość klasyfikatora stosując metodę walidacji krzyżowej. Najczęściej w walidacji krzyżowej
-    parametr $n$ wynosi 5.
+    parametr $n$ wynosił 5.
 
     %    natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
     %    podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
@@ -2119,7 +2124,7 @@ Karolina Nurzyńska}
     Średni czas generacji współczynnika zmarszczek dla obrazu po wykryciu twarzy wyniósł 0,467 sekundy dla metody
     bazowej.
     Dla metody, w której została odjęta strefa druga, generacja trwała 0,465 sekund,
-    dla metody HOG 0,543 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN - 0,543 sekundy.
+    dla metody HOG 0,543 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN - 0,549 sekundy.
     %todo wplyw przerwa... jakich przerwan... ja bym to zostawil i jak sie doczepi to doprecyzuje...
     Powyższe dane wykazują, że najszybciej wskaźnik zmarszczek był generowany przez algorytm metody
     po odjęciu jednej strefy.
@@ -2247,7 +2252,7 @@ Karolina Nurzyńska}
     wieku od 24 do 38 lat. W tym eksperymencie wykorzystano 20 obrazów z poprzedniego eksperymentu, na których
     zmarszczki zostały wykryte poprawnie, oraz 20 kolejnych zdjęć, gdzie grzywka nachodząca na strefę 1
     spowodowała nieprawidłowe wykrycie zmarszczek. Wyniki detekcji detektorem Cannego zaprezentowano w
-    tabeli~\ref{tab.grzywka}, natomiast wyniki dla algorytmu HOG-a pokazano w tabeli~\ref{tab.grzywkaHog}
+    tabeli~\ref{tab.grzywka}, natomiast wyniki dla algorytmu HOG-a pokazano w tabeli~\ref{tab.grzywkaHog}.
     \begin{table}[h!]
         \centering
         \caption{Eksperyment 2: wykrywanie zmarszczek w strefie 1 za pomocą detektora Canny.}
@@ -2261,13 +2266,13 @@ Karolina Nurzyńska}
             \end{tabular} \\ \hline
             Średnia współczynnika zmarszczek & 0,056
             & 0,079                                                                                      \\ \hline
-            Odchylenie standardowe współczynnika zmarszczek & 0,01
+            Odchylenie standardowe współczynnika zmarszczek & 0,010
             & 0,014                                                                                      \\ \hline
         \end{tabular}
         \label{tab.grzywka}
     \end{table}
     Średnia współczynnika zmarszczek dla prawidłowo wykrytych zmarszczek, dla strefy 1 w eksperymencie nr 2 wyniosła
-    0,056, natomiast odchylenie standardowe było równe 0,01. Grzywka nachodząca na strefę 1 zwiększyła
+    0,056, natomiast odchylenie standardowe było równe 0,010. Grzywka nachodząca na strefę 1 zwiększyła
     średni współczynnik zmarszczek do 0,079 oraz odchylenie standardowe do 0,014.
     Podobnie, jak we wnioskach po eksperymencie 1, nie można jednoznacznie stwierdzić, czy zwiększony współczynnik o
     0,023 oraz odchylenie standardowe o 0,004 istotnie wpłynie na oszacowany wiek.
@@ -2297,7 +2302,7 @@ Karolina Nurzyńska}
     Podobnie jak w przypadku detekcji metodą Canny, nie jest możliwe jednoznaczne stwierdzenie, czy zauważona
     tendencja istotnie zafałszuje szacowany wiek.
     \section{Skuteczność poszczególnych metod szacowania wieku}\label{sec:skuteczność-poszczególnych-metod-szacowania-wieku}
-    W niniejszej sekcji zaprezentowano jakość szacowania wieku przez algorytm bazowy oraz jego modyfikację. W każdej
+    W niniejszej sekcji zaprezentowano jakość szacowania wieku przez algorytm bazowy oraz jego modyfikacje. W każdej
     metodzie zaprezentowano wyniki z testowania za pomocą schematu CV-5 oraz podziału na zbiór treningowy i testowy w
     stosunku 90\% do 10\%.
     \subsection{Metoda bazowa}\label{subsec:metoda-bazowa}
@@ -2310,7 +2315,7 @@ Karolina Nurzyńska}
     \end{itemize}
     Ponadto warto wspomnieć, że detektor Canny używany przy detekcji zmarszczek posiadał niezmienne wartości progu
     $T_{l} = 10$ oraz $T_{h} = 100$ podczas prowadzenie badań.
-    Przykładowy wynik testowania metody został przedstawiony w tabeli~\ref{tab.przykladoweWyniki}
+    Przykładowy wynik testowania metody został przedstawiony w tabeli~\ref{tab.przykladoweWyniki}.
 
     \begin{table}[h]
         \centering
@@ -2350,10 +2355,10 @@ Karolina Nurzyńska}
     parametrów.
     Tabela~\ref{tab.bazowa_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru m.
     W kolejnej tabeli~\ref{tab.bazowa_e} przedstawiono wyniki przy
-    zmianie parametru $\epsilon$.
+    zmianie parametru $\epsilon$, przy stałych wartościach $m=2,0$, $n=1000$, $g=10$
     W tabeli~\ref{tab.bazowa_g} przedstawiono
     jakość szacowania
-    wieku przy modyfikacji parametru g.
+    wieku przy modyfikacji parametru g, natomiast pozostałe parametry miały wartości $m=2,0$, $n=1000$, $\epsilon=1e-5$
     \begin{table}[h!]
         \centering
         \caption{Wpływ parametru m na wartość wartość MAE w metodzie bazowej.}
@@ -2447,7 +2452,10 @@ Karolina Nurzyńska}
     \end{itemize}
     Dla powyższej kombinacji parametrów FCM, MAE osiągnęło 8,58 roku.
     Testowanie za pomocą walidacji krzyżowej pokazało, że MAE ma znacznie lepszą wartość, niż w przypadku testowania
-    10\% zdjęć.
+    10\% zdjęć. W dalszej części pracy pokazano kontrast pomiędzy wynikami osiągniętymi pomiędzy walidacją krzyżową a
+    metodą 10\%. Wyniki dla metody CV-5 są znacząco lepsze ponieważ pięciokrotne powtarzanie treningu i klasyfikacji
+    z całego zbioru danych daje w wyniku bardziej wiarygodne wyniki niż w przypadku jednokrotnego testowania losowej
+    próbki 10\% zdjęć~\cite{dataMiningAlgorithms}.
     %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
@@ -2562,7 +2570,10 @@ Karolina Nurzyńska}
     \subsection{Metoda HOG}\label{subsec:metoda-hog}
     Kolejną przetestowaną modyfikacją była ta w której użyto algorytmu HOG.
     Podobnie jak w sekcjach~\ref{subsec:odjęcie-strefy-2} oraz~\ref{subsec:metoda-bazowa} modyfikowano parametry
-    algorytmu Fuzzy C-means, jednak dodatkowo dokonano zmiany parametru HOG. Parametrem poddanym modyfikacji był
+    algorytmu Fuzzy C-means, jednak dodatkowo dokonano zmiany parametru HOG, który zastąpił detektor Cannego w
+    szacowaniu ilości zmarszczek.
+
+    Parametrem poddanym modyfikacji był
     rozmiar komórki. Najpierw ustalono wymiary komórki na 3x3 pikseli, następnie na 6x6 pikseli, a na końcu 9x9
     pikseli.
     Rozmiar bloku dla wszystkich modyfikacji rozmiaru komórek wyniósł
@@ -2585,7 +2596,8 @@ Karolina Nurzyńska}
     \end{table}
     Rozmiary komórki 3x3 oraz 6x6 pikseli przy zmianach parametru m wprowadzają niewielkie zmiany w jakość
     szacowania wieku. Zmiana rozmiaru komórki na 9x9 pikseli wprowadza duża zmianę wartości MAE. Wartość ta
-    zmniejsza się drastycznie, do około 11,3 roku.
+    zmniejsza się drastycznie, do około 11,3 roku. Przyczyna tak dużej zmiany MAE wynika prawdopodobnie z tego, że
+    wyniki uzyskane metodą testowania 10\% zdjęć są niemiarodajne.
 
     Następnie badano wpływ parametru $\epsilon$ (tabela~\ref{tab.hog1}).
     \begin{table}[h!]
@@ -2620,13 +2632,17 @@ Karolina Nurzyńska}
         \label{tab.hog2}
     \end{table}
 
-    Warto zauważyć, że dla komórki o rozmiarach 3x3 nastąpiła znaczna poprawa MAE przy zwiększeniu liczby grup z 20 do
+    Warto zauważyć, że dla komórki o rozmiarach 3x3 nastąpiła nieznaczna poprawa MAE przy zwiększeniu liczby grup z
+    20 do
     50.
 
     Reasumując wyniki badań dla testowania 10\% zdjęć można powiedzieć, że najlepszy rezultat osiągnięto dla
-    rozmiarów komórki 9x9. Zmiana parametrów FCM w niewielkim stopniu wpływały na jakość szacowania wieku, która
+    rozmiarów komórki 9x9. Zmiany parametrów FCM w niewielkim stopniu wpływały na jakość szacowania wieku, która
     oscylowała
     od wartości MAE 11,28 do 11,31 roku.
+    Porównując uzyskane rezultaty z najlepszym wynikiem dla metody bazowej, gdzie MAE wyniosło 10,76, można
+    wywnioskować, że wprowadzona modyfikacja nie spełniła swojego zadania, ponieważ wartość MAE
+    dla metody bazowej była niższa.
     \subsection*{Wyniki walidacji krzyżowej CV-5}
     Parametr m oraz rozmiar komórki wpływały na parametr MAE w sposób przedstawiony w tabeli~\ref{tab.hog11}
     \begin{table}[h!]
@@ -2727,7 +2743,7 @@ Karolina Nurzyńska}
     \subsection*{Wyniki walidacji krzyżowej CV-5}
     Tabela~\ref{tab.hogknncv} zawiera wartości MAE osiągnięte w procesie walidacji krzyżowej CV-5 dla opisywanych
     modyfikacji.
-    \begin{table}[h!]
+    \begin{table}[b]
         \centering
         \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
@@ -2747,7 +2763,49 @@ Karolina Nurzyńska}
     została osiągnięta dla parametru k = 3.
     Co istotne, metoda opierająca się na połączeniu algorytmów HOG i KNN daje błąd MAE o najmniejszych wartościach
     spośród wszystkich modyfikacji metody bazowej.
+    W tabeli~\ref{tab:summary} oraz~\ref{tab:summary1} przedstawiono zmiany wartości MAE dla metody bazowej,
+    analizy bez strefy 2
+    oraz metody HOG-a
+    dla stałej wartości parametrów FCM ($m=2,0$, $n=1000$, $g=10$, $\epsilon=1e-5$),
+    a także dla metody HOG + KNN dla wartości parametru $k=1$ algorytmu KNN.
+    MAE zostało wyznaczone dla testowania schematem CV-5.
+    \begin{table}[ht]
+        \centering
+        \caption{Wartość MAE dla metody szacowania wieku: bazowej, bez strefy 2 oraz HOG-a.}
+        \label{tab:summary}
+        \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            & \multicolumn{2}{c|}{Canny}        & \multicolumn{3}{c|}{HOG}                                                                                                                                                          \\ \hline
+            & metoda oryginalna & metoda własna & \begin{tabular}[c]{@{}c@{}}
+                                                      HOG 3x3\\ piksela
+            \end{tabular} &
+            \begin{tabular}[c]{@{}c@{}}
+                HOG 6x6\\ pikseli
+            \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+                                HOG 9x9\\ pikseli
+            \end{tabular} \\ \hline
+            MAE & 8,64 & 10,74 & 9,81 & 9,93 & 9,95                                                      \\ \hline
+        \end{tabular}
+    \end{table}
+    \begin{table}[ht]
+        \centering
+        \caption{Wartość MAE dla metody szacowania wieku HOG + KNN.}
+        \label{tab:summary1}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \multicolumn{3}{|c|}{HOG + kNN}                                                                                                                                                   \\ \hline
+            \begin{tabular}[c]{@{}c@{}}
+                HOG 3x3\\ piksela
+            \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+                                HOG 6x6\\ piksela
+            \end{tabular} & \begin{tabular}[c]{@{}c@{}}
+                                HOG 9x9\\ piksela
+            \end{tabular} \\ \hline
+            10,77 & 10,06 & 9,66                                                      \\ \hline
+        \end{tabular}
+    \end{table}
     \chapter{Podsumowanie}\label{ch:podsumowanie}
+
     TODO %todo
     %    Dla metody bazowej zmiany poszczególnych parametrów algorytmu FCM przynosiły nieznaczne zmiany MAE, z wyjątkiem
     %    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniósł 12,75 roku. Dla reszty
