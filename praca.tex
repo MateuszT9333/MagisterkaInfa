@@ -587,6 +587,12 @@ Karolina Nurzyńska}
     Kolejnym istotnym elementem jest oświetlenie twarzy.
     Gdy twarz oświetlona jest tzw. ostrym światłem, występują na
     niej cienie i światła określane jako ostre (obraz~\ref{fig.oswietlenieTwarzy}).
+    %todo
+%    rysunek
+%
+%    Nie wiem jak jest dalej, ale wcześniej było podobnie. Ogólnie takie odwołanie do obrazka jest poprawne. Tylko płynniej byłoby napisać:
+%
+%    " jako ostre jak przedstawiono na rys. 2.3." Proszę zobaczyć czy w innych miejscach też nie da się w prosty sposób wprowadzić odwołania do rynku jako części zdania.
     \begin{figure}[h!]
         \centering
         \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
@@ -699,6 +705,13 @@ Karolina Nurzyńska}
         \item G - zielonego (z ang. Green),
         \item B - niebieskiego (z ang. Blue).
     \end{itemize}
+    %todo
+%    Proszę ujednolicić. Są dwie szkoły:
+%    - nazwę anglojęzyczną piszemy z małej, bo jest to część zdania,
+%    - w nazwie angielskiej piszemy wielką literą to z czego tworzony jest akronim.
+%
+%    Poza nazwą dla kNNa we wstępie stosuje Pan drugie podejście. Co Pan wybierze jest obojętne, byle zawsze tak samo.
+
     Barwy mieszane są poprzez syntezę addytywną.
     W przeciwieństwie do syntezy subtraktywnej, barwa wynikowa powstaje tu poprzez sumowanie wiązek światła widzialnego o
     różnych długościach~\cite{przestrzenieKolorow}.
@@ -1364,7 +1377,7 @@ Karolina Nurzyńska}
     \begin{figure}[h!]
         \centering
         \includegraphics[width=11cm]{Obrazy/mojaTwarzGray.jpg}
-        \caption{a) Oryginalny obraz b) Obraz z wykrytymi krawędziami.} %todo musi byc nizej
+        \caption{a) Oryginalny obraz b) Obraz z wykrytymi krawędziami.} %todo sprawdzic wszystkie obrazki
         \label{fig.mojaTwarzGray}
     \end{figure}
 
@@ -1395,7 +1408,13 @@ Karolina Nurzyńska}
     \normalsize
     gdzie WZ to wskaźnik zmarszczek - parametr określający ilość zmarszczek dla danej osoby.
 
+    %todo straszna przerwa
+
     \section{Algorytm analizy danych ze zbioru trenującego}\label{sec:algorytmTrenowania}
+%    %todo W tym rozdziale nie ma nic o tym
+%    co to jest algorytm analizy danych.
+%    Wspomina Pan o Fuzzy c-means, ale to za mało.
+%    Co chciał Pan zawrzeć w tym rozdziale?
     W celu skonstruowania programu wyznaczającego wiek na podstawie tekstury należy wcześniej zbadać zależność ilości
     zmarszczek od wieku.
     W tym celu należy posiadać odpowiednią bazę zdjęć, na których można przeprowadzić wyżej wspomniane badania.
@@ -1416,7 +1435,7 @@ Karolina Nurzyńska}
     Fuzzy C-Means.
     W wyniku działania tego algorytmu otrzymuje się informacje, dzięki którym na podstawie współczynnika zmarszczek
     można
-    oszacować wiek~\cite{wrinkleFeatures}.
+    oszacować wiek~\cite{wrinkleFeatures}. %todo sprawdzic referencje...
     \section{Grupowanie danych - Fuzzy C-Means oraz wyznaczanie wieku}\label{sec:grupowanieDanych}
     %    https://pl.wikipedia.org/wiki/Analiza_skupień
     %    https://en.wikipedia.org/wiki/Cluster_analysis
@@ -1762,9 +1781,9 @@ Karolina Nurzyńska}
     wiadomo z
     przedstawionego wyżej opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
     Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
-    wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
+    wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.  %todo wszelkie wzory wartosci trzeba dac w dolary
 
-    Normalizacja jest realizowana przy zastosowaniu Wzoru~\ref{wzor.l2norm2}
+    Normalizacja jest realizowana przy zastosowaniu Wzoru~\ref{wzor.l2norm2} %todo wzór małymi literami
     \large
     \begin{equation}
         v = \frac{v}{\left \|v  \right \|_{2}}
@@ -2051,7 +2070,7 @@ Karolina Nurzyńska}
     Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
     $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np 10\%~\cite{dataMiningAlgorithms}.
 
-    Drugi ze sposobów to schemat CV-n, zwany również walidacją krzyżową.
+    Drugi ze sposobów to schemat CV-n (cross validation), zwany również walidacją krzyżową.
     Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
     Następnie wykonuje się n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym, natomiast reszta
     podzbiorów tworzy zbiór treningowy.
@@ -2063,7 +2082,7 @@ Karolina Nurzyńska}
         \label{wzor.mae}
     \end{equation}
     \normalsize
-    gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
+    gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych. %todo sprawdzic w itemizach czy sa przecinki
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
     W wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora.\cite{dataMiningAlgorithms}.
     Najczęściej dokonuje się tego przez wyliczenie średniej wartości n rezultatów uzyskanych po przeprowadzeniu
@@ -2729,7 +2748,7 @@ Karolina Nurzyńska}
     Co istotne, metoda opierająca się na połączeniu algorytmów HOG i KNN daje błąd MAE o najmniejszych wartościach
     spośród wszystkich modyfikacji metody bazowej.
     \chapter{Podsumowanie}\label{ch:podsumowanie}
-    TODO
+    TODO %todo
     %    Dla metody bazowej zmiany poszczególnych parametrów algorytmu FCM przynosiły nieznaczne zmiany MAE, z wyjątkiem
     %    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniósł 12,75 roku. Dla reszty
     %    parametrów zmiany MAE mieściły się w zakresie od 10,66 do 11,67 roku. Największe polepszenie wskaźnika MAE uzyskano
@@ -2762,6 +2781,8 @@ Karolina Nurzyńska}
     %    związku z powyższym należałoby użyć lepszych detektorów lub znaleźć bazę, która zawiera
     %    zdjęcia twarzy o lepszej jakości.
 
+    %todo poprawic bibliografie
+    %todo wyeliminowac randomowe znaczki na stronie tytulowej
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \backmatter
