@@ -30,6 +30,7 @@
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \usepackage{setspace}
+\usepackage[draft,nosingleletter]{impnattypo}
 \onehalfspacing
 
 
@@ -2743,7 +2744,7 @@ Karolina Nurzyńska}
     \subsection*{Wyniki walidacji krzyżowej CV-5}
     Tabela~\ref{tab.hogknncv} zawiera wartości MAE osiągnięte w procesie walidacji krzyżowej CV-5 dla opisywanych
     modyfikacji.
-    \begin{table}[b]
+    \begin{table}[t!]
         \centering
         \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
@@ -2769,14 +2770,14 @@ Karolina Nurzyńska}
     dla stałej wartości parametrów FCM ($m=2,0$, $n=1000$, $g=10$, $\epsilon=1e-5$),
     a także dla metody HOG + KNN dla wartości parametru $k=1$ algorytmu KNN.
     MAE zostało wyznaczone dla testowania schematem CV-5.
-    \begin{table}[ht]
+    \begin{table}[t!]
         \centering
         \caption{Wartość MAE dla metody szacowania wieku: bazowej, bez strefy 2 oraz HOG-a.}
         \label{tab:summary}
         \begin{tabular}{|c|c|c|c|c|c|}
             \hline
             & \multicolumn{2}{c|}{Canny}        & \multicolumn{3}{c|}{HOG}                                                                                                                                                          \\ \hline
-            & metoda oryginalna & metoda własna & \begin{tabular}[c]{@{}c@{}}
+            & metoda oryginalna & metoda bez strefy 2 & \begin{tabular}[c]{@{}c@{}}
                                                       HOG 3x3\\ piksela
             \end{tabular} &
             \begin{tabular}[c]{@{}c@{}}
@@ -2787,7 +2788,7 @@ Karolina Nurzyńska}
             MAE & 8,64 & 10,74 & 9,81 & 9,93 & 9,95                                                      \\ \hline
         \end{tabular}
     \end{table}
-    \begin{table}[ht]
+    \begin{table}[t!]
         \centering
         \caption{Wartość MAE dla metody szacowania wieku HOG + KNN.}
         \label{tab:summary1}
@@ -2797,47 +2798,74 @@ Karolina Nurzyńska}
             \begin{tabular}[c]{@{}c@{}}
                 HOG 3x3\\ piksela
             \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-                                HOG 6x6\\ piksela
+                                HOG 6x6\\ pikseli
             \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-                                HOG 9x9\\ piksela
+                                HOG 9x9\\ pikseli
             \end{tabular} \\ \hline
             10,77 & 10,06 & 9,66                                                      \\ \hline
         \end{tabular}
     \end{table}
+    Jak widać w tabeli~\ref{tab:summary}, najlepsza wartość MAE została osiągnięta dla metody oryginalnej i wyniosła
+    8,64 roku. Metoda z pominięciem strefy 2 zwiększyła ten parametr o 2,1 roku. Metoda używająca algorytmu HOG była
+    gorsza
+    od metody
+    oryginalnej o 1,17 roku dla komórki o rozmiarach 3x3 piksela, z kolei dla komórek o rozmiarach 6x6 pikseli i 9x9
+    pikseli
+    wartość MAE pogorszyła się względem metody bazowej o odpowiednio 1,29 i 1,31 roku.
+    Dla metody HOG + KNN (tabela~\ref{tab:summary1}) wartość MAE była większa od metody bazowej o 2,13 roku,
+    1,42 roku i 1,02 roku, dla rozmiarów komórek 3x3 piksela, 6x6 pikseli oraz 9x9 pikseli.
+
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
-    TODO %todo
-    %    Dla metody bazowej zmiany poszczególnych parametrów algorytmu FCM przynosiły nieznaczne zmiany MAE, z wyjątkiem
-    %    jednej próby. Przy parametrach m = 2.0, n = 100 $\epsilon$ = 1e-5 oraz g = 10 MAE wyniósł 12,75 roku. Dla reszty
-    %    parametrów zmiany MAE mieściły się w zakresie od 10,66 do 11,67 roku. Największe polepszenie wskaźnika MAE uzyskano
-    %    przy zmianie parametru g na 20 i więcej. Przy powyższej zmianie wartość MAE spadła poniżej 11 lat.
-    %
-    %    Dla modyfikacji, która polegała na odjęciu strefy nr 2 wyniki znacznie się pogorszyły. Modyfikacja parametru m
-    %    pogarszała wskaźnik MAE do wartości od 13,66 do 14,41 roku. Minimalna wartość MAE została osiągnięta dla parametrów
-    %    m = 2.0, n = 1000 $\epsilon$ = 1e-8 oraz g = 10. Warto zaznaczyć, że modyfikacja liczby klastrów nie polepszyła
-    %    MAE tak jak w przypadku testowania metody bazowej.
-    %
-    %    W metodzie zawierającej modyfikację z algorytmem HOG przetestowano 27 kombinacji parametrów - 3 razy więcej niż przy
-    %    testowaniu metody bazowej. W porównaniu do metody z odjętą strefą MAE uległo znacznemu pogorszeniu. Dla komórki o
-    %    rozmiarach 3x3 pikseli parametry Fuzzy C-means nie dawały znacznej
-    %    poprawy rezultatów MAE. Wskaźnik MAE osiągał wartości od 15,45 do 16,82 roku. Podobne wartości były osiągane dla
-    %    komórki o rozmiarach 6x6 pikseli. W tym przypadku MAE mieściło się w zakresie od 16,16 do 16,89 roku.
-    %
-    %    Ostatnia modyfikacja przyniosła poprawę w porównaniu do metody bazowej.
-    %    Dla rozmiaru komórki 5x5 pikseli oraz dla zmiennego parametru n algorytmu KNN błąd MAE osiągał wartości od 11,38 do
-    %    11,75 roku. Warto zauważyć, że poprawa wskaźnika MAE następowała wraz ze wzrostem parametru n. Zmiana rozmiaru
-    %    komórki na 7x7 polepszyła wskaźnik MAE. Osiągał on wartości od 10,34 do 10,77 roku. W tym przypadku najlepszą
-    %    wartość MAE spośród wszystkich przetestowanych osiągnięto dla wartości n = 3, czyli wartości pośredniej.
-    %    Najlepsze wartości osiągnięto dla komórki o rozmiarach 9x9 pikseli. Minimalną i zarazem najlepszą dla wszystkich testów wartość
-    %    osiągnięto dla parametru n = 5.
-    %
-    %    Testowanie metody bazowej oraz jej modyfikacji wykazało, że wskaźnik MAE oscylował w granicach 10 lat. Nie jest
-    %    to wartość zadowalająca, gdyż w literaturze ten wskaźnik osiągał wartości około 5 lat. \cite{khryashchevGanin}
-    %    Natomiast udało się polepszyć algorytm bazowy. Modyfikacja zawierająca algorytm HOG oraz KNN poprawiła MAE z 10,66 do
-    %    9,97 roku. W celu poprawy wyników należałoby zwiększyć bazę treningową. Z ponad 20000 obrazów zamieszczonych w bazie tylko 2574
-    %    brało udział w treningu. Wiele zdjęć zostało odrzuconych z powodu braku rozpoznania przez detektor oczu oraz nosa. W
-    %    związku z powyższym należałoby użyć lepszych detektorów lub znaleźć bazę, która zawiera
-    %    zdjęcia twarzy o lepszej jakości.
+    Celem niniejszej pracy było stworzenie algorytmu do szacowania wieku.
+    Obszerny przegląd literatury przybliżył rozmaite techniki rozpoznawania twarzy i
+    szacowania wieku. Bazą dla przeprowadzonych badań było odtworzenie pracy
+    „Age Estimation from Face Image using Wrinkle Features”~\cite{wrinkleFeatures}.
+    Zawarta w niej metoda wykrywania zmarszczek została zaimplementowana,
+    a następnie poddana trzem autorskim modyfikacjom, które stanowiły próbę jej udoskonalenia.
+
+    Aby osiągnąć założony cel, dokonano implementacji oryginalnego algorytmu~\cite{wrinkleFeatures},
+    w którym w pierwszej kolejności musiała zostać wykryta twarz.
+    W kolejnym kroku należało zidentyfikować strefy zmarszczkowe, aby oszacować ilość zmarszczek.
+    Określenie ich ilości zostało zrealizowane za pomocą detektora Canny. Oprócz samej implementacji
+    algorytmu podano różne sposoby wykrywania twarzy oraz cech na niej, ze szczególnym uwzględnieniem
+    algorytmu Haar Cascade, zaimplementowanego w metodzie oryginalnej. Ponadto został omówiony sposób
+    grupowania danych za pomocą algorytmu Fuzzy C-means, który w metodzie oryginalnej posłużył do oszacowania
+    wieku. Przy okazji omawiania modyfikacji algorytmu bazowego zaprezentowano również sposób działania
+    algorytmów HOG oraz KNN.
+
+    W pierwszej modyfikacji zaproponowano wykluczenie strefy 2 z analizy, ponieważ uznano,
+    że brwi nachodzące w wielu zdjęciach na tę strefę utrudniają detekcję zmarszczek.
+    W kolejnej użyto detektora HOG zamiast detektora Canny do wykrywania ilości zmarszczek.
+    Dla obu wyżej opisanych modyfikacji przeprowadzono szacowanie wieku za pomocą algorytmu FCM,
+    tak jak w metodzie bazowej. W ostatniej modyfikacji do szacowania wieku wykorzystano algorytm KNN,
+    natomiast detektor HOG generował dane na temat ilości zmarszczek w poszczególnych strefach.
+
+    W celu oceny jakości szacowania wieku zastosowano dwa schematy testowania algorytmów.
+    Pierwszy z nich wydzielał zbiór zdjęć na zbiór treningowy i testowy według stosunku odpowiednio 90:10.
+    Drugim schematem był schemat CV-5. Okazało się, że wyniki dla pierwszego z nich były w dużej mierze
+    niedokładne.
+
+    Najlepsze wyniki w przypadku metody bazowej osiągnięto dla parametrów FCM - m=2,0, n=1000,
+    epsilon-1e-5, g=50. Wartość MAE dla powyższych parametrów osiągnęła 8,53 roku.
+    Z kolei metoda bez jednej strefy zmarszczkowej znacznie pogorszyła wyniki.
+    Najlepszy parametr MAE wyniósł 10,94 roku dla następujących parametrów FCM: m=2,0, g=10, n=1000,
+    epsilon=1e-8. Metoda wykorzystująca algorytm HOG była bardziej skuteczna od pierwszej modyfikacji,
+    w której nie brano pod uwagę jednej strefy. Najlepszy wynik równy 9,78 roku osiągnięto dla komórki
+    HOG-a o rozmiarach 3x3 piksela oraz dla parametrów FCM: m=3,0, n=1000, epsilon=1e-5, g=10.
+    Najlepsza metoda, która była modyfikacją metody bazowej to metoda HOG + KNN. W jej przypadku
+    wartość MAE osiągnęła minimalnie 9,6 roku dla wartości k=3 parametru KNN oraz komórki o rozmiarach 9x9 pikseli.
+
+    Wyniki starano się poprawić testując różne kombinacje parametrów algorytmów.
+    Do takich należały zmienne m, g, n, epsilon dla FCM, natomiast dla HOG-a były to rozmiary komórek.
+    Z kolei dla KNN poddano modyfikacjom parametr k. Modyfikacje metody bazowej nie poprawiły wartości MAE,
+    który osiągnął minimalnie 8,53 roku.Warto dodać, że najlepsze algorytmy~\cite{khryashchevGanin}
+    szacowania wieku osiągają parametr MAE o wartości około 5 roku.
+    Różnica pomiędzy MAE dla metody bazowej oraz dla
+    najlepszych algorytmów szacowania wieku wynosi około 3. Jest to znacząca różnica, która wprowadza
+    istotny błąd podczas szacowania wieku. Powodem tak słabej skuteczności szacowania wieku przez algorytm
+    bazowy może być zbyt mały zbiór danych treningowych.
+
 
     %todo poprawic bibliografie
     %todo wyeliminowac randomowe znaczki na stronie tytulowej
