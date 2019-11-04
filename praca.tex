@@ -406,21 +406,21 @@ Karolina Nurzyńska}
     \end{itemize}
     W rozdziale~\ref{ch:metoda-bazowa---wrinkle-feature} zaprezentowano algorytm szacowania wieku oparty na oryginalnej metodzie.
     W sekcji~\ref{sec:metodaWykrywaniaTwarzy} skupiono się na metodach wykrywania twarzy wraz z opisem
-    metody wykrywania w bazowym algorytmie.
+    metody wykrywania twarzy w bazowym algorytmie.
     Następnie w sekcji~\ref{sec:wyznaczanieStref} zaprezentowano sposób wyznaczania stref zmarszczkowych z oryginalnej metody.
     W kolejnej sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny} przedstawiono sposób detekcji zmarszczek na twarzy implementowany
     w metodzie bazowej.
     Przedostatnia sekcja rozdziału drugiego~\ref{sec:algorytmTrenowania}  prezentuje sposób analizy % w pracy
     zależności pomiędzy wskaźnikiem zmarszczek, a wiekiem
     danej osoby.
-    W ostatniej sekcji~\ref{sec:grupowanieDanych} tego rozdziału przedstawiono algorytm grupowania danych niezbędny do oszacowania wieku.
+    W sekcji~\ref{sec:grupowanieDanych} przedstawiono algorytm grupowania danych niezbędny do oszacowania wieku.
 
-    W kolejnym rozdziale~\ref{ch:modyfikacje-metody-bazowej} opisuje 3 modyfikację oryginalnej metody.
+    W kolejnym rozdziale~\ref{ch:modyfikacje-metody-bazowej} opisuję 3 modyfikację oryginalnej metody.
     Oprócz sposobu implementacji danych modyfikacji czytelnik zostaje zapoznany z teoretycznymi podstawami wykrywania zmarszczek za
     pomocą metody HOG (ang. Histogram of Oriented Gradients) oraz szacowania wieku dzięki algorytmowi KNN (ang.  k-nearest neighbors).
 
-    W przedostatnim rozdziale~\ref{ch:badania} przedstawiono sposób realizacji badań oraz ich wyniki.
-    W ostatnim rozdziale~\ref{ch:podsumowanie} podsumowano niniejsza pracą.
+    W rozdziale~\ref{ch:badania} przedstawiono sposób realizacji badań oraz ich wyniki.
+    W rozdziale~\ref{ch:podsumowanie} podsumowano niniejsza pracą.
 
     \chapter{Metoda bazowa - wskaźnik zmarszczek}\label{ch:metoda-bazowa---wrinkle-feature}
 
@@ -481,7 +481,7 @@ Karolina Nurzyńska}
     należy pogrupować, tak jak to opisano w sekcji~\ref{sec:grupowanieDanych}.
     Ostatnią fazą algorytmu jest wykrywanie wieku
     na podstawie wyników działania FCM (ang. Fuzzy C-Means) - sekcja~\ref{sec:grupowanieDanych}
-    (rysunek~\ref{fig .faza2Algorytmu}).
+    (rysunek~\ref{fig.faza2Algorytmu}).
 
     \begin{figure}[ht!]
         \centering
@@ -518,7 +518,7 @@ Karolina Nurzyńska}
     %    for detection. These methods are designed mainly for face detection.
 
     \begin{itemize}
-        \item metoda oparta na nauce (ang. knowledge - based method):
+        \item metoda oparta na nauce (ang. knowledge-based method):
 
         Metoda oparta na nauce kieruje się wiedzą na temat wyglądu twarzy, a
         bardziej precyzyjnie chodzi o charakterystyczne cechy,
@@ -563,7 +563,7 @@ Karolina Nurzyńska}
     %    Każda z nich wyodrębnia z obrazu pewne cechy, które
     %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
 
-    Należy jednak zauważyć, że w procesie ekstrakcji twarzy z obrazu mogą wystąpić liczne problemy.~\cite{mehdiRizvi}.
+    Należy jednak zauważyć, że w procesie ekstrakcji twarzy z obrazu mogą wystąpić liczne problemy~\cite{mehdiRizvi}.
     Jednym z nich jest nieodpowiednia poza.
     Wiąże się to z różnymi ustawieniami twarzy wobec aparatu fotograficznego lub kamery.
     Twarz może być nachylona, przechylona lub odchylona.
@@ -587,7 +587,8 @@ Karolina Nurzyńska}
 
     Kolejnym istotnym elementem jest oświetlenie twarzy.
     Gdy twarz oświetlona jest tzw. ostrym światłem, występują na
-    niej cienie i światła określane jako ostre (obraz~\ref{fig.oswietlenieTwarzy}).
+    niej cienie i światła określane jako ostre, jak przedstawiono na rysunku~\ref{fig.oswietlenieTwarzy}). %todo
+    %    moze lepsze odwolania
     %todo
 %    rysunek
 %
@@ -757,7 +758,7 @@ Karolina Nurzyńska}
     \end{itemize}
     Metoda największej jasności konwertuje na skalę szarości wg wzoru~\ref{wzor.najwiekszaJasnosc}.
 
-    \large
+    %    \large
     \begin{equation}
         \frac{(max(R, G, B) + min(R, G, B))}{2}
         \label{wzor.najwiekszaJasnosc}
@@ -765,14 +766,14 @@ Karolina Nurzyńska}
     \normalsize
     Metoda średnia bazuje na wzorze~\ref{wzor.metodaSrednia}, natomiast metodę luminancji ilustruje wzór~\ref{wzor.metodaLuminancji}.
 
-    \large
+    %    \large
     \begin{equation}
         \frac{(R + G + B)}{3}
         \label{wzor.metodaSrednia}
     \end{equation}
     \normalsize
 
-    \large
+    %    \large
     \begin{equation}
         0,21 R + 0,72 G + 0,07 B
         \label{wzor.metodaLuminancji}
@@ -1204,7 +1205,7 @@ Karolina Nurzyńska}
 
     \large
     \begin{equation}
-        w_{B}= w_{C} * 0,4
+        w_{B}= w_{C}\cdot0,4
         \label{wzor.punktWB}
     \end{equation}
     \normalsize
@@ -1326,14 +1327,14 @@ Karolina Nurzyńska}
     Każdy piksel obrazu otrzymuje wartość gradientu (wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
     W wyniku tego działania otrzymuje się obraz gradientowy~\cite{Canny}.
-    \subsection*{Zastosowanie techniki zmniejszania grubości
-    krawędzi}\label{subsec:zastosowanie-zmniejszania-grubości-krawędzi}
+    \subsection*{Zastosowanie techniki zmniejszania grubości krawędzi}
     Zmniejszanie grubości krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
     Krawędzie wykryte za pomocą gradientu są rozmyte.
-    Dzięki technice zmniejszania grubości można odszukać na małym obszarze gradienty o największej wartości
-    , które identyfikują najostrzejsze krawędzie.
+    Dzięki technice zmniejszania grubości można odszukać na małym obszarze gradienty o największej wartości,
+    które identyfikują najostrzejsze krawędzie.
     Wszystkie inne, o mniejszej wartości, są ignorowane.
-    Algorytm operuje na obrazie gradientowym powstałym jako wynik działania algorytmu opisanego w sekcji~\ref{subsec:szukanie-gradientów-jasności}
+    Algorytm operuje na obrazie gradientowym powstałym jako wynik działania algorytmu opisanego w
+    sekcji~\ref{subsec:szukanie-gradientów-jasności}.
     Działa on następująco:
 
     Odczytana zostaje wartość gradientu oraz jego kierunek dla danego piksela.
@@ -1343,8 +1344,7 @@ Karolina Nurzyńska}
     Jeśli wartość danego piksela jest największa spośród pikseli wzdłuż wyżej wymienionych linii,
     to dany piksel należy do najostrzejszej krawędzi~\cite{Canny}.
 
-    \subsection*{Filtracja krawędzi o małym gradiencie
-    jasności}\label{subsec:filtracja-krawędzi-o-małym-gradiencie-jasności}
+    \subsection*{Filtracja krawędzi o małym gradiencie jasności}
     Zastosowanie techniki zmniejszania grubości krawędzi pozostawia na obrazie wiele krawędzi, które są wygenerowane przez szum i zmiany
     kolorów.
     Kolejnym krokiem jest filtracja powyższych krawędzi, gdyż są one nadmiarowe.
@@ -1407,15 +1407,9 @@ Karolina Nurzyńska}
         \label{wzor.wrinkleFeature}
     \end{equation}
     \normalsize
+
     gdzie WZ to wskaźnik zmarszczek - parametr określający ilość zmarszczek dla danej osoby.
-
-    %todo straszna przerwa
-
-    \section{Algorytm analizy danych ze zbioru trenującego}\label{sec:algorytmTrenowania}
-%    %todo W tym rozdziale nie ma nic o tym
-%    co to jest algorytm analizy danych.
-%    Wspomina Pan o Fuzzy c-means, ale to za mało.
-%    Co chciał Pan zawrzeć w tym rozdziale?
+    \section{Analiza zmarszczek ze zdjęcia twarzy}\label{sec:algorytmTrenowania}
     W celu skonstruowania programu wyznaczającego wiek na podstawie tekstury należy wcześniej zbadać zależność ilości
     zmarszczek od wieku.
     W tym celu należy posiadać odpowiednią bazę zdjęć, na których można przeprowadzić wyżej wspomniane badania.
@@ -1616,12 +1610,12 @@ Karolina Nurzyńska}
 
     %Tutaj powinno byc 5000 slow
     \chapter{Modyfikacje metody bazowej}\label{ch:modyfikacje-metody-bazowej}
+    Rozdział~\ref{ch:modyfikacje-metody-bazowej} przedstawia trzy autorskie modyfikacje metody bazowej.
     W sekcji~\ref{sec:odjęcie-wybranej-strefy} zostanie przedstawiona pierwsza modyfikacja algorytmu bazowego.
     Kolejna sekcja~\ref{sec:zastosowanie-metody-hog} zawiera opis kolejnej modyfikacji algorytmu, w której użyto
     algorytm HOG-a.
     W ostatniej sekcji~\ref{sec:metoda-hog-oraz-algorytm-knn} została zaprezentowana ostatnia modyfikacja, która oprócz algorytmu HOG do szacowania
     wieku wykorzystuje algorytm KNN.
-    Wszystkie powyższe modyfikacje zostały zrealizowane przez autora niniejszej pracy.
 
     \section{Odjęcie wybranej strefy}\label{sec:odjęcie-wybranej-strefy}
     Pierwsza modyfikacja polegała na odjęciu jednej wybranej strefy. Detektor Canny oprócz zmarszczek
@@ -1685,7 +1679,7 @@ Karolina Nurzyńska}
     różnice w oświetleniu różnych obszarów zdjęcia. Wspomniana sytuacja występuje na przykład, gdy zdjęcie wykonywane
     jest w nieprawidłowych warunkach oświetleniowych (rysunek~\ref{fig.oswietlenieTwarzy}).
 
-    W pierwszej fazie algorytmu HOG obraz powinien zostać przeskalowany, tak aby jego wymiary były podzielne przez
+    W pierwszej fazie algorytmu HOG obraz powinien zostać przeskalowany tak aby jego wymiary były podzielne przez
     rozmiar
     pojedynczej komórki
     (rysunek~\ref{fig.komorkiHoga}).
@@ -2061,8 +2055,8 @@ Karolina Nurzyńska}
     Dane z treningu były generowane do plików CSV oraz JSON. Ponadto większość kluczowych operacji była logowana do plików. Do
     tego celu posłużyła popularna biblioteka Log4j.
     Generacja plików JSON była zrealizowana przez bibliotekę GSON z pakietu com.google.code.gson, natomiast
-    do generacji plików CSV nie została wykorzystana zewnętrzna biblioteka. Autor niniejszej pracy sam zaimplementował
-    algorytm generacji tych plików.
+    do generacji plików CSV nie została wykorzystana zewnętrzna biblioteka.
+    Autor niniejszej pracy sam zaimplementował algorytm generacji tych plików.
 
     W pracy została odtworzona oryginalna praca autorów, która
     będzie dalej nazywana metodą bazową.
@@ -2075,7 +2069,7 @@ Karolina Nurzyńska}
     Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
     $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np. 10\%~\cite{dataMiningAlgorithms}.
 
-    Drugi ze sposobów to schemat CV-n (cross validation), zwany również walidacją krzyżową.
+    Drugi ze sposobów to schemat CV-n (ang. cross validation), zwany również walidacją krzyżową.
     Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
     Następnie wykonuje się n iteracji. W każdej iteracji jeden podzbiór zostaje zbiorem testowym, natomiast reszta
     podzbiorów tworzy zbiór treningowy.
@@ -2103,10 +2097,7 @@ Karolina Nurzyńska}
     badaniach, natomiast pozostałe 90\% obrazów brało udział w analizie danych, jako zbiór treningowy dla każdej metody
     szacowania wieku.
     Ponadto sprawdzono jakość klasyfikatora stosując metodę walidacji krzyżowej. Najczęściej w walidacji krzyżowej
-    parametr $n$ wynosił 5.
-
-    %    natomiast każda z nich miała zmieniane parametry algorytmów. W przypadku metody z algorytmem grupowania Fuzzy C-means zmianie
-    %    podlegały parametry tego właśnie algorytmu. Analogicznie zmieniano właściwości odpowiednich algorytmów dla metody HOG i klasyfikatora KNN.
+    stosuje się parametr $n$ o wartości równej 5.
 
     \subsection*{Baza zdjęć oraz statystyki z działania programu}
     Baza UTKface zawiera 23708 zdjęć.
@@ -2126,7 +2117,6 @@ Karolina Nurzyńska}
     bazowej.
     Dla metody, w której została odjęta strefa druga, generacja trwała 0,465 sekund,
     dla metody HOG 0,543 sekundy, natomiast dla metody HOG wraz z klasyfikacją KNN - 0,549 sekundy.
-    %todo wplyw przerwa... jakich przerwan... ja bym to zostawil i jak sie doczepi to doprecyzuje...
     Powyższe dane wykazują, że najszybciej wskaźnik zmarszczek był generowany przez algorytm metody
     po odjęciu jednej strefy.
 
@@ -3074,18 +3064,12 @@ Karolina Nurzyńska}
 
         \begin{itemize}
             \item[FCM] - \ang{Fuzzy C-means} - metoda klasteryzacji miękkiej (rozmytego).
-            \item[HOG] - \ang{Histograms of Oriented Gradients} - metoda generacji deskryptora obrazu
+            \item[HOG] - \ang{Histograms of Oriented Gradients} - metoda generacji deskryptora obrazu.
             \item[KNN] - \ang{k-Nearest Neighbors} - algorytm regresji lub klasyfikacji.
-            \item[MAE] - \ang{Mean Absolute Error} - średni błąd bezwzględny
-            \item[BIF] - \ang{Biologically Inspired Features} - detektor cech o charakterze biologicznym
-            \item[LBP] - \ang {Local Binary Patterns} - detektor cech (lokalnych wzorców binarnych)
-            \item[FPR] - \ang{False Positive Rate} - współczynnik fałszywych klasyfikacji, jako obiekt.
-            \item[TP] - \ang{True Positive} - poprawna klasyfikacja, jako obiekt
-            \item[TN] - \ang{True Negative} - poprawna klasyfikacja, jako nie - obiekt
-            \item[FP] - \ang{False Positive} - błędna klasyfikacja jako obiekt
-            \item[FN] - \ang{False Negative} - błędna klasyfikacja jako nie - obiekt
-            \item[INRIA] - \ang{Institut National de Recherche en Informatique et en Automatique} - francuski
-            instytut zajmujący się badaniami w zakresie informatyki i automatyki
+            \item[MAE] - \ang{Mean Absolute Error} - średni błąd bezwzględny.
+            \item[BIF] - \ang{Biologically Inspired Features} - detektor cech o charakterze biologicznym.
+            \item[LBP] - \ang {Local Binary Patterns} - detektor cech (lokalnych wzorców binarnych).
+            \item[CV-n] - \ang {Cross Validation} - schemat testowania zbioru danych.
         \end{itemize}
 
 
