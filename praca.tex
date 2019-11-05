@@ -31,6 +31,7 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \usepackage{setspace}
 \usepackage[draft,nosingleletter]{impnattypo}
+\usepackage{pdfpages}
 \onehalfspacing
 
 
@@ -210,89 +211,12 @@ Karolina Nurzyńska}
     %%%%%%%%%%%%%%%%%%%%% oswiadczenie o udostępnianiu pracy dyplomowej %%%%%%%%%%%%%%%%%%%
     \cleardoublepage
 
-    \begin{flushright}
-        załącznik nr 2 do zarz.
-        nr 97/08/09
-    \end{flushright}
-
-    \vfill
-
-    \begin{center}
-        \Large\bfseries Oświadczenie
-    \end{center}
-
-    \vfill
-
-    Wyrażam zgodę / Nie wyrażam zgody* na udostępnienie mojej pracy dyplomowej / rozprawy doktorskiej*.
-
-    \vfill
-
-    Gliwice, dnia \today
-
-    \vfill
-
-    \rule{0.5\textwidth}{0cm}\dotfill
-
-    \rule{0.5\textwidth}{0cm}
-    \begin{minipage}{0.45\textwidth}
-    {\begin{center}
-         (podpis)
-    \end{center}}
-    \end{minipage}
-
-    \vfill
-
-    \rule{0.5\textwidth}{0cm}\dotfill
-
-    \rule{0.5\textwidth}{0cm}
-    \begin{minipage}{0.45\textwidth}
-    {\begin{center}
-         \rule{0mm}{5mm}(poświadczenie wiarygodności podpisu przez Dziekanat)
-    \end{center}}
-    \end{minipage}
-
-
-    \vfill
-
-    * podkreślić właściwe
-
-
-
+    \includepdf[page=-]{wyrazaniezgody.pdf}
 
     %%%%%%%%%%%%%%%%%%%%% oswiadczenie promotora o spełnieniu wymagań formalnych %%%%%%%%%%%%%%%%%%%
     \cleardoublepage
 
-    \rule{1cm}{0cm}
-
-    \vfill
-
-    \begin{center}
-        \Large\bfseries Oświadczenie promotora
-    \end{center}
-
-    \vfill
-
-    Oświadczam, że praca „\tytul” spełnia wymagania formalne pracy dyplomowej magisterskiej.
-
-    \vfill
-
-
-
-    \vfill
-
-    Gliwice, dnia \today
-
-    \rule{0.5\textwidth}{0cm}\dotfill
-
-    \rule{0.5\textwidth}{0cm}
-    \begin{minipage}{0.45\textwidth}
-    {\begin{center}
-         (podpis promotora)
-    \end{center}}
-    \end{minipage}
-
-    \vfill
-
+    \includepdf[page=-]{oswiadczenie.pdf}
     %\rule{0.5\textwidth}{0cm}\dotfill
     %
     %\rule{0.5\textwidth}{0cm}
@@ -1372,7 +1296,7 @@ Karolina Nurzyńska}
     W wyniku działania detektora Cannego, który został opisany w sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
     wygenerowany zostaje obraz binarny z wyodrębnionymi krawędziami.
     Obraz binarny zawiera piksele o dwóch wartościach jasności pikseli.
-    Piksel może być albo biały albo czarny.
+    Piksel może być albo biały, albo czarny.
     Krawędzie można rozpoznać jako białe piksele, natomiast czarne piksele oznaczają brak krawędzi (rysunek~\ref{fig.mojaTwarzGray}).
 
     \begin{figure}[h!]
@@ -1679,7 +1603,7 @@ Karolina Nurzyńska}
     różnice w oświetleniu różnych obszarów zdjęcia. Wspomniana sytuacja występuje na przykład, gdy zdjęcie wykonywane
     jest w nieprawidłowych warunkach oświetleniowych (rysunek~\ref{fig.oswietlenieTwarzy}).
 
-    W pierwszej fazie algorytmu HOG obraz powinien zostać przeskalowany tak aby jego wymiary były podzielne przez
+    W pierwszej fazie algorytmu HOG obraz powinien zostać przeskalowany tak, aby jego wymiary były podzielne przez
     rozmiar
     pojedynczej komórki
     (rysunek~\ref{fig.komorkiHoga}).
@@ -2190,7 +2114,7 @@ Karolina Nurzyńska}
     W wyniku przeprowadzenia eksperymentu 1 dla detektora Canny uzyskano współczynnik zmarszczek równy 0,05 oraz
     odchylenie standardowe 0,009 dla
     obrazów ze zmarszczkami
-    wykrytymi prawidłowo, natomiast brwi nachodzące na strefę 2 spowodowały zwiększenie współczynnika zmarszczek do
+    wykrytymi prawidłowo. Brwi nachodzące na strefę 2 spowodowały zwiększenie współczynnika zmarszczek do
     0,061, natomiast odchylenie standardowe wyniosło 0,011.
     Zauważona różnica nie jest jednak na tyle wysoka, by móc wyraźnie stwierdzić, że będzie miała istotny wpływ na
     szacowanie wieku.
@@ -2452,7 +2376,7 @@ Karolina Nurzyńska}
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
     \subsection*{Wyniki z testowania 10\% zdjęć}
-    W kolejnym kroku została przetestowana metoda, które nie uwzględnia zmarszczek ze strefy 2.
+    W kolejnym kroku została przetestowana metoda, która nie uwzględnia zmarszczek ze strefy 2.
     Wykonano testy dla takich samych parametrów algorytmu Fuzzy C-means, jak w sekcji~\ref{subsec:metoda-bazowa}.
     Tabela~\ref{tab.odjeta_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru m.
     W kolejnej tabeli~\ref{tab.odjeta_e} zawarto wyniki przy
@@ -2555,7 +2479,7 @@ Karolina Nurzyńska}
     \end{itemize}
     osiągnięto najniższą wartość MAE równą 10,74 roku.
 
-    W porównaniu do metody bazowej szacowanie wieku szacowanie wieku w opisany wyżej sposób daje znacznie
+    W porównaniu do metody bazowej szacowanie wieku w opisany wyżej sposób daje znacznie
     gorsze wyniki. Odjęcie jednej strefy powoduje utratę
     danych o zmarszczkach i zwiększa błąd szacowania wieku.
 
@@ -2831,28 +2755,29 @@ Karolina Nurzyńska}
     natomiast detektor HOG generował dane na temat ilości zmarszczek w poszczególnych strefach.
 
     W celu oceny jakości szacowania wieku zastosowano dwa schematy testowania algorytmów.
-    Pierwszy z nich wydzielał zbiór zdjęć na zbiór treningowy i testowy według stosunku odpowiednio 90:10.
-    Drugim schematem był schemat CV-5. Okazało się, że wyniki dla pierwszego z nich były w dużej mierze
+    Pierwszy z nich dzielił zbiór zdjęć na zbiór treningowy i testowy według stosunku odpowiednio 90:10.
+    Jako drugi został wykorzystany schemat CV-5. Okazało się, że wyniki dla pierwszego z nich były w dużej mierze
     niedokładne.
 
     Najlepsze wyniki w przypadku metody bazowej osiągnięto dla parametrów FCM - m=2,0, n=1000,
     epsilon-1e-5, g=50. Wartość MAE dla powyższych parametrów osiągnęła 8,53 roku.
-    Z kolei metoda bez jednej strefy zmarszczkowej znacznie pogorszyła wyniki.
-    Najlepszy parametr MAE wyniósł 10,94 roku dla następujących parametrów FCM: m=2,0, g=10, n=1000,
-    epsilon=1e-8. Metoda wykorzystująca algorytm HOG była bardziej skuteczna od pierwszej modyfikacji,
+    Z kolei metoda bez jednej strefy zmarszczkowej dała znacznie gorsze wyniki.
+    W tym wypadku najlepszy parametr MAE wyniósł 10,94 roku dla następujących parametrów FCM: m=2,0, g=10, n=1000,
+    epsilon=1e-8. Metoda wykorzystująca algorytm HOG okazała się bardziej skuteczna od pierwszej modyfikacji,
     w której nie brano pod uwagę jednej strefy. Najlepszy wynik równy 9,78 roku osiągnięto dla komórki
     HOG-a o rozmiarach 3x3 piksela oraz dla parametrów FCM: m=3,0, n=1000, epsilon=1e-5, g=10.
-    Najlepsza metoda, która była modyfikacją metody bazowej to metoda HOG + KNN. W jej przypadku
-    wartość MAE osiągnęła minimalnie 9,6 roku dla wartości k=3 parametru KNN oraz komórki o rozmiarach 9x9 pikseli.
+    Najlepszą z zaproponowanych modyfikacji metody bazowej okazała się metoda HOG + KNN.
+    W jej przypadku minimalna wartość MAE wyniosła 9,6 roku dla wartości k=3 parametru KNN oraz komórki o rozmiarach 9x9 pikseli.
 
     Wyniki starano się poprawić testując różne kombinacje parametrów algorytmów.
     Do takich należały zmienne m, g, n, epsilon dla FCM, natomiast dla HOG-a były to rozmiary komórek.
     Z kolei dla KNN poddano modyfikacjom parametr k. Modyfikacje metody bazowej nie poprawiły wartości MAE,
-    który osiągnął minimalnie 8,53 roku.Warto dodać, że najlepsze algorytmy~\cite{khryashchevGanin}
-    szacowania wieku osiągają parametr MAE o wartości około 5 roku.
+    którego wartość w żadnym eksperymencie nie wyniosła mniej niż 8,53 roku. Warto zaznaczyć, że najlepsze
+    algorytmy~\cite{khryashchevGanin}
+    szacowania wieku osiągają parametr MAE o wartości około 5 lat.
     Różnica pomiędzy MAE dla metody bazowej oraz dla
-    najlepszych algorytmów szacowania wieku wynosi około 3. Jest to znacząca różnica, która wprowadza
-    istotny błąd podczas szacowania wieku. Powodem tak słabej skuteczności szacowania wieku przez algorytm
+    najlepszych algorytmów szacowania wieku wynosi około 3 lat. Jest to znacząca różnica, która wprowadza
+    istotny błąd podczas szacowania wieku. Powodem tak niskiej skuteczności szacowania wieku przez algorytm
     bazowy może być zbyt mały zbiór danych treningowych.
 
 
