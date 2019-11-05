@@ -417,7 +417,8 @@ Karolina Nurzyńska}
 
     W kolejnym rozdziale~\ref{ch:modyfikacje-metody-bazowej} opisuję 3 modyfikację oryginalnej metody.
     Oprócz sposobu implementacji danych modyfikacji czytelnik zostaje zapoznany z teoretycznymi podstawami wykrywania zmarszczek za
-    pomocą metody HOG (ang. Histogram of Oriented Gradients) oraz szacowania wieku dzięki algorytmowi KNN (ang.  k-nearest neighbors).
+    pomocą metody HOG (ang. Histogram of Oriented Gradients) oraz szacowania wieku dzięki algorytmowi KNN (ang.
+    k-nearest neighbors).
 
     W rozdziale~\ref{ch:badania} przedstawiono sposób realizacji badań oraz ich wyniki.
     W rozdziale~\ref{ch:podsumowanie} podsumowano niniejsza pracą.
@@ -587,9 +588,8 @@ Karolina Nurzyńska}
 
     Kolejnym istotnym elementem jest oświetlenie twarzy.
     Gdy twarz oświetlona jest tzw. ostrym światłem, występują na
-    niej cienie i światła określane jako ostre, jak przedstawiono na rysunku~\ref{fig.oswietlenieTwarzy}). %todo
+    niej cienie i światła określane jako ostre, jak przedstawiono na rysunku~\ref{fig.oswietlenieTwarzy}).
     %    moze lepsze odwolania
-    %todo
 %    rysunek
 %
 %    Nie wiem jak jest dalej, ale wcześniej było podobnie. Ogólnie takie odwołanie do obrazka jest poprawne. Tylko płynniej byłoby napisać:
@@ -703,9 +703,9 @@ Karolina Nurzyńska}
     RGB~\cite{przestrzenieKolorow}.
     Przestrzeń kolorów RGB składa się z trzech kanałów~\cite{kolory}:
     \begin{itemize}
-        \item R - czerwonego (z ang. Red),
-        \item G - zielonego (z ang. Green),
-        \item B - niebieskiego (z ang. Blue).
+        \item R - czerwonego (z ang. red),
+        \item G - zielonego (z ang. green),
+        \item B - niebieskiego (z ang. blue).
     \end{itemize}
     %todo
 %    Proszę ujednolicić. Są dwie szkoły:
@@ -721,8 +721,8 @@ Karolina Nurzyńska}
     Spotykane
     są 12- lub 16-bitowe reprezentacje kanałów, jednak 8-bitowa jest najpopularniejsza.
     Dla 8-bitowych kanałów
-    wartość ,,0''
-    danego kanału oznacza brak jasności, natomiast ,,255'' maksymalną jasność.
+    wartość 0
+    danego kanału oznacza brak jasności, natomiast 255 maksymalną jasność.
     Poprzez mieszanie jasności tych trzech kanałów
     można uzyskać szerokie spektrum barw (rysunek~\ref{fig.mieszanieKolorow}).
 
@@ -733,16 +733,16 @@ Karolina Nurzyńska}
         \label{fig.mieszanieKolorow}
     \end{figure}
 
-    Przykładowo kolor o reprezentacji R=153, G=217, B=234 przedstawiono na rysunku~\ref{fig.mieszanieKolorowBlekitny}
+    Przykładowo kolor o reprezentacji $R=153$, $G=217$, $B=234$ przedstawiono na rysunku~\ref{fig.mieszanieKolorowBlekitny}
 
     \begin{figure}
         \centering
         \includegraphics[width=2cm]{Obrazy/blekitny.jpg}
-        \caption{Kolor R=153 G=217 B=234.}
+        \caption{Kolor $R=153$, $G=217$, $B=234$.}
         \label{fig.mieszanieKolorowBlekitny}
     \end{figure}
 
-    Kolor (rysunek~\ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym \#99D9EA.
+    Kolor (rysunek~\ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym $\#99D9EA$.
     Każda
     wartość heksadecymalna odpowiada kolejno kanałowi R, G, B.
 
@@ -1275,10 +1275,10 @@ Karolina Nurzyńska}
     dla której funkcjonał przyjmuje wartość ekstremalną.
     Algorytm detektora jest podzielony na kilka kroków~\cite{Canny}:
     \begin{itemize}
-        \item Redukcja szumów na obrazie filtrem Gaussa.
-        \item Szukanie gradientów jasności.
-        \item Zastosowanie techniki zmniejszania grubości krawędzi.
-        \item Likwidacja krawędzi o małym gradiencie jasności.
+        \item Redukcja szumów na obrazie filtrem Gaussa,
+        \item Szukanie gradientów jasności,
+        \item Zastosowanie techniki zmniejszania grubości krawędzi,
+        \item Likwidacja krawędzi o małym gradiencie jasności,
         \item Filtracja poprzez histerezę.
     \end{itemize}
     \subsection*{Redukcja szumów na obrazie filtrem Gaussa}\label{subsec:redukcja-szumów-na-obrazie-filtrem-gaussa}
@@ -1778,7 +1778,7 @@ Karolina Nurzyńska}
     Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
     wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.  %todo Proszę wyróżnić inną czcionką symbole matematyczne, które są częścią zdania. Można po prostu brać je w dolary, np. $x$.
 
-    Normalizacja jest realizowana przy zastosowaniu wzoru~\ref{wzor.l2norm2} %todo wzór małymi literami
+    Normalizacja jest realizowana przy zastosowaniu wzoru~\ref{wzor.l2norm2}
     \large
     \begin{equation}
         v = \frac{v}{\left \|v  \right \|_{2}}
@@ -1839,7 +1839,7 @@ Karolina Nurzyńska}
     gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1 dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
     \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
 
-    Parametr L1 dla danego wektora $v$ reprezentuje sumę jego elementów i jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
+    Parametr L1 dla danego wektora $v$ reprezentuje sumę jego elementów i~jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
     \large
     \begin{equation}
         \left \|v  \right \|_{1} = \sum_{i=1}^{n}\left |v(i)  \right |
@@ -1917,10 +1917,10 @@ Karolina Nurzyńska}
 
     Przykładowymi miarami odległości są:
     \begin{itemize}
-        \item miara Euklidesowa
-        \item miara Manhattan
-        \item miara Czebyszewa
-        \item miara Minkowskiego
+        \item miara Euklidesowa,
+        \item miara Manhattan,
+        \item miara Czebyszewa,
+        \item miara Minkowskiego.
     \end{itemize}
     Odległość $D(\overrightarrow{n},\overrightarrow{m})$ pomiędzy dwoma wektorami w mierze Euklidesowej jest opisana
     wzorem~\ref{wzor.euklides}
@@ -1963,7 +1963,7 @@ Karolina Nurzyńska}
     Zastosowanie wyżej wymienionych technik pozwala na zmniejszenie dominacji wartości wektorów, których wartość jest
     znacznie większa lub mniejsza od ogólnej średniej. Przykładowo, przy założeniu, że
     wartością objaśniającą byłaby długość wyrażona w metrach i średnia tej wartości w całym zbiorze uczącym
-    wyniosłaby 1 m,
+    wyniosłaby 1~m,
     to dominującą wartością w tym zbiorze byłaby np. wartość 100 metrów.
     W przypadku badań w niniejszej pracy taka operacja nie była konieczna, ponieważ rozrzut wartości danych nie był
     duży.
@@ -2081,7 +2081,7 @@ Karolina Nurzyńska}
         \label{wzor.mae}
     \end{equation}
     \normalsize
-    gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych. %todo sprawdzic w itemizach czy sa przecinki
+    gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
     W wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora~\cite{dataMiningAlgorithms}.
     Najczęściej dokonuje się tego przez wyliczenie średniej wartości n rezultatów uzyskanych po przeprowadzeniu
@@ -2169,7 +2169,7 @@ Karolina Nurzyńska}
     odchylenie standardowe współczynnika zmarszczek. W tabeli~\ref{tab.brwi} przedstawiono wyniki powyższych badań
     dla detektora Cannego, natomiast w tabeli~\ref{tab.brwiHog} przedstawiono wyniki badań dla detekcji zmarszczek
     algorytmem HOG-a.
-    \begin{table}[h!]
+    \begin{table}[t!]
         \centering
         \caption{Eksperyment 1: wykrywanie zmarszczek w strefie 2 dla detektora Canny.}
         \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
@@ -2180,7 +2180,8 @@ Karolina Nurzyńska}
             \begin{tabular}[c]{@{}c@{}}
                 Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
             \end{tabular} \\ \hline
-            Średnia współczynnika zmarszczek & 0,05 & 0,061                                                                                      \\ \hline
+            Średnia współczynnika zmarszczek & 0,050 & 0,061
+            \\ \hline
             Odchylenie standardowe współczynnika zmarszczek & 0,009
             & 0,011                                                                                      \\ \hline
         \end{tabular}
@@ -2193,7 +2194,7 @@ Karolina Nurzyńska}
     0,061, natomiast odchylenie standardowe wyniosło 0,011.
     Zauważona różnica nie jest jednak na tyle wysoka, by móc wyraźnie stwierdzić, że będzie miała istotny wpływ na
     szacowanie wieku.
-    \begin{table}[h!]
+    \begin{table}[b!]
         \centering
         \caption{Eksperyment 1: wykrywanie zmarszczek w strefie 2 dla detektora HOG-a.}
         \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
@@ -2229,7 +2230,7 @@ Karolina Nurzyńska}
     Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.
     Na obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
     które identyfikują włosy.
-    \begin{figure}[h!]
+    \begin{figure}[]
         \centering
         \includegraphics[width=11cm]{Obrazy/zlyRyjekZGrzywka.jpg}
         \captionsetup{justification=centering}
@@ -2300,9 +2301,9 @@ Karolina Nurzyńska}
     Jako pierwsza została przetestowana metoda bazowa.
     Sprawdzono dokładność szacowania wieku zmieniając parametry algorytmu trenującego Fuzzy C-means:
     \begin{itemize}
-        \item m - współczynnik rozmycia
-        \item g - ilość grup
-        \item $\epsilon$ - kryterium (wzór~\ref{wzor.koniecIteracjiWarunek})
+        \item m - współczynnik rozmycia,
+        \item g - ilość grup,
+        \item $\epsilon$ - kryterium (wzór~\ref{wzor.koniecIteracjiWarunek}).
     \end{itemize}
     Ponadto warto wspomnieć, że detektor Canny używany przy detekcji zmarszczek posiadał niezmienne wartości progu
     $T_{l} = 10$ oraz $T_{h} = 100$ podczas prowadzenie badań.
@@ -2344,13 +2345,14 @@ Karolina Nurzyńska}
     \end{itemize}
     W kolejnych krokach badań zmieniano jeden z parametrów FCM, jednocześnie zachowując stałe wartości pozostałych
     parametrów.
-    Tabela~\ref{tab.bazowa_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru m.
+    Tabela~\ref{tab.bazowa_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru m. Reszta
+    parametrów FCM przy zmianach $m$ wynosiła: $\epsilon=1e-5$, $n=1000$, $g=10$.
     W kolejnej tabeli~\ref{tab.bazowa_e} przedstawiono wyniki przy
-    zmianie parametru $\epsilon$, przy stałych wartościach $m=2,0$, $n=1000$, $g=10$
+    zmianie parametru $\epsilon$, przy stałych wartościach $m=2,0$, $n=1000$, $g=10$.
     W tabeli~\ref{tab.bazowa_g} przedstawiono
     jakość szacowania
     wieku przy modyfikacji parametru g, natomiast pozostałe parametry miały wartości $m=2,0$, $n=1000$, $\epsilon=1e-5$
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru m na wartość wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
@@ -2360,7 +2362,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.bazowa_m}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
@@ -2370,7 +2372,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.bazowa_e}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $g$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
@@ -2391,10 +2393,10 @@ Karolina Nurzyńska}
 
     Metoda oryginalna uzyskała najlepszą jakość szacowania wieku dla następujących parametrów:
     \begin{itemize}
-        \item m=2,0
-        \item n=1000
-        \item $\epsilon=1e-5$
-        \item g=20
+        \item m=2,0,
+        \item n=1000,
+        \item $\epsilon=1e-5$,
+        \item g=20.
     \end{itemize}
     Dla tych parametrów MAE osiągnęło 10,76.
 
@@ -2402,7 +2404,7 @@ Karolina Nurzyńska}
     Badania dla walidacji krzyżowej miały taki sam przebieg, jak w przypadku procesu testowania 10\% zdjęć.
     Zmieniano parametr m (tabela~\ref{tab.bazowa_m_cv}), $\epsilon$ (tabela~\ref{tab.bazowa_e_cv})
     oraz g (tabela~\ref{tab.bazowa_g_cv}).
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru m na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
@@ -2412,7 +2414,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.bazowa_m_cv}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
@@ -2422,7 +2424,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.bazowa_e_cv}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $g$ na wartość MAE w metodzie bazowej.}
         \begin{tabular}{|c|c|c|c|}
@@ -2436,18 +2438,17 @@ Karolina Nurzyńska}
     na wartość MAE, natomiast poprawa jakości szacowania wieku nastąpiło przy zwiększeniu grupy z 10 do 20.
     Najlepsza jakość szacowania wieku została osiągnięta dla następującej kombinacji parametrów wejściowych:
     \begin{itemize}
-        \item m=2,0;
-        \item g=20
-        \item n=1000
-        \item $\epsilon=1e-5$
+        \item m=2,0,
+        \item g=20,
+        \item n=1000,
+        \item $\epsilon=1e-5$.
     \end{itemize}
     Dla powyższej kombinacji parametrów FCM, MAE osiągnęło 8,58 roku.
     Testowanie za pomocą walidacji krzyżowej pokazało, że MAE ma znacznie lepszą wartość, niż w przypadku testowania
     10\% zdjęć. W dalszej części pracy pokazano kontrast pomiędzy wynikami osiągniętymi pomiędzy walidacją krzyżową a
-    metodą 10\%. Wyniki dla metody CV-5 są znacząco lepsze ponieważ pięciokrotne powtarzanie treningu i klasyfikacji
-    z całego zbioru danych daje w wyniku bardziej wiarygodne wyniki niż w przypadku jednokrotnego testowania losowej
-    próbki 10\% zdjęć~\cite{dataMiningAlgorithms}.
-    %parametry takie i takie i jakie wyniki daly zmiany o ile procent sie polepszyl lub pogorszyl MAE
+    metodą 10\%. Wyniki dla metody CV-5 są znacznie lepsze, ponieważ pięciokrotne powtarzanie treningu i klasyfikacji
+    z całego zbioru danych daje bardziej wiarygodne wyniki niż w przypadku jednokrotnego testowania losowej
+    próbki 10\% zdjęć z całego zbioru~\cite{dataMiningAlgorithms}.
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
     \subsection*{Wyniki z testowania 10\% zdjęć}
@@ -2459,7 +2460,7 @@ Karolina Nurzyńska}
     W tabeli~\ref{tab.odjeta_g} zaprezentowano
     jakość szacowania
     wieku przy modyfikacji parametru g.
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru m na wartość wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
@@ -2469,7 +2470,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.odjeta_m}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
@@ -2479,7 +2480,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.odjeta_e}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $g$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
@@ -2494,10 +2495,10 @@ Karolina Nurzyńska}
     zmniejszeniu $\epsilon$ do wartości $1e-8$. Liczba grup nie miała większego wpływu na MAE.
     Dla parametrów FCM:
     \begin{itemize}
-        \item m=2;
-        \item g=10
-        \item n=1000
-        \item $\epsilon=1e-8$
+        \item m=2,
+        \item g=10,
+        \item n=1000,
+        \item $\epsilon=1e-8$.
     \end{itemize}
     osiągnięto najlepszą wartość MAE równą 12,42 roku.
 
@@ -2505,12 +2506,12 @@ Karolina Nurzyńska}
 
     Podobnie jak w testowaniu za pomocą 10\% zdjęć, zbadano wpływ zmiany parametrów na jakość szacowania wyników:
     \begin{itemize}
-        \item m (tabela~\ref{tab.odjeta_m_cv})
-        \item $\epsilon$ (tabela~\ref{tab.odjeta_e_cv})
-        \item g (tabela~\ref{tab.odjeta_g_cv})
+        \item m (tabela~\ref{tab.odjeta_m_cv}),
+        \item $\epsilon$ (tabela~\ref{tab.odjeta_e_cv}),
+        \item g (tabela~\ref{tab.odjeta_g_cv}).
     \end{itemize}
 
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru m na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
@@ -2520,7 +2521,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.odjeta_m_cv}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
@@ -2530,7 +2531,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.odjeta_e_cv}
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $g$ na wartość MAE w metodzie po odjęciu strefy 2.}
         \begin{tabular}{|c|c|c|c|}
@@ -2547,10 +2548,10 @@ Karolina Nurzyńska}
     Liczba grup nie miała większego wpływu na MAE.
     Dla poniższych parametrów FCM:
     \begin{itemize}
-        \item m=2;
-        \item g=10
-        \item n=1000
-        \item $\epsilon=1e-5$
+        \item m=2,
+        \item g=10,
+        \item n=1000,
+        \item $\epsilon=1e-5$.
     \end{itemize}
     osiągnięto najniższą wartość MAE równą 10,74 roku.
 
@@ -2563,7 +2564,6 @@ Karolina Nurzyńska}
     Podobnie jak w sekcjach~\ref{subsec:odjęcie-strefy-2} oraz~\ref{subsec:metoda-bazowa} modyfikowano parametry
     algorytmu Fuzzy C-means, jednak dodatkowo dokonano zmiany parametru HOG, który zastąpił detektor Cannego w
     szacowaniu ilości zmarszczek.
-
     Parametrem poddanym modyfikacji był
     rozmiar komórki. Najpierw ustalono wymiary komórki na 3x3 pikseli, następnie na 6x6 pikseli, a na końcu 9x9
     pikseli.
@@ -2573,15 +2573,15 @@ Karolina Nurzyńska}
     W pierwszym teście ustalono parametry Fuzzy C-means: m = 2,0, n = 100 oraz g = 10, n = 100
     oraz $\epsilon$ = 1e-5.
     Wpływ parametru m oraz rozmiarów komórki na MAE jest przedstawiony w tabeli~\ref{tab.hog}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru m oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             m=2,0 & m=3,0 & m=5,0 &                     \\ \hline
             16,65 & 16,92 & 11,68 & komórka 3x3 piksele \\ \hline
-            16,48 & 16,78 & 11,3 & komórka 6x6 piksele \\ \hline
-            11,99 & 16,89 & 11,32 & komórka 9x9 piksele \\ \hline
+            16,48 & 16,78 & 11,3 & komórka 6x6 pikseli \\ \hline
+            11,99 & 16,89 & 11,32 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hog}
     \end{table}
@@ -2591,15 +2591,15 @@ Karolina Nurzyńska}
     wyniki uzyskane metodą testowania 10\% zdjęć są niemiarodajne.
 
     Następnie badano wpływ parametru $\epsilon$ (tabela~\ref{tab.hog1}).
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $\epsilon=1e-6$ &  $\epsilon=1e-7$ &  $\epsilon=1e-8$ &                     \\ \hline
             16,79 & 16,99 & 16,7 & komórka 3x3 piksele \\ \hline
-            16,49 & 16,86 & 16,55 & komórka 6x6 piksele \\ \hline
-            11,31 & 11,31 & 11,28 & komórka 9x9 piksele \\ \hline
+            16,49 & 16,86 & 16,55 & komórka 6x6 pikseli \\ \hline
+            11,31 & 11,31 & 11,28 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hog1}
     \end{table}
@@ -2610,22 +2610,21 @@ Karolina Nurzyńska}
     Analiza wpływu grup (tabela~\ref{tab.hog2}) na jakość szacowania wieku również daje rezultaty podobne do otrzymanych
     w wyniku badań wpływu parametru $\epsilon$ na MAE.
     (tabela~\ref{tab.hog2}).
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $g$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $g=20$ & $g=50$ & $g=100$ &                     \\ \hline
             16,59 & 15,48 & 15,49 & komórka 3x3 piksele \\ \hline
-            16,78 & 16,17 & 16,55 & komórka 6x6 piksele \\ \hline
-            11,28 & 11,3 & 11,28 & komórka 9x9 piksele \\ \hline
+            16,78 & 16,17 & 16,55 & komórka 6x6 pikseli \\ \hline
+            11,28 & 11,3 & 11,28 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hog2}
     \end{table}
 
     Warto zauważyć, że dla komórki o rozmiarach 3x3 nastąpiła nieznaczna poprawa MAE przy zwiększeniu liczby grup z
-    20 do
-    50.
+    20 do 50.
 
     Reasumując wyniki badań dla testowania 10\% zdjęć można powiedzieć, że najlepszy rezultat osiągnięto dla
     rozmiarów komórki 9x9. Zmiany parametrów FCM w niewielkim stopniu wpływały na jakość szacowania wieku, która
@@ -2636,15 +2635,15 @@ Karolina Nurzyńska}
     dla metody bazowej była niższa.
     \subsection*{Wyniki walidacji krzyżowej CV-5}
     Parametr m oraz rozmiar komórki wpływały na parametr MAE w sposób przedstawiony w tabeli~\ref{tab.hog11}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru m oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             m=2,0 & m=3,0 & m=5,0 &                     \\ \hline
             9,81 & 9,78 & 9,9 & komórka 3x3 piksele \\ \hline
-            9,93 & 9,9 & 9,85 & komórka 6x6 piksele \\ \hline
-            9,95 & 9,92 & 9,83 & komórka 9x9 piksele \\ \hline
+            9,93 & 9,9 & 9,85 & komórka 6x6 pikseli \\ \hline
+            9,95 & 9,92 & 9,83 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hog11}
     \end{table}
@@ -2656,15 +2655,15 @@ Karolina Nurzyńska}
     przy testowaniu za pomocą 10\% zbioru.
 
     Wpływ zmiany parametru $\epsilon$ przedstawiono w tabeli~\ref{tab.hog12}.
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $\epsilon=1e-6$ &  $\epsilon=1e-7$ &  $\epsilon=1e-8$ &                     \\ \hline
             9,81 & 9,81 & 9,81 & komórka 3x3 piksele \\ \hline
-            9,93 & 9,93 & 9,93 & komórka 6x6 piksele \\ \hline
-            9,95 & 9,95 & 9,95 & komórka 9x9 piksele \\ \hline
+            9,93 & 9,93 & 9,93 & komórka 6x6 pikseli \\ \hline
+            9,95 & 9,95 & 9,95 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hog12}
     \end{table}
@@ -2678,15 +2677,15 @@ Karolina Nurzyńska}
     %    (tabela~\ref{tab.hog21}).
     Na końcu przetestowano wpływ ilości grup w parametrze FCM.
     Wyniki zaprezentowano w tabeli~\ref{tab.hog21}
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru $g$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $g=20$ & $g=50$ & $g=100$ &                     \\ \hline
             9,81 & 9,85 & 11,49 & komórka 3x3 piksele \\ \hline
-            9,94 & 10,08 & 11,55 & komórka 6x6 piksele \\ \hline
-            9,94 & 11,3 & 11,38 & komórka 9x9 piksele \\ \hline
+            9,94 & 10,08 & 11,55 & komórka 6x6 pikseli \\ \hline
+            9,94 & 11,3 & 11,38 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hog21}
     \end{table}
@@ -2697,10 +2696,10 @@ Karolina Nurzyńska}
     Wyniki testowania 10\% zdjęć oraz metodą CV pokazują, że najlepszy wynik MAE został osiągnięty dla komórki 3x3
     piksela oraz dla następujących parametrów FCM:
     \begin{itemize}
-        \item m=3,0;
-        \item g=10;
-        \item n=1000;
-        \item $\epsilon=1e-5$
+        \item m=3,0,
+        \item g=10,
+        \item n=1000,
+        \item $\epsilon=1e-5$.
     \end{itemize}
 
     W porównaniu do poprzedniej modyfikacji polegającej na odjęciu strefy 2 następuje znaczna zmniejszenie
@@ -2717,15 +2716,15 @@ Karolina Nurzyńska}
     \subsection*{Wyniki z testowania 10\% zdjęć}
     W tabeli~\ref{tab.hogknn} podsumowano jakość szacowania wieku przy zmianach parametru k oraz dla różnych
     rozmiarów komórek.
-    \begin{table}[h!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $k=1$ & $k=3$ & $k=5$ &                     \\ \hline
             11,76 & 11,75 & 11,49 & komórka 3x3 piksele \\ \hline
-            10,87 & 10,34 & 10,08 & komórka 6x6 piksele \\ \hline
-            10,14 & 10,08 & 9,98 & komórka 9x9 piksele \\ \hline
+            10,87 & 10,34 & 10,08 & komórka 6x6 pikseli \\ \hline
+            10,14 & 10,08 & 9,98 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hogknn}
     \end{table}
@@ -2734,15 +2733,15 @@ Karolina Nurzyńska}
     \subsection*{Wyniki walidacji krzyżowej CV-5}
     Tabela~\ref{tab.hogknncv} zawiera wartości MAE osiągnięte w procesie walidacji krzyżowej CV-5 dla opisywanych
     modyfikacji.
-    \begin{table}[t!]
+    \begin{table}[]
         \centering
         \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $k=1$ & $k=3$ & $k=5$  &                     \\ \hline
             10,77 & 10,79 & 10,54 & komórka 3x3 piksele \\ \hline
-            10,06 & 9,95 & 10 & komórka 6x6 piksele \\ \hline
-            9,66 & 9,6 & 9,64 & komórka 9x9 piksele \\ \hline
+            10,06 & 9,95 & 10 & komórka 6x6 pikseli \\ \hline
+            9,66 & 9,6 & 9,64 & komórka 9x9 pikseli \\ \hline
         \end{tabular}
         \label{tab.hogknncv}
     \end{table}
@@ -2760,7 +2759,7 @@ Karolina Nurzyńska}
     dla stałej wartości parametrów FCM ($m=2,0$, $n=1000$, $g=10$, $\epsilon=1e-5$),
     a także dla metody HOG + KNN dla wartości parametru $k=1$ algorytmu KNN.
     MAE zostało wyznaczone dla testowania schematem CV-5.
-    \begin{table}[t!]
+    \begin{table}[]
         \centering
         \caption{Wartość MAE dla metody szacowania wieku: bazowej, bez strefy 2 oraz HOG-a.}
         \label{tab:summary}
@@ -2778,7 +2777,7 @@ Karolina Nurzyńska}
             MAE & 8,64 & 10,74 & 9,81 & 9,93 & 9,95                                                      \\ \hline
         \end{tabular}
     \end{table}
-    \begin{table}[t!]
+    \begin{table}[]
         \centering
         \caption{Wartość MAE dla metody szacowania wieku HOG + KNN.}
         \label{tab:summary1}
@@ -2858,9 +2857,8 @@ Karolina Nurzyńska}
 
 
     %todo poprawic bibliografie
-    %todo wyeliminowac randomowe znaczki na stronie tytulowej
-    %todo         Proszę usunąć sieroty - czyli pojedyncze litery na końcu linii. Twardą spację w tex robi się zamieniając spacje znakiem tyldy: o~którym.
-    %todo Te nowe tabelki weszły w środek tekstu, a wszystkie tabele i figury powinny być umiejscowione na górze lub na dole strony. Proszę to poprawić.
+    %todo         Proszę usunąć sieroty - czyli pojedyncze litery na końcu linii. Twardą spację w tex robi się
+    %    zamieniając spacje znakiem tyldy: o~którym. niby to robi lib..
     %todo W pracy jest oświadczenie promotora, które muszę podpisać. Proszę tą stronę zapisać jako osobny plik PDF i mi przesłać z ostateczną wersją pracy. Ja Panu odeślę skan, który Pan wydrukuje i umieści w pracy.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \backmatter
