@@ -277,7 +277,7 @@ Karolina Nurzyńska}
     \end{figure}
 
     Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie
-    rozpoznawania wieku z obrazu.
+    rozpoznawania wieku z~obrazu.
     Istnieją algorytmy przetwarzania obrazu, które oprócz wieku wyznaczają z pewnym prawdopodobieństwem płeć danej osoby.
     Oprócz płci mogą one także wyznaczyć emocję oraz czy dana osoba nosi okulary.
 
@@ -297,7 +297,7 @@ Karolina Nurzyńska}
 
     Można znaleźć o wiele więcej potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie
     tekstury (obrazu) twarzy.
-    Z biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
+    Z~biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
     opiera się w głównej mierze na sztucznej inteligencji~\cite{computerVision}.
     %275 wyrazow
     \section*{Cel i zakres pracy}\label{sec:cel-i-zakres-pracy}
@@ -344,8 +344,8 @@ Karolina Nurzyńska}
     pomocą metody HOG (ang. Histogram of Oriented Gradients) oraz szacowania wieku dzięki algorytmowi KNN (ang.
     k-nearest neighbors).
 
-    W rozdziale~\ref{ch:badania} przedstawiono sposób realizacji badań oraz ich wyniki.
-    W rozdziale~\ref{ch:podsumowanie} podsumowano niniejsza pracą.
+    W~rozdziale~\ref{ch:badania} przedstawiono sposób realizacji badań oraz ich wyniki.
+    W~rozdziale~\ref{ch:podsumowanie} podsumowano niniejsza pracą.
 
     \chapter{Metoda bazowa - wskaźnik zmarszczek}\label{ch:metoda-bazowa---wrinkle-feature}
 
@@ -752,8 +752,9 @@ Karolina Nurzyńska}
         \label{wzor.summedAreaTable}
     \end{equation}
     \normalsize
-    gdzie I(x,y) jest wartością na pozycji x,y w tabeli(tabela obrazu scałkowanego), natomiast i(x,y) oznacza jasność piksela o
-    współrzędnych x,y na obrazie.
+    gdzie $I(x,y)$ jest wartością na pozycji $x$, $y$ w tabeli(tabela obrazu scałkowanego), natomiast $i(x,y)$ oznacza
+    jasność piksela o
+    współrzędnych $x$, $y$ na obrazie.
     Na rysunku~\ref{fig.poiprzedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed i po
     zastosowaniu całkowania obrazu.
     \begin{figure}
@@ -781,8 +782,8 @@ Karolina Nurzyńska}
     \normalsize
     gdzie lewa część równania oznacza sumę jasności pikseli
     zaznaczonego okna tj.
-    na rysunku~\ref{fig.sumowanieOkna}, I(A) - wartość scałkowanego obrazu przy punkcie A
-    (analogicznie I(B), I(C), I(D)) - (rysunek~\ref{fig.sumowanieOkna}).
+    na rysunku~\ref{fig.sumowanieOkna}, $I(A)$ - wartość scałkowanego obrazu przy punkcie A
+    (analogicznie $I(B)$, $I(C)$, $I(D)$) - (rysunek~\ref{fig.sumowanieOkna}).
 
     W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum,
     zatem do uzyskania wyniku konieczne jest wykonanie ośmiu operacji.
@@ -820,16 +821,16 @@ Karolina Nurzyńska}
     \normalsize
 
     Parametr $\frac{1}{2m}$ jest wagą dla zdjęć pozytywnych, a $\frac{1}{2l}$ oznacza wagę dla obrazów negatywnych.
-    Parametry m, l oznaczają odpowiednio liczbę negatywnych oraz pozytywnych zdjęć.
+    Parametry $m$, $l$ oznaczają odpowiednio liczbę negatywnych oraz pozytywnych zdjęć.
 
     %    dla t = 1, \ldots, T,
     %    gdzie T oznacza
     %    liczbę cech.
     %    D:
-    Następnie inicjalizowany jest parametr t oznaczający istotną cechę, natomiast T oznacza liczbę wszystkich takich
+    Następnie inicjalizowany jest parametr t oznaczający istotną cechę, natomiast $T$ oznacza liczbę wszystkich takich
     cech na obrazie.
     Dla każdej
-    cechy t = 1, \ldots, T, przeprowadzany jest poniższy proces:
+    cechy $t = 1, \ldots, T$, przeprowadzany jest poniższy proces:
 
     1. Normalizowane są wagi (wzór~\ref{wzor.adaboost1}):
     \large
@@ -840,7 +841,8 @@ Karolina Nurzyńska}
     \normalsize
     $w_{t}$ jest rozkładem prawdopodobieństwa
 
-    2. Dla każdej cechy j, trenowany jest klasyfikator $h_{j}$, który używa tylko jednej cechy wyliczonej z filtru Haara.
+    2. Dla każdej cechy $j$, trenowany jest klasyfikator $h_{j}$, który używa tylko jednej cechy wyliczonej z filtru
+    Haara.
     Błąd jest liczony następująco (wzór~\ref{wzor.adaboost2}):
     \large
     \begin{equation}
@@ -849,7 +851,7 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
 
-    3. Wybierany jest klasyfikator $h_{t}$ z najmniejszym błędem \epsilon_{t}.
+    3. Wybierany jest klasyfikator $h_{t}$ z najmniejszym błędem $\epsilon_{t}$.
 
     4. Następuje aktualizacja wag (wzór~\ref{wzor.adaboost3}):
     \large
@@ -893,10 +895,11 @@ Karolina Nurzyńska}
     Okna są poustawiane tak, aby każde z nich klasyfikowało obiekt z różnym prawdopodobieństwem wykrycia oraz
     prawdopodobieństwem błędu.
 
-    Pierwsze okna posiadają klasyfikatory o słabszym TPR oraz FPR niż kolejne.
+    Pierwsze okna posiadają klasyfikatory o słabszym TPR (ang. true positive rate) oraz FPR (ang. false positive rate)
+    niż kolejne.
     Oznacza to, że prawdopodobieństwo TPR w oknie $P_{x-1}$ jest mniejsze od tego w $P_{x}$.
     Natomiast prawdopodobieństwo FPR w oknie $P_{x-1}$ jest większe od tego w $P_{x}$.
-    Ostatnie okna mają największy współczynnik TPR oraz najmniejszy FRP ze wszystkich.
+    Ostatnie okna mają największy współczynnik TPR oraz najmniejszy FPR ze wszystkich.
     Takie ustawienie okien ma na celu wstępne przepuszczenie przez okna obrazów,
     które z dużym prawdopodobieństwem zawierają szukany obiekt.
     Natomiast ostatnie okna w kaskadzie analizują niewielką część obrazu wejściowego.
@@ -981,7 +984,7 @@ Karolina Nurzyńska}
         \label{fig.wspolrzedneDoWyliczeniaStref}
     \end{figure}
 
-    Strefa 2 została wyznaczona dzięki znajomości położenia prawego oka, dystansu między oczami oraz strefy ,,1''.
+    Strefa 2 została wyznaczona dzięki znajomości położenia prawego oka, dystansu między oczami oraz strefy 1.
     Każda strefa może być wyznaczona przez jeden punkt (rysunek~\ref{fig.wykrywanieStrefZmarszczkowychPunkty})
     oraz jej wymiary.
 
@@ -1468,11 +1471,11 @@ Karolina Nurzyńska}
         \label{wzor.sumaWektorPrzynaleznosci}
     \end{equation}
     \normalsize
-    gdzie c oznacza liczbę klastrów.
+    gdzie $c$ oznacza liczbę klastrów.
     Element $f_{i}$ będzie należał do klastra k, jeśli $u_{ik}$ ma największą wartość w wektorze $U_{i}$.
 
     W tym akapicie zostanie przedstawiony algorytm trenowania za pomocą Fuzzy C-means.
-    Z każdego zdjęcia ,,i'' otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wskaźnika
+    Z każdego zdjęcia $i$ otrzymywane są dane dotyczące rzeczywistego wieku $A_{i}$ oraz parametr wskaźnika
     zmarszczek
     $WF_{i}$.
     W algorytmie Fuzzy C-means są grupowane zbiory danych zawierające wartości wskaźnika zmarszczek $WF_{i}$.
@@ -1678,8 +1681,8 @@ Karolina Nurzyńska}
     wejściowym HOG-a.
     Gradienty jasności są czułe na zmiany oświetlenia na obrazie. Celem tej fazy algorytmu jest normalizacja oświetlania,
     aby uodpornić deskryptor na zmiany oświetlania.
-    Zostanie tutaj opisana normalizacja za pomocą parametru L2.
-    Najpierw zostaje wyliczona wartość L2 według wzoru~\ref{wzor.l2norm}.
+    Zostanie tutaj opisana normalizacja za pomocą parametru $L2$.
+    Najpierw zostaje wyliczona wartość $L2$ według wzoru~\ref{wzor.l2norm}.
     \large
     \begin{equation}
         \left \|v  \right \|_{2}=\sqrt{\sum_{i=0}^{n}v(i)^{2}}
@@ -1687,14 +1690,13 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     gdzie $\left \|v  \right \|_{2}$ jest wartością L2, natomiast $v(i)$ jest i-tym elementem wektora $v$.
-    L2 jest wartością normalizującą wektor $v$, który reprezentuje
+    $L2$ jest wartością normalizującą wektor $v$, który reprezentuje
     wartości
     deskryptora dla danego bloku. Wspomniany wektor składa się z wartości zawartych w kubełkach histogramu. Jak
     wiadomo z
-    przedstawionego wyżej opisu, każdy histogram opisuje jedną komórkę, a blok zawiera n komórek.
+    przedstawionego wyżej opisu, każdy histogram opisuje jedną komórkę, a blok zawiera $n$ komórek.
     Przyjmując, że histogram reprezentujący komórkę posiada 9 wartości oraz rozmiar bloku
-    wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.  %todo Proszę wyróżnić inną czcionką symbole matematyczne, które są częścią zdania. Można po prostu brać je w dolary, np. $x$.
-
+    wynosi 2x2 komórki, można wyznaczyć długość wektora $v$.
     Normalizacja jest realizowana przy zastosowaniu wzoru~\ref{wzor.l2norm2}
     \large
     \begin{equation}
@@ -1702,7 +1704,7 @@ Karolina Nurzyńska}
         \label{wzor.l2norm2}
     \end{equation}
     \normalsize
-    gdzie $\left \|v  \right \|_{2}$ jest wartością L2-norm dla wektora $v$. Działanie zgodne ze
+    gdzie $\left \|v  \right \|_{2}$ jest wartością $L2$ dla wektora $v$. Działanie zgodne ze
     wzorem~\ref{wzor.l2norm2} oznacza, że każdy element wektora $v$ jest dzielony przez wartość
     $\left \|v  \right\|_{2}$.
     Powyższy proces powtarza się dla wszystkich bloków.
@@ -1753,8 +1755,8 @@ Karolina Nurzyńska}
         \label{wzor.hogWrinkleFeature}
     \end{equation}
     \normalsize
-    gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem L1 dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
-    \right \|_{1}$  jest parametrem L1-norm dla wektora $v_{3}$.
+    gdzie $\left \|v_{1}  \right \|_{1}$ jest parametrem $L1$ dla wektora $v_{1}$. Analogicznie $\left \|v_{3}
+    \right \|_{1}$  jest parametrem $L1$ dla wektora $v_{3}$.
 
     Parametr L1 dla danego wektora $v$ reprezentuje sumę jego elementów i~jest wyznaczany ze wzoru~\ref{wzor.l1norm}:
     \large
@@ -1880,7 +1882,7 @@ Karolina Nurzyńska}
     Zastosowanie wyżej wymienionych technik pozwala na zmniejszenie dominacji wartości wektorów, których wartość jest
     znacznie większa lub mniejsza od ogólnej średniej. Przykładowo, przy założeniu, że
     wartością objaśniającą byłaby długość wyrażona w metrach i średnia tej wartości w całym zbiorze uczącym
-    wyniosłaby 1~m,
+    wyniosłaby $1~m$,
     to dominującą wartością w tym zbiorze byłaby np. wartość 100 metrów.
     W przypadku badań w niniejszej pracy taka operacja nie była konieczna, ponieważ rozrzut wartości danych nie był
     duży.
@@ -1926,12 +1928,13 @@ Karolina Nurzyńska}
         \label{fig.klasyfikacjaKNN}
     \end{figure}
 
-    Na rysunku~\ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy ,,A'' oraz klasy
-    ,,B''. Ponadto na środku rysunku~\ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
+    Na rysunku~\ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy $A$ oraz klasy
+    $B$. Ponadto na środku rysunku~\ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
     sklasyfikowany do jednej z wyżej wymienionych klas.
-    Dla parametru ,,k'' równego 3 wektor testowy zostanie przypisany do klasy ,,B'', gdyż z trzech najbliższych wektorów dwa
-    należą do klasy ,,B''. W przypadku, gdy parametr ,,k'' będzie równy 7 wektor testowy zostanie przypisany do klasy
-    ,,A''. Spośród siedmiu najbliższych sąsiadów, cztery wektory należą do klasy ,,A'', natomiast trzy - do klasy ,,B''.
+    Dla parametru $k$ równego 3 wektor testowy zostanie przypisany do klasy $B$, gdyż z trzech najbliższych wektorów
+    dwa
+    należą do klasy $B$. W przypadku, gdy parametr $k$ będzie równy 7 wektor testowy zostanie przypisany do klasy
+    $A$. Spośród siedmiu najbliższych sąsiadów, cztery wektory należą do klasy $A$, natomiast trzy - do klasy $B$.
 
     Wybór parametru $k$ jest zależny od rodzaju danych. Im większa wartość $k$, tym mniejszy wpływ na proces
     klasyfikacji ma szum, który określa błędne dane w zbiorze uczącym. Istnieją metody dobierające optymalną wartość $k$ dla
@@ -2218,8 +2221,8 @@ Karolina Nurzyńska}
     Jako pierwsza została przetestowana metoda bazowa.
     Sprawdzono dokładność szacowania wieku zmieniając parametry algorytmu trenującego Fuzzy C-means:
     \begin{itemize}
-        \item m - współczynnik rozmycia,
-        \item g - ilość grup,
+        \item $m$ - współczynnik rozmycia,
+        \item $g$ - ilość grup,
         \item $\epsilon$ - kryterium (wzór~\ref{wzor.koniecIteracjiWarunek}).
     \end{itemize}
     Ponadto warto wspomnieć, że detektor Canny używany przy detekcji zmarszczek posiadał niezmienne wartości progu
@@ -2255,20 +2258,20 @@ Karolina Nurzyńska}
     \subsection*{Wyniki z testowania 10\% zdjęć}
     Badania rozpoczęto od przeprowadzenia testu z następującymi parametrami wejściowymi algorytmu FCM:
     \begin{itemize}
-        \item m = 2,0,
-        \item n = 1000,
-        \item g = 10,
+        \item $m$ = 2,0,
+        \item $n$ = 1000,
+        \item $g$ = 10,
         \item $\epsilon$=1e-5.
     \end{itemize}
     W kolejnych krokach badań zmieniano jeden z parametrów FCM, jednocześnie zachowując stałe wartości pozostałych
     parametrów.
-    Tabela~\ref{tab.bazowa_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru m. Reszta
+    Tabela~\ref{tab.bazowa_m} przedstawia, jak zmieniała się wartość MAE w zależności od zmian parametru $m$. Reszta
     parametrów FCM przy zmianach $m$ wynosiła: $\epsilon=1e-5$, $n=1000$, $g=10$.
     W kolejnej tabeli~\ref{tab.bazowa_e} przedstawiono wyniki przy
     zmianie parametru $\epsilon$, przy stałych wartościach $m=2,0$, $n=1000$, $g=10$.
     W tabeli~\ref{tab.bazowa_g} przedstawiono
     jakość szacowania
-    wieku przy modyfikacji parametru g, natomiast pozostałe parametry miały wartości $m=2,0$, $n=1000$, $\epsilon=1e-5$
+    wieku przy modyfikacji parametru $g$, natomiast pozostałe parametry miały wartości $m=2,0$, $n=1000$, $\epsilon=1e-5$
     \begin{table}[]
         \centering
         \caption{Wpływ parametru m na wartość wartość MAE w metodzie bazowej.}
@@ -2310,17 +2313,17 @@ Karolina Nurzyńska}
 
     Metoda oryginalna uzyskała najlepszą jakość szacowania wieku dla następujących parametrów:
     \begin{itemize}
-        \item m=2,0,
-        \item n=1000,
+        \item $m$=2,0,
+        \item $n$=1000,
         \item $\epsilon=1e-5$,
-        \item g=20.
+        \item $g$=20.
     \end{itemize}
     Dla tych parametrów MAE osiągnęło 10,76.
 
     \subsection*{Wyniki z walidacji krzyżowej CV-5}
     Badania dla walidacji krzyżowej miały taki sam przebieg, jak w przypadku procesu testowania 10\% zdjęć.
-    Zmieniano parametr m (tabela~\ref{tab.bazowa_m_cv}), $\epsilon$ (tabela~\ref{tab.bazowa_e_cv})
-    oraz g (tabela~\ref{tab.bazowa_g_cv}).
+    Zmieniano parametr $m$ (tabela~\ref{tab.bazowa_m_cv}), $\epsilon$ (tabela~\ref{tab.bazowa_e_cv})
+    oraz $g$ (tabela~\ref{tab.bazowa_g_cv}).
     \begin{table}[]
         \centering
         \caption{Wpływ parametru m na wartość MAE w metodzie bazowej.}
@@ -2355,9 +2358,9 @@ Karolina Nurzyńska}
     na wartość MAE, natomiast poprawa jakości szacowania wieku nastąpiło przy zwiększeniu grupy z 10 do 20.
     Najlepsza jakość szacowania wieku została osiągnięta dla następującej kombinacji parametrów wejściowych:
     \begin{itemize}
-        \item m=2,0,
-        \item g=20,
-        \item n=1000,
+        \item $m$=2,0,
+        \item $g$=20,
+        \item $n$=1000,
         \item $\epsilon=1e-5$.
     \end{itemize}
     Dla powyższej kombinacji parametrów FCM, MAE osiągnęło 8,58 roku.
@@ -2412,9 +2415,9 @@ Karolina Nurzyńska}
     zmniejszeniu $\epsilon$ do wartości $1e-8$. Liczba grup nie miała większego wpływu na MAE.
     Dla parametrów FCM:
     \begin{itemize}
-        \item m=2,
-        \item g=10,
-        \item n=1000,
+        \item $m$=2,
+        \item $g$=10,
+        \item $n$=1000,
         \item $\epsilon=1e-8$.
     \end{itemize}
     osiągnięto najlepszą wartość MAE równą 12,42 roku.
@@ -2423,9 +2426,9 @@ Karolina Nurzyńska}
 
     Podobnie jak w testowaniu za pomocą 10\% zdjęć, zbadano wpływ zmiany parametrów na jakość szacowania wyników:
     \begin{itemize}
-        \item m (tabela~\ref{tab.odjeta_m_cv}),
+        \item $m$ (tabela~\ref{tab.odjeta_m_cv}),
         \item $\epsilon$ (tabela~\ref{tab.odjeta_e_cv}),
-        \item g (tabela~\ref{tab.odjeta_g_cv}).
+        \item $g$ (tabela~\ref{tab.odjeta_g_cv}).
     \end{itemize}
 
     \begin{table}[]
@@ -2465,9 +2468,9 @@ Karolina Nurzyńska}
     Liczba grup nie miała większego wpływu na MAE.
     Dla poniższych parametrów FCM:
     \begin{itemize}
-        \item m=2,
-        \item g=10,
-        \item n=1000,
+        \item $m$=2,
+        \item $g$=10,
+        \item $n$=1000,
         \item $\epsilon=1e-5$.
     \end{itemize}
     osiągnięto najniższą wartość MAE równą 10,74 roku.
@@ -2487,7 +2490,7 @@ Karolina Nurzyńska}
     Rozmiar bloku dla wszystkich modyfikacji rozmiaru komórek wyniósł
     2x2 komórki. Liczba kubełków histogramu była stała i wynosiła 9 dla wszystkich pomiarów.
     \subsection*{Wyniki z testowania 10\% zdjęć}
-    W pierwszym teście ustalono parametry Fuzzy C-means: m = 2,0, n = 100 oraz g = 10, n = 100
+    W pierwszym teście ustalono parametry Fuzzy C-means: $m$ = 2,0, $n$ = 100 oraz $g$ = 10, $g$ = 100
     oraz $\epsilon$ = 1e-5.
     Wpływ parametru m oraz rozmiarów komórki na MAE jest przedstawiony w tabeli~\ref{tab.hog}
     \begin{table}[]
@@ -2521,7 +2524,7 @@ Karolina Nurzyńska}
         \label{tab.hog1}
     \end{table}
 
-    Podobnie jak przy badaniu wpływu parametru m (tabela~\ref{tab.hog}), najlepszy wynik uzyskano dla komórki o
+    Podobnie jak przy badaniu wpływu parametru $m$ (tabela~\ref{tab.hog}), najlepszy wynik uzyskano dla komórki o
     rozmiarze 9x9 pikseli.
 
     Analiza wpływu grup (tabela~\ref{tab.hog2}) na jakość szacowania wieku również daje rezultaty podobne do otrzymanych
@@ -2626,16 +2629,16 @@ Karolina Nurzyńska}
     \subsection{Metoda HOG + KNN}\label{subsec:metoda-hog-+-knn}
     Ostatnią testowaną metodą była ta, która zawiera algorytm HOG, a do klasyfikacji i szacowania używa algorytmu KNN.
     Zmieniano parametr k dla algorytmu KNN, natomiast dla algorytmu HOG - rozmiary komórki.
-    Parametr k był równy 1, 3 oraz 5. Rozmiary komórki miały takie same wartości jak przy badaniach w
+    Parametr $k$ był równy 1, 3 oraz 5. Rozmiary komórki miały takie same wartości jak przy badaniach w
     sekcji~\ref{subsec:metoda-hog}.
     Liczba kubełków histogramu była stała i wynosiła 9. Podobnie jak w sekcji~\ref{subsec:metoda-hog} ustalono rozmiary
     bloku 2x2 komórki.
     \subsection*{Wyniki z testowania 10\% zdjęć}
-    W tabeli~\ref{tab.hogknn} podsumowano jakość szacowania wieku przy zmianach parametru k oraz dla różnych
+    W tabeli~\ref{tab.hogknn} podsumowano jakość szacowania wieku przy zmianach parametru $k$ oraz dla różnych
     rozmiarów komórek.
     \begin{table}[]
         \centering
-        \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
+        \caption{Wpływ parametru $k$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $k=1$ & $k=3$ & $k=5$ &                     \\ \hline
@@ -2652,7 +2655,7 @@ Karolina Nurzyńska}
     modyfikacji.
     \begin{table}[]
         \centering
-        \caption{Wpływ parametru k oraz rozmiarów komórki na wartość MAE.}
+        \caption{Wpływ parametru $k$ oraz rozmiarów komórki na wartość MAE.}
         \begin{tabular}{|c|c|c|c|}
             \hline
             $k=1$ & $k=3$ & $k=5$  &                     \\ \hline
@@ -2667,7 +2670,7 @@ Karolina Nurzyńska}
     wyniki szacowania wieku niż analiza 10\% obrazów.
     Błąd MAE osiąga najmniejsze wartości dla komórki o rozmiarach 9x9 pikseli. Najlepsza uzyskany wynik MAE
     wynosi 9,6 i
-    została osiągnięta dla parametru k = 3.
+    została osiągnięta dla parametru $k$ = 3.
     Co istotne, metoda opierająca się na połączeniu algorytmów HOG i KNN daje błąd MAE o najmniejszych wartościach
     spośród wszystkich modyfikacji metody bazowej.
     W tabeli~\ref{tab:summary} oraz~\ref{tab:summary1} przedstawiono zmiany wartości MAE dla metody bazowej,
@@ -2752,19 +2755,19 @@ Karolina Nurzyńska}
     Jako drugi został wykorzystany schemat CV-5. Okazało się, że wyniki dla pierwszego z nich były w dużej mierze
     niedokładne.
 
-    Najlepsze wyniki w przypadku metody bazowej osiągnięto dla parametrów FCM - m=2,0, n=1000,
-    epsilon-1e-5, g=50. Wartość MAE dla powyższych parametrów osiągnęła 8,53 roku.
+    Najlepsze wyniki w przypadku metody bazowej osiągnięto dla parametrów FCM - $m$=2,0, $n$=1000,
+    $\epsilon$=1e-5, $g$=50. Wartość MAE dla powyższych parametrów osiągnęła 8,53 roku.
     Z kolei metoda bez jednej strefy zmarszczkowej dała znacznie gorsze wyniki.
-    W tym wypadku najlepszy parametr MAE wyniósł 10,94 roku dla następujących parametrów FCM: m=2,0, g=10, n=1000,
-    epsilon=1e-8. Metoda wykorzystująca algorytm HOG okazała się bardziej skuteczna od pierwszej modyfikacji,
+    W tym wypadku najlepszy parametr MAE wyniósł 10,94 roku dla następujących parametrów FCM: $m$=2,0, $g$=10, $n$=1000,
+    $\epsilon$=1e-8. Metoda wykorzystująca algorytm HOG okazała się bardziej skuteczna od pierwszej modyfikacji,
     w której nie brano pod uwagę jednej strefy. Najlepszy wynik równy 9,78 roku osiągnięto dla komórki
-    HOG-a o rozmiarach 3x3 piksela oraz dla parametrów FCM: m=3,0, n=1000, epsilon=1e-5, g=10.
+    HOG-a o rozmiarach 3x3 piksela oraz dla parametrów FCM: $m$=3,0, $n$=1000, $\epsilon$=1e-5, $g$=10.
     Najlepszą z zaproponowanych modyfikacji metody bazowej okazała się metoda HOG + KNN.
-    W jej przypadku minimalna wartość MAE wyniosła 9,6 roku dla wartości k=3 parametru KNN oraz komórki o rozmiarach 9x9 pikseli.
+    W jej przypadku minimalna wartość MAE wyniosła 9,6 roku dla wartości $k$=3 parametru KNN oraz komórki o rozmiarach 9x9 pikseli.
 
     Wyniki starano się poprawić testując różne kombinacje parametrów algorytmów.
-    Do takich należały zmienne m, g, n, epsilon dla FCM, natomiast dla HOG-a były to rozmiary komórek.
-    Z kolei dla KNN poddano modyfikacjom parametr k. Modyfikacje metody bazowej nie poprawiły wartości MAE,
+    Do takich należały zmienne $m$, $g$, $n$, epsilon dla FCM, natomiast dla HOG-a były to rozmiary komórek.
+    Z kolei dla KNN poddano modyfikacjom parametr $k$. Modyfikacje metody bazowej nie poprawiły wartości MAE,
     którego wartość w żadnym eksperymencie nie wyniosła mniej niż 8,53 roku. Warto zaznaczyć, że najlepsze
     algorytmy~\cite{khryashchevGanin}
     szacowania wieku osiągają parametr MAE o wartości około 5 lat.
@@ -2985,6 +2988,8 @@ Karolina Nurzyńska}
             \item[BIF] - \ang{Biologically Inspired Features} - detektor cech o charakterze biologicznym.
             \item[LBP] - \ang {Local Binary Patterns} - detektor cech (lokalnych wzorców binarnych).
             \item[CV-n] - \ang {Cross Validation} - schemat testowania zbioru danych.
+            \item[TPR] - \ang{ang. true positive rate} - współczynnik prawidłowej klasyfikacji jako obiekt.
+            \item[FPR] -  \ang{ang. false positive rate} - współczynnik nieprawidłowej klasyfikacji jako obiekt.
         \end{itemize}
 
 
