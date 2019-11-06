@@ -363,7 +363,7 @@ Karolina Nurzyńska}
     zmian skóry pod wpływem jej starzenia sie należało uwzględnić także inne
     czynniki, do których należą między innymi
     płeć, poziom stresu, czy ekspozycja na działanie środowiska zewnętrznego.
-    Badania tego rodzaju opisano w pracy~\cite{lanitisTaylor} A. Lanitis, Ch. J. Taylor oraz T. F. Cootes.
+    Badania tego rodzaju opisano w~pracy~\cite{lanitisTaylor} A. Lanitis, Ch. J. Taylor oraz T. F. Cootes.
     Ponadto w tej pracy zaprezentowano algorytm rozpoznawania płci, emocji czy osób na podstawie obrazu twarzy.
 
     W kolejnych latach zaczęto przeprowadzać porównania cech twarzy tej samej osoby w różnym wieku.
@@ -373,12 +373,12 @@ Karolina Nurzyńska}
     W tym artykule porównywano sekwencje wielu zdjęć twarzy jednej osoby.
     Zdjęcia przestawiały twarz w różnym wieku.
     Te badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
-    Z kolei M.M. Dehshibi oraz A. Bastanfard w swojej pracy~\cite{dehshibiBastard} analizują proporcje twarzy oraz ilość
+    Z kolei M.M.~Dehshibi oraz A.~Bastanfard w swojej pracy~\cite{dehshibiBastard} analizują proporcje twarzy oraz ilość
     zmarszczek przy szacowaniu wieku.
     Praca~\cite{khryashchevGanin} autorstwa
     Vladimira Khryashcheva, Alexandra Ganina, Olgi Stepanovej oraz
     Antona Lebedeva zawiera podsumowanie technik szacowania wieku.
-    Wynika z niego, że do wyodrębniania cech z twarzy stosuje się BIF(ang. biologically inspired features).
+    Wynika z niego, że do wyodrębniania cech z~twarzy stosuje się BIF(ang. biologically inspired features).
     Powyższa metoda została zaprezentowana w książce~\cite{bif} Guodong Guo i in.
     Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP (ang. local binary patterns)~\cite{lbp}.
 
@@ -393,7 +393,7 @@ Karolina Nurzyńska}
     że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
     Powyższe strefy zostały wymienione w sekcji~\ref{sec:wyznaczanieStref}.
     Sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny} przedstawia technikę
-    wykrywania zmarszczek znajdujących się w strefach.
+    wykrywania zmarszczek znajdujących się w~strefach.
     Wykryte zmarszczki
     pozwalają na obliczenie wskaźnika zmarszczek dla danej twarzy, zgodnie z opisem w sekcji~\ref{sec:wyliczanieWrinkleFeature}.
     W tym miejscu kończy się faza wyznaczania wskaźnika zmarszczek dla danej osoby (rysunek~\ref{fig.faza1Algorytmu}).
@@ -574,7 +574,7 @@ Karolina Nurzyńska}
     %https://sci-hub.tw/10.1007/s10462-018-9650-2
     W roku 1997 w pracy~\cite{clowleyCoutaz} opisano metodę wykrywania twarzy bazującą na
     wykrywaniu cechy, jaką jest kolor skóry.
-    Zarówno dla człowieka, jak i dla maszyny kolor skóry jest
+    Zarówno dla człowieka, jak i~dla maszyny kolor skóry jest
     najbardziej widoczną cechą twarzy.
     Ponadto kolor jest przetwarzany znacznie szybciej niż inne cechy.
     Przy dobrych warunkach oświetleniowych ustawienie twarzy nie ma wpływu na skuteczność wykrywalności twarzy
@@ -589,7 +589,7 @@ Karolina Nurzyńska}
 
     %trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
     Algorytm Haar Cascade jest jedynym algorytmem do wykrywania twarzy zaimplementowanym w bibliotece OpenCV,
-    dlatego został wykorzystany w procesie badawczym.
+    dlatego został wykorzystany w~procesie badawczym.
     Algorytm został bliżej przedstawiony w książce~\cite{violaJones} w 2001 roku i składa się z trzech podstawowych faz,
     których dokładny opis znajduje sie w sekcji~\ref{subsec:algorytm-haar-cascade}.
     %    W pierwszej obraz wejściowy przekształcany jest na obraz scałkowany.
@@ -613,7 +613,7 @@ Karolina Nurzyńska}
     %    przejscie na skale szarosci podczas wykrywania... czym ona jest?...
     \subsection{Przestrzenie barw oraz skala szarości}\label{subsec:konwersja-do-skali-szarości-oraz-przestrzenie-barw}
     %https://sci-hub.tw/10.1007/s10462-018-9650-2
-    Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z określonego modelu.
+    Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z~określonego modelu.
     Najczęściej są to trzy lub cztery
     wartości~\cite{przestrzenieKolorow}.
     Do przestrzeni barw zaliczają się:
@@ -625,7 +625,7 @@ Karolina Nurzyńska}
 
     W dziedzinie rozpoznawania obrazów najczęściej barwy są reprezentowane przez przestrzeń barw
     RGB~\cite{przestrzenieKolorow}.
-    Przestrzeń kolorów RGB składa się z trzech kanałów~\cite{kolory}:
+    Przestrzeń kolorów RGB składa się z~trzech kanałów~\cite{kolory}:
     \begin{itemize}
         \item R - czerwonego (z ang. red),
         \item G - zielonego (z ang. green),
@@ -782,12 +782,11 @@ Karolina Nurzyńska}
     \normalsize
     gdzie lewa część równania oznacza sumę jasności pikseli
     zaznaczonego okna tj.
-    na rysunku~\ref{fig.sumowanieOkna}, $I(A)$ - wartość scałkowanego obrazu przy punkcie A
-    (analogicznie $I(B)$, $I(C)$, $I(D)$) - (rysunek~\ref{fig.sumowanieOkna}).
+    na rysunku~\ref{fig.sumowanieOkna}, $I(A)$ - wartość scałkowanego obrazu przy punkcie A~(analogicznie $I(B)$, $I(C)$, $I(D)$) - (rysunek~\ref{fig.sumowanieOkna}).
 
     W związku z powyższym obliczenie wartości dla krawędziowego filtru Haara wymaga obliczenia różnicy dwóch sum,
     zatem do uzyskania wyniku konieczne jest wykonanie ośmiu operacji.
-    Reprezentacja obrazu za pomocą obrazu scałkowanego znacznie zwiększa efektywność obliczania wartości w filtrze
+    Reprezentacja obrazu za pomocą obrazu scałkowanego znacznie zwiększa efektywność obliczania wartości w~filtrze
     Haara.
 
     Liczba cech wykrywanych w danym zdjęciu za
@@ -1229,7 +1228,7 @@ Karolina Nurzyńska}
         \label{wzor.gradientJasnosci}
     \end{equation}
     \normalsize
-    gdzie $G_{x}$ jest zmianą jasności danego piksela w kierunku poziomym, a $G_{y}$ w kierunku pionowym.
+    gdzie $G_{x}$ jest zmianą jasności danego piksela w kierunku poziomym, a $G_{y}$ w~kierunku pionowym.
     Kierunek gradientu opisuje wzór~\ref{wzor.kierunekGradientu}
     \large
     \begin{equation}
@@ -1306,7 +1305,7 @@ Karolina Nurzyńska}
     Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
     Można także zauważyć dodatkowe krawędzie w strefach zmarszczkowych (sekcja~\ref{sec:wyznaczanieStref}),
     które identyfikują zmarszczki.
-    W metodzie bazowej ilość białych pikseli w strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek
+    W metodzie bazowej ilość białych pikseli w~strefach zmarszczkowych jest wprost proporcjonalna do ilości zmarszczek
     na twarzy danej osoby.
 
     Z każdej strefy zmarszczkowej obliczany jest stosunek ilości białych pikseli do wszystkich
@@ -1369,7 +1368,7 @@ Karolina Nurzyńska}
     Odpowiedni algorytm grupowania i ustawienia parametrów (w tym parametrów
     takich jak funkcja odległości lub liczba oczekiwanych grup)
     zależą od zestawu danych i sposobu wykorzystania wyników.
-    Dane nieraz muszą zostać przefiltrowane lub potrzebna jest zmiana parametrów grupowania w celu osiągnięcia
+    Dane nieraz muszą zostać przefiltrowane lub potrzebna jest zmiana parametrów grupowania w~celu osiągnięcia
     zamierzonego efektu~\cite{clusterWstep}.
 
     Najczęściej grupa jest definiowana przez jak najmniejszą odległość pomiędzy jej członkami.
@@ -1387,8 +1386,7 @@ Karolina Nurzyńska}
     Autorzy algorytmu szacowania wieku będącego podstawą przeprowadzonych badań zastosowali grupowanie metodą Fuzzy
     C-means.
     Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
-    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w
-    książce~\cite{ISODATA}.
+    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w~książce~\cite{ISODATA}.
     %- dokladny opis jak to dziala
     %    https://sci-hub.tw/10.1007/s12046-019-1166-1
     %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
@@ -1430,8 +1428,8 @@ Karolina Nurzyńska}
     \end{equation}
     \normalsize
     Wyrażenie $\left \| x_{i} - p_{j} \right \|$ oznacza odległość Euklidesową pomiędzy elementem $x_{i}$ a
-    centroidem $p_{j}$. Parametr ,,m'' jest nazywany współczynnikiem rozmycia. Współczynnik ten może być w zakresie
-    od 1 do nieskończoności, jednak w większości przypadków jest równy 2.
+    centroidem $p_{j}$. Parametr $m$ jest nazywany współczynnikiem rozmycia. Współczynnik ten może być w zakresie
+    od 1 do nieskończoności, jednak w~większości przypadków jest równy 2.
 
     W kroku $(k+1)^{th}$ centroid $p_{j}^{(k+1)}$ jest uaktualniany według wzoru~\ref{wzor.kaPLusJeden}.
     \large
@@ -1531,7 +1529,7 @@ Karolina Nurzyńska}
     %Tutaj powinno byc 5000 slow
     \chapter{Modyfikacje metody bazowej}\label{ch:modyfikacje-metody-bazowej}
     Rozdział~\ref{ch:modyfikacje-metody-bazowej} przedstawia trzy autorskie modyfikacje metody bazowej.
-    W sekcji~\ref{sec:odjęcie-wybranej-strefy} zostanie przedstawiona pierwsza modyfikacja algorytmu bazowego.
+    W~sekcji~\ref{sec:odjęcie-wybranej-strefy} zostanie przedstawiona pierwsza modyfikacja algorytmu bazowego.
     Kolejna sekcja~\ref{sec:zastosowanie-metody-hog} zawiera opis kolejnej modyfikacji algorytmu, w której użyto
     algorytm HOG-a.
     W ostatniej sekcji~\ref{sec:metoda-hog-oraz-algorytm-knn} została zaprezentowana ostatnia modyfikacja, która oprócz algorytmu HOG do szacowania
@@ -1617,7 +1615,7 @@ Karolina Nurzyńska}
     W kolejnej fazie zostają wyznaczone histogramy gradientów dla każdej komórki.
     Na rysunku~\ref{fig.gradientJasnosciNaGlowie} został przedstawiony wynik działania tego kroku.
     Zostają wygenerowane dwie macierze. Pierwsza zawiera informację o gradiencie jasności każdego piksela komórki,
-    natomiast druga - informację o kierunku każdego gradientu.
+    natomiast druga -~informację o kierunku każdego gradientu.
     Wartości kierunku gradientu wyrażone są w stopniach. W metodzie Histogram of Oriented Gradients
     zastosowano kierunki gradientu bez znaku. Oznacza to, że zakres kierunków mieści się w granicach
     od $0^{\circ}$ do $180^{\circ}$.
@@ -1639,7 +1637,7 @@ Karolina Nurzyńska}
     \end{figure}
     Piksel zaznaczony na niebiesko posiada gradient o wartości 2 oraz kierunek o kącie $80^{\circ}$.
     Wartość gradientu zostaje dodana do aktualnej wartości kubełka histogramu reprezentującego kąt $80^{\circ}$.
-    Piksel zaznaczony na czerwono posiada gradient o wartości 4 oraz kierunek o kącie $10^{\circ}$.
+    Piksel zaznaczony na czerwono posiada gradient o~wartości 4 oraz kierunek o kącie $10^{\circ}$.
     Wartość gradientu równa 4 zostaje rozdzielona na dwie proporcjonalne wartości: 2 oraz 2, które są dodawane do
     kubełków reprezentujących kąt $0^{\circ}$ oraz $20^{\circ}$.
     Jeśli wartość kąta wynosi $10^{\circ}$, wartości gradientu są przydzielane do
@@ -1672,7 +1670,7 @@ Karolina Nurzyńska}
     W przypadku, gdy kąt kierunku gradientu jest większy od $160^{\circ}$ to wartość danego gradientu jest
     przydzielana proporcjonalnie do komórki $160^{\circ}$ oraz $0^{\circ}$ zgodnie ze
     wzorem~\ref{wzor.komorkaHistogramu2}. Jednak wartość komórki $0^{\circ}$ zostaje zastąpiona kątem $180^{\circ}$,
-    a wyliczona wartość zostaje przydzielona do komórki reprezentującej kąt $0^{\circ}$.
+    a~wyliczona wartość zostaje przydzielona do komórki reprezentującej kąt $0^{\circ}$.
     Powyższa procedura jest powtarzana, a kolejne wartości gradientów są dodawane do aktualnych wartości przechowywanych
     w komórkach histogramu. Końcowy efekt tej fazy dostarcza histogram reprezentujący komórkę. Wartości histogramu
     dla danej komórki reprezentują część wektoru deskryptora.
@@ -1722,10 +1720,10 @@ Karolina Nurzyńska}
     W sekcji~\ref{sec:zastosowanie-metody-hog} został opisany algorytm HOG, w wyniku którego
     generowany jest deskryptor dla obrazu.
 
-    Omówiony wyżej deskryptor posłużył do wykrycia ilości zmarszczek w strefach zmarszczkowych. Jak wiadomo z opisu w
+    Omówiony wyżej deskryptor posłużył do wykrycia ilości zmarszczek w~strefach zmarszczkowych. Jak wiadomo z opisu w
     sekcji~\ref{sec:zastosowanie-metody-hog}, metoda HOG pozwala na wykrywanie krawędzi w danym obrazie. Jeśli w danym
     obszarze jest wiele krawędzi, to w wektorze deskryptora będzie znaczna ilość elementów tego wektora o dużej
-    wartości, które będą identyfikowały krawędzie w obrazie. Jak wiadomo z
+    wartości, które będą identyfikowały krawędzie w~obrazie. Jak wiadomo z
     sekcji~\ref{sec:wyliczanieWrinkleFeature} krawędzie mogą zostać zinterpretowane jako zmarszczki.
     W związku z powyższym zmodyfikowano sposób obliczenia współczynnika zmarszczek dla obrazu twarzy, opierając się o
     deskryptor wygenerowany przez algorytm HOG.
@@ -1937,7 +1935,7 @@ Karolina Nurzyńska}
     $A$. Spośród siedmiu najbliższych sąsiadów, cztery wektory należą do klasy $A$, natomiast trzy - do klasy $B$.
 
     Wybór parametru $k$ jest zależny od rodzaju danych. Im większa wartość $k$, tym mniejszy wpływ na proces
-    klasyfikacji ma szum, który określa błędne dane w zbiorze uczącym. Istnieją metody dobierające optymalną wartość $k$ dla
+    klasyfikacji ma szum, który określa błędne dane w zbiorze uczącym. Istnieją metody dobierające optymalną wartość $k$~dla
     danego zbioru uczącego. Do jednej z nich należy optymalizacja hiperparametryczna.
 
     Na końcu sekcji~\ref{subsec:zastosowanie-w-projekcie} został przedstawiony sposób, w jaki generowany jest zbiór
@@ -1986,7 +1984,7 @@ Karolina Nurzyńska}
     Do oceny skuteczności szacowania wieku za pomocą poszczególnych metod potrzebna jest baza treningowa oraz testowa.
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
     treningową oraz testową.
-    Jedną z nich jest rozdzielenie bazy w oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
+    Jedną z nich jest rozdzielenie bazy w~oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
     $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np. 10\%~\cite{dataMiningAlgorithms}.
 
     Drugi ze sposobów to schemat CV-n (ang. cross validation), zwany również walidacją krzyżową.
@@ -2003,7 +2001,7 @@ Karolina Nurzyńska}
     \normalsize
     gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
-    W wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora~\cite{dataMiningAlgorithms}.
+    W~wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora~\cite{dataMiningAlgorithms}.
     Najczęściej dokonuje się tego przez wyliczenie średniej wartości n rezultatów uzyskanych po przeprowadzeniu
     n iteracji.
 
@@ -2028,7 +2026,7 @@ Karolina Nurzyńska}
     Na pozostałych zdjęciach twarz nie została wykryta z różnych przyczyn. Część z tych zdjęć nie przedstawiała całej
     twarzy lub twarz była na nich częściowa przysłonięta. W niektórych przypadkach problem stanowiło złe oświetlenie
     sfotografowanej twarzy lub słaba jakość obrazu.
-    Jednak spośród 14583 obrazów tylko 2574 brało udział w liczeniu zmarszczek, ponieważ jedynie w tej grupie algorytm
+    Jednak spośród 14583 obrazów tylko 2574 brało udział w liczeniu zmarszczek, ponieważ jedynie w~tej grupie algorytm
     poprawnie wykrył obszar nosa oraz oczu, które są niezbędne do dalszych obliczeń. Podobnie jak w przypadku braku
     identyfikacji twarzy, wśród przyczyn można wymienić złe oświetlenie twarzy, słabą jakość obrazu albo złe
     ustawienie twarzy względem obiektywu.
@@ -2134,7 +2132,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.brwiHog}
     \end{table}
-    W przypadku HOG dla prawidłowo wykrytych zmarszczek średnia współczynnika zmarszczek wyniosła 2,512, natomiast
+    W~przypadku HOG dla prawidłowo wykrytych zmarszczek średnia współczynnika zmarszczek wyniosła 2,512, natomiast
     odchylenie standardowe 0,027. Dla nieprawidłowo wykrytych zmarszczek średnia współczynnika zmarszczek zwiększyła
     się do 2,562, natomiast odchylenie standardowe wyniosło 0,050.
     Podobnie jak w przypadku detektora Cannego nie jest jasne, czy różnice mają wpływ na jakość szacowania wieku.
@@ -2488,7 +2486,7 @@ Karolina Nurzyńska}
     rozmiar komórki. Najpierw ustalono wymiary komórki na 3x3 pikseli, następnie na 6x6 pikseli, a na końcu 9x9
     pikseli.
     Rozmiar bloku dla wszystkich modyfikacji rozmiaru komórek wyniósł
-    2x2 komórki. Liczba kubełków histogramu była stała i wynosiła 9 dla wszystkich pomiarów.
+    2x2 komórki. Liczba kubełków histogramu była stała i~wynosiła 9 dla wszystkich pomiarów.
     \subsection*{Wyniki z testowania 10\% zdjęć}
     W pierwszym teście ustalono parametry Fuzzy C-means: $m$ = 2,0, $n$ = 100 oraz $g$ = 10, $g$ = 100
     oraz $\epsilon$ = 1e-5.
@@ -2505,7 +2503,7 @@ Karolina Nurzyńska}
         \end{tabular}
         \label{tab.hog}
     \end{table}
-    Rozmiary komórki 3x3 oraz 6x6 pikseli przy zmianach parametru m wprowadzają niewielkie zmiany w jakość
+    Rozmiary komórki 3x3 oraz 6x6 pikseli przy zmianach parametru m wprowadzają niewielkie zmiany w~jakości
     szacowania wieku. Zmiana rozmiaru komórki na 9x9 pikseli wprowadza duża zmianę wartości MAE. Wartość ta
     zmniejsza się drastycznie, do około 11,3 roku. Przyczyna tak dużej zmiany MAE wynika prawdopodobnie z tego, że
     wyniki uzyskane metodą testowania 10\% zdjęć są niemiarodajne.
@@ -2631,7 +2629,7 @@ Karolina Nurzyńska}
     Zmieniano parametr k dla algorytmu KNN, natomiast dla algorytmu HOG - rozmiary komórki.
     Parametr $k$ był równy 1, 3 oraz 5. Rozmiary komórki miały takie same wartości jak przy badaniach w
     sekcji~\ref{subsec:metoda-hog}.
-    Liczba kubełków histogramu była stała i wynosiła 9. Podobnie jak w sekcji~\ref{subsec:metoda-hog} ustalono rozmiary
+    Liczba kubełków histogramu była stała i~wynosiła 9. Podobnie jak w sekcji~\ref{subsec:metoda-hog} ustalono rozmiary
     bloku 2x2 komórki.
     \subsection*{Wyniki z testowania 10\% zdjęć}
     W tabeli~\ref{tab.hogknn} podsumowano jakość szacowania wieku przy zmianach parametru $k$ oraz dla różnych
@@ -2731,11 +2729,11 @@ Karolina Nurzyńska}
     szacowania wieku. Bazą dla przeprowadzonych badań było odtworzenie pracy
     „Age Estimation from Face Image using Wrinkle Features”~\cite{wrinkleFeatures}.
     Zawarta w niej metoda wykrywania zmarszczek została zaimplementowana,
-    a następnie poddana trzem autorskim modyfikacjom, które stanowiły próbę jej udoskonalenia.
+    a~następnie poddana trzem autorskim modyfikacjom, które stanowiły próbę jej udoskonalenia.
 
     Aby osiągnąć założony cel, dokonano implementacji oryginalnego algorytmu~\cite{wrinkleFeatures},
     w którym w pierwszej kolejności musiała zostać wykryta twarz.
-    W kolejnym kroku należało zidentyfikować strefy zmarszczkowe, aby oszacować ilość zmarszczek.
+    W~kolejnym kroku należało zidentyfikować strefy zmarszczkowe, aby oszacować ilość zmarszczek.
     Określenie ich ilości zostało zrealizowane za pomocą detektora Canny. Oprócz samej implementacji
     algorytmu podano różne sposoby wykrywania twarzy oraz cech na niej, ze szczególnym uwzględnieniem
     algorytmu Haar Cascade, zaimplementowanego w metodzie oryginalnej. Ponadto został omówiony sposób
@@ -2752,7 +2750,7 @@ Karolina Nurzyńska}
 
     W celu oceny jakości szacowania wieku zastosowano dwa schematy testowania algorytmów.
     Pierwszy z nich dzielił zbiór zdjęć na zbiór treningowy i testowy według stosunku odpowiednio 90:10.
-    Jako drugi został wykorzystany schemat CV-5. Okazało się, że wyniki dla pierwszego z nich były w dużej mierze
+    Jako drugi został wykorzystany schemat CV-5. Okazało się, że wyniki dla pierwszego z nich były w~dużej mierze
     niedokładne.
 
     Najlepsze wyniki w przypadku metody bazowej osiągnięto dla parametrów FCM - $m$=2,0, $n$=1000,
@@ -2761,7 +2759,7 @@ Karolina Nurzyńska}
     W tym wypadku najlepszy parametr MAE wyniósł 10,94 roku dla następujących parametrów FCM: $m$=2,0, $g$=10, $n$=1000,
     $\epsilon$=1e-8. Metoda wykorzystująca algorytm HOG okazała się bardziej skuteczna od pierwszej modyfikacji,
     w której nie brano pod uwagę jednej strefy. Najlepszy wynik równy 9,78 roku osiągnięto dla komórki
-    HOG-a o rozmiarach 3x3 piksela oraz dla parametrów FCM: $m$=3,0, $n$=1000, $\epsilon$=1e-5, $g$=10.
+    HOG-a o~rozmiarach 3x3 piksela oraz dla parametrów FCM: $m$=3,0, $n$=1000, $\epsilon$=1e-5, $g$=10.
     Najlepszą z zaproponowanych modyfikacji metody bazowej okazała się metoda HOG + KNN.
     W jej przypadku minimalna wartość MAE wyniosła 9,6 roku dla wartości $k$=3 parametru KNN oraz komórki o rozmiarach 9x9 pikseli.
 
