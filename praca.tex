@@ -192,13 +192,9 @@ Karolina Nurzyńska}
 
 
     %%%%%%%%%%%%%%%%%% SPIS TRESCI %%%%%%%%%%%%%%%%%%%%%%
-    \pagenumbering{Roman}
-    \pagestyle{tylkoNumeryStron}
-    \tableofcontents
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \setcounter{stronyPozaNumeracja}{\value{page}}
-    \mainmatter
+
     \pagestyle{NumeryStronNazwyRozdzialow}
 
     %%%%%%%%%%%%%% wlasciwa tresc pracy %%%%%%%%%%%%%%%%%
@@ -226,14 +222,7 @@ Karolina Nurzyńska}
     Idąc dalej - z obrazu danej osoby musi zostać wykryta twarz.
     Wykrycie twarzy na obrazie jest możliwe dzięki algorytmom segmentacji obrazu.
     Segmentacja obrazu jest stosowana w wizji komputerowej i polega na wyodrębnieniu z obrazu jakichś szczegółów.
-    Mogą to być na przykład osoby, pojazdy, przedmioty itp. (rys.~\ref{fig.rozpoznawanieObiektow})
-
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=11cm]{Obrazy/person-detection.png}
-        \caption{Przykład rozpoznawania osób na obrazie~\cite{rozpoznawanieObiektow}.}
-        \label{fig.rozpoznawanieObiektow}
-    \end{figure}
+    Mogą to być na przykład osoby, pojazdy, przedmioty itp.
 
     Można znaleźć wiele witryn internetowych, które udostępniają interfejsy programistyczne umożliwiające zaimplementowanie
     rozpoznawania wieku z~obrazu.
@@ -257,7 +246,7 @@ Karolina Nurzyńska}
     Można znaleźć o wiele więcej potencjalnych zastosowań przetwarzania obrazu oraz rozpoznawania wieku na podstawie
     tekstury (obrazu) twarzy.
     Z~biegiem lat z pewnością będzie można zauważyć dalszy rozwój tej dziedziny, która
-    opiera się w głównej mierze na sztucznej inteligencji~\cite{computerVision}.
+    opiera się w głównej mierze na sztucznej inteligencji.
     %275 wyrazow
     \section*{Cel i zakres pracy}\label{sec:cel-i-zakres-pracy}
     %    Celem pracy magisterskiej jest stworzenie prostego programu do rozpoznawania wieku na podstawie tekstury twarzy.
@@ -276,11 +265,11 @@ Karolina Nurzyńska}
     %    \section{Metoda wrinkle feature}
     Celem niniejszej pracy jest stworzenie algorytmu do szacowania wieku.
     Bazą dla przeprowadzonych badań było odtworzenie pracy ,,Age Estimation from Face Image using Wrinkle
-    Features''~\cite{wrinkleFeatures}. Metodę w niej zawartą poddano następnie kilku modyfikacjom.
+    Features''. Metodę w niej zawartą poddano następnie kilku modyfikacjom.
 
     Zakres pracy obejmuje następujące zagadnienia:
     \begin{itemize}
-        \item Implementacja algorytmu z pracy~\cite{wrinkleFeatures}, w dalszej części pracy określanego jako metoda
+        \item Implementacja algorytmu z pracy, w dalszej części pracy określanego jako metoda
         oryginalna lub metoda bazowa;
         \item Zaproponowanie kilku modyfikacji oryginalnej metody w celu polepszenia jakości szacowania wieku;
         \item Opis algorytmów oraz zmian w stosunku do oryginalnej metody;
@@ -313,7 +302,7 @@ Karolina Nurzyńska}
     interpretacji zmarszczek.
     Była ona w stanie ze stuprocentową poprawnością wyznaczyć, czy dana osoba jest osobą
     dorosłą, czy
-    dzieckiem~\cite{kwonLobo}.
+    dzieckiem.
 
     W kolejnych latach algorytmy i techniki szacowania wieku były udoskonalane.
     Badano wpływ starzenia się osób na
@@ -322,33 +311,33 @@ Karolina Nurzyńska}
     zmian skóry pod wpływem jej starzenia sie należało uwzględnić także inne
     czynniki, do których należą między innymi
     płeć, poziom stresu, czy ekspozycja na działanie środowiska zewnętrznego.
-    Badania tego rodzaju opisano w~pracy~\cite{lanitisTaylor} A. Lanitis, Ch. J. Taylor oraz T. F. Cootes.
+    Badania tego rodzaju opisano w~pracy A. Lanitis, Ch. J. Taylor oraz T. F. Cootes.
     Ponadto w tej pracy zaprezentowano algorytm rozpoznawania płci, emocji czy osób na podstawie obrazu twarzy.
 
     W kolejnych latach zaczęto przeprowadzać porównania cech twarzy tej samej osoby w różnym wieku.
     Różnice w powyższych cechach posłużyły do zbudowania statystyki zmian cech twarzy wraz ze starzeniem się.
-    Taka analiza została zaprezentowana w pracy~\cite{ramanthanChelappa} N. Ramanathan oraz R. Chellappa.
-    Rozwinięciem tego pomysłu była praca~\cite{gengZhou} X. Geng, Z. Zhou i K. Smith-Miles.
+    Taka analiza została zaprezentowana w pracy N. Ramanathan oraz R. Chellappa.
+    Rozwinięciem tego pomysłu była praca X. Geng, Z. Zhou i K. Smith-Miles.
     W tym artykule porównywano sekwencje wielu zdjęć twarzy jednej osoby.
     Zdjęcia przestawiały twarz w różnym wieku.
     Te badania pozwoliły na zbudowanie wzorca starzenia się twarzy.
-    Z kolei M.M.~Dehshibi oraz A.~Bastanfard w swojej pracy~\cite{dehshibiBastard} analizują proporcje twarzy oraz ilość
+    Z kolei M.M.~Dehshibi oraz A.~Bastanfard w swojej pracy analizują proporcje twarzy oraz ilość
     zmarszczek przy szacowaniu wieku.
-    Praca~\cite{khryashchevGanin} autorstwa
+    Praca autorstwa
     Vladimira Khryashcheva, Alexandra Ganina, Olgi Stepanovej oraz
     Antona Lebedeva zawiera podsumowanie technik szacowania wieku.
     Wynika z niego, że do wyodrębniania cech z~twarzy stosuje się BIF(ang. biologically inspired features).
-    Powyższa metoda została zaprezentowana w książce~\cite{bif} Guodong Guo i in.
-    Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP (ang. local binary patterns)~\cite{lbp}.
+    Powyższa metoda została zaprezentowana w książce Guodong Guo i in.
+    Mniej popularne metody analizujące cechy twarzy to filtry Gabora oraz LBP (ang. local binary patterns).
 
 
-    W metodzie bazowej, która została opisana w artykule~\cite{wrinkleFeatures}, wykrywanie wieku dzieli się na kilka
+    W metodzie bazowej, która została opisana w artykule, wykrywanie wieku dzieli się na kilka
     faz.
     Na początku należy wykryć twarz.
     Zastosowany algorytm wykrywania został
     opisany w sekcji~\ref{sec:metodaWykrywaniaTwarzy}.
     Następnie należy wyznaczyć strefy zmarszczkowe na twarzy.
-    W artykule~\cite{wrinkleFeatures} udowodniono,
+    W artykule udowodniono,
     że istnieje kilka konkretnych stref, w których następuje znacząca zmiana ilości zmarszczek wraz z wiekiem.
     Powyższe strefy zostały wymienione w sekcji~\ref{sec:wyznaczanieStref}.
     Sekcja~\ref{sec:wykrywanie-zmarszczek---detektor-canny} przedstawia technikę
@@ -367,24 +356,10 @@ Karolina Nurzyńska}
     na podstawie wyników działania FCM (ang. Fuzzy C-Means) - sekcja~\ref{sec:grupowanieDanych}
     (rysunek~\ref{fig.faza2Algorytmu}).
 
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=12cm]{Obrazy/Faza1.jpg}
-        \caption{Faza 1 algorytmu}
-        \label{fig.faza1Algorytmu}
-    \end{figure}
-
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=12cm]{Obrazy/Faza2.jpg}
-        \caption{Faza 2 algorytmu}
-        \label{fig.faza2Algorytmu}
-    \end{figure}
-
     \clearpage
     \section{Metoda wykrywania twarzy}\label{sec:metodaWykrywaniaTwarzy}
     W literaturze można odnaleźć wiele metod wykrywania twarzy.
-    Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie~\cite{mehdiRizvi}:
+    Istnieje kilka podejść aby skutecznie wykrywać twarz na danym obrazie:
     %       https://www.researchgate.net/publication/257338580_A_Review_on_Face_Detection_Methods
     %     Knowledge-based methods: These rule-based methods encode human knowledge
     %    of what constitutes a typical face. Usually, the rules capture the relationships
@@ -447,7 +422,7 @@ Karolina Nurzyńska}
     %    Każda z nich wyodrębnia z obrazu pewne cechy, które
     %    mogą wskazywać, że na danym obszarze obrazu znajduje się twarz.
 
-    Należy jednak zauważyć, że w procesie ekstrakcji twarzy z obrazu mogą wystąpić liczne problemy~\cite{mehdiRizvi}.
+    Należy jednak zauważyć, że w procesie ekstrakcji twarzy z obrazu mogą wystąpić liczne problemy.
     Jednym z nich jest nieodpowiednia poza.
     Wiąże się to z różnymi ustawieniami twarzy wobec aparatu fotograficznego lub kamery.
     Twarz może być nachylona, przechylona lub odchylona.
@@ -478,12 +453,6 @@ Karolina Nurzyńska}
 %    Nie wiem jak jest dalej, ale wcześniej było podobnie. Ogólnie takie odwołanie do obrazka jest poprawne. Tylko płynniej byłoby napisać:
 %
 %    " jako ostre jak przedstawiono na rys. 2.3." Proszę zobaczyć czy w innych miejscach też nie da się w prosty sposób wprowadzić odwołania do rynku jako części zdania.
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=12cm]{Obrazy/oswietlenieTwarzy.jpg}
-        \caption{Przykład twarzy oświetlonej ostrym (twarz po lewej) oraz miękkim światłem~\cite{oswietlenieTwarzy}.}
-        \label{fig.oswietlenieTwarzy}
-    \end{figure}
     W tym przypadku ryzyko utraty szczegółów oświetlanej twarzy jest większe.
     Kiedy twarz jest skierowana na wprost słońca, z dużym
     prawdopodobieństwem można stwierdzić, że zostanie oświetlona ostrym światłem.
@@ -494,12 +463,6 @@ Karolina Nurzyńska}
     okryta jednolitym cieniem, którego intensywność zależy od rodzaju światła.
     Natomiast przy świetle rozproszonym intensywność cieni jest mniejsza.
     Na rys.~\ref{fig.technikiWykrywaniaTwarzy} przedstawione są różne techniki wykrywania twarzy.
-    \begin{figure}
-        \centering
-        \includegraphics[width=15cm]{Obrazy/technikiWykrywaniaTwarzy.jpg}
-        \caption{Różne techniki wykrywania twarzy~\cite{faceDetectionTechniques}.}
-        \label{fig.technikiWykrywaniaTwarzy}
-    \end{figure}
     %    https://sci-hub.tw/10.1007/s10462-018-9650-2
 
     %    Wyodrębnianie lub ekstrakcja cech polega na przekształceniu obrazu do zbioru zmiennych, które
@@ -511,7 +474,7 @@ Karolina Nurzyńska}
     Dodatkowo zostanie omówiona metoda, która posłużyła do wykrywania twarzy w niniejszej pracy.
 
     %https://sci-hub.tw/10.1016/S0031-3203(00)00134-5
-    W pracy~\cite{wongLamSiu}
+    W pracy
     przedstawiono opisaną w skrócie poniżej technikę wykrywania twarzy.
     W pierwszym etapie procesu obszary, gdzie może znajdować się ludzkie oko,
     są wykrywane przez przeprowadzenie testów na zacienionych rejonach obrazu.
@@ -531,7 +494,7 @@ Karolina Nurzyńska}
 
     %Druga metoda wykrywania twarzy z https://www.researchgate.net/publication/334770252_An_Accurate_System_for_Face_Detection_and_Recognition
     %https://sci-hub.tw/10.1007/s10462-018-9650-2
-    W roku 1997 w pracy~\cite{clowleyCoutaz} opisano metodę wykrywania twarzy bazującą na
+    W roku 1997 w pracy opisano metodę wykrywania twarzy bazującą na
     wykrywaniu cechy, jaką jest kolor skóry.
     Zarówno dla człowieka, jak i~dla maszyny kolor skóry jest
     najbardziej widoczną cechą twarzy.
@@ -549,7 +512,7 @@ Karolina Nurzyńska}
     %trzecia metoda  - wstep do Haar Cascade https://drive.google.com/file/d/1nJ9S3HtuuFY6O1FLdIjRWSzWUFwZ_fuJ/view?usp=sharing
     Algorytm Haar Cascade jest jedynym algorytmem do wykrywania twarzy zaimplementowanym w bibliotece OpenCV,
     dlatego został wykorzystany w~procesie badawczym.
-    Algorytm został bliżej przedstawiony w książce~\cite{violaJones} w 2001 roku i składa się z trzech podstawowych faz,
+    Algorytm został bliżej przedstawiony w książce w 2001 roku i składa się z trzech podstawowych faz,
     których dokładny opis znajduje sie w sekcji~\ref{subsec:algorytm-haar-cascade}.
     %    W pierwszej obraz wejściowy przekształcany jest na obraz scałkowany.
     %    Następnie wykorzystywany jest algorytm do boostingu, który zmniejsza ilość klasyfikatorów tylko do tych
@@ -574,7 +537,7 @@ Karolina Nurzyńska}
     %https://sci-hub.tw/10.1007/s10462-018-9650-2
     Każdy piksel w trybie kolorowym ma określoną reprezentację barwy z~określonego modelu.
     Najczęściej są to trzy lub cztery
-    wartości~\cite{przestrzenieKolorow}.
+    wartości.
     Do przestrzeni barw zaliczają się:
     \begin{itemize}
         \item CIEXYZ,
@@ -583,8 +546,8 @@ Karolina Nurzyńska}
     \end{itemize}
 
     W dziedzinie rozpoznawania obrazów najczęściej barwy są reprezentowane przez przestrzeń barw
-    RGB~\cite{przestrzenieKolorow}.
-    Przestrzeń kolorów RGB składa się z~trzech kanałów~\cite{kolory}:
+    RGB.
+    Przestrzeń kolorów RGB składa się z~trzech kanałów:
     \begin{itemize}
         \item R - czerwonego (z ang. red),
         \item G - zielonego (z ang. green),
@@ -592,7 +555,7 @@ Karolina Nurzyńska}
     \end{itemize}
     Barwy mieszane są poprzez syntezę addytywną.
     W przeciwieństwie do syntezy subtraktywnej, barwa wynikowa powstaje tu poprzez sumowanie wiązek światła widzialnego o
-    różnych długościach~\cite{przestrzenieKolorow}.
+    różnych długościach.
     Każdy piksel opisany za pomocą przestrzeni barw RGB ma trzy 8-bitowe wartości reprezentujące każdy kanał.
     Spotykane
     są 12- lub 16-bitowe reprezentacje kanałów, jednak 8-bitowa jest najpopularniejsza.
@@ -602,21 +565,7 @@ Karolina Nurzyńska}
     Poprzez mieszanie jasności tych trzech kanałów
     można uzyskać szerokie spektrum barw (rysunek~\ref{fig.mieszanieKolorow}).
 
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=7cm]{Obrazy/mieszanieKolorow.jpg}
-        \caption{Mieszanie kanałów RGB~\cite{colorMixing}.}
-        \label{fig.mieszanieKolorow}
-    \end{figure}
-
     Przykładowo kolor o reprezentacji $R=153$, $G=217$, $B=234$ przedstawiono na rysunku~\ref{fig.mieszanieKolorowBlekitny}
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=2cm]{Obrazy/blekitny.jpg}
-        \caption{Kolor $R=153$, $G=217$, $B=234$.}
-        \label{fig.mieszanieKolorowBlekitny}
-    \end{figure}
 
     Kolor (rysunek~\ref{fig.mieszanieKolorowBlekitny}) może być też reprezentowany w kodzie szesnastkowym $\#99D9EA$.
     Każda
@@ -624,9 +573,9 @@ Karolina Nurzyńska}
 
     Obraz może też być przedstawiony za pomocą odcieni jednej barwy.
     Taki obraz nazywa się obrazem monochromatycznym.
-    Najczęściej stosowaną barwą w takich obrazach jest szarość~\cite{przestrzenieKolorow}.
+    Najczęściej stosowaną barwą w takich obrazach jest szarość.
 
-    Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny~\cite{colorMixing}: %inne cytowanie tutaj dac
+    Istnieją 3 metody konwersji obrazu z przestrzeni RGB na monochromatyczny: %inne cytowanie tutaj dac
     \begin{itemize}
         \item największej jasności,
         \item średnia,
@@ -669,7 +618,7 @@ Karolina Nurzyńska}
     \subsection{Metoda detekcji twarzy}\label{subsec:algorytm-haar-cascade}
 
     Haar Cascade jest algorytmem służącym do wykrywania obiektów na obrazach.
-    Został stworzony przez Paula Violę oraz Michaela Jonesa w 2001 roku~\cite{violaJones}.
+    Został stworzony przez Paula Violę oraz Michaela Jonesa w 2001 roku.
     Opiera się na zbudowaniu kaskadowej funkcji za pomocą analizy wielu zdjęć twarzy.
     Obrazy są dzielone na
     dwie kategorie - pozytywne oraz negatywne.
@@ -680,27 +629,14 @@ Karolina Nurzyńska}
     %    nakładane na obraz, które analizują jasność pikseli (rysunek~\ref{fig.haarRectangles}).
     Przed zastosowaniem filtru obraz musi zostać przekształcony do skali szarości.
     Filtry mają postać białych i czarnych prostokątów pogrupowanych w okna (rysunek~\ref{fig.haarRectangles}).
-    \begin{figure}
-        \centering
-        \includegraphics[width=7cm]{Obrazy/Haar_filter_rectangles.jpg}
-        \caption{Filtr Haara a) krawędziowy b) liniowy c) szachownica~\cite{haar}}
-        \label{fig.haarRectangles}
-    \end{figure}
+
     Wyznaczana jest suma jasności pikseli w obu rodzajach prostokątów, a
     następnie dla każdego okna obliczana jest różnica pomiędzy białymi a czarnymi.
     Na krawędzi istnieje różnica w jasności pikseli, dlatego opisywany algorytm ma zastosowanie w ich wykrywaniu.
     (rysunek~\ref{fig.haarEmmaWatson}).
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=6cm]{Obrazy/haarEmmaWatson.jpg}
-        \caption{Filtr Haara nałożony na krawędź twarzy~\cite{haar}}
-        \label{fig.haarEmmaWatson}
-    \end{figure}
-
     W celu poprawy efektywności sumowania pikseli stosowane są
-    rozwiązania zwane w literaturze obrazem scałkowanym (ang. Integral image lub summed-area table)
-    ~\cite{computerVision}.
+    rozwiązania zwane w literaturze obrazem scałkowanym (ang. Integral image lub summed-area table).
     Jego ideą jest, aby każdy obraz został przekształcony w
     tabelę, w której każdy element x, y tej tabeli odpowiada sumie jasności wszystkich pikseli według
     wzoru~\ref{wzor.summedAreaTable}.
@@ -716,22 +652,8 @@ Karolina Nurzyńska}
     współrzędnych $x$, $y$ na obrazie.
     Na rysunku~\ref{fig.poiprzedCalkowaniem} przedstawiona jest tabela prezentująca jasność pikseli przed i po
     zastosowaniu całkowania obrazu.
-    \begin{figure}
-        \centering
-        \includegraphics[width=12cm]{Obrazy/poiprzedCalkowaniem.jpg}
-        \caption{Tabela jasności poszczególnych pikseli: a) przed zastosowaniem całkowania b) po
-        zastosowaniu całkowania~\cite{integralImages}}
-        \label{fig.poiprzedCalkowaniem}
-    \end{figure}
 
     Sumowanie przykładowego okna (rysunek~\ref{fig.sumowanieOkna}) wymaga czterech operacji (wzór~\ref{wzor.windowsSum}).
-    \begin{figure}
-        \centering
-        \includegraphics[width=6cm]{Obrazy/sumowanieOkna.jpg}
-        \caption{Sumowanie okna~\cite{integralImages}}
-        \label{fig.sumowanieOkna}
-    \end{figure}
-
 
     \large
     \begin{equation}
@@ -749,7 +671,7 @@ Karolina Nurzyńska}
     Haara.
 
     Liczba cech wykrywanych w danym zdjęciu za
-    pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie~\cite{violaJones}.
+    pomocą filtru Haara jest znacznie większa od liczby pikseli na obrazie.
     Dla obrazu o wymiarach 24x24 pikseli liczba cech wynosi ponad 180000.
     Autorzy algorytmu stwierdzili, że dla zwiększenia jego szybkości należy wybrać małą grupę istotnych cech,
     które razem mogą stworzyć jeden efektywny klasyfikator obiektu, zwany również silnym klasyfikatorem. Ten
@@ -841,12 +763,7 @@ Karolina Nurzyńska}
     które powstały w poprzednim procesie - tzw. procesie boostingu.
     Klasyfikatory są grupowane w okna,
     które są połączone ze sobą tak jak na rysunku~\ref{fig.kaskadaHaar}.
-    \begin{figure}
-        \centering
-        \includegraphics[width=11cm]{Obrazy/kaskadaHaar.jpg}
-        \caption{Kaskada klasyfikatorów~\cite{kaskadaHaarObraz}.}
-        \label{fig.kaskadaHaar}
-    \end{figure}
+
     Okna są oznaczone jako P1, P2, \ldots, Pn.
     Gdy dane okno wykryje obiekt, przechodzi do kolejnego okna w kaskadzie.
     W przeciwnym wypadku algorytm przerywa działanie i na danym obrazie nie zostaje zidentyfikowany obiekt.
@@ -888,26 +805,14 @@ Karolina Nurzyńska}
     %Wzory na wyznaczenie stref z "okienek"
     Przed wyznaczeniem stref zmarszczkowych należy zidentyfikować na twarzy oczy oraz nos
     (rysunek~\ref{fig.wykrywanieOczuNosa}).
-    \begin{figure}
-        \centering
-        \includegraphics[width=8cm]{Obrazy/wykrywanieOczuNosa.jpg}
-        \caption{Wykryty nos oraz oczy.}
-        \label{fig.wykrywanieOczuNosa}
-    \end{figure}
+
     Należy podkreślić, że algorytm przerywa działanie jeśli nie zostanie wykryta twarz, oczy lub nos.
     Gdy zostanie wykryty obszar twarzy, oczu oraz nosa wyznaczone zostaje sześć stref zmarszczkowych
     (rysunek~\ref{fig.wykrywanieStrefZmarszczkowych}).
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=8cm]{Obrazy/strefyZmarszczkowe.jpg}
-        \caption{Strefy zmarszczkowe widoczne w białych prostokątach.}
-        \label{fig.wykrywanieStrefZmarszczkowych}
-    \end{figure}
-
     Strefy zmarszczkowe są umiejscowione na czole (Strefa ,,1''), w górnej części nosa (Strefa ,,2''), górnej części policzków
     (Strefa ,,4'' i ,,5'') oraz w okolicach powiek (Strefa ,,3'' i ,,6'').
-    To właśnie te miejsca zostały uznane przez autorów książki~\cite{wrinkleFeatures} za
+    To właśnie te miejsca zostały uznane przez autorów książki za
     najbardziej znaczące w detekcji wieku.
 
     Po detekcji oczu należy zmierzyć odległość pomiędzy środkiem lewego oka ($x_{l},y_{l}$),
@@ -922,36 +827,14 @@ Karolina Nurzyńska}
 
     Odległość d służy do wyznaczanie strefy znajdującej się na czole (rysunek~\ref{fig.wyznaczenieCzola}).
 
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=8cm]{Obrazy/wyliczenieCzolka.jpg}
-        \caption{Wyznaczenie strefy znajdującej się na czole.}
-        \label{fig.wyznaczenieCzola}
-    \end{figure}
-
-    Autorzy~\cite{wrinkleFeatures} algorytmu założyli, że odległość od linii oczu do linii brwi wynosi $0,4 \cdot d$,
+    Autorzy algorytmu założyli, że odległość od linii oczu do linii brwi wynosi $0,4 \cdot d$,
     natomiast wymiary ,,strefy czoła'' wynoszą $d \times 0,5d$.
     Na rysunku~\ref{fig.wspolrzedneDoWyliczeniaStref} przedstawiono współrzędne, które są pomocne w wyznaczaniu
     stref zmarszczkowych.
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=9cm]{Obrazy/wspolrzedneDoWyliczeniaStref.jpg}
-        \caption{Pomocnicze współrzędne do wyliczania stref zmarszczkowych.}
-        \label{fig.wspolrzedneDoWyliczeniaStref}
-    \end{figure}
-
     Strefa 2 została wyznaczona dzięki znajomości położenia prawego oka, dystansu między oczami oraz strefy 1.
     Każda strefa może być wyznaczona przez jeden punkt (rysunek~\ref{fig.wykrywanieStrefZmarszczkowychPunkty})
     oraz jej wymiary.
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=8cm]{Obrazy/wykrywanieStrefZmarszczkowychPunkty.jpg}
-        \caption{Punkty wyznaczające położenie stref.}
-        \label{fig.wykrywanieStrefZmarszczkowychPunkty}
-    \end{figure}
 
     Współrzędna x punktu A została wyznaczona ze wzoru~\ref{wzor.punktXA}
 
@@ -1151,7 +1034,7 @@ Karolina Nurzyńska}
     Funkcjonały natomiast przekształcają przestrzeń wektorową na liczby rzeczywiste.
     Zatem rachunek wariacyjny ma za zadanie pomóc w znalezieniu charakterystycznej funkcji,
     dla której funkcjonał przyjmuje wartość ekstremalną.
-    Algorytm detektora jest podzielony na kilka kroków~\cite{Canny}:
+    Algorytm detektora jest podzielony na kilka kroków:
     \begin{itemize}
         \item Redukcja szumów na obrazie filtrem Gaussa,
         \item Szukanie gradientów jasności,
@@ -1164,19 +1047,12 @@ Karolina Nurzyńska}
     Takie piksele są nadmiarowymi informacjami o obrazie oraz stanowią efekt uboczny przetwarzania obrazu
     przez matrycę cyfrową (rysunek~\ref{fig.lenkaSzumy}).
 
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=11cm]{Obrazy/lenkaSzumy.jpg}
-        \caption{a) Obraz z nieznaczną ilością szumów b) Obraz ze znaczną ilością szumów~\cite{lenkaSzumy}.}
-        \label{fig.lenkaSzumy}
-    \end{figure}
-
     Efekt szumu jest spotykany również w fotografii analogowej.
     W fotografii cyfrowej szum wzrasta na skutek zwiększania czułości matrycy lub przez wzrost jej temperatury.
     Redukcję szumów można uzyskać stosując filtr Gaussa.
     Splot filtru Gaussa z obrazem daje w wyniku wygładzony obraz ze zmniejszoną ilością szumów.
     Filtr Gaussa może mieć różne wymiary.
-    Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu~\cite{Canny}.
+    Rozmiar filtra ma wpływ na wydajność wygładzania obrazu, a co za tym idzie na czułość wykrywania szumu.
     \subsection*{Szukanie gradientów jasności}\label{subsec:szukanie-gradientów-jasności}
     Istotnym parametrem w wykrywaniu krawędzi jest gradient jasności.
     Określa on jak bardzo zmienia się jasność danego piksela względem sąsiadujących pikseli.
@@ -1204,7 +1080,7 @@ Karolina Nurzyńska}
     lub $\Theta = 135^{\circ}$ stopni).
     Każdy piksel obrazu otrzymuje wartość gradientu (wzór~\ref{wzor.gradientJasnosci})
     oraz kierunek - zgodny z powyższym filtrem kierunku.
-    W wyniku tego działania otrzymuje się obraz gradientowy~\cite{Canny}.
+    W wyniku tego działania otrzymuje się obraz gradientowy.
     \subsection*{Zastosowanie techniki zmniejszania grubości krawędzi}
     Zmniejszanie grubości krawędzi służy do filtracji krawędzi powstałych po poprzednim kroku.
     Krawędzie wykryte za pomocą gradientu są rozmyte.
@@ -1220,7 +1096,7 @@ Karolina Nurzyńska}
     dwóch sąsiednich pikseli.
     Sąsiednie piksele leżą na jednej linii wyznaczonej przez kierunek gradientu.
     Jeśli wartość danego piksela jest największa spośród pikseli wzdłuż wyżej wymienionych linii,
-    to dany piksel należy do najostrzejszej krawędzi~\cite{Canny}.
+    to dany piksel należy do najostrzejszej krawędzi.
 
     \subsection*{Filtracja krawędzi o małym gradiencie jasności}
     Zastosowanie techniki zmniejszania grubości krawędzi pozostawia na obrazie wiele krawędzi, które są wygenerowane przez szum i zmiany
@@ -1232,7 +1108,7 @@ Karolina Nurzyńska}
     Jeśli wartość gradientu dla danej krawędzi jest mniejsza od progu małego, to zostaje ona usunięta.
     W przypadku, gdy wartość jest większa od progu małego, ale mniejsza od progu dużego, dana krawędź
     zostaje oznaczona jako słaba.
-    Krawędź oznacza się jako mocną, gdy wartość gradientu dla niej jest większa od wartości progu dużego~\cite{Canny}.
+    Krawędź oznacza się jako mocną, gdy wartość gradientu dla niej jest większa od wartości progu dużego.
 
     \subsection*{Filtracja poprzez histerezę}\label{subsec:filtracja-poprzez-histerezę}
     W wyniku działania algorytmu do tej pory zostały uzyskane słabe oraz mocne krawędzie.
@@ -1244,7 +1120,7 @@ Karolina Nurzyńska}
     Słabe krawędzie, które są powiązane z mocnymi znajdują się w najbliższym sąsiedztwie mocnych krawędzi.
     W celu odnalezienia tych powiązań pomiędzy krawędziami zostaje zastosowana analiza spójności krawędzi.
     Jeśli zostaje zidentyfikowane powiązanie pomiędzy mocną, a słabą krawędzią, to słabą krawędź pozostawia się w obrazie.
-    W przypadku, gdy słaba krawędź nie jest powiązana z żadną mocną krawędzią - zostaje usunięta~\cite{Canny}.
+    W przypadku, gdy słaba krawędź nie jest powiązana z żadną mocną krawędzią - zostaje usunięta.
 
     \section{Wyliczanie współczynnika zmarszczek}\label{sec:wyliczanieWrinkleFeature}
     W wyniku działania detektora Cannego, który został opisany w sekcji~\ref{sec:wykrywanie-zmarszczek---detektor-canny}
@@ -1252,13 +1128,6 @@ Karolina Nurzyńska}
     Obraz binarny zawiera piksele o dwóch wartościach jasności pikseli.
     Piksel może być albo biały, albo czarny.
     Krawędzie można rozpoznać jako białe piksele, natomiast czarne piksele oznaczają brak krawędzi (rysunek~\ref{fig.mojaTwarzGray}).
-
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=11cm]{Obrazy/mojaTwarzGray.jpg}
-        \caption{a) Oryginalny obraz b) Obraz z wykrytymi krawędziami.}
-        \label{fig.mojaTwarzGray}
-    \end{figure}
 
     Na rysunku~\ref{fig.mojaTwarzGray} widoczne są krawędzie, które identyfikują owal twarzy.
     Ponadto widoczne są poszczególne części twarzy tj. nos, oczy, brwi.
@@ -1295,7 +1164,7 @@ Karolina Nurzyńska}
     Jest wiele darmowych źródeł obrazów twarzy.
     Najczęściej używane bazy to FG-NET oraz MORTH II, które
     zawierają dziesiątki tysięcy zdjęć.
-    Zdjęcia są różnej jakości i nie każda baza zdjęć nadaje się do konkretnych badań~\cite{khryashchevGanin}.
+    Zdjęcia są różnej jakości i nie każda baza zdjęć nadaje się do konkretnych badań.
     Przy realizacji tej pracy wykorzystana została baza UTKFace,
     ponieważ wszystkie zgrupowane w niej obrazy przedstawiają twarze w pozycji frontalnej. Dodatkowo
     ścieżka pliku każdego obrazu zawiera informacje na temat rzeczywistego wieku, co pozwala w łatwy sposób
@@ -1308,7 +1177,7 @@ Karolina Nurzyńska}
     Fuzzy C-Means.
     W wyniku działania tego algorytmu otrzymuje się informacje, dzięki którym na podstawie współczynnika zmarszczek
     można
-    oszacować wiek~\cite{wrinkleFeatures}. %todo sprawdzic referencje na sam koniec ctrl + f i "?" w Adobe reader
+    oszacować wiek. %todo sprawdzic referencje na sam koniec ctrl + f i "?" w Adobe reader
     \section{Grupowanie danych - Fuzzy C-Means oraz wyznaczanie wieku}\label{sec:grupowanieDanych}
     %    https://pl.wikipedia.org/wiki/Analiza_skupień
     %    https://en.wikipedia.org/wiki/Cluster_analysis
@@ -1319,7 +1188,7 @@ Karolina Nurzyńska}
     Grupowanie danych, zwane również klasteryzacją, jest szeroko stosowane w uczeniu maszynowym, rozpoznawaniu wzorców,
     analizie obrazu, bioinformatyce, kompresji danych czy w grafice komputerowej.
     Polega na podzieleniu dużego zbioru danych na grupy.
-    Powyższe grupy zawierają dane, które są podobne do siebie~\cite{clusterWstep}.
+    Powyższe grupy zawierają dane, które są podobne do siebie.
 
     Klasteryzacja jest zadaniem, które może zostać wykonane na wiele sposobów.
     Jest również iteracyjnym procesem odkrywania danych w celu odnalezieniu relacji pomiędzy nimi.
@@ -1328,7 +1197,7 @@ Karolina Nurzyńska}
     takich jak funkcja odległości lub liczba oczekiwanych grup)
     zależą od zestawu danych i sposobu wykorzystania wyników.
     Dane nieraz muszą zostać przefiltrowane lub potrzebna jest zmiana parametrów grupowania w~celu osiągnięcia
-    zamierzonego efektu~\cite{clusterWstep}.
+    zamierzonego efektu.
 
     Najczęściej grupa jest definiowana przez jak najmniejszą odległość pomiędzy jej członkami.
     Zarazem odległość pomiędzy członkami grupy jest głównym parametrem klasteryzacji hierarchicznej.
@@ -1344,8 +1213,8 @@ Karolina Nurzyńska}
     Natomiast w przypadku miękkiej klasteryzacji każdy element danych może w pewnym stopniu należeć do każdej z grup.
     Autorzy algorytmu szacowania wieku będącego podstawą przeprowadzonych badań zastosowali grupowanie metodą Fuzzy
     C-means.
-    Należy ona do grupy modeli centroidowych~\cite{clusterWstep}. W Fuzzy C-means zastosowano klasteryzacje miękką.
-    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w~książce~\cite{ISODATA}.
+    Należy ona do grupy modeli centroidowych. W Fuzzy C-means zastosowano klasteryzacje miękką.
+    Algorytm Fuzzy C-means został stworzony w 1973 przez J. C. Dunn. Po raz pierwszy został opisany w~książce.
     %- dokladny opis jak to dziala
     %    https://sci-hub.tw/10.1007/s12046-019-1166-1
     %pozniej opisac co otrzymalismy w wyniku dzialania algorytmu, ze tam byly centroidy wraz z wartoscia
@@ -1459,7 +1328,7 @@ Karolina Nurzyńska}
     do~\ref{sec:wyliczanieWrinkleFeature}:
     Algorytm szacowania wieku w pierwszej kolejności dokonuje detekcji twarzy, oczu, ust na danym obrazie $O_{i}$.
     Jeśli powyższe elementy zostały zidentyfikowane, wyznaczane są strefy zmarszczkowe,
-    a następnie zostaje wyliczony parametr wskaźnik zmarszczek $WF_{i}$~\cite{wrinkleFeatures}.
+    a następnie zostaje wyliczony parametr wskaźnik zmarszczek $WF_{i}$.
 
     %    Należy podkreślić, że zdjęcia do testowania algorytmu szacowania wieku
     %    pochodzą z innej bazy obrazów niż obrazy wykorzystane w treningu. Ma to na celu eliminację błędów w testowaniu algorytmu.
@@ -1528,7 +1397,7 @@ Karolina Nurzyńska}
     identyfikowane jako zmarszczki.
     Z kolei Histogram of Oriented Gradients jest techniką, która liczy wystąpienia kierunków gradientów jasności.
     Metoda HOG została zaimplementowana w 2005 roku przez Navneeta Dalala i Billa
-    Triggsa~\cite{hogZabojady}.
+    Triggsa.
     Została wtedy zastosowana do detekcji pieszych na zdjęciach.
     Później jej zastosowanie rozszerzono o wykrywanie ludzi w filmach wideo,
     ponadto stosowano ją także do wykrywania zwierząt oraz pojazdów na zdjęciach.
@@ -1536,18 +1405,13 @@ Karolina Nurzyńska}
     Metoda Histogram of Oriented Gradients opiera się na założeniu, że wygląd i kształt obiektów na obrazie może zostać
     opisany przez gradient jasności oraz jego kierunek. Jest to dobrze widoczne na
     rysunku~\ref{fig.gradientJasnosciNaGlowie}.
-    \begin{figure}[b]
-        \centering
-        \includegraphics[width=11cm]{Obrazy/gradientJasnosciNaGlowie.jpg}
-        \caption{Gradient jasności identyfikujący granicę pomiędzy głową a tłem~\cite{hogOpenCv}.}
-        \label{fig.gradientJasnosciNaGlowie}
-    \end{figure}
+
     Na granicy pomiędzy tłem, a głową sportowca widoczne są duże wartości gradientu jasności.
     W ten sposób zostaje zidentyfikowana krawędź głowy.
 
     Działanie algorytmu można pokrótce opisać w następujący sposób. Obraz jest dzielony na małe obszary zwane komórkami,
     które zwykle mają wymiar kilka na kilka pikseli. Komórki są grupowane w bloki, mogące składać się z różnej ilości
-    komórek~\cite{hogOpis}.
+    komórek.
     Dla wszystkich pikseli w komórce tworzony jest histogram kierunków gradientu.
     Następnie histogramy są łączone w jeden wspólny deskryptor.
     Dla zwiększenia dokładności lokalne histogramy normalizowane są pod względem kontrastu.
@@ -1560,12 +1424,7 @@ Karolina Nurzyńska}
     rozmiar
     pojedynczej komórki
     (rysunek~\ref{fig.komorkiHoga}).
-    \begin{figure}
-        \centering
-        \includegraphics[width=4cm]{Obrazy/komorkiHoga.jpg}
-        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu~\cite{hogOpenCv}.}
-        \label{fig.komorkiHoga}
-    \end{figure}
+
     Warto wspomnieć, że w wielu metodach generujących deskryptory pierwszą fazą jest korekcja luminancji.
     Jednak ten krok może zostać pominięty, gdyż w późniejszym kroku stosowana jest normalizacja,
     która dokonuje korekcji luminancji cieni oraz świateł.
@@ -1588,12 +1447,7 @@ Karolina Nurzyńska}
     dla podanych wartości:
     $0^{\circ}$, $20^{\circ}$, $40^{\circ}$, \ldots, $160^{\circ}$.
     Na rysunku~\ref{fig.hogTworzenieHistogramu} przedstawiono sposób przypisywania wartości do kubełków histogramu.
-    \begin{figure}
-        \centering
-        \includegraphics[width=11cm]{Obrazy/hogTworzenieHistogramu.jpg}
-        \caption{Komórki o rozmiarze 8x8 pikseli na zdjęciu~\cite{hogOpenCv}.}
-        \label{fig.hogTworzenieHistogramu}
-    \end{figure}
+
     Piksel zaznaczony na niebiesko posiada gradient o wartości 2 oraz kierunek o kącie $80^{\circ}$.
     Wartość gradientu zostaje dodana do aktualnej wartości kubełka histogramu reprezentującego kąt $80^{\circ}$.
     Piksel zaznaczony na czerwono posiada gradient o~wartości 4 oraz kierunek o kącie $10^{\circ}$.
@@ -1789,7 +1643,7 @@ Karolina Nurzyńska}
     Natomiast algorytm KNN przypisze tę obserwację do klasy (wieku).
     Przypisywanie do danej klasy jest realizowane przez ocenę podobieństwa obserwacji testowej do zbioru uczącego.
     Ocena podobieństwa jest realizowana poprzez obliczanie odległości pomiędzy wektorami zmiennych
-    objaśniających~\cite{knnOpis}.
+    objaśniających.
 
     Przykładowymi miarami odległości są:
     \begin{itemize}
@@ -1876,14 +1730,8 @@ Karolina Nurzyńska}
     może być standaryzowany lub normalizowany. Ponadto algorytm otrzymuje parametr $k$.
     W celu wywnioskowania, do której klasy należy obserwacja testowa zawierająca wektor $V_{i}$, szukanych jest $k$
     najbliższych wektorów (wektorów sąsiadów) ze zbioru uczącego (według kryterium odległości). Obserwacja testowa
-    zostaje przydzielona do klasy, która najczęściej występowała wśród $k$ sąsiednich obserwacji~\cite{knnOpis}.
+    zostaje przydzielona do klasy, która najczęściej występowała wśród $k$ sąsiednich obserwacji.
     Problem klasyfikacji algorytmem KNN jest pokazany na rysunku~\ref{fig.klasyfikacjaKNN}
-    \begin{figure}
-        \centering
-        \includegraphics[width=10cm]{Obrazy/klasyfikacjaKNN.jpg}
-        \caption{Przykład klasyfikacji KNN~\cite{KNNObraz}.}
-        \label{fig.klasyfikacjaKNN}
-    \end{figure}
 
     Na rysunku~\ref{fig.klasyfikacjaKNN} wyróżnione są wektory ze zbioru uczącego należące do klasy $A$ oraz klasy
     $B$. Ponadto na środku rysunku~\ref{fig.klasyfikacjaKNN} znajduje się wektor, który ma zostać
@@ -1944,7 +1792,7 @@ Karolina Nurzyńska}
     Baza testowa może pochodzić od części danych treningowych. Istnieje kilka metod rozdzielenia jednej bazy na bazę
     treningową oraz testową.
     Jedną z nich jest rozdzielenie bazy w~oparciu o stosunek. Oznacza, to, że uzyskany zbiór treningowy będzie wynosił
-    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np. 10\%~\cite{dataMiningAlgorithms}.
+    $x$ procent np. 90\%, a zbiór testowy odpowiednio $100\% -x$, np. 10\%.
 
     Drugi ze sposobów to schemat CV-n (ang. cross validation), zwany również walidacją krzyżową.
     Zakłada ona, że zbiór danych zostanie podzielony na n równych podzbiorów.
@@ -1960,14 +1808,14 @@ Karolina Nurzyńska}
     \normalsize
     gdzie $R_{i}$ oznacza wartość rzeczywistą wieku dla i-tego zdjęcia, $n$ oznacza liczbę zdjęć testowych.
     Natomiast $P_{i}$ oznacza wartość szacowaną wieku.
-    W~wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora~\cite{dataMiningAlgorithms}.
+    W~wyniku n iteracji otrzymuje się uśredniony wynik działania klasyfikatora.
     Najczęściej dokonuje się tego przez wyliczenie średniej wartości n rezultatów uzyskanych po przeprowadzeniu
     n iteracji.
 
     Metoda Leave-One-Out zakłada wykluczenie jednego obiektu, który reprezentuje zbiór testowy. Natomiast reszta obiektów zostaje zakwalifikowana do zbioru treningowego.
     Po przetestowaniu klasyfikatora powyższym obiektem otrzymuje się wynik skuteczności klasyfikacji. Proces ten jest powtarzany dla wszystkich obiektów.
     Metoda Leave-One-Out działa dokładnie tak samo jak metoda CV-n dla $n$ równego liczbie obiektów
-    w zbiorze danych~\cite{dataMiningAlgorithms}.
+    w zbiorze danych.
 
     Dla każdej metody szacowania wieku dokonano porównania 257 zdjęć, co stanowi 10\% ogólnej liczby obrazów biorących
     udział w
@@ -2017,26 +1865,12 @@ Karolina Nurzyńska}
     W wielu zdjęciach wystąpiły nieprawidłowe detekcje zmarszczek.
 
     Krawędzie związane tylko ze zmarszczkami są widoczne na obrazie~\ref{fig.dobryRyjek}
-    \begin{figure}
-        \centering
-        \includegraphics[width=11cm]{Obrazy/dobryRyjekWszystkieStrefyGray.jpg}
-        \captionsetup{justification=centering}
-        \caption{Przykład prawidłowej detekcji zmarszczek. \newline
-        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek}
-        \label{fig.dobryRyjek}
-    \end{figure}
+
     Obraz~\ref{fig.dobryRyjek} będzie dobrym punktem odniesienia do przypadków błędnych detekcji zmarszczek.
     %todo - ogolnie zrobic na sam koniec sprawdzenie czy nie ma rozjazdow z obrazami
     Pierwszym przykładem jest wykrycie krawędzi związanych z brwiami. Na obrazie~\ref{fig.zlyRyjek} można zauważyć,
     że ilość krawędzi w strefie 2 jest duża i nie identyfikują one zmarszczek.
-    \begin{figure}
-        \centering
-        \includegraphics[width=11cm]{Obrazy/brwi.png}
-        \captionsetup{justification=centering}
-        \caption{Przykład nieprawidłowej detekcji zmarszczek w strefie 2. \newline
-        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
-        \label{fig.zlyRyjek}
-    \end{figure}
+
     Z bazy zdjęć wyselekcjonowano 20 obrazów, na których zmarszczki zostały wykryte poprawnie, oraz 20 kolejnych
     obrazów, gdzie
     detekcja zmarszczek została zaburzona przez brwi nachodzące na strefę 2. Aby uzyskać możliwie miarodajne i
@@ -2046,24 +1880,7 @@ Karolina Nurzyńska}
     odchylenie standardowe współczynnika zmarszczek. W tabeli~\ref{tab.brwi} przedstawiono wyniki powyższych badań
     dla detektora Cannego, natomiast w tabeli~\ref{tab.brwiHog} przedstawiono wyniki badań dla detekcji zmarszczek
     algorytmem HOG-a.
-    \begin{table}[t!]
-        \centering
-        \caption{Eksperyment 1: wykrywanie zmarszczek w strefie 2 dla detektora Canny.}
-        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
-            \hline
-            & \begin{tabular}[c]{@{}c@{}}
-                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
-            \end{tabular} &
-            \begin{tabular}[c]{@{}c@{}}
-                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
-            \end{tabular} \\ \hline
-            Średnia współczynnika zmarszczek & 0,050 & 0,061
-            \\ \hline
-            Odchylenie standardowe współczynnika zmarszczek & 0,009
-            & 0,011                                                                                      \\ \hline
-        \end{tabular}
-        \label{tab.brwi}
-    \end{table}
+
     W wyniku przeprowadzenia eksperymentu 1 dla detektora Canny uzyskano współczynnik zmarszczek równy 0,05 oraz
     odchylenie standardowe 0,009 dla
     obrazów ze zmarszczkami
@@ -2071,26 +1888,7 @@ Karolina Nurzyńska}
     0,061, natomiast odchylenie standardowe wyniosło 0,011.
     Zauważona różnica nie jest jednak na tyle wysoka, by móc wyraźnie stwierdzić, że będzie miała istotny wpływ na
     szacowanie wieku.
-    \begin{table}[b!]
-        \centering
-        \caption{Eksperyment 1: wykrywanie zmarszczek w strefie 2 dla detektora HOG-a.}
-        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
-            \hline
-            & \begin{tabular}[c]{@{}c@{}}
-                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
-            \end{tabular} &
-            \begin{tabular}[c]{@{}c@{}}
-                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
-            \end{tabular} \\ \hline
-            Średnia współczynnika zmarszczek & 2,512
-            & 2,562
-            \\ \hline
-            Odchylenie standardowe współczynnika zmarszczek & 0,027
-            & 0,050
-            \\ \hline
-        \end{tabular}
-        \label{tab.brwiHog}
-    \end{table}
+
     W~przypadku HOG dla prawidłowo wykrytych zmarszczek średnia współczynnika zmarszczek wyniosła 2,512, natomiast
     odchylenie standardowe 0,027. Dla nieprawidłowo wykrytych zmarszczek średnia współczynnika zmarszczek zwiększyła
     się do 2,562, natomiast odchylenie standardowe wyniosło 0,050.
@@ -2107,14 +1905,7 @@ Karolina Nurzyńska}
     Kolejnym problemem okazała się grzywka nachodząca na obszar strefy 1.
     Na obrazie~\ref{fig.grzywka} można zauważyć wykryte krawędzie,
     które identyfikują włosy.
-    \begin{figure}[]
-        \centering
-        \includegraphics[width=11cm]{Obrazy/zlyRyjekZGrzywka.jpg}
-        \captionsetup{justification=centering}
-        \caption{Przykład nieprawidłowej detekcji zmarszczek w strefie 1. \newline
-        a) Obraz przed detekcją zmarszczek b) Obraz po detekcji zmarszczek }
-        \label{fig.grzywka}
-    \end{figure}
+
     Podobnie jak powyżej, przeprowadzono porównanie,
     które ma na celu sprawdzenie wpływu nieprawidłowo wykrytych krawędzi na współczynnik zmarszczek.
     Do wspomnianego celu obliczono średni współczynnik zmarszczek oraz odchylenie standardowe ze strefy 1 dla osób w
@@ -2122,49 +1913,13 @@ Karolina Nurzyńska}
     zmarszczki zostały wykryte poprawnie, oraz 20 kolejnych zdjęć, gdzie grzywka nachodząca na strefę 1
     spowodowała nieprawidłowe wykrycie zmarszczek. Wyniki detekcji detektorem Cannego zaprezentowano w
     tabeli~\ref{tab.grzywka}, natomiast wyniki dla algorytmu HOG-a pokazano w tabeli~\ref{tab.grzywkaHog}.
-    \begin{table}[h!]
-        \centering
-        \caption{Eksperyment 2: wykrywanie zmarszczek w strefie 1 za pomocą detektora Canny.}
-        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
-            \hline
-            & \begin{tabular}[c]{@{}c@{}}
-                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
-            \end{tabular} &
-            \begin{tabular}[c]{@{}c@{}}
-                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
-            \end{tabular} \\ \hline
-            Średnia współczynnika zmarszczek & 0,056
-            & 0,079                                                                                      \\ \hline
-            Odchylenie standardowe współczynnika zmarszczek & 0,010
-            & 0,014                                                                                      \\ \hline
-        \end{tabular}
-        \label{tab.grzywka}
-    \end{table}
+
     Średnia współczynnika zmarszczek dla prawidłowo wykrytych zmarszczek, dla strefy 1 w eksperymencie nr 2 wyniosła
     0,056, natomiast odchylenie standardowe było równe 0,010. Grzywka nachodząca na strefę 1 zwiększyła
     średni współczynnik zmarszczek do 0,079 oraz odchylenie standardowe do 0,014.
     Podobnie, jak we wnioskach po eksperymencie 1, nie można jednoznacznie stwierdzić, czy zwiększony współczynnik o
     0,023 oraz odchylenie standardowe o 0,004 istotnie wpłynie na oszacowany wiek.
-    \begin{table}[h!]
-        \centering
-        \caption{Eksperyment 2: wykrywanie zmarszczek w strefie 1 za pomocą detektora Canny.}
-        \begin{tabular}{|M{5cm}|M{4cm}|M{5cm}|}
-            \hline
-            & \begin{tabular}[c]{@{}c@{}}
-                  Obrazy\\ze zmarszczkami \\wykrytymi prawidłowo
-            \end{tabular} &
-            \begin{tabular}[c]{@{}c@{}}
-                Obrazy\\ze zmarszczkami \\wykrytymi nieprawidłowo
-            \end{tabular} \\ \hline
-            Średnia współczynnika zmarszczek & 2,569
-            & 2,617
-            \\ \hline
-            Odchylenie standardowe współczynnika zmarszczek &0,041
-            & 0,056
-            \\ \hline
-        \end{tabular}
-        \label{tab.grzywkaHog}
-    \end{table}
+
     W strefie 1 średni współczynnik zmarszczek dla obrazów zawierających prawidłowo wykryte zmarszczki wyniósł 2,569,
     natomiast odchylenie standardowe 0,041. Dla obrazów, gdzie detekcja dała nieprawidłowy wynik, średnia wartość
     współczynnika wyniosła 2,617, a odchylenie standardowe było równe 0,056.
@@ -2186,32 +1941,6 @@ Karolina Nurzyńska}
     $T_{l} = 10$ oraz $T_{h} = 100$ podczas prowadzenie badań.
     Przykładowy wynik testowania metody został przedstawiony w tabeli~\ref{tab.przykladoweWyniki}.
 
-    \begin{table}[h]
-        \centering
-        \caption{Przykładowy wynik testowania zawierający 15 wyników.}
-        \label{tab.przykladoweWyniki}
-        \begin{tabular}{|M{2cm}|M{2cm}|M{2cm}|}
-            \hline
-            \begin{tabular}[c]{@{}c@{}}
-                wiek\\   prawdziwy
-            \end{tabular} & wiek wykryty & różnica \\ \hline
-            10 & 25 & 15      \\ \hline
-            15 & 26 & 11      \\ \hline
-            20 & 31 & 11      \\ \hline
-            25 & 15 & 10      \\ \hline
-            30 & 45 & 15      \\ \hline
-            35 & 48 & 13      \\ \hline
-            40 & 26 & 14      \\ \hline
-            45 & 49 & 4       \\ \hline
-            50 & 58 & 8       \\ \hline
-            55 & 34 & 21      \\ \hline
-            60 & 50 & 10      \\ \hline
-            65 & 80 & 15      \\ \hline
-            70 & 65 & 5       \\ \hline
-            75 & 80 & 5       \\ \hline
-            80 & 67 & 13      \\ \hline
-        \end{tabular}
-    \end{table}
     \subsection*{Wyniki z testowania 10\% zdjęć}
     Badania rozpoczęto od przeprowadzenia testu z następującymi parametrami wejściowymi algorytmu FCM:
     \begin{itemize}
@@ -2229,36 +1958,6 @@ Karolina Nurzyńska}
     W tabeli~\ref{tab.bazowa_g} przedstawiono
     jakość szacowania
     wieku przy modyfikacji parametru $g$, natomiast pozostałe parametry miały wartości $m=2,0$, $n=1000$, $\epsilon=1e-5$
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru m na wartość wartość MAE w metodzie bazowej.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & m=2,0 & m=3,0 & m=5,0 \\ \hline
-            MAE & 12,79 & 11,25 & 11,68 \\ \hline
-        \end{tabular}
-        \label{tab.bazowa_m}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie bazowej.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
-            MAE & 11,18 & 11,3 & 11,34 \\ \hline
-        \end{tabular}
-        \label{tab.bazowa_e}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $g$ na wartość MAE w metodzie bazowej.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $g=20$ & $g=50$ & $g=100$ \\ \hline
-            MAE & 10,99 & 10,76 & 10,98 \\ \hline
-        \end{tabular}
-        \label{tab.bazowa_g}
-    \end{table}
 
     Najlepszy wynik MAE dla modyfikacji parametru m osiągnięto dla m=3,0. Zwiększenie parametru m z 2,0 do 3,0
     znacznie poprawiło jakość szacowania wieku.
@@ -2281,36 +1980,7 @@ Karolina Nurzyńska}
     Badania dla walidacji krzyżowej miały taki sam przebieg, jak w przypadku procesu testowania 10\% zdjęć.
     Zmieniano parametr $m$ (tabela~\ref{tab.bazowa_m_cv}), $\epsilon$ (tabela~\ref{tab.bazowa_e_cv})
     oraz $g$ (tabela~\ref{tab.bazowa_g_cv}).
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru m na wartość MAE w metodzie bazowej.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & m=2,0 & m=3,0 & m=5,0 \\ \hline
-            MAE & 8,64 & 8,64 & 9,07 \\ \hline
-        \end{tabular}
-        \label{tab.bazowa_m_cv}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie bazowej.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
-            MAE & 8,64 & 8,64 & 8,64 \\ \hline
-        \end{tabular}
-        \label{tab.bazowa_e_cv}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $g$ na wartość MAE w metodzie bazowej.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $g=20$ & $g=50$ & $g=100$ \\ \hline
-            MAE & 8,6 & 8,53 & 8,58 \\ \hline
-        \end{tabular}
-        \label{tab.bazowa_g_cv}
-    \end{table}
+
     Zmiana parametru m z wartości 2,0 do 5,0 znacząco zwiększyła MAE. Modyfikacja parametru $\epsilon$ nie wpłynęła
     na wartość MAE, natomiast poprawa jakości szacowania wieku nastąpiło przy zwiększeniu grupy z 10 do 20.
     Najlepsza jakość szacowania wieku została osiągnięta dla następującej kombinacji parametrów wejściowych:
@@ -2325,7 +1995,7 @@ Karolina Nurzyńska}
     10\% zdjęć. W dalszej części pracy pokazano kontrast pomiędzy wynikami osiągniętymi pomiędzy walidacją krzyżową a
     metodą 10\%. Wyniki dla metody CV-5 są znacznie lepsze, ponieważ pięciokrotne powtarzanie treningu i klasyfikacji
     z całego zbioru danych daje bardziej wiarygodne wyniki niż w przypadku jednokrotnego testowania losowej
-    próbki 10\% zdjęć z całego zbioru~\cite{dataMiningAlgorithms}.
+    próbki 10\% zdjęć z całego zbioru.
 
     \subsection{Odjęcie strefy 2}\label{subsec:odjęcie-strefy-2}
     \subsection*{Wyniki z testowania 10\% zdjęć}
@@ -2337,36 +2007,6 @@ Karolina Nurzyńska}
     W tabeli~\ref{tab.odjeta_g} zaprezentowano
     jakość szacowania
     wieku przy modyfikacji parametru g.
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru m na wartość wartość MAE w metodzie po odjęciu strefy 2.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & m=2,0 & m=3,0 & m=5,0 \\ \hline
-            MAE & 13,78 & 13,94 & 14,31 \\ \hline
-        \end{tabular}
-        \label{tab.odjeta_m}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie po odjęciu strefy 2.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
-            MAE & 13,75 & 13,97 & 12,42 \\ \hline
-        \end{tabular}
-        \label{tab.odjeta_e}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $g$ na wartość MAE w metodzie po odjęciu strefy 2.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $g=20$ & $g=50$ & $g=100$ \\ \hline
-            MAE & 13,82 & 13,91 & 13,74 \\ \hline
-        \end{tabular}
-        \label{tab.odjeta_g}
-    \end{table}
 
     Zwiększanie parametru wejściowego m pogarszało wyniki szacowania wieku, natomiast ich poprawa nastąpiła przy
     zmniejszeniu $\epsilon$ do wartości $1e-8$. Liczba grup nie miała większego wpływu na MAE.
@@ -2387,37 +2027,6 @@ Karolina Nurzyńska}
         \item $\epsilon$ (tabela~\ref{tab.odjeta_e_cv}),
         \item $g$ (tabela~\ref{tab.odjeta_g_cv}).
     \end{itemize}
-
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru m na wartość MAE w metodzie po odjęciu strefy 2.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & m=2,0 & m=3,0 & m=5,0 \\ \hline
-            MAE & 10,74 & 11,03 & 11,23 \\ \hline
-        \end{tabular}
-        \label{tab.odjeta_m_cv}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $\epsilon$ na wartość MAE w metodzie po odjęciu strefy 2.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $\epsilon=1e-6$ & $\epsilon=1e-7$ & $\epsilon=1e-8$ \\ \hline
-            MAE & 10,94 & 10,94 & 10,94 \\ \hline
-        \end{tabular}
-        \label{tab.odjeta_e_cv}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $g$ na wartość MAE w metodzie po odjęciu strefy 2.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            & $g=20$ & $g=50$ & $g=100$ \\ \hline
-            MAE & 10,9 & 11,01 & 11,03 \\ \hline
-        \end{tabular}
-        \label{tab.odjeta_g_cv}
-    \end{table}
 
     Podobnie jak przy testowaniu 10\% zdjęć, zwiększanie parametru wejściowego m pogarszało wyniki szacowania wieku.
     Zwiększenie $\epsilon$ z $1e-5$ do $1e-6$ dało minimalnie gorsze rezultaty. Dalsze zwiększanie tego parametru
@@ -2450,36 +2059,13 @@ Karolina Nurzyńska}
     W pierwszym teście ustalono parametry Fuzzy C-means: $m$ = 2,0, $n$ = 100 oraz $g$ = 10, $g$ = 100
     oraz $\epsilon$ = 1e-5.
     Wpływ parametru m oraz rozmiarów komórki na MAE jest przedstawiony w tabeli~\ref{tab.hog}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru m oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            m=2,0 & m=3,0 & m=5,0 &                     \\ \hline
-            16,65 & 16,92 & 11,68 & komórka 3x3 piksele \\ \hline
-            16,48 & 16,78 & 11,3 & komórka 6x6 pikseli \\ \hline
-            11,99 & 16,89 & 11,32 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hog}
-    \end{table}
+
     Rozmiary komórki 3x3 oraz 6x6 pikseli przy zmianach parametru m wprowadzają niewielkie zmiany w~jakości
     szacowania wieku. Zmiana rozmiaru komórki na 9x9 pikseli wprowadza duża zmianę wartości MAE. Wartość ta
     zmniejsza się drastycznie, do około 11,3 roku. Przyczyna tak dużej zmiany MAE wynika prawdopodobnie z tego, że
     wyniki uzyskane metodą testowania 10\% zdjęć są niemiarodajne.
 
     Następnie badano wpływ parametru $\epsilon$ (tabela~\ref{tab.hog1}).
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            $\epsilon=1e-6$ &  $\epsilon=1e-7$ &  $\epsilon=1e-8$ &                     \\ \hline
-            16,79 & 16,99 & 16,7 & komórka 3x3 piksele \\ \hline
-            16,49 & 16,86 & 16,55 & komórka 6x6 pikseli \\ \hline
-            11,31 & 11,31 & 11,28 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hog1}
-    \end{table}
 
     Podobnie jak przy badaniu wpływu parametru $m$ (tabela~\ref{tab.hog}), najlepszy wynik uzyskano dla komórki o
     rozmiarze 9x9 pikseli.
@@ -2487,18 +2073,6 @@ Karolina Nurzyńska}
     Analiza wpływu grup (tabela~\ref{tab.hog2}) na jakość szacowania wieku również daje rezultaty podobne do otrzymanych
     w wyniku badań wpływu parametru $\epsilon$ na MAE.
     (tabela~\ref{tab.hog2}).
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $g$ oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            $g=20$ & $g=50$ & $g=100$ &                     \\ \hline
-            16,59 & 15,48 & 15,49 & komórka 3x3 piksele \\ \hline
-            16,78 & 16,17 & 16,55 & komórka 6x6 pikseli \\ \hline
-            11,28 & 11,3 & 11,28 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hog2}
-    \end{table}
 
     Warto zauważyć, że dla komórki o rozmiarach 3x3 nastąpiła nieznaczna poprawa MAE przy zwiększeniu liczby grup z
     20 do 50.
@@ -2512,18 +2086,6 @@ Karolina Nurzyńska}
     dla metody bazowej była niższa.
     \subsection*{Wyniki walidacji krzyżowej CV-5}
     Parametr m oraz rozmiar komórki wpływały na parametr MAE w sposób przedstawiony w tabeli~\ref{tab.hog11}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru m oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            m=2,0 & m=3,0 & m=5,0 &                     \\ \hline
-            9,81 & 9,78 & 9,9 & komórka 3x3 piksele \\ \hline
-            9,93 & 9,9 & 9,85 & komórka 6x6 pikseli \\ \hline
-            9,95 & 9,92 & 9,83 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hog11}
-    \end{table}
 
     Badanie wpływu parametru m metodą CV-5 ujawnia niewielki rozrzut wyniku MAE.
     Wartości tych wyników zmieniają się o około 0,1 roku. Warto podkreślić, że w przypadku tego testu wartość MAE jest
@@ -2532,18 +2094,6 @@ Karolina Nurzyńska}
     przy testowaniu za pomocą 10\% zbioru.
 
     Wpływ zmiany parametru $\epsilon$ przedstawiono w tabeli~\ref{tab.hog12}.
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $\epsilon$ oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            $\epsilon=1e-6$ &  $\epsilon=1e-7$ &  $\epsilon=1e-8$ &                     \\ \hline
-            9,81 & 9,81 & 9,81 & komórka 3x3 piksele \\ \hline
-            9,93 & 9,93 & 9,93 & komórka 6x6 pikseli \\ \hline
-            9,95 & 9,95 & 9,95 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hog12}
-    \end{table}
 
     Podobnie jak przy badaniu wpływu parametru m (tabela~\ref{tab.hog}), rozrzut danych jest niewielki. Warto
     podkreślić, że najlepszy wynik uzyskano dla najmniejszej komórki, o wymiarach 3x3 piksela. Ponadto zmiana
@@ -2554,18 +2104,6 @@ Karolina Nurzyńska}
     %    (tabela~\ref{tab.hog21}).
     Na końcu przetestowano wpływ ilości grup w parametrze FCM.
     Wyniki zaprezentowano w tabeli~\ref{tab.hog21}
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $g$ oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            $g=20$ & $g=50$ & $g=100$ &                     \\ \hline
-            9,81 & 9,85 & 11,49 & komórka 3x3 piksele \\ \hline
-            9,94 & 10,08 & 11,55 & komórka 6x6 pikseli \\ \hline
-            9,94 & 11,3 & 11,38 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hog21}
-    \end{table}
 
     Przy testowaniu wpływu ilości grup widoczna jest tendencja pogarszania się wyników dla każdego rozmiaru komórki
     wraz ze wzrostem ilości grup.
@@ -2593,35 +2131,12 @@ Karolina Nurzyńska}
     \subsection*{Wyniki z testowania 10\% zdjęć}
     W tabeli~\ref{tab.hogknn} podsumowano jakość szacowania wieku przy zmianach parametru $k$ oraz dla różnych
     rozmiarów komórek.
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $k$ oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            $k=1$ & $k=3$ & $k=5$ &                     \\ \hline
-            11,76 & 11,75 & 11,49 & komórka 3x3 piksele \\ \hline
-            10,87 & 10,34 & 10,08 & komórka 6x6 pikseli \\ \hline
-            10,14 & 10,08 & 9,98 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hogknn}
-    \end{table}
+
     Dla komórek o rozmiarach 3x3 oraz 9x9 pikseli zwiększanie parametru k poprawiało nieznacznie wartość MAE.
     Najlepsza jakość klasyfikacji została osiągnięta dla komórki o rozmiarach 9x9 piksela i parametru k=5.
     \subsection*{Wyniki walidacji krzyżowej CV-5}
     Tabela~\ref{tab.hogknncv} zawiera wartości MAE osiągnięte w procesie walidacji krzyżowej CV-5 dla opisywanych
     modyfikacji.
-    \begin{table}[]
-        \centering
-        \caption{Wpływ parametru $k$ oraz rozmiarów komórki na wartość MAE.}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            $k=1$ & $k=3$ & $k=5$  &                     \\ \hline
-            10,77 & 10,79 & 10,54 & komórka 3x3 piksele \\ \hline
-            10,06 & 9,95 & 10 & komórka 6x6 pikseli \\ \hline
-            9,66 & 9,6 & 9,64 & komórka 9x9 pikseli \\ \hline
-        \end{tabular}
-        \label{tab.hogknncv}
-    \end{table}
 
     Tak, jak w poprzednich testach metodą CV-5, można wywnioskować, daje ona bardziej miarodajne
     wyniki szacowania wieku niż analiza 10\% obrazów.
@@ -2636,41 +2151,7 @@ Karolina Nurzyńska}
     dla stałej wartości parametrów FCM ($m=2,0$, $n=1000$, $g=10$, $\epsilon=1e-5$),
     a także dla metody HOG + KNN dla wartości parametru $k=1$ algorytmu KNN.
     MAE zostało wyznaczone dla testowania schematem CV-5.
-    \begin{table}[]
-        \centering
-        \caption{Wartość MAE dla metody szacowania wieku: bazowej, bez strefy 2 oraz HOG-a.}
-        \label{tab:summary}
-        \begin{tabular}{|c|c|c|c|c|c|}
-            \hline
-            & \multicolumn{2}{c|}{Canny}        & \multicolumn{3}{c|}{HOG}                                                                                                                                                          \\ \hline
-            & metoda oryginalna & metoda bez strefy 2 & \begin{tabular}[c]{@{}c@{}}
-                                                      HOG 3x3\\ piksela
-            \end{tabular} &
-            \begin{tabular}[c]{@{}c@{}}
-                HOG 6x6\\ pikseli
-            \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-                                HOG 9x9\\ pikseli
-            \end{tabular} \\ \hline
-            MAE & 8,64 & 10,74 & 9,81 & 9,93 & 9,95                                                      \\ \hline
-        \end{tabular}
-    \end{table}
-    \begin{table}[]
-        \centering
-        \caption{Wartość MAE dla metody szacowania wieku HOG + KNN.}
-        \label{tab:summary1}
-        \begin{tabular}{|c|c|c|}
-            \hline
-            \multicolumn{3}{|c|}{HOG + kNN}                                                                                                                                                   \\ \hline
-            \begin{tabular}[c]{@{}c@{}}
-                HOG 3x3\\ piksela
-            \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-                                HOG 6x6\\ pikseli
-            \end{tabular} & \begin{tabular}[c]{@{}c@{}}
-                                HOG 9x9\\ pikseli
-            \end{tabular} \\ \hline
-            10,77 & 10,06 & 9,66                                                      \\ \hline
-        \end{tabular}
-    \end{table}
+
     Jak widać w tabeli~\ref{tab:summary}, najlepsza wartość MAE została osiągnięta dla metody oryginalnej i wyniosła
     8,64 roku. Metoda z pominięciem strefy 2 zwiększyła ten parametr o 2,1 roku. Metoda używająca algorytmu HOG była
     gorsza
@@ -2686,11 +2167,11 @@ Karolina Nurzyńska}
     Celem niniejszej pracy było stworzenie algorytmu do szacowania wieku.
     Obszerny przegląd literatury przybliżył rozmaite techniki rozpoznawania twarzy i
     szacowania wieku. Bazą dla przeprowadzonych badań było odtworzenie pracy
-    „Age Estimation from Face Image using Wrinkle Features”~\cite{wrinkleFeatures}.
+    „Age Estimation from Face Image using Wrinkle Features''.
     Zawarta w niej metoda wykrywania zmarszczek została zaimplementowana,
     a~następnie poddana trzem autorskim modyfikacjom, które stanowiły próbę jej udoskonalenia.
 
-    Aby osiągnąć założony cel, dokonano implementacji oryginalnego algorytmu~\cite{wrinkleFeatures},
+    Aby osiągnąć założony cel, dokonano implementacji oryginalnego algorytmu,
     w którym w pierwszej kolejności musiała zostać wykryta twarz.
     W~kolejnym kroku należało zidentyfikować strefy zmarszczkowe, aby oszacować ilość zmarszczek.
     Określenie ich ilości zostało zrealizowane za pomocą detektora Canny. Oprócz samej implementacji
@@ -2726,7 +2207,7 @@ Karolina Nurzyńska}
     Do takich należały zmienne $m$, $g$, $n$, epsilon dla FCM, natomiast dla HOG-a były to rozmiary komórek.
     Z kolei dla KNN poddano modyfikacjom parametr $k$. Modyfikacje metody bazowej nie poprawiły wartości MAE,
     którego wartość w żadnym eksperymencie nie wyniosła mniej niż 8,53 roku. Warto zaznaczyć, że najlepsze
-    algorytmy~\cite{khryashchevGanin}
+    algorytmy.
     szacowania wieku osiągają parametr MAE o wartości około 5 lat.
     Różnica pomiędzy MAE dla metody bazowej oraz dla
     najlepszych algorytmów szacowania wieku wynosi około 3 lat. Jest to znacząca różnica, która wprowadza
@@ -2746,8 +2227,6 @@ Karolina Nurzyńska}
     \pagestyle{tylkoNumeryStron}
 
     %%%%%%%%%%% bibliografia %%%%%%%%%%%%
-    \bibliographystyle{plplain}
-    \bibliography{bibliografia}
 
     %%%%%%%%%  DODATKI %%%%%%%%%%%%%%%%%%%
 
@@ -2755,187 +2234,7 @@ Karolina Nurzyńska}
 
 
         \chapter*{Dokumentacja techniczna}
-        Program został zrealizowany zarówno w programie Java oraz Matlab.
 
-        \section*{Funkcje Java}
-
-        [$dane\_trenigowe$] = generateDataFromImagesAuto()
-
-        \bigskip
-        Funkcja generuje dane treningowe według jednego z algorytmów
-
-        \bigskip
-        Dane wejściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                propertiesLoader & PropertiesLoader
-                & Klasa PropertiesLoader zawierająca ścieżkę do obrazów
-                treningowych oraz konfigurację algorytmów generujących wskaźnik zmarszczek \\ \hline
-            \end{tabular}
-        \end{table}
-
-        Dane wyjściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                $dane\_trenigowe$ & File & Plik zawierający dane wygenerowanych wskaźników zmarszczek\\ \hline
-            \end{tabular}
-        \end{table}
-
-        \clearpage
-        [$wiek$] = recognizeAge()
-
-        \bigskip
-        Funkcja szacująca wiek na podstawie danych wygenerowanych z algorytmu FCM oraz danego obrazu.
-        \bigskip
-
-        Dane wejściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                \multicolumn{1}{|p{4cm}|}{path} & \multicolumn{1}{p{4cm}|}{String} & \multicolumn{1}{p{4cm}|}{Ścieżka do obrazu, z którego szacowany jest wiek} \\ \hline
-                age2centers & String & Ścieżka do centroidów wygenerowanych z
-                algorytmu FCM                      \\ \hline
-            \end{tabular}
-        \end{table}
-
-
-        Dane wyjściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                $wiek$ & int & Szacowany wiek z danego obrazu\\ \hline
-            \end{tabular}
-        \end{table}
-
-        \section*{Funkcje Matlaba}
-
-        [$age2centers$] = clusterToFuzzyCMeans()
-
-        \bigskip
-        Funkcja generujące centroidy z wykorzystaniem algorytmu Fuzzy C-means na
-        podstawie danych z treningu (wygenerowane za pomocą funkcji generateDataFromImagesAuto())
-        \bigskip
-
-        Dane wejściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                $dane\_treningowe$ & File & Dane z treningu
-                wygenerowane za pomocą funkcji generateDataFromImagesAuto() \\ \hline
-            \end{tabular}
-        \end{table}
-
-        \clearpage
-        Dane wyjściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                $age2centers$ & File &
-                Centroidy niezbędne do szacowania wieku w funkcji recognizeAge() \\ \hline
-            \end{tabular}
-        \end{table}
-
-        [$wiek\_szacowany$] = knnHog59()
-
-        \bigskip
-        Funkcja trenująca i szacująca wiek dla metody HOG + KNN.
-
-        \bigskip
-
-        Dane wejściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                \multicolumn{1}{|p{4cm}|}{KnnHog59} & \multicolumn{1}{p{4cm}|}{File} & \multicolumn{1}{p{4cm}|}
-                {Plik z danymi treningowymi. Dane wygenerowane za pomocą algorytmu HOG, w którym komórka miała rozmiary
-                5x5 piksela} \\ \hline
-                TrainKnnHog59 & File & Plik z danymi testowymi \\ \hline
-            \end{tabular}
-        \end{table}
-
-
-        Dane wyjściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                $wiek\_szacowany$ & File &
-                Plik zawierający wiek szacowany dla danych testowych
-                dla parametrów k=1,3,5 algorytmu KNN   \\ \hline
-            \end{tabular}
-        \end{table}
-        \clearpage
-        [$wiek\_szacowany$] = knnHog79()
-
-        \bigskip
-        Funkcja trenująca i szacująca wiek dla metody HOG + KNN.
-
-        \bigskip
-
-        Dane wejściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                \multicolumn{1}{|p{4cm}|}{KnnHog79} & \multicolumn{1}{p{4cm}|}{File} & \multicolumn{1}{p{4cm}|}
-                {Plik z danymi treningowymi. Dane wygenerowane za pomocą algorytmu HOG, w którym komórka miała rozmiary
-                7x7 piksela} \\ \hline
-                TrainKnnHog79 & File & Plik z danymi testowymi \\ \hline
-            \end{tabular}
-        \end{table}
-
-
-        Dane wyjściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                $wiek\_szacowany$ & File &
-                Plik zawierający wiek szacowany dla danych testowych
-                dla parametrów k=1,3,5 algorytmu KNN   \\ \hline
-            \end{tabular}
-        \end{table}
-        \clearpage
-        [$wiek\_szacowany$] = knnHog99()
-
-        \bigskip
-        Funkcja trenująca i szacująca wiek dla metody HOG + KNN.
-
-        \bigskip
-
-        Dane wejściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                \multicolumn{1}{|p{4cm}|}{KnnHog79} & \multicolumn{1}{p{4cm}|}{File} & \multicolumn{1}{p{4cm}|}
-                {Plik z danymi treningowymi. Dane wygenerowane za pomocą algorytmu HOG, w którym komórka miała rozmiary
-                9x9 piksela} \\ \hline
-                TrainKnnHog99 & File & Plik z danymi testowymi \\ \hline
-            \end{tabular}
-        \end{table}
-
-
-        Dane wyjściowe:
-        \begin{table}[h!]
-            \centering
-            \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-                \hline
-                $wiek\_szacowany$ & File &
-                Plik zawierający wiek szacowany dla danych testowych
-                dla parametrów k=1,3,5 algorytmu KNN   \\ \hline
-            \end{tabular}
-        \end{table}
-        \chapter*{Spis skrótów i symboli}
 
         \begin{itemize}
             \item[FCM] - \ang{Fuzzy C-means} - metoda klasteryzacji miękkiej (rozmytego).
